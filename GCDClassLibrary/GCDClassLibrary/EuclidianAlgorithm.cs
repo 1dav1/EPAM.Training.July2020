@@ -8,6 +8,10 @@
             {
                 return 0;
             }
+            else if(number1 == number2)
+            {
+                return number1;
+            }
             else
             {
                 if (number2 == 0)
@@ -22,6 +26,10 @@
             {
                 return 0;
             }
+            else if(number1 == number2 && number1 == number3)
+            {
+                return number1;
+            }
             else
             {
                 int midResult = CalculateGCD(number1, number2);
@@ -34,6 +42,10 @@
             if (number1 < 0 || number2 < 0 || number3 < 0 || number4 < 0)
             {
                 return 0;
+            }
+            else if (number1 == number2 && number1 == number3 && number1 == number4)
+            {
+                return number1;
             }
             else
             {
@@ -49,6 +61,10 @@
             {
                 return 0;
             }
+            else if (number1 == number2 && number1 == number3 && number1 == number4 && number1 == number5)
+            {
+                return number1;
+            }
             else
             {
                 int midResult = CalculateGCD(number1, number2);
@@ -57,5 +73,7 @@
                 return CalculateGCD(midResult, number5);
             }
         }
+
+
     }
 }
