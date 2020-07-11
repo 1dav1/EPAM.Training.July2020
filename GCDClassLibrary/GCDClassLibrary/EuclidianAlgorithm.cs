@@ -4,6 +4,10 @@ namespace GCDClassLibrary
 {
     public class EuclidianAlgorithm
     {
+        private double GCDTime { get; set; }
+
+        private double BinaryGCDTime { get; set; }
+
         public int CalculateGCD(int number1, int number2)
         {
             if (number1 < 0 || number2 < 0)
@@ -17,8 +21,44 @@ namespace GCDClassLibrary
             else
             {
                 if (number2 == 0)
+                {
                     return number1;
+                }
+
                 return CalculateGCD(number2, number1 % number2);
+            }
+        }
+
+        public int CalculateGCD(out double time, int number1, int number2)
+        {
+            DateTime endTime;
+            DateTime begTime = DateTime.Now;
+
+            if (number1 < 0 || number2 < 0)
+            {
+                endTime = DateTime.Now;
+                time = (endTime - begTime).TotalMilliseconds;
+                GCDTime = time;
+                return 0;
+            }
+            else if (number1 == number2)
+            {
+                endTime = DateTime.Now;
+                time = (endTime - begTime).TotalMilliseconds;
+                GCDTime = time;
+                return number1;
+            }
+            else
+            {
+                if (number2 == 0)
+                {
+                    endTime = DateTime.Now;
+                    time = (endTime - begTime).TotalMilliseconds;
+                    GCDTime = time;
+                    return number1;
+                }
+
+                return CalculateGCD(out time, number2, number1 % number2);
             }
         }
 
@@ -85,6 +125,7 @@ namespace GCDClassLibrary
             {
                 endTime = DateTime.Now;
                 time = (endTime - begTime).TotalMilliseconds;
+                BinaryGCDTime = time;
                 return number1;
             }
 
@@ -92,6 +133,7 @@ namespace GCDClassLibrary
             {
                 endTime = DateTime.Now;
                 time = (endTime - begTime).TotalMilliseconds;
+                BinaryGCDTime = time;
                 return number2;
             }
 
@@ -99,6 +141,7 @@ namespace GCDClassLibrary
             {
                 endTime = DateTime.Now;
                 time = (endTime - begTime).TotalMilliseconds;
+                BinaryGCDTime = time;
                 return number1;
             }
 
@@ -106,34 +149,24 @@ namespace GCDClassLibrary
             {
                 if (number2 % 2 != 0)
                 {
-                    endTime = DateTime.Now;
-                    _ = (endTime - begTime).TotalMilliseconds;
                     return CalculateBinaryGCD(out time, number1 >> 1, number2);
                 }
                 else
                 {
-                    endTime = DateTime.Now;
-                    _ = (endTime - begTime).TotalMilliseconds;
                     return CalculateBinaryGCD(out time, number1 >> 1, number2 >> 1) << 1;
                 }
             }
 
             if (number2 % 2 == 0)
             {
-                endTime = DateTime.Now;
-                _ = (endTime - begTime).TotalMilliseconds;
                 return CalculateBinaryGCD(out time, number1, number2 >> 1);
             }
 
             if (number1 > number2)
             {
-                endTime = DateTime.Now;
-                _ = (endTime - begTime).TotalMilliseconds;
                 return CalculateBinaryGCD(out time, (number1 - number2) >> 1, number2);
             }
 
-            endTime = DateTime.Now;
-            _ = (endTime - begTime).TotalMilliseconds;
             return CalculateBinaryGCD(out time, (number2 - number1) >> 1, number1);
         }
     }
