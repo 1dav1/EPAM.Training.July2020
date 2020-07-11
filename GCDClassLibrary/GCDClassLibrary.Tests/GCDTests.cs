@@ -1,4 +1,5 @@
 ﻿using FluentAssertions;
+using System;
 using System.Collections.Generic;
 using Xunit;
 
@@ -55,24 +56,24 @@ namespace GCDClassLibrary.Tests
                 .Equals(RESULT);
         }
 
-        //[Fact]
-        //public void CalculateGCD_WhenArgumentsAreValid_ShouldOutputCorrectTime()
-        //{
-        //    // Arrange
-        //    GCDCalculator gcdCalculator = new GCDCalculator();
-        //    DateTime endTime;
-        //    DateTime begTime;
+        [Fact]
+        public void CalculateGCD_WhenArgumentsAreValid_ShouldOutputCorrectTime()
+        {
+            // Arrange
+            GCDCalculator gcdCalculator = new GCDCalculator();
+            DateTime endTime;
+            DateTime begTime;
 
-        //    // Act
-        //    begTime = DateTime.Now;
-        //    _ = gcdCalculator.CalculateGCD(out double time, NUMBER1, NUMBER2);
-        //    endTime = DateTime.Now;
+            // Act
+            begTime = DateTime.Now;
+            _ = gcdCalculator.CalculateGCD(out int time, NUMBER1, NUMBER2);
+            endTime = DateTime.Now;
 
-        //    // Assert
-        //    time
-        //        .Should()
-        //        .BeApproximately((endTime - begTime).TotalMilliseconds, 0.1f);
-        //}
+            // Assert
+            time
+                .Should()
+                .Equals((endTime.Millisecond - begTime.Millisecond));
+        }
 
         [Fact]
         public void GetHistogram_ShouldReturnCorrectValue()
@@ -80,7 +81,7 @@ namespace GCDClassLibrary.Tests
             // Arrange 
             GCDCalculator gcdCalculator = new GCDCalculator();
             SortedDictionary<string, double> histogram = new SortedDictionary<string, double>();
-            double time, timeBin;
+            int time, timeBin;
 
             // Act
             gcdCalculator.CalculateGCD(out time, NUMBER1, NUMBER2);

@@ -1,13 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 
 namespace GCDClassLibrary
 {
     public class GCDCalculator
     {
-        private double GCDTime { get; set; }
+        private int GCDTime { get; set; }
 
-        private double BinaryGCDTime { get; set; }
+        private int BinaryGCDTime { get; set; }
 
         // multiplier to convert milliseconds to more readable format
         private const int MULTIPLIER = 1000;
@@ -30,7 +31,7 @@ namespace GCDClassLibrary
             }
         }
 
-        public int CalculateGCD(out double time, int number1, int number2)
+        public int CalculateGCD(out int time, int number1, int number2)
         {
             // capturing current time as the beginning time
             DateTime begTime = DateTime.Now;
@@ -52,7 +53,7 @@ namespace GCDClassLibrary
             DateTime endTime = DateTime.Now;
 
             // calculating the consumed time (output parameter)
-            time = (endTime - begTime).TotalMilliseconds;
+            time = (endTime.Millisecond - begTime.Millisecond);
             GCDTime = time;
 
             return number1;
@@ -101,7 +102,7 @@ namespace GCDClassLibrary
             }
         }
 
-        public uint CalculateBinaryGCD(out double time, uint number1, uint number2)
+        public uint CalculateBinaryGCD(out int time, uint number1, uint number2)
         {
             DateTime endTime;
             DateTime begTime = DateTime.Now;
@@ -112,13 +113,17 @@ namespace GCDClassLibrary
             if (number1 == 0)
             {
                 endTime = DateTime.Now;
-                time = (endTime - begTime).TotalMilliseconds;
+                time = (endTime.Millisecond - begTime.Millisecond);
+                BinaryGCDTime = time;
+
                 return number2;
             }
             if (number2 == 0)
             {
                 endTime = DateTime.Now;
-                time = (endTime - begTime).TotalMilliseconds;
+                time = (endTime.Millisecond - begTime.Millisecond);
+                BinaryGCDTime = time;
+
                 return number1;
             }
 
@@ -157,7 +162,7 @@ namespace GCDClassLibrary
             /* restore common factors of 2 */
             
             endTime = DateTime.Now;
-            time = (endTime - begTime).TotalMilliseconds;
+            time = (endTime.Millisecond - begTime.Millisecond);
             BinaryGCDTime = time;
 
             return number1 << shift;
