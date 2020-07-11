@@ -1,4 +1,6 @@
-﻿namespace GCDClassLibrary
+﻿using System;
+
+namespace GCDClassLibrary
 {
     public class EuclidianAlgorithm
     {
@@ -8,7 +10,7 @@
             {
                 return 0;
             }
-            else if(number1 == number2)
+            else if (number1 == number2)
             {
                 return number1;
             }
@@ -26,7 +28,7 @@
             {
                 return 0;
             }
-            else if(number1 == number2 && number1 == number3)
+            else if (number1 == number2 && number1 == number3)
             {
                 return number1;
             }
@@ -74,6 +76,65 @@
             }
         }
 
+        public int CalculateBinaryGCD(out double time, int number1, int number2)
+        {
+            DateTime endTime;
+            DateTime begTime = DateTime.Now;
 
+            if (number1 == number2)
+            {
+                endTime = DateTime.Now;
+                time = (endTime - begTime).TotalMilliseconds;
+                return number1;
+            }
+
+            if (number1 == 0)
+            {
+                endTime = DateTime.Now;
+                time = (endTime - begTime).TotalMilliseconds;
+                return number2;
+            }
+
+            if (number2 == 0)
+            {
+                endTime = DateTime.Now;
+                time = (endTime - begTime).TotalMilliseconds;
+                return number1;
+            }
+
+            if ((number1 & 1) == 0)
+            {
+                if (number2 % 2 != 0)
+                {
+                    endTime = DateTime.Now;
+                    _ = (endTime - begTime).TotalMilliseconds;
+                    return CalculateBinaryGCD(out time, number1 >> 1, number2);
+                }
+                else
+                {
+                    endTime = DateTime.Now;
+                    _ = (endTime - begTime).TotalMilliseconds;
+                    return CalculateBinaryGCD(out time, number1 >> 1, number2 >> 1) << 1;
+                }
+            }
+
+            if (number2 % 2 == 0)
+            {
+                endTime = DateTime.Now;
+                _ = (endTime - begTime).TotalMilliseconds;
+                return CalculateBinaryGCD(out time, number1, number2 >> 1);
+            }
+
+            if (number1 > number2)
+            {
+                endTime = DateTime.Now;
+                _ = (endTime - begTime).TotalMilliseconds;
+                return CalculateBinaryGCD(out time, (number1 - number2) >> 1, number2);
+            }
+
+            endTime = DateTime.Now;
+            _ = (endTime - begTime).TotalMilliseconds;
+            return CalculateBinaryGCD(out time, (number2 - number1) >> 1, number1);
+        }
     }
 }
