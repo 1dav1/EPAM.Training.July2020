@@ -1,4 +1,5 @@
 ﻿using FluentAssertions;
+using System.Collections.Generic;
 using Xunit;
 
 namespace GCDClassLibrary.Tests
@@ -12,6 +13,7 @@ namespace GCDClassLibrary.Tests
         private const int NUMBER5 = 642;
 
         private const int RESULT = 21;
+        private const int MULTIPLIER = 1000;
 
         [Fact]
         public void CalculateGCD_WhenArgumentsAreValid_ShouldReturnCorrectValue()
@@ -35,6 +37,10 @@ namespace GCDClassLibrary.Tests
             gcdCalculator.CalculateGCD(NUMBER1, NUMBER2, NUMBER3, NUMBER4, NUMBER5)
                 .Should()
                 .Equals(RESULT);
+
+            gcdCalculator.CalculateGCD(out _, NUMBER1, NUMBER2)
+                .Should()
+                .Equals(RESULT);
         }
 
         [Fact]
@@ -42,11 +48,6 @@ namespace GCDClassLibrary.Tests
         {
             // Arrange - Act
             GCDCalculator gcdCalculator = new GCDCalculator();
-            //int result = 0;
-            //DateTime endTime;
-            //DateTime begTime = DateTime.Now;
-
-            //endTime = DateTime.Now;
 
             // Assert
             gcdCalculator.CalculateBinaryGCD(out _, NUMBER1, NUMBER2)
@@ -76,14 +77,29 @@ namespace GCDClassLibrary.Tests
         [Fact]
         public void GetHistogram_ShouldReturnCorrectValue()
         {
-            // Arrange - Act
+            // Arrange 
             GCDCalculator gcdCalculator = new GCDCalculator();
+            SortedDictionary<string, double> histogram = new SortedDictionary<string, double>();
+            double time, timeBin;
+
+            // Act
+            gcdCalculator.CalculateGCD(out time, NUMBER1, NUMBER2);
+            gcdCalculator.CalculateBinaryGCD(out timeBin, NUMBER1, NUMBER2);
+            histogram = gcdCalculator.GetHistogram();
 
             // Assert
-            gcdCalculator.GetHistogram()
+            histogram
                 .Should()
                 .NotBeEmpty()
                 .And.ContainKeys("GCD", "BinaryGCD");
+
+            (histogram["GCD"] / MULTIPLIER)
+                .Should()
+                .Equals(time);
+
+            (histogram["BinaryGCD"] / MULTIPLIER)
+                .Should()
+                .Equals(timeBin);
         }
     }
 }
