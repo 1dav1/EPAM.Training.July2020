@@ -8,17 +8,23 @@ namespace ShapeLibrary
 
         public override double GetArea()
         {
-            return Math.PI * Radius * Radius;
+            if (Radius < 0)
+                throw new ArgumentOutOfRangeException("Radius", "Radius must be positive.");
+
+            return Math.PI * Math.Pow(Radius, 2);
         }
 
         public override double GetPerimeter()
         {
+            if (Radius < 0)
+                throw new ArgumentOutOfRangeException("Radius", "Radius must be positive.");
+
             return Math.PI * 2 * Radius;
         }
 
         public override string ToString()
         {
-            return $"Radius = {Radius}";
+            return $"Circle. Radius = {Radius}";
         }
 
         public override bool Equals(object obj)

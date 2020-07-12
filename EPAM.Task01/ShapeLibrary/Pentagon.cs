@@ -14,11 +14,17 @@ namespace ShapeLibrary
 
         public override double GetArea()
         {
+            if (Side < 0)
+                throw new ArgumentOutOfRangeException("Side", "Side must be positive.");
+
             return (NUMBER * Math.Pow(Side, 2) / (4 * Math.Tan(CENTER_ANGLE)));
         }
 
         public override double GetPerimeter()
         {
+            if (Side < 0)
+                throw new ArgumentOutOfRangeException("Side", "Side must be positive.");
+
             return Side * NUMBER;
         }
 

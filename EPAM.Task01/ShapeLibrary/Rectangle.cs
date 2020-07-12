@@ -9,17 +9,22 @@ namespace ShapeLibrary
 
         public override double GetArea()
         {
+            if (Height < 0 || Width < 0)
+                throw new ArgumentOutOfRangeException("Side", "Sides must be positive.");
+
             return Height * Width;
         }
 
         public override double GetPerimeter()
         {
+            if (Height < 0 || Width < 0)
+                throw new ArgumentOutOfRangeException("Side", "Sides must be positive.");
             return (Height + Width) * 2;
         }
 
         public override string ToString()
         {
-            return $"Height = {Height}; Width = {Width}";
+            return $"Rectangle. Height = {Height}; Width = {Width}";
         }
 
         public override bool Equals(object obj)
