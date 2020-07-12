@@ -1,7 +1,6 @@
 ﻿using ShapeLibrary;
 using System;
 using System.Collections.Generic;
-//using System.Drawing;
 using System.IO;
 using System.Text.RegularExpressions;
 
@@ -12,9 +11,10 @@ namespace ReaderLibrary
         public string Path { get; set; }
         public List<Shape> Shapes { private get; set; }
 
-        public Reader(string path = "shapes.txt")
+        public Reader(string path = "..\\..\\..\\..\\docs\\shapes.txt")
         {
             Path = path;
+            Shapes = new List<Shape>();
         }
 
         public List<Shape> GetShapes()
@@ -24,10 +24,12 @@ namespace ReaderLibrary
                 string[] lines = File.ReadAllLines(Path);
                 foreach (var line in lines)
                 {
+                    // parenthesis in the current line means the shape is described by coordinates 
                     if (line.Contains('('))
                     {
                         GetShapeByCoordinates(line);
                     }
+                    // otherwise it is described by side length
                     else
                     {
                         GetShapeBySides(line);
@@ -39,7 +41,10 @@ namespace ReaderLibrary
 
         private void GetShapeBySides(string line)
         {
+            // get a collection of parameters of a shape
             string[] parameters = line.Split(";");
+
+            // identifying the type of the shape 
             switch (parameters.Length)
             {
                 case 1:
@@ -64,12 +69,8 @@ namespace ReaderLibrary
                     });
                     break;
                 case 5:
-                    //Regex regex = new Regex("(?<=/=)/d+$");
-                    //Match match = regex.Match(parameters[4]);
-                    //double apothem = Convert.ToDouble(match.Value);
                     Shapes.Add(new Pentagon
                     {
-                        //Apothem = apothem,
                         Side = Convert.ToDouble(parameters[0])
                     });
                     break;
@@ -79,14 +80,7 @@ namespace ReaderLibrary
         private void GetShapeByCoordinates(string line)
         {
             string[] coordinates = line.Split(";");
-            //string substring = "";
-            
-            //if(coordinates.Length == 5)
-            //{
-            //    substring = coordinates[5];
-            //    coordinates[5] = null;
-            //}
-            Regex regex = new Regex("/d+");
+            Regex pattern = new Regex("[0-9]+");
             MatchCollection matches;
 
             // using inline declaration, because in case of 'using' directive I make my class 'Rectangle' ambiguous
@@ -94,7 +88,8 @@ namespace ReaderLibrary
 
             foreach (var c in coordinates)
             {
-                matches = regex.Matches(c);
+                // extract the coordinates from the string by pattern
+                matches = pattern.Matches(c);
                 points.Add(new System.Drawing.Point
                 {
                     X = Convert.ToInt32(matches[0].Value),
@@ -102,12 +97,15 @@ namespace ReaderLibrary
                 });
             }
 
+            // identifying the type of the shape 
             switch (points.Count)
             {
                 case 2:
                     Shapes.Add(new Circle
                     {
-                        Radius = Math.Sqrt(Math.Pow(points[0].X - points[1].X, 2) + Math.Pow(points[0].Y - points[1].Y, 2))
+                        /* calculating the radius length from coordinates by formula: 
+                         * distance = square root from ((x2 - x1) ^ 2 + (y2 - y1) ^ 2) */
+                        Radius = Math.Sqrt(Math.Pow(points[1].X - points[0].X, 2) + Math.Pow(points[1].Y - points[0].Y, 2))
                     });
                     break;
                 case 3:
@@ -126,17 +124,12 @@ namespace ReaderLibrary
                     });
                     break;
                 case 5:
-                    //regex = new Regex("(?<=/=)/d+$");
-                    //Match match = regex.Match(substring);
-                    //double apothem = Convert.ToDouble(match.Value);
                     Shapes.Add(new Pentagon
                     {
-                        //Apothem = apothem,
                         Side = Math.Sqrt(Math.Pow(points[0].X - points[1].X, 2) + Math.Pow(points[0].Y - points[1].Y, 2))
                     });
                     break;
             }
         }
-
     }
 }
