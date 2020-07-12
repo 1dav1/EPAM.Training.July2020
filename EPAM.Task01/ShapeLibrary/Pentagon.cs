@@ -45,9 +45,7 @@ namespace ShapeLibrary
 
         public override int GetHashCode()
         {
-            string code = $"{GetType()} {GetArea()}";
-
-            return code.GetHashCode();
+            return HashCode.Combine(Side);
         }
     }
 }

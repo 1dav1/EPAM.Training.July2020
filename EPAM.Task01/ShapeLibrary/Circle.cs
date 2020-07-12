@@ -39,9 +39,10 @@ namespace ShapeLibrary
 
         public override int GetHashCode()
         {
-            string code = $"{GetType()} {GetArea()}";
+            int hash = 15;
+            hash = (hash * 19) + Radius.GetHashCode();
 
-            return code.GetHashCode();
+            return hash;
         }
     }
 }

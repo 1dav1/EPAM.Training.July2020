@@ -43,9 +43,7 @@ namespace ShapeLibrary
 
         public override int GetHashCode()
         {
-            string code = $"{GetType()} Side 1 = {Side1}; Side 2 = {Side2}; Side 3 = {Side3}";
-
-            return code.GetHashCode();
+            return HashCode.Combine(Side1, Side2, Side3);
         }
     }
 }
