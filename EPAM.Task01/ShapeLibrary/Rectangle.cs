@@ -17,10 +17,26 @@ namespace ShapeLibrary
             return (Height + Width) * 2;
         }
 
-        public override void ToString()
+        public override string ToString()
         {
-            Console.WriteLine("Height = {0}", Height);
-            Console.WriteLine("Width = {1}", Width);
+            return $"Height = {Height}; Width = {Width}";
+        }
+
+        public override bool Equals(object obj)
+        {
+            if (GetType() != obj.GetType())
+                return false;
+
+            Rectangle rectangle = (Rectangle)obj;
+
+            return (GetArea() == rectangle.GetArea());
+        }
+
+        public override int GetHashCode()
+        {
+            string code = $"{GetType()} {GetArea()}";
+
+            return code.GetHashCode();
         }
     }
 }

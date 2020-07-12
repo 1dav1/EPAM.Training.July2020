@@ -54,7 +54,7 @@ namespace ReaderLibrary
                     });
                     break;
                 case 3:
-                    Shapes.Add(new Traingle
+                    Shapes.Add(new Triangle
                     {
                         Side1 = Convert.ToDouble(parameters[0]),
                         Side2 = Convert.ToDouble(parameters[1]),
@@ -109,7 +109,7 @@ namespace ReaderLibrary
                     });
                     break;
                 case 3:
-                    Shapes.Add(new Traingle
+                    Shapes.Add(new Triangle
                     {
                         Side1 = Math.Sqrt(Math.Pow(points[0].X - points[1].X, 2) + Math.Pow(points[0].Y - points[1].Y, 2)),
                         Side2 = Math.Sqrt(Math.Pow(points[1].X - points[2].X, 2) + Math.Pow(points[1].Y - points[2].Y, 2)),

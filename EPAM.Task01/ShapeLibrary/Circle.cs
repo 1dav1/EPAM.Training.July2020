@@ -16,9 +16,26 @@ namespace ShapeLibrary
             return Math.PI * 2 * Radius;
         }
 
-        public override void ToString()
+        public override string ToString()
         {
-            Console.WriteLine("Radius = {0}", Radius);
+            return $"Radius = {Radius}";
+        }
+
+        public override bool Equals(object obj)
+        {
+            if (GetType() != obj.GetType())
+                return false;
+
+            Circle circle = (Circle)obj;
+
+            return (GetArea() == circle.GetArea());
+        }
+
+        public override int GetHashCode()
+        {
+            string code = $"{GetType()} {GetArea()}";
+
+            return code.GetHashCode();
         }
     }
 }

@@ -22,9 +22,26 @@ namespace ShapeLibrary
             return Side * NUMBER;
         }
 
-        public override void ToString()
+        public override string ToString()
         {
-            Console.WriteLine("Regular Pentagon. Side = {0}", Side);
+            return $"Regular Pentagon. Side = {Side}";
+        }
+
+        public override bool Equals(object obj)
+        {
+            if (GetType() != obj.GetType())
+                return false;
+
+            Pentagon pentagon = (Pentagon)obj;
+
+            return (GetArea() == pentagon.GetArea());
+        }
+
+        public override int GetHashCode()
+        {
+            string code = $"{GetType()} {GetArea()}";
+
+            return code.GetHashCode();
         }
     }
 }
