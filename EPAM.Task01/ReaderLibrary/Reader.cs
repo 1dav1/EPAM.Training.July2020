@@ -64,12 +64,12 @@ namespace ReaderLibrary
                     });
                     break;
                 case 5:
-                    Regex regex = new Regex("(?<=/=)/d+$");
-                    Match match = regex.Match(parameters[4]);
-                    double apothem = Convert.ToDouble(match.Value);
+                    //Regex regex = new Regex("(?<=/=)/d+$");
+                    //Match match = regex.Match(parameters[4]);
+                    //double apothem = Convert.ToDouble(match.Value);
                     Shapes.Add(new Pentagon
                     {
-                        Apothem = apothem,
+                        //Apothem = apothem,
                         Side = Convert.ToDouble(parameters[0])
                     });
                     break;
@@ -79,13 +79,13 @@ namespace ReaderLibrary
         private void GetShapeByCoordinates(string line)
         {
             string[] coordinates = line.Split(";");
-            string substring = "";
+            //string substring = "";
             
-            if(coordinates.Length == 6)
-            {
-                substring = coordinates[5];
-                coordinates[5] = null;
-            }
+            //if(coordinates.Length == 5)
+            //{
+            //    substring = coordinates[5];
+            //    coordinates[5] = null;
+            //}
             Regex regex = new Regex("/d+");
             MatchCollection matches;
 
@@ -126,12 +126,12 @@ namespace ReaderLibrary
                     });
                     break;
                 case 5:
-                    regex = new Regex("(?<=/=)/d+$");
-                    Match match = regex.Match(substring);
-                    double apothem = Convert.ToDouble(match.Value);
+                    //regex = new Regex("(?<=/=)/d+$");
+                    //Match match = regex.Match(substring);
+                    //double apothem = Convert.ToDouble(match.Value);
                     Shapes.Add(new Pentagon
                     {
-                        Apothem = apothem,
+                        //Apothem = apothem,
                         Side = Math.Sqrt(Math.Pow(points[0].X - points[1].X, 2) + Math.Pow(points[0].Y - points[1].Y, 2))
                     });
                     break;

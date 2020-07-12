@@ -6,16 +6,18 @@ namespace ShapeLibrary
 {
     public class Pentagon : Shape
     {
-        public double Apothem { get; set; }
+        //public double Apothem { get; set; }
         public double Side { get; set; }
 
         // number of sides
         private int NUMBER = 5;
 
+        // angle at center of pentagon
+        private int CENTER_ANGLE = 36;
+
         public override double GetArea()
         {
-            double perimeter = GetPerimeter();
-            return (perimeter * Apothem) / 2;
+            return (5 * Math.Pow(Side, 2) / (4 * Math.Tan(CENTER_ANGLE)));
         }
 
         public override double GetPerimeter()
@@ -25,8 +27,8 @@ namespace ShapeLibrary
 
         public override void ToString()
         {
-            Console.WriteLine("Apothem = {0}", Apothem);
-            Console.WriteLine("Side = {0}", Side);
+            //Console.WriteLine("Apothem = {0}", Apothem);
+            Console.WriteLine("Regular Pentagon. Side = {0}", Side);
         }
     }
 }
