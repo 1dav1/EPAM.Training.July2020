@@ -9,7 +9,7 @@ namespace ReaderLibrary
     public class Reader
     {
         public string Path { get; set; }
-        public List<Shape> Shapes { private get; set; }
+        public List<Shape> Shapes { get; }
 
         public Reader(string path = "..\\..\\..\\..\\docs\\shapes.txt")
         {
@@ -17,7 +17,12 @@ namespace ReaderLibrary
             Shapes = new List<Shape>();
         }
 
-        public List<Shape> GetShapes()
+        public void AddShapes(List<Shape> shapes)
+        {
+            Shapes.AddRange(shapes);
+        }
+
+        public List<Shape> ReadShapesFromFile()
         {
             if (File.Exists(Path))
             {
@@ -130,6 +135,18 @@ namespace ReaderLibrary
                     });
                     break;
             }
+        }
+
+        public List<Shape> GetEqualShapes(Shape shape)
+        {
+            List<Shape> equalShapes = new List<Shape>();
+            foreach(var s in Shapes)
+            {
+                if (s.Equals(shape))
+                    equalShapes.Add(s);
+            }
+
+            return equalShapes;
         }
     }
 }

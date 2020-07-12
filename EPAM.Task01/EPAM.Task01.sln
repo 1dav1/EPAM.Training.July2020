@@ -13,6 +13,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ShapeLibrary", "ShapeLibrar
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShapeLibrary.Test", "ShapeLibrary.Test\ShapeLibrary.Test.csproj", "{5BC2E317-AAAA-41A7-8D4D-CB2261BF1901}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReaderLibrary.Tests", "ReaderLibrary.Tests\ReaderLibrary.Tests.csproj", "{E0F7B03C-6DB5-4B93-85B7-CDF58A3DBB01}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{5BC2E317-AAAA-41A7-8D4D-CB2261BF1901}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5BC2E317-AAAA-41A7-8D4D-CB2261BF1901}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5BC2E317-AAAA-41A7-8D4D-CB2261BF1901}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E0F7B03C-6DB5-4B93-85B7-CDF58A3DBB01}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E0F7B03C-6DB5-4B93-85B7-CDF58A3DBB01}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E0F7B03C-6DB5-4B93-85B7-CDF58A3DBB01}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E0F7B03C-6DB5-4B93-85B7-CDF58A3DBB01}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -40,7 +40,7 @@ namespace ShapeLibrary
 
             Pentagon pentagon = (Pentagon)obj;
 
-            return (GetArea() == pentagon.GetArea());
+            return (Side == pentagon.Side && GetArea() == pentagon.GetArea());
         }
 
         public override int GetHashCode()

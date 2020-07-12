@@ -36,7 +36,9 @@ namespace ShapeLibrary
 
             Triangle triangle = (Triangle)obj; 
 
-            return (Side1 == triangle.Side1 && Side2 == triangle.Side2 && Side3 == triangle.Side3);
+            return (Side1 == triangle.Side1 && 
+                    Side2 == triangle.Side2 && 
+                    Side3 == triangle.Side3);
         }
 
         public override int GetHashCode()

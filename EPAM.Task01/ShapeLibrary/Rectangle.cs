@@ -34,7 +34,9 @@ namespace ShapeLibrary
 
             Rectangle rectangle = (Rectangle)obj;
 
-            return (GetArea() == rectangle.GetArea());
+            return (Height == rectangle.Height &&
+                    GetArea() == rectangle.GetArea() &&
+                    Width == rectangle.Width);
         }
 
         public override int GetHashCode()
