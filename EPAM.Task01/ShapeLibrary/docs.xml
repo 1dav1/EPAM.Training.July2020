@@ -24,7 +24,7 @@
       <param name="shape">The shape to be compared with.</param>
       <param name="shapes">The comparable collection.</param>
       <returns>
-        A list of shapes that are equal to the <c>shape</c>.
+        A list of shapes that are equal to the specified <c>shape</c>.
       </returns>
     </GetEqualShapes>
   </members>
