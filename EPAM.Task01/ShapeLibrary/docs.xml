@@ -134,4 +134,61 @@
       <returns>A hash code for the current pentagon.</returns>
     </GetHashCode>
   </members>
+
+
+  <members name="rectangle">
+    <Rectangle>
+      <summary>
+        The Rectangle class.
+        Contains methods for calculating perimeter and area of a rectangle.
+      </summary>
+
+      <value>Gets or sets a width of the rectangle.</value>
+    </Rectangle>
+    <Height>
+      <value>Gets or sets a height of the rectangle.</value>
+    </Height>
+    <Width>
+      <value>Gets or sets a width of the rectangle.</value>
+    </Width>
+    <GetPerimeter>
+      <summary>
+        Calculates the perimeter of the current rectangle.
+      </summary>
+      <returns>The perimeter of the current rectangle.</returns>
+      <exception cref="System.ArgumentOutOfRangeException">
+        Trown when <c>Height</c> or <c>Width</c> property is negative.
+      </exception>
+    </GetPerimeter>
+    <GetArea>
+      <summary>
+        Calculates the area of the current rectangle.
+      </summary>
+      <returns>The area of the current rectangle.</returns>
+      <exception cref="System.ArgumentOutOfRangeException">
+        Trown when <c>Height</c> or <c>Width</c> property is negative.
+      </exception>
+    </GetArea>
+    <ToString>
+      <summary>
+        Overrides the base ToString() method.
+      </summary>
+      <returns>A string that presents the current rectangle.</returns>
+    </ToString>
+    <Equals>
+      <summary>
+        Overrides the base Equals() method. Determines whether the specified object is equal to the current rectangle.
+      </summary>
+      <param name="obj">The object to compare with the current rectangle.</param>
+      <returns>
+        <c>true</c> if the specified object is equal to the current rectangle; otherwise, <c>false</c>.
+      </returns>
+    </Equals>
+    <GetHashCode>
+      <summary>
+        Overrides the base GetHashCode() method. Serves as the customized hash function.
+      </summary>
+      <returns>A hash code for the current rectangle.</returns>
+    </GetHashCode>
+  </members>
 </docs>
