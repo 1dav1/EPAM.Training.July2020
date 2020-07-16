@@ -210,4 +210,60 @@
       <returns>The area of the current geometrical shape.</returns>
     </GetArea>
   </members>
+  <members name="triangle">
+    <Triangle>
+      <summary>
+        The Triangle class.
+        Contains methods for calculating perimeter and area of a triangle.
+      </summary>
+    </Triangle>
+    <Side1>
+      <value>Gets or sets a side of the triangle.</value>
+    </Side1>
+    <Side2>
+      <value>Gets or sets a side of the triangle.</value>
+    </Side2>
+    <Side3>
+      <value>Gets or sets a side of the triangle.</value>
+    </Side3>
+    <GetPerimeter>
+      <summary>
+        Calculates the perimeter of the current triangle.
+      </summary>
+      <returns>The perimeter of the current triangle.</returns>
+      <exception cref="System.ArgumentOutOfRangeException">
+        Trown when <c>Side1</c> or <c>Side2</c> or <c>Side3</c> property is negative.
+      </exception>
+    </GetPerimeter>
+    <GetArea>
+      <summary>
+        Calculates the area of the current triangle.
+      </summary>
+      <returns>The area of the current triangle.</returns>
+      <exception cref="System.ArgumentOutOfRangeException">
+        Trown when <c>Side1</c> or <c>Side2</c> or <c>Side3</c> property is negative.
+      </exception>
+    </GetArea>
+    <ToString>
+      <summary>
+        Overrides the base ToString() method.
+      </summary>
+      <returns>A string that presents the current triangle.</returns>
+    </ToString>
+    <Equals>
+      <summary>
+        Overrides the base Equals() method. Determines whether the specified object is equal to the current rectangle.
+      </summary>
+      <param name="obj">The object to compare with the current triangle.</param>
+      <returns>
+        <c>true</c> if the specified object is equal to the current triangle; otherwise, <c>false</c>.
+      </returns>
+    </Equals>
+    <GetHashCode>
+      <summary>
+        Overrides the base GetHashCode() method. Serves as the customized hash function.
+      </summary>
+      <returns>A hash code for the current triangle.</returns>
+    </GetHashCode>
+  </members>
 </docs>
