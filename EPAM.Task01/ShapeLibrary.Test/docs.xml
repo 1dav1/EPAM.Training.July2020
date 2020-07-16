@@ -1,0 +1,188 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<docs>
+  <members name="ireader">
+    <IReader>
+      <summary>
+        Interface for mock object that provides a collection of strings containing side lengths or coordinates of a geomtrical shape.
+      </summary>
+    </IReader>
+    <GetLinesFromFile>
+      <summary>
+        Overridable method of <c>IReader</c> interface.
+      </summary>
+      <param name="path"></param>
+      <returns>a string[] array.</returns>
+    </GetLinesFromFile>
+  </members>
+  <members name="shapestests">
+    <ShapesTests>
+      <summary>
+        The ShapesTest class.
+        Contains tests for methods of all the types of geometrical shapes.
+      </summary>
+    </ShapesTests>
+    <GetShapes>
+      <summary>
+        Tests if GetShapes() method of <c>ShapeFactory</c> class returns a collection of shapes.
+      </summary>
+    </GetShapes>
+    <GetEqualShapes>
+      <summary>
+        Tests if GetEqualShapes() method of <c>ShapeFactory</c> class returns a non-empty collection provided that the collection under examination contains equal shapes.
+      </summary>
+      <param name="side1">The length of a side.</param>
+      <param name="side2">The length of a side.</param>
+      <param name="side3">The length of a side.</param>
+    </GetEqualShapes>
+    <GetEqualShapesNot>
+      <summary>
+        ests if GetEqualShapes() method of <c>ShapeFactory</c> class returns an empty collection provided that the collection under examination does not contain equal shapes.
+      </summary>
+      <param name="side1">The length of a side.</param>
+      <param name="side2">The length of a side.</param>
+      <param name="side3">The length of a side.</param>
+    </GetEqualShapesNot>
+    <summary>
+      Tests if GetPerimeter() method of <c>Circle</c> class returns a correct result provided that a valid parameter passed to the method.
+    </summary>
+    <param name="radius">The length of the radius.</param>
+    <GetPerimeterCircle></GetPerimeterCircle>
+    <GetAreaCircle>
+      <summary>
+        Tests if GetArea() method of <c>Circle</c> class returns a correct result provided that a valid parameter passed to the method.
+      </summary>
+      <param name="radius">The length of the radius.</param>
+    </GetAreaCircle>
+    <GetPerimeterCircleEx>
+      <summary>
+        Tests if GetPerimeter() method of <c>Circle</c> class throws ArgumentOutOfRangeException exception provided that an invalid parameter passed to the method.
+      </summary>
+      <param name="radius">The length of the radius.</param>
+    </GetPerimeterCircleEx>
+    <GetAreaCircleEx>
+      <summary>
+        Tests if GetArea() method of <c>Circle</c> class throws ArgumentOutOfRangeException exception provided that an invalid parameter passed to the method.
+      </summary>
+      <param name="radius">The length of the radius.</param>
+    </GetAreaCircleEx>
+    <GetPerimeterTriangle>
+      <summary>
+        Tests if GetPerimeter() method of <c>Triangle</c> class returns a correct result provided that valid parameters passed to the method.
+      </summary>
+      <param name="side1">The length of a side.</param>
+      <param name="side2">The length of a side.</param>
+      <param name="side3">The length of a side.</param>
+    </GetPerimeterTriangle>
+    <GetAreaTriangle>
+      <summary>
+        Tests if GetArea() method of <c>Triangle</c> class returns a correct result provided that valid parameters passed to the method.
+      </summary>
+      <param name="side1">The length of a side.</param>
+      <param name="side2">The length of a side.</param>
+      <param name="side3">The length of a side.</param>
+    </GetAreaTriangle>
+    <GetPerimeterTriangleEx>
+      <summary>
+        Tests if GetPerimeter() method of <c>Triangle</c> class throws ArgumentOutOfRangeException exception provided that invalid parameters passed to the method.
+      </summary>
+      <param name="side1">The length of a side.</param>
+      <param name="side2">The length of a side.</param>
+      <param name="side3">The length of a side.</param>
+    </GetPerimeterTriangleEx>
+    <GetAreaTriangleEx>
+      <summary>
+        Tests if GetPerimeter() method of <c>Triangle</c> class throws ArgumentOutOfRangeException exception provided that invalid parameters passed to the method.
+      </summary>
+      <param name="side1">The length of a side.</param>
+      <param name="side2">The length of a side.</param>
+      <param name="side3">The length of a side.</param>
+    </GetAreaTriangleEx>
+    <GetPerimeterRectangle>
+      <summary>
+        Tests if GetPerimeter() method of <c>Rectangle</c> class returns a correct result provided that valid parameters passed to the method.
+      </summary>
+      <param name="height">The height of the rectangle.</param>
+      <param name="width">The width of the rectangle.</param>
+    </GetPerimeterRectangle>
+    <GetAreaRectangle>
+      <summary>
+        Tests if GetArea() method of <c>Rectangle</c> class returns a correct result provided that valid parameters passed to the method.
+      </summary>
+      <param name="height">The height of the rectangle.</param>
+      <param name="width">The width of the rectangle.</param>
+    </GetAreaRectangle>
+    <GetPerimeterRectangleEx>
+      <summary>
+        Tests if GetPerimeter() method of <c>Rectangle</c> class throws ArgumentOutOfRangeException exception provided that invalid parameters passed to the method.
+      </summary>
+      <param name="height">The height of the rectangle.</param>
+      <param name="width">The width of the rectangle.</param>
+    </GetPerimeterRectangleEx>
+    <GetAreaRectangleEx>
+      <summary>
+        Tests if GetArea() method of <c>Rectangle</c> class throws ArgumentOutOfRangeException exception provided that invalid parameters passed to the method.
+      </summary>
+      <param name="height">The height of the rectangle.</param>
+      <param name="width">The width of the rectangle.</param>
+    </GetAreaRectangleEx>
+    <GetPerimeterPentagon>
+      <summary>
+        Tests if GetPerimeter() method of <c>Pentagon</c> class returns a correct result provided that a valid parameter passed to the method.
+      </summary>
+      <param name="side">The length of a side.</param>
+    </GetPerimeterPentagon>
+    <GetAreaPentagon>
+      <summary>
+        Tests if GetPerimeter() method of <c>Pentagon</c> class returns a correct result provided that a valid parameter passed to the method.
+      </summary>
+      <param name="side">The length of a side.</param>
+    </GetAreaPentagon>
+    <GetPerimeterPentagonEx>
+      <summary>
+        Tests if GetPerimeter() method of <c>Pentagon</c> class throws ArgumentOutOfRangeException exception provided that an invalid parameter passed to the method.
+      </summary>
+      <param name="side">The length of a side.</param>
+    </GetPerimeterPentagonEx>
+    <GetAreaPentagonEx>
+      <summary>
+        Tests if GetArea() method of <c>Pentagon</c> class throws ArgumentOutOfRangeException exception provided that an invalid parameter passed to the method.
+      </summary>
+      <param name="side">The length of a side.</param>
+    </GetAreaPentagonEx>
+    <EqualsCircle>
+      <summary>
+        Tests if Equals() method of <c>Circle</c> class returns a correct result provided that two valid circles are being compared.
+      </summary>
+      <param name="radius1">The length of the radius of first circle.</param>
+      <param name="radius2">The length of the radius of second circle.</param>
+    </EqualsCircle>
+    <EqualsTriangle>
+      <summary>
+        Tests if Equals() method of <c>Triangle</c> class returns a correct result provided that two valid triangles are being compared.
+      </summary>
+      <param name="side1_1">The length of a side of the first triangle.</param>
+      <param name="side2_1">The length of a side of the first triangle.</param>
+      <param name="side3_1">The length of a side of the first triangle.</param>
+      <param name="side1_2">The length of a side of the second triangle.</param>
+      <param name="side2_2">The length of a side of the second triangle.</param>
+      <param name="side3_2">The length of a side of the second triangle.</param>
+    </EqualsTriangle>
+    <EqualsRectangle>
+      <summary>
+        Tests if Equals() method of <c>Rectangle</c> class returns a correct result provided that two valid rectangles are being compared.
+      </summary>
+      <param name="height1">The height of the first rectangle.</param>
+      <param name="width1">The width of the first rectangle.</param>
+      <param name="height2">The height of the second rectangle.</param>
+      <param name="width2">The width of the second rectangle.</param>
+    </EqualsRectangle>
+
+    <EqualsPentagon>
+      <summary>
+        Tests if Equals() method of <c>Pentagon</c> class returns a correct result provided that two valid pentagons are being compared.
+      </summary>
+      <param name="side1">The length of a side of the first pentagon.</param>
+      <param name="side2">The length of a side of the second pentagon.</param>
+    </EqualsPentagon>
+  </members>
+</docs>

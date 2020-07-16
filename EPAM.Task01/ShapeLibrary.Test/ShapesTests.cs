@@ -1,11 +1,109 @@
 using FluentAssertions;
+using Moq;
 using System;
+using System.Collections.Generic;
 using Xunit;
 
 namespace ShapeLibrary.Test
 {
+    /// <include file='docs.xml' path='docs/members[@name="ireader"]/IReader/*'/>
+    public interface IReader
+    {
+        /// <include file='docs.xml' path='docs/members[@name="ireader"]/GetLinesFromFile/*'/>
+        public string[] GetLinesFromFile(string path);
+    }
+
+    /// <include file='docs.xml' path='docs/members[@name="shapestests"]/GetLinesFromFile/*'/>
     public class ShapesTests
     {
+        readonly List<Shape> expectedShapes = new List<Shape>
+        {
+             new Triangle
+            {
+                Side1 = 10,
+                Side2 = 10,
+                Side3 = 20,
+            },
+             new Triangle
+            {
+                Side1 = 18,
+                Side2 = 30,
+                Side3 = 24,
+            },
+             new Rectangle
+            {
+                Height = 5,
+                Width = 10,
+            },
+             new Circle
+            {
+                Radius = 20,
+            },
+             new Pentagon
+            {
+                Side = 15,
+            },
+        };
+
+        readonly string[] lines = { "10;10;20", "18;30;24", "(0,0);(0,5);(10,5);(10,0)", "20", "15;15;15;15;15" };
+
+        readonly string path = "..\\..\\..\\..\\docs\\shapes.txt";
+
+        /// <include file='docs.xml' path='docs/members[@name="shapestests"]/GetShapes/*'/>
+        [Fact]
+        public void GetShapes_FromTextStrings_ShouldReturnCollectionOfShapes()
+        {
+            // Arrange
+            Mock<IReader> mockInterface = new Mock<IReader>();
+            mockInterface.Setup(r => r.GetLinesFromFile(path)).Returns(lines);
+            IReader reader = mockInterface.Object;
+
+            // Act
+            List<Shape> shapes = new ShapeFactory().GetShapes(reader.GetLinesFromFile(path));
+
+            // Assert
+            shapes.Should().BeEquivalentTo<Shape>(expectedShapes, options => options.RespectingRuntimeTypes());
+        }
+
+        /// <include file='docs.xml' path='docs/members[@name="shapestests"]/GetEqualShapes/*'/>
+        [Theory]
+        [InlineData(10, 10, 20)]
+        public void GetEqualShapes_IfEqualShapePassed_ShouldReturnNotEmptyCollection(double side1, double side2, double side3)
+        {
+            // Arrange - Act
+            ShapeFactory shapeFactory = new ShapeFactory();
+
+            Triangle triangle = new Triangle
+            {
+                Side1 = side1,
+                Side2 = side2,
+                Side3 = side3,
+            };
+
+            // Assert
+            shapeFactory.GetEqualShapes(triangle, expectedShapes).Should().NotBeEmpty();
+        }
+
+        /// <include file='docs.xml' path='docs/members[@name="shapestests"]/GetEqualShapesNot/*'/>
+        [Theory]
+        [InlineData(30, 10, 20)]
+        public void GetEqualShapes_IfNotEqualShapePassed_ShouldReturnEmptyCollection(double side1, double side2, double side3)
+        {
+            // Arrange Act
+            ShapeFactory shapeFactory = new ShapeFactory();
+
+            Triangle triangle = new Triangle
+            {
+                Side1 = side1,
+                Side2 = side2,
+                Side3 = side3,
+            };
+
+            // Assert
+            shapeFactory.GetEqualShapes(triangle, expectedShapes).Should().BeEmpty();
+        }
+
+        /// <include file='docs.xml' path='docs/members[@name="shapestests"]/GetPerimeterCircle/*'/>
         [Theory]
         [InlineData(20)]
         [InlineData(123)]
@@ -19,6 +117,7 @@ namespace ShapeLibrary.Test
             circle.GetPerimeter().Should().Be(Math.PI * 2 * radius);
         }
 
+        /// <include file='docs.xml' path='docs/members[@name="shapestests"]/GetAreaCircle/*'/>
         [Theory]
         [InlineData(20)]
         [InlineData(123)]
@@ -32,6 +131,7 @@ namespace ShapeLibrary.Test
             circle.GetArea().Should().Be(Math.PI * Math.Pow(radius, 2));
         }
 
+        /// <include file='docs.xml' path='docs/members[@name="shapestests"]/GetPerimeterCircleEx/*'/>
         [Theory]
         [InlineData(-20)]
         public void GetPerimeter_OfCircleIfRadiusIsNegative_ShouldThrowArgumentOutOfRangeException(double radius)
@@ -48,6 +148,7 @@ namespace ShapeLibrary.Test
                 .WithMessage("*Radius*");
         }
 
+        /// <include file='docs.xml' path='docs/members[@name="shapestests"]/GetAreaCircleEx/*'/>
         [Theory]
         [InlineData(-20)]
         public void GetArea_OfCircleIfRadiusIsNegative_ShouldThrowArgumentOutOfRangeException(double radius)
@@ -64,7 +165,7 @@ namespace ShapeLibrary.Test
                 .WithMessage("*Radius*");
         }
 
-
+        /// <include file='docs.xml' path='docs/members[@name="shapestests"]/GetPerimeterTriangle/*'/>
         [Theory]
         [InlineData(10, 10, 20)]
         [InlineData(1, 5, 12)]
@@ -83,6 +184,7 @@ namespace ShapeLibrary.Test
             triangle.GetPerimeter().Should().Be(side1 + side2 + side3);
         }
 
+        /// <include file='docs.xml' path='docs/members[@name="shapestests"]/GetAreaTriangle/*'/>
         [Theory]
         [InlineData(10, 10, 20)]
         [InlineData(1, 5, 12)]
@@ -102,7 +204,7 @@ namespace ShapeLibrary.Test
             triangle.GetArea().Should().Be(Math.Sqrt(perimeter * (perimeter - side1) * (perimeter - side2) * (perimeter - side3)));
         }
 
-
+        /// <include file='docs.xml' path='docs/members[@name="shapestests"]/GetPerimeterTriangleEx/*'/>
         [Theory]
         [InlineData(-20, 20, 10)]
         public void GetPerimeter_OfTriangleIfSideIsNegative_ShouldThrowArgumentOutOfRangeException(double side1, double side2, double side3)
@@ -124,6 +226,7 @@ namespace ShapeLibrary.Test
                 .WithMessage("*Side*");
         }
 
+        /// <include file='docs.xml' path='docs/members[@name="shapestests"]/GetAreaTriangleEx/*'/>
         [Theory]
         [InlineData(-20, 20, 10)]
         public void GetArea_OfTriangleIfSideIsNegative_ShouldThrowArgumentOutOfRangeException(double side1, double side2, double side3)
@@ -146,6 +249,7 @@ namespace ShapeLibrary.Test
                 .WithMessage("*Side*");
         }
 
+        /// <include file='docs.xml' path='docs/members[@name="shapestests"]/GetPerimeterRectangle/*'/>
         [Theory]
         [InlineData(5, 10)]
         [InlineData(1, 5)]
@@ -163,6 +267,7 @@ namespace ShapeLibrary.Test
             rectangle.GetPerimeter().Should().Be((height + width) * 2);
         }
 
+        /// <include file='docs.xml' path='docs/members[@name="shapestests"]/GetAreaRectangle/*'/>
         [Theory]
         [InlineData(5, 10)]
         [InlineData(1, 5)]
@@ -180,6 +285,7 @@ namespace ShapeLibrary.Test
             rectangle.GetArea().Should().Be(height * width);
         }
 
+        /// <include file='docs.xml' path='docs/members[@name="shapestests"]/GetPerimeterRectangleEx/*'/>
         [Theory]
         [InlineData(-20, 20)]
         public void GetPerimeter_OfRectangleIfSideIsNegative_ShouldThrowArgumentOutOfRangeException(double height, double width)
@@ -200,6 +306,7 @@ namespace ShapeLibrary.Test
                 .WithMessage("*Side*");
         }
 
+        /// <include file='docs.xml' path='docs/members[@name="shapestests"]/GetAreaRectangleEx/*'/>
         [Theory]
         [InlineData(-20, 20)]
         public void GetArea_OfRectangleIfSideIsNegative_ShouldThrowArgumentOutOfRangeException(double height, double width)
@@ -220,6 +327,7 @@ namespace ShapeLibrary.Test
                 .WithMessage("*Side*");
         }
 
+        /// <include file='docs.xml' path='docs/members[@name="shapestests"]/GetPerimeterPentagon/*'/>
         [Theory]
         [InlineData(10)]
         [InlineData(100)]
@@ -233,6 +341,7 @@ namespace ShapeLibrary.Test
             pentagon.GetPerimeter().Should().Be(side * 5);
         }
 
+        /// <include file='docs.xml' path='docs/members[@name="shapestests"]/GetAreaPentagon/*'/>
         [Theory]
         [InlineData(10)]
         [InlineData(100)]
@@ -246,6 +355,7 @@ namespace ShapeLibrary.Test
             pentagon.GetArea().Should().Be(5 * Math.Pow(side, 2) / (4 * Math.Tan(36)));
         }
 
+        /// <include file='docs.xml' path='docs/members[@name="shapestests"]/GetPerimeterPentagonEx/*'/>
         [Theory]
         [InlineData(-20)]
         public void GetPerimeter_OfPentagonIfSideIsNegative_ShouldThrowArgumentOutOfRangeException(double side)
@@ -262,6 +372,7 @@ namespace ShapeLibrary.Test
                 .WithMessage("*Side*");
         }
 
+        /// <include file='docs.xml' path='docs/members[@name="shapestests"]/GetAreaPentagonEx/*'/>
         [Theory]
         [InlineData(-20)]
         public void GetArea_OfPentagonIfSideIsNegative_ShouldThrowArgumentOutOfRangeException(double side)
@@ -278,6 +389,7 @@ namespace ShapeLibrary.Test
                 .WithMessage("*Side*");
         }
 
+        /// <include file='docs.xml' path='docs/members[@name="shapestests"]/EqualsCircle/*'/>
         [Theory]
         [InlineData(20, 21)]
         public void Equals_OfCircleIfValidShapesAreBeingCompared_ShouldReturnCorrectResult(double radius1, double radius2)
@@ -292,9 +404,10 @@ namespace ShapeLibrary.Test
             circle1.Equals(circle3).Should().BeFalse();
         }
 
+        /// <include file='docs.xml' path='docs/members[@name="shapestests"]/EqualsTriangle/*'/>
         [Theory]
         [InlineData(10, 10, 20, 10, 20, 30)]
-        public void Equals_OfTriangleIfValidShapesAreBeingCompared_ShouldReturnCorrectResult(double side1_1, double side2_1, double side3_1, 
+        public void Equals_OfTriangleIfValidShapesAreBeingCompared_ShouldReturnCorrectResult(double side1_1, double side2_1, double side3_1,
                                                                                              double side1_2, double side2_2, double side3_2)
         {
             // Arrange - Act
@@ -322,6 +435,7 @@ namespace ShapeLibrary.Test
             triangle1.Equals(triangle3).Should().BeFalse();
         }
 
+        /// <include file='docs.xml' path='docs/members[@name="shapestests"]/EqualsRectangle/*'/>
         [Theory]
         [InlineData(5, 10, 12, 20)]
         public void Equals_OfRectangleIfValidShapesAreBeingCompared_ShouldReturnCorrectResult(double height1, double width1, double height2, double width2)
@@ -347,6 +461,7 @@ namespace ShapeLibrary.Test
             rectangle1.Equals(rectangle3).Should().BeFalse();
         }
 
+        /// <include file='docs.xml' path='docs/members[@name="shapestests"]/EqualsPentagon/*'/>
         [Theory]
         [InlineData(10, 20)]
         public void Equals_OfPentagonIfValidShapesAreBeingCompared_ShouldReturnCorrectResult(double side1, double side2)
