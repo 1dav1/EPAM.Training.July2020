@@ -9,7 +9,6 @@ EPAM training tasks
 
 ### Project 'Geometrical Shapes'   
 - Reader class library   
-- Reader tests   
 - Shapes class library   
 - Shapes tests   
 
