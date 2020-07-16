@@ -6,8 +6,4 @@
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
   </PropertyGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\ShapeLibrary\ShapeLibrary.csproj" />
-  </ItemGroup>
-
 </Project>

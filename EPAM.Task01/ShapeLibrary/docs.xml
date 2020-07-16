@@ -1,0 +1,137 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<docs>
+  <members name="shapeFactory">
+    <ShapeFactory>
+      <summary>
+        The ShapeFactory class.
+        Contains methods for getting a collection of geometrical shapes.
+      </summary>
+    </ShapeFactory>
+    <Shapes>
+      <value>Gets or sets a collection of geometrical shapes.</value>
+    </Shapes>
+    <GetShapes>
+      <summary>
+        Gets a collection of geometrical shapes from a string containing parameters of shapes.
+      </summary>
+      <param name="lines">A text string containing parameters of geometrical shapes.</param>
+      <returns>A collection of geometrical shapes.</returns>
+    </GetShapes>
+    <GetEqualShapes>
+      <summary>
+        Gets a collection of shapes from the given source collection that are equal to the <c>shape</c>.
+      </summary>
+      <param name="shape">The shape to be compared with.</param>
+      <param name="shapes">The comparable collection.</param>
+      <returns>
+        A list of shapes that are equal to the <c>shape</c>.
+      </returns>
+    </GetEqualShapes>
+  </members>
+  <members name="circle">
+    <Circle>
+      <summary>
+        The Circle class.
+        Contains methods for calculating perimeter and area of a circle.
+      </summary>
+      <remarks>
+        <para>
+          This class derives from the <c>Shape</c> base class.
+        </para>
+      </remarks>
+    </Circle>
+    <Radius>
+      <value>Gets or sets the radius of the circle.</value>
+    </Radius>
+    <GetPerimeter>
+      <summary>
+        Calculates the circumference of the circle.
+      </summary>
+      <returns>The circumference of the circle.</returns>
+      <exception cref="System.ArgumentOutOfRangeException">
+        Trown when the <c>Radius</c> property is negative.
+      </exception>
+    </GetPerimeter>
+    <GetArea>
+      <summary>
+        Calculates the area of the circle.
+      </summary>
+      <returns>The area of the circle.</returns>
+      <exception cref="System.ArgumentOutOfRangeException">
+        Trown when the <c>Radius</c> property is negative.
+      </exception>
+    </GetArea>
+    <ToString>
+      <summary>
+        Overrides the base ToString() method.
+      </summary>
+      <returns>A string that presents the current circle.</returns>
+    </ToString>
+    <Equals>
+      <summary>
+        Overrides the base Equals() method. Determines whether the specified object is equal to the current pentagon.
+      </summary>
+      <param name="obj">The object to compare with the current circle.</param>
+      <returns>True if the specified object is equal to the current circle; otherwise, false.</returns>
+    </Equals>
+    <GetHashCode>
+      <summary>
+        Overrides the base GetHashCode() method. Serves as the customized hash function.
+      </summary>
+      <returns>A hash code for the current circle.</returns>
+    </GetHashCode>
+  </members>
+  <members name="pentagon">
+    <Pentagon>
+      <summary>
+        The Pentagon class.
+        Contains methods for calculating perimeter and area of a pentagon.
+      </summary>
+      <remarks>
+        <para>
+          This class derives from the <c>Shape</c> base class.
+        </para>
+      </remarks>
+    </Pentagon>
+    <Side>
+      <value>Gets or sets a side length of the regular pentagon.</value>
+    </Side>
+    <GetPerimeter>
+      <summary>
+        Calculates the perimeter of the pentagon.
+      </summary>
+      <returns>The perimeter of the pentagon.</returns>
+      <exception cref="System.ArgumentOutOfRangeException">
+        Trown when the <c>Side</c> property is negative.
+      </exception>
+    </GetPerimeter>
+    <GetArea>
+      <summary>
+        Calculates the area of the pentagon.
+      </summary>
+      <returns>The area of the pentagon.</returns>
+      <exception cref="System.ArgumentOutOfRangeException">
+        Trown when the <c>Side</c> property is negative.
+      </exception>
+    </GetArea>
+    <ToString>
+      <summary>
+        Overrides the base ToString() method.
+      </summary>
+      <returns>A string that presents the current pentagon.</returns>
+    </ToString>
+    <Equals>
+      <summary>
+        Overrides the base Equals() method. Determines whether the specified object is equal to the current pentagon.
+      </summary>
+      <param name="obj">The object to compare with the current pentagon.</param>
+      <returns>True if the specified object is equal to the current pentagon; otherwise, false.</returns>
+    </Equals>
+    <GetHashCode>
+      <summary>
+        Overrides the base GetHashCode() method. Serves as the customized hash function.
+      </summary>
+      <returns>A hash code for the current pentagon.</returns>
+    </GetHashCode>
+  </members>
+</docs>
