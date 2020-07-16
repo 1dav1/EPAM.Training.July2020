@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<docs>
+  <members name="reader">
+    <Reader>
+      <summary>
+        Reader class.
+        Contains a method for reading text strings from a text file.
+      </summary>
+    </Reader>
+    <Path>
+      <value>Gets or sets a file path.</value>
+    </Path>
+    <ReaderConstr>
+      <summary>
+        Constructor of <c>Reader</c> class.
+      </summary>
+      <param name="path">The file path.</param>
+    </ReaderConstr>
+    <GetLinesFromFile>
+      <summary>
+        Gets an array of strings from the specified text file.
+      </summary>
+      <param name="path">The file path.</param>
+      <returns>An array of strings.</returns>
+      <exception cref="System.IO.FileNotFoundException">
+        Trown when the file is not found at the specified path.
+      </exception>
+    </GetLinesFromFile>
+  </members>
+</docs>
+
