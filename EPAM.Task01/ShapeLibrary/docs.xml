@@ -191,4 +191,23 @@
       <returns>A hash code for the current rectangle.</returns>
     </GetHashCode>
   </members>
+  <members name="shape">
+    <Shape>
+      <summary>
+        The base class Shape for geometrical shapes.
+      </summary>
+    </Shape>
+    <GetPerimeter>
+      <summary>
+        Calculates the perimeter of the current geometrical shape.
+      </summary>
+      <returns>The perimeter of the current geometrical shape.</returns>
+    </GetPerimeter>
+    <GetArea>
+      <summary>
+        Calculates the area of the current geometrical shape.
+      </summary>
+      <returns>The area of the current geometrical shape.</returns>
+    </GetArea>
+  </members>
 </docs>
