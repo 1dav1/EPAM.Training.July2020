@@ -2,24 +2,19 @@
 
 namespace ShapeLibrary
 {
+    /// <include file='docs.xml' path='docs/members[@name="pentagon"]/Pentagon/*'/>
     public class Pentagon : Shape
     {
+        /// <include file='docs.xml' path='docs/members[@name="pentagon"]/Side/*'/>
         public double Side { get; set; }
 
         // number of sides
-        private int NUMBER = 5;
+        private const int NUMBER = 5;
 
         // angle at center of pentagon
-        private int CENTER_ANGLE = 36;
+        private const int CENTER_ANGLE = 36;
 
-        public override double GetArea()
-        {
-            if (Side < 0)
-                throw new ArgumentOutOfRangeException("Side", "Side must be positive.");
-
-            return (NUMBER * Math.Pow(Side, 2) / (4 * Math.Tan(CENTER_ANGLE)));
-        }
-
+        /// <include file='docs.xml' path='docs/members[@name="pentagon"]/GetPerimeter/*'/>
         public override double GetPerimeter()
         {
             if (Side < 0)
@@ -28,21 +23,28 @@ namespace ShapeLibrary
             return Side * NUMBER;
         }
 
+        /// <include file='docs.xml' path='docs/members[@name="pentagon"]/GetArea/*'/>
+        public override double GetArea()
+        {
+            if (Side < 0)
+                throw new ArgumentOutOfRangeException("Side", "Side must be positive.");
+
+            return NUMBER * Math.Pow(Side, 2) / (4 * Math.Tan(CENTER_ANGLE));
+        }
+
+        /// <include file='docs.xml' path='docs/members[@name="pentagon"]/ToString/*'/>
         public override string ToString()
         {
             return $"Regular Pentagon. Side = {Side}";
         }
 
+        /// <include file='docs.xml' path='docs/members[@name="pentagon"]/Equals/*'/>
         public override bool Equals(object obj)
         {
-            if (GetType() != obj.GetType())
-                return false;
-
-            Pentagon pentagon = (Pentagon)obj;
-
-            return (Side == pentagon.Side && GetArea() == pentagon.GetArea());
+            return obj is Pentagon pentagon && Side == pentagon.Side;
         }
 
+        /// <include file='docs.xml' path='docs/members[@name="pentagon"]/GetHashCode/*'/>
         public override int GetHashCode()
         {
             return HashCode.Combine(Side);
