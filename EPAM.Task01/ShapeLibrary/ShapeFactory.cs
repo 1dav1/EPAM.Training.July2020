@@ -12,12 +12,12 @@ namespace ShapeLibrary
     public class ShapeFactory
     {
         /// <include file='docs.xml' path='docs/members[@name="shapeFactory"]/Shapes/*'/>
-        public IEnumerable<Shape> Shapes { get; }
+        public List<Shape> Shapes { get; }
 
         /// <include file='docs.xml' path='docs/members[@name="shapeFactory"]/GetShapes/*'/>
-        public IEnumerable<Shape> GetShapes(string[] lines)
+        public List<Shape> GetShapes(string[] lines)
         {
-            IEnumerable<Shape> shapes = new List<Shape>();
+            List<Shape> shapes = new List<Shape>();
 
             /* sorting the passed array (lines) making two arrays of strings: 
              * strings containing coordinates and 
@@ -32,12 +32,12 @@ namespace ShapeLibrary
 
             foreach (var l in listOfCoordinates)
             {
-                shapes.Append(GetShapeByCoordinates(l));
+                shapes.Add(GetShapeByCoordinates(l));
             }
 
             foreach (var l in listOfLengths)
             {
-                shapes.Append(GetShapeBySides(l));
+                shapes.Add(GetShapeBySides(l));
             }
 
             return shapes;
@@ -84,13 +84,13 @@ namespace ShapeLibrary
             MatchCollection matches;
 
             // using inline declaration, because in case of 'using' directive I make my class 'Rectangle' ambiguous
-            IEnumerable<Point> points = new List<Point>();
+            List<Point> points = new List<Point>();
 
             foreach (var c in coordinates)
             {
                 // extract the coordinates from the string by pattern
                 matches = pattern.Matches(c);
-                points.Append(new Point
+                points.Add(new Point
                 {
                     X = Convert.ToInt32(matches[0].Value),
                     Y = Convert.ToInt32(matches[1].Value)
@@ -104,22 +104,22 @@ namespace ShapeLibrary
                 {
                     /* calculating the radius length from coordinates by formula: 
                      * distance = square root from ((x2 - x1) ^ 2 + (y2 - y1) ^ 2) */
-                    Radius = GetLengthByCoordinates(points.ElementAt(0), points.ElementAt(1))
+                    Radius = GetLengthByCoordinates(points[0], points[1])
                 },
                 3 => new Triangle
                 {
-                    Side1 = GetLengthByCoordinates(points.ElementAt(0), points.ElementAt(1)),
-                    Side2 = GetLengthByCoordinates(points.ElementAt(1), points.ElementAt(2)),
-                    Side3 = GetLengthByCoordinates(points.ElementAt(2), points.ElementAt(0)),
+                    Side1 = GetLengthByCoordinates(points[0], points[1]),
+                    Side2 = GetLengthByCoordinates(points[1], points[2]),
+                    Side3 = GetLengthByCoordinates(points[2], points[0]),
                 },
                 4 => new Rectangle
                 {
-                    Height = GetLengthByCoordinates(points.ElementAt(0), points.ElementAt(1)),
-                    Width = GetLengthByCoordinates(points.ElementAt(1), points.ElementAt(2)),
+                    Height = GetLengthByCoordinates(points[0], points[1]),
+                    Width = GetLengthByCoordinates(points[1], points[2]),
                 },
                 5 => new Pentagon
                 {
-                    Side = GetLengthByCoordinates(points.ElementAt(0), points.ElementAt(1)),
+                    Side = GetLengthByCoordinates(points[0], points[1]),
                 },
                 _ => throw new ArgumentOutOfRangeException("Undefined shape type."),
             };
@@ -131,13 +131,13 @@ namespace ShapeLibrary
         }
 
         /// <include file='docs.xml' path='docs/members[@name="shapeFactory"]/GetEqualShapes/*'/>
-        public IEnumerable<Shape> GetEqualShapes(Shape shape, IEnumerable<Shape> shapes)
+        public List<Shape> GetEqualShapes(Shape shape, List<Shape> shapes)
         {
-            IEnumerable<Shape> equalShapes = new List<Shape>();
+            List<Shape> equalShapes = new List<Shape>();
             foreach (var s in shapes)
             {
                 if (s.Equals(shape))
-                    equalShapes.Append(s);
+                    equalShapes.Add(s);
             }
 
             return equalShapes;

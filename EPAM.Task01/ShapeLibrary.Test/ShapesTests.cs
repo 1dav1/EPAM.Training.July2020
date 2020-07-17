@@ -59,7 +59,7 @@ namespace ShapeLibrary.Test
             IReader reader = mockInterface.Object;
 
             // Act
-            IEnumerable<Shape> shapes = new ShapeFactory().GetShapes(reader.GetLinesFromFile(path));
+            List<Shape> shapes = new ShapeFactory().GetShapes(reader.GetLinesFromFile(path));
 
             // Assert
             shapes.Should().BeEquivalentTo<Shape>(expectedShapes, options => options.RespectingRuntimeTypes());
