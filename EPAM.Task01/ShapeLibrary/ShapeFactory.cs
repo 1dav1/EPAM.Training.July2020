@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
-using System.Text;
 using System.Text.RegularExpressions;
 
 namespace ShapeLibrary
@@ -13,12 +12,12 @@ namespace ShapeLibrary
     public class ShapeFactory
     {
         /// <include file='docs.xml' path='docs/members[@name="shapeFactory"]/Shapes/*'/>
-        public List<Shape> Shapes { get; }
+        public IEnumerable<Shape> Shapes { get; }
 
         /// <include file='docs.xml' path='docs/members[@name="shapeFactory"]/GetShapes/*'/>
-        public List<Shape> GetShapes(string[] lines)
+        public IEnumerable<Shape> GetShapes(string[] lines)
         {
-            List<Shape> shapes = new List<Shape>();
+            IEnumerable<Shape> shapes = new List<Shape>();
 
             /* sorting the passed array (lines) making two arrays of strings: 
              * strings containing coordinates and 
@@ -33,12 +32,12 @@ namespace ShapeLibrary
 
             foreach (var l in listOfCoordinates)
             {
-                shapes.Add(GetShapeByCoordinates(l));
+                shapes.Append(GetShapeByCoordinates(l));
             }
 
             foreach (var l in listOfLengths)
             {
-                shapes.Add(GetShapeBySides(l));
+                shapes.Append(GetShapeBySides(l));
             }
 
             return shapes;
@@ -85,13 +84,13 @@ namespace ShapeLibrary
             MatchCollection matches;
 
             // using inline declaration, because in case of 'using' directive I make my class 'Rectangle' ambiguous
-            List<Point> points = new List<Point>();
+            IEnumerable<Point> points = new List<Point>();
 
             foreach (var c in coordinates)
             {
                 // extract the coordinates from the string by pattern
                 matches = pattern.Matches(c);
-                points.Add(new Point
+                points.Append(new Point
                 {
                     X = Convert.ToInt32(matches[0].Value),
                     Y = Convert.ToInt32(matches[1].Value)
@@ -99,28 +98,28 @@ namespace ShapeLibrary
             }
 
             // identifying the type of the shape 
-            return points.Count switch
+            return points.Count() switch
             {
                 2 => new Circle
                 {
                     /* calculating the radius length from coordinates by formula: 
                      * distance = square root from ((x2 - x1) ^ 2 + (y2 - y1) ^ 2) */
-                    Radius = GetLengthByCoordinates(points[0], points[1]),
+                    Radius = GetLengthByCoordinates(points.ElementAt(0), points.ElementAt(1))
                 },
                 3 => new Triangle
                 {
-                    Side1 = GetLengthByCoordinates(points[0], points[1]),
-                    Side2 = GetLengthByCoordinates(points[1], points[2]),
-                    Side3 = GetLengthByCoordinates(points[2], points[0]),
+                    Side1 = GetLengthByCoordinates(points.ElementAt(0), points.ElementAt(1)),
+                    Side2 = GetLengthByCoordinates(points.ElementAt(1), points.ElementAt(2)),
+                    Side3 = GetLengthByCoordinates(points.ElementAt(2), points.ElementAt(0)),
                 },
                 4 => new Rectangle
                 {
-                    Height = GetLengthByCoordinates(points[0], points[1]),
-                    Width = GetLengthByCoordinates(points[1], points[2]),
+                    Height = GetLengthByCoordinates(points.ElementAt(0), points.ElementAt(1)),
+                    Width = GetLengthByCoordinates(points.ElementAt(1), points.ElementAt(2)),
                 },
                 5 => new Pentagon
                 {
-                    Side = GetLengthByCoordinates(points[0], points[1]),
+                    Side = GetLengthByCoordinates(points.ElementAt(0), points.ElementAt(1)),
                 },
                 _ => throw new ArgumentOutOfRangeException("Undefined shape type."),
             };
@@ -132,13 +131,13 @@ namespace ShapeLibrary
         }
 
         /// <include file='docs.xml' path='docs/members[@name="shapeFactory"]/GetEqualShapes/*'/>
-        public List<Shape> GetEqualShapes(Shape shape, List<Shape> shapes)
+        public IEnumerable<Shape> GetEqualShapes(Shape shape, IEnumerable<Shape> shapes)
         {
-            List<Shape> equalShapes = new List<Shape>();
+            IEnumerable<Shape> equalShapes = new List<Shape>();
             foreach (var s in shapes)
             {
                 if (s.Equals(shape))
-                    equalShapes.Add(s);
+                    equalShapes.Append(s);
             }
 
             return equalShapes;
