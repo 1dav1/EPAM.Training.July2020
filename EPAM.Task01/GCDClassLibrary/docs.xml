@@ -1,0 +1,73 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<docs>
+  <members name="calculator">
+    <GCDCalculator>
+      <summary>
+        The GCDCalculator class.
+        Contains methods for calculating the Gratest Common Divisor.
+      </summary>
+    </GCDCalculator>
+    <CalculateTwoInt>
+      <summary>
+        Calculates the Gratest Common Divisor of two specified integers.
+      </summary>
+      <param name="number1">The first integer.</param>
+      <param name="number2">The second integer.</param>
+      <returns>The Greatest Common Divisor of the specified integers.</returns>
+    </CalculateTwoInt>
+    <CalculateWithTime>
+      <summary>
+        Calculates the Gratest Common Divisor of two specified integers and stores the consumed time into output parameter.
+      </summary>
+      <param name="time">The time consumed by the calculation.</param>
+      <param name="number1">The first integer.</param>
+      <param name="number2">The second integer.</param>
+      <returns>The Greatest Common Divisor of the specified integers.</returns>
+    </CalculateWithTime>
+    <CalculateThreeInt>
+      <summary>
+        Calculates the Gratest Common Divisor of three specified integers.
+      </summary>
+      <param name="number1">The first integer.</param>
+      <param name="number2">The second integer.</param>
+      <param name="number3">The third integer.</param>
+      <returns>The Greatest Common Divisor of the specified integers.</returns>
+    </CalculateThreeInt>
+    <CalculateFourInt>
+      <summary>
+        Calculates the Gratest Common Divisor of four specified integers.
+      </summary>
+      <param name="number1">The first integer.</param>
+      <param name="number2">The second integer.</param>
+      <param name="number3">The third integer.</param>
+      <param name="number4">The fourth integer.</param>
+      <returns>The Greatest Common Divisor of the specified integers.</returns>
+    </CalculateFourInt>
+    <CalculateFiveInt>
+      <summary>
+        Calculates the Gratest Common Divisor of five specified integers.
+      </summary>
+      <param name="number1">The first integer.</param>
+      <param name="number2">The second integer.</param>
+      <param name="number3">The third integer.</param>
+      <param name="number4">The fourth integer.</param>
+      <param name="number5">The fifth integer.</param>
+      <returns>The Greatest Common Divisor of the specified integers.</returns>
+    </CalculateFiveInt>
+    <CalculateBinWithTime>
+      <summary>
+        Calculates the Gratest Common Divisor of two specified integers using binary algorythm.
+      </summary>
+      <param name="time">The time consumed by the calculation.</param>
+      <param name="number1">The first integer.</param>
+      <param name="number2">The second integer.</param>
+      <returns>The Greatest Common Divisor of the specified integers.</returns>
+    </CalculateBinWithTime>
+    <GetHistogram>
+      <summary>
+        Prepares the obtained time of operations for a histogram.
+      </summary>
+      <returns>The dictionary of the time consumed by both methods.</returns>
+    </GetHistogram>
+  </members>
+</docs>
