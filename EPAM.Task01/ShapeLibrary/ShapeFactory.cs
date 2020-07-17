@@ -12,7 +12,7 @@ namespace ShapeLibrary
     public class ShapeFactory
     {
         /// <include file='docs.xml' path='docs/members[@name="shapeFactory"]/Shapes/*'/>
-        public List<Shape> Shapes { get; }
+        public IEnumerable<Shape> Shapes { get; }
 
         /// <include file='docs.xml' path='docs/members[@name="shapeFactory"]/GetShapes/*'/>
         public List<Shape> GetShapes(string[] lines)
@@ -131,7 +131,7 @@ namespace ShapeLibrary
         }
 
         /// <include file='docs.xml' path='docs/members[@name="shapeFactory"]/GetEqualShapes/*'/>
-        public List<Shape> GetEqualShapes(Shape shape, List<Shape> shapes)
+        public List<Shape> GetEqualShapes(Shape shape, IEnumerable<Shape> shapes)
         {
             List<Shape> equalShapes = new List<Shape>();
             foreach (var s in shapes)
