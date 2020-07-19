@@ -16,7 +16,9 @@ namespace VectorOperator
 
         /// <include file='docs.xml' path='docs/members[@name="vector"]/Negate/*'/>
         public static Vector operator -(Vector vector)
-            => new Vector { X = -vector.X, Y = -vector.Y, Z = -vector.Z, };
+            => vector == null ?
+            throw new ArgumentNullException() :
+            new Vector { X = -vector.X, Y = -vector.Y, Z = -vector.Z, };
 
         /// <include file='docs.xml' path='docs/members[@name="vector"]/AddVectorVector/*'/>
         public static Vector operator +(Vector vector1, Vector vector2)
@@ -69,7 +71,7 @@ namespace VectorOperator
             };
 
         /// <include file='docs.xml' path='docs/members[@name="vector"]/MultiplyDoubleVector/*'/>
-        public static Vector operator *(Vector vector, int scalar)
+        public static Vector operator *(Vector vector, double scalar)
             => vector == null ?
             throw new ArgumentNullException() :
             new Vector
@@ -92,6 +94,11 @@ namespace VectorOperator
             vector.X == X &&
             vector.Y == Y &&
             vector.Z == Z;
+
+        // overriding the base GetHashCode() method for the purpose of testing
+        /// <include file='docs.xml' path='docs/members[@name="vector"]/GetHashCode/*'/>
+        public override int GetHashCode()
+            => HashCode.Combine(X, Y, Z);
     }
 }
 

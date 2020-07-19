@@ -15,6 +15,22 @@
     <Z>
       <value>Gets or sets the Z-axis of the current point.</value>
     </Z>
+    <Equals>
+      <summary>
+        Compares the current point to the specified object for equality.
+      </summary>
+      <returns>
+        <c>true</c> if <paramref name="obj"/> is a point and the X, Y and Z coordinates of the current point and <paramref name="obj"/> are equal; otherwise, <c>false</c>.
+      </returns>
+    </Equals>
+    <GetHashCode>
+      <summary>
+        Returns the hash code for the current point.
+      </summary>
+      <returns>
+        The hash code for the current instance.
+      </returns>
+    </GetHashCode>
   </members>
   <members name="vector">
     <Vector>
@@ -54,7 +70,7 @@
     </AddVectorPoint>
     <Negate>
       <summary>
-        Negates the current vector. The new vector has the same magnitude, but its direction is the opposite.
+        Negates the specified vector. The new vector has the same magnitude, but its direction is the opposite.
       </summary>
       <param name="vector">The vector to be negated.</param>
       <returns>The negated vector.</returns>
@@ -98,8 +114,16 @@
         Compares the current vector to the specified object for equality.
       </summary>
       <returns>
-        <c>true</c> if <paramref name="obj"/> is a vector and the X and Y components of the current vector and <paramref name="obj"/> are equal; otherwise, <c>false</c>.
+        <c>true</c> if <paramref name="obj"/> is a vector and the X, Y and Z components of the current vector and <paramref name="obj"/> are equal; otherwise, <c>false</c>.
       </returns>
     </Equals>
+    <GetHashCode>
+      <summary>
+        Returns the hash code for the current vector.
+      </summary>
+      <returns>
+        The hash code for the current instance.
+      </returns>
+    </GetHashCode>
   </members>
 </docs>
