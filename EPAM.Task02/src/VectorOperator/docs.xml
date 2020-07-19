@@ -93,5 +93,13 @@
         Returns a <c>double</c> containing the scalar dot product of <paramref name="vector1"/> and <paramref name="vector2"/>.
       </returns>
     </MultiplyVectorVector>
+    <Equals>
+      <summary>
+        Compares the current vector to the specified object for equality.
+      </summary>
+      <returns>
+        <c>true</c> if <paramref name="obj"/> is a vector and the X and Y components of the current vector and <paramref name="obj"/> are equal; otherwise, <c>false</c>.
+      </returns>
+    </Equals>
   </members>
 </docs>
