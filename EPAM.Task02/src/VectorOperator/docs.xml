@@ -1,0 +1,97 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<docs>
+  <members name="point">
+    <Point>
+      <summary>
+        The Point class that represents a point in three-dimensional space.
+      </summary>
+    </Point>
+    <X>
+      <value>Gets or sets the X-axis coordinate of the current point.</value>
+    </X>
+    <Y>
+      <value>Gets or sets the Y-axis coordinate of the current point.</value>
+    </Y>
+    <Z>
+      <value>Gets or sets the Z-axis of the current point.</value>
+    </Z>
+  </members>
+  <members name="vector">
+    <Vector>
+      <summary>
+        The Vector class.
+        Contains methods for performing operations on 3-dimensional vectors.
+      </summary>
+    </Vector>
+    <X>
+      <value>The X component of the current vector.</value>
+    </X>
+    <Y>
+      <value>The Y component of the current vector.</value>
+    </Y>
+    <Z>
+      <value>The Z component of the current vector.</value>
+    </Z>
+    <AddVectorVector>
+      <summary>
+        Adds the two specified vectors.
+      </summary>
+      <param name="vector1">The first vector to add.</param>
+      <param name="vector2">The second vector to add.</param>
+      <returns>
+        The sum of <paramref name="vector1"/> and <paramref name="vector2"/>.
+      </returns>
+    </AddVectorVector>
+    <AddVectorPoint>
+      <summary>
+        Translates the specified point by the specified vector and returns the resulting point.
+      </summary>
+      <param name="vector">The amount to translate the specified point.</param>
+      <param name="point">The point to translate.</param>
+      <returns>
+        The result of translating <paramref name="point"/> by <paramref name="vector"/>.
+      </returns>
+    </AddVectorPoint>
+    <Negate>
+      <summary>
+        Negates the current vector. The new vector has the same magnitude, but its direction is the opposite.
+      </summary>
+      <param name="vector">The vector to be negated.</param>
+      <returns>The negated vector.</returns>
+    </Negate>
+    <MultiplyDoubleVector>
+      <summary>
+        Multiplies the specified vector by the specified scalar.
+      </summary>
+      <param name="scalar">Scalar to multiply.</param>
+      <param name="vector">Vector to multiply.</param>
+      <returns>
+        The result of multiplying <paramref name="scalar"/> and <paramref name="vector"/>.
+      </returns>
+    </MultiplyDoubleVector>
+    <Subtract>
+      <summary>
+        Subtracts <paramref name="vector1"/> from <paramref name="vector2"/>.
+      </summary>
+      <param name="vector1">
+        The vector from which <paramref name="vector2"/> is subtracted.
+      </param>
+      <param name="vector2">
+        The vector to subtract from <paramref name="vector1"/>.
+      </param>
+      <returns>
+        The difference between <paramref name="vector1"/> and <paramref name="vector2"/>.
+      </returns>
+    </Subtract>
+    <MultiplyVectorVector>
+      <summary>
+        Calculates the dot product of the two specified vectors.
+      </summary>
+      <param name="vector1">The first vector to multiply.</param>
+      <param name="vector2">The second vector to multiply.</param>
+      <returns>
+        Returns a <c>double</c> containing the scalar dot product of <paramref name="vector1"/> and <paramref name="vector2"/>.
+      </returns>
+    </MultiplyVectorVector>
+  </members>
+</docs>
