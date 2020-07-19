@@ -84,13 +84,15 @@ namespace VectorOperator
         /// <include file='docs.xml' path='docs/members[@name="vector"]/MultiplyVectorVector/*'/>
         public static double operator *(Vector vector1, Vector vector2)
             => vector1 == null || vector2 == null ?
-            throw new ArgumentException() :
+            throw new ArgumentNullException() :
             vector1.X * vector2.X + vector1.Y * vector2.Y + vector1.Z * vector2.Z;
 
         // overriding the base Equals() method for the purpose of testing
         /// <include file='docs.xml' path='docs/members[@name="vector"]/Equals/*'/>
         public override bool Equals(object obj)
-            => obj is Vector vector &&
+            => obj == null ?
+            throw new ArgumentNullException() :
+            obj is Vector vector &&
             vector.X == X &&
             vector.Y == Y &&
             vector.Z == Z;

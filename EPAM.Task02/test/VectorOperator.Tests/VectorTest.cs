@@ -39,8 +39,7 @@ namespace VectorOperator.Tests
             // Act
             Action action = () => 
             { 
-                Vector vector = new Vector(); 
-                vector = vector1 + vector2; 
+                Vector vector = vector1 + vector2; 
             };
 
             // Assert
@@ -69,8 +68,7 @@ namespace VectorOperator.Tests
             // Act
             Action action = () =>
             {
-                Vector negatedVector = new Vector();
-                negatedVector = -vector;
+                Vector negatedVector = -vector;
             };
 
             // Assert
@@ -81,7 +79,7 @@ namespace VectorOperator.Tests
         [InlineData(10, 20, 30, 100, 0, 15)]
         [InlineData(100, 0, 15, 12.5, 31.9, 10.1)]
         [InlineData(12.5, 31.9, 10.1, 10, 20, 30)]
-        public void AddVectorPoint_WhenParametersAreValid_ShouldReturnCorrectResult(double aX, double aY, double aZ, double bX, double bY, double bZ)
+        public void AddVectorPoint_WhenArgumentsAreValid_ShouldReturnCorrectResult(double aX, double aY, double aZ, double bX, double bY, double bZ)
         {
             // Arrange
             Vector vector = new Vector { X = aX, Y = aY, Z = aZ, };
@@ -98,7 +96,7 @@ namespace VectorOperator.Tests
 
         [Theory]
         [InlineData(10, 20, 30)]
-        public void AddVectorPoint_WhenParameterIsNull_ShouldThrowArgumentNullException(double x, double y, double z)
+        public void AddVectorPoint_WhenArgumentIsNull_ShouldThrowArgumentNullException(double x, double y, double z)
         {
             // Arrange
             Vector vector = new Vector { X = x, Y = y, Z = z, };
@@ -115,8 +113,7 @@ namespace VectorOperator.Tests
 
             Action action2 = () =>
             {
-                Point resultPoint = new Point();
-                resultPoint = point + nullVector;
+                Point resultPoint = point + nullVector;
             };
 
             // Assert
@@ -159,8 +156,7 @@ namespace VectorOperator.Tests
             // Act
             Action action = () =>
             {
-                Vector resultVector = new Vector();
-                resultVector = vector - nullVector;
+                Vector resultVector = vector - nullVector;
             };
 
             // Assert
@@ -191,13 +187,80 @@ namespace VectorOperator.Tests
             // Act
             Action action = () =>
             {
-                Vector resultVector = new Vector();
-                resultVector = nullVector * scalar;
+                Vector resultVector = nullVector * scalar;
             };
 
             // Assert
             action.Should().Throw<ArgumentNullException>();
         }
 
+        [Theory]
+        [InlineData(10, 20, 30, 100, 0, 15)]
+        [InlineData(100, 0, 15, 12.5, 31.9, 10.1)]
+        [InlineData(12.5, 31.9, 10.1, 10, 20, 30)]
+        public void MultiplyVectorVector_WhenVectorsAreValid_ShouldReturnCorrectResult(double aX, double aY, double aZ, double bX, double bY, double bZ)
+        {
+            // Arrange - Act
+            Vector vector1 = new Vector
+            {
+                X = aX,
+                Y = aY,
+                Z = aZ,
+            };
+            Vector vector2 = new Vector
+            {
+                X = bX,
+                Y = bY,
+                Z = bZ,
+            };
+
+            // Assert
+            (vector1 * vector2).Should().Be(aX * bX + aY * bY + aZ * bZ);
+        }
+
+        [Theory]
+        [InlineData(10, 20, 30)]
+        public void MultiplyVectorVector_WhenVectorIsNull_ShouldThrowArgumentNullException(double x, double y, double z)
+        {
+            // Arrange 
+            Vector vector = new Vector
+            {
+                X = x,
+                Y = y,
+                Z = z,
+            };
+            Vector nullVector = null;
+
+            // Act
+            Action action = () =>
+            {
+                double result = vector * nullVector;
+            };
+
+            // Assert
+            action.Should().Throw<ArgumentNullException>();
+        }
+
+        [Theory]
+        [InlineData(10, 20, 30)]
+        public void Equals_WhenArgumentIsValid_ShouldReturnCorrectResult(double x, double y, double z)
+        {
+            // Arrenge - Act
+            Vector vector1 = new Vector
+            {
+                X = x,
+                Y = y,
+                Z = z,
+            };
+            Vector vector2 = new Vector
+            {
+                X = x,
+                Y = y,
+                Z = z,
+            };
+
+            // Assert
+            vector1.Equals(vector2).Should().BeTrue();
+        }
     }
 }
