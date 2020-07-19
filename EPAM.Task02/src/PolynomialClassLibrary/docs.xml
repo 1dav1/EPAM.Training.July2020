@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<docs>
+  <members name="polynomial">
+    <Polynomial>
+       <summary>
+         The Polynomial class.
+         Contains overloaded operators to operate on polynomials with one variable.
+      </summary>
+    </Polynomial>
+  </members>
+</docs>

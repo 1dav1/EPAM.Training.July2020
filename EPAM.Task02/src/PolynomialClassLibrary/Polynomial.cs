@@ -3,6 +3,7 @@ using System.Collections.Generic;
 
 namespace PolynomialClassLibrary
 {
+    /// <include file='docs.xml' path='docs/members[@name="polynomial"]/Polynomial/*'/>
     public class Polynomial
     {
         public List<double> Constants { get; }
@@ -79,8 +80,6 @@ namespace PolynomialClassLibrary
             int exponent = polynomial1.Exponent + polynomial2.Exponent;
             List<double> constants = new List<double>();
 
-            if (polynomial1.Exponent > polynomial2.Exponent)
-            {
                 for (int i = 0; i <= polynomial2.Exponent; i++)
                 {
                     for (int j = 0; j <= polynomial1.Exponent; j++)
@@ -88,7 +87,6 @@ namespace PolynomialClassLibrary
                         constants.Add(polynomial1.Constants[j] * polynomial2.Constants[i]);
                     }
                 }
-            }
 
             return new Polynomial(constants, exponent);
         }
