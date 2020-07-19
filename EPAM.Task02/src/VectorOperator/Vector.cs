@@ -87,23 +87,14 @@ namespace VectorOperator
             throw new ArgumentNullException() :
             vector1.X * vector2.X + vector1.Y * vector2.Y + vector1.Z * vector2.Z;
 
-        public static bool operator ==(Vector vector1, Vector vector2)
-            => vector1 == null || vector2 == null ?
-            throw new ArgumentNullException() :
-            vector1.X == vector2.X &&
-            vector1.Y == vector2.Y &&
-            vector1.Z == vector2.Z;
-
-        public static bool operator !=(Vector vector1, Vector vector2)
-            => !(vector1 == vector2);
 
         // overriding the base Equals() method for the purpose of testing
         /// <include file='docs.xml' path='docs/members[@name="vector"]/Equals/*'/>
         public override bool Equals(object obj)
-            => obj == null ?
-            throw new ArgumentNullException() :
-            obj is Vector vector &&
-            vector == this;
+            => obj is Vector vector &&
+            vector.X == X &&
+            vector.Y == Y &&
+            vector.Z == Z;
 
         // overriding the base GetHashCode() method for the purpose of testing
         /// <include file='docs.xml' path='docs/members[@name="vector"]/GetHashCode/*'/>

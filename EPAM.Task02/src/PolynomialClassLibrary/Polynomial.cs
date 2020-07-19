@@ -6,8 +6,10 @@ namespace PolynomialClassLibrary
     /// <include file='docs.xml' path='docs/members[@name="polynomial"]/Polynomial/*'/>
     public class Polynomial
     {
-        public List<double> Constants { get; }
-        public int Exponent { get; }
+        public List<double> Constants { get; set; }
+        public int Exponent { get; set; }
+
+        public Polynomial() { Constants = new List<double>(); }
 
         public Polynomial(IEnumerable<double> constants, int exponent)
         {
@@ -91,29 +93,22 @@ namespace PolynomialClassLibrary
             return new Polynomial(constants, exponent);
         }
 
-        public static bool operator ==(Polynomial polynomial1, Polynomial polynomial2)
-        {
-            if (polynomial1 == null || polynomial2 == null)
-                throw new ArgumentNullException();
-
-            if (polynomial1.Exponent != polynomial2.Exponent)
-                return false;
-
-            for (int i = 0; i <= polynomial1.Exponent; i++)
-            {
-                if (polynomial1.Constants[i] != polynomial2.Constants[i])
-                    return false;
-            }
-
-            return true;
-        }
-
-        public static bool operator !=(Polynomial polynomial1, Polynomial polynomial2)
-            => !(polynomial1 == polynomial2);
 
         override public bool Equals(object obj)
-            => obj is Polynomial polynomial &&
-            polynomial == this;
+        {
+            if (obj is Polynomial polynomial)
+            {
+                if (polynomial.Exponent != this.Exponent)
+                    return false;
+                for (int i = 0; i <= polynomial.Exponent; i++)
+                {
+                    if (polynomial.Constants[i] != this.Constants[i])
+                        return false;
+                }
+                return true;
+            }
+             return false;
+        }
 
         public override int GetHashCode()
             => HashCode.Combine(Exponent, Constants);
