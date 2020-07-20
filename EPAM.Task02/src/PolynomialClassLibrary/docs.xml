@@ -2,10 +2,91 @@
 <docs>
   <members name="polynomial">
     <Polynomial>
-       <summary>
-         The Polynomial class.
-         Contains overloaded operators to operate on polynomials with one variable.
+      <summary>
+        The Polynomial class.
+        Contains overloaded operators to operate on polynomials with one variable.
       </summary>
     </Polynomial>
+    <Constants>
+      <value>Gets the list of constants of the current polynomial.</value>
+    </Constants>
+    <Exponent>
+      <value>Gets the exponent of the current polynomial.</value>
+    </Exponent>
+    <Constructor>
+      <summary>
+        Initializes a new instance of the Polynomial class with the specified exponent and constants.
+      </summary>
+      <param name="constants">The constants of the polynomial.</param>
+      <param name="exponent">The exponent of the polynomial.</param>
+    </Constructor>
+    <AddPolynomialPolynomial>
+      <summary>
+        Adds the two specified polynomials.
+      </summary>
+      <param name="polynomial1">The first polynomial to add.</param>
+      <param name="polynomial2">The second polynomial to add.</param>
+      <returns>
+        The sum of <paramref name="polynomial1"/> and <paramref name="polynomial2"/>.
+      </returns>
+    </AddPolynomialPolynomial>
+    <Negate>
+      <summary>
+        Negates the specified polynomial. The new polynomial has the same exponent, but constants are with the opposite signs.
+      </summary>
+      <param name="polynomial">The polynomial to be negated.</param>
+      <returns>The negated polynomial.</returns>
+    </Negate>
+    <Subtract>
+      <summary>
+        Subtracts <paramref name="polynomial1"/> from <paramref name="polynomial2"/>.
+      </summary>
+      <param name="polynomial1">
+        The polynomial from which <paramref name="polynomial2"/> is subtracted.
+      </param>
+      <param name="polynomial2">
+        The polynomial to subtract from <paramref name="polynomial1"/>.
+      </param>
+      <returns>
+        The difference between <paramref name="polynomial1"/> and <paramref name="polynomial2"/>.
+      </returns>
+    </Subtract>
+    <MultiplyDoublePolynomial>
+      <summary>
+        Multiplies the specified polynomial by the specified scalar.
+      </summary>
+      <param name="scalar">Scalar to multiply.</param>
+      <param name="polynomial">Polynomial to  multiply.</param>
+      <returns>
+        The result of multiplying <paramref name="scalar"/> and <paramref name="polynomial"/>.
+      </returns>
+    </MultiplyDoublePolynomial>
+    <MultiplyPolynomialPolynomial>
+      <summary>
+        Multiplies the two specified polynomials.
+      </summary>
+      <param name="polynomial1">The first polynomial to multiply.</param>
+      <param name="polynomial2">The second polynomial to multiply.</param>
+      <returns>
+        The new polynomial as a result of multiplying <paramref name="polynomial1"/> and <paramref name="polynomial2"/>.
+      </returns>
+    </MultiplyPolynomialPolynomial>
+    <Equals>
+       <summary>
+        Compares the current polynomial to the specified object for equality.
+      </summary>
+       <param name="obj">The object to compare with the current vector.</param>
+       <returns>
+        <c>true</c> if <paramref name="obj"/> is a polynomial, the exponent of the current polynomial and of <paramref name="obj"/> are equal and the coresponding constants of the current polynomial and of <paramref name="obj"/> are equal; otherwise, <c>false</c>.
+      </returns>
+    </Equals>
+    <GetHashCode>
+      <summary>
+        Returns the hash code for the current polynomial.
+      </summary>
+      <returns>
+        The hash code for the current instance.
+      </returns>
+    </GetHashCode>
   </members>
 </docs>
