@@ -26,5 +26,20 @@ namespace ProductClassLibrary
             };
         }
 
+        public static explicit operator Notepad(Book book)
+            => new Notepad
+            {
+                Name = book.Name,
+                Price = book.Price,
+                NumberOfPages = book.NumberOfPages,
+            };
+
+        public static explicit operator Laptop(Book book)
+            => new Laptop
+            {
+                Name = book.Name,
+                Price = book.Price,
+                GPU = "n/a",
+            };
     }
 }

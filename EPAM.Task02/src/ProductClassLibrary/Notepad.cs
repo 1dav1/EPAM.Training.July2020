@@ -22,5 +22,31 @@ namespace ProductClassLibrary
                 NumberOfPages = notepad1.NumberOfPages + notepad2.NumberOfPages,
             };
         }
+
+        //public static implicit operator Book(Notepad notepad)
+        //    => new Book 
+        //    { 
+        //        Author = "n/a",
+        //        Name = notepad.Name,
+        //        Price = notepad.Price,
+        //        NumberOfPages = notepad.NumberOfPages,
+        //    };
+
+        public static explicit operator Book(Notepad notepad)
+            => new Book
+            {
+                Name = notepad.Name,
+                Price = notepad.Price,
+                Author = "n/a",
+                NumberOfPages = notepad.NumberOfPages,
+            };
+
+        public static explicit operator Laptop(Notepad notepad)
+            => new Laptop
+            {
+                Name = notepad.Name,
+                Price = notepad.Price,
+                GPU = "n/a",
+            };
     }
 }
