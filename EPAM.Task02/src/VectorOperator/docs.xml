@@ -113,6 +113,7 @@
       <summary>
         Compares the current vector to the specified object for equality.
       </summary>
+      <param name="obj">The object to compare with the current vector.</param>
       <returns>
         <c>true</c> if <paramref name="obj"/> is a vector and the X, Y and Z components of the current vector and <paramref name="obj"/> are equal; otherwise, <c>false</c>.
       </returns>
