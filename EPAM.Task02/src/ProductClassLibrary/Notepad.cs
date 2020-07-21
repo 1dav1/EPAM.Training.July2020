@@ -8,11 +8,31 @@ namespace ProductClassLibrary
         /// <include file='docs.xml' path='docs/members[@name="notepad"]/Name/*'/>
         public override string Name { get; set; }
 
+        private decimal _price;
         /// <include file='docs.xml' path='docs/members[@name="notepad"]/Price/*'/>
-        public override decimal Price { get; set; }
+        public override decimal Price
+        {
+            get => _price;
+            set
+            {
+                if (value < 0)
+                    throw new ArgumentOutOfRangeException("Price should be positive.");
+                _price = value;
+            }
+        }
 
+        private int _numberOfPages;
         /// <include file='docs.xml' path='docs/members[@name="notepad"]/NumberOfPages/*'/>
-        public int NumberOfPages { get; set; }
+        public int NumberOfPages
+        {
+            get => _numberOfPages;
+            set
+            {
+                if (value < 0)
+                    throw new ArgumentOutOfRangeException("Number of pages should be positive.");
+                _numberOfPages = value;
+            }
+        }
 
         /// <include file='docs.xml' path='docs/members[@name="notepad"]/AddOperator/*'/>
         public static Notepad operator +(Notepad notepad1, Notepad notepad2)
@@ -23,23 +43,22 @@ namespace ProductClassLibrary
                 NumberOfPages = notepad1.NumberOfPages + notepad2.NumberOfPages,
             };
 
-        /// <include file='docs.xml' path='docs/members[@name="notepad"]/ConvertNotepadToBook/*'/>
-        public static explicit operator Book(Notepad notepad)
-            => new Book
+        /// <include file='docs.xml' path='docs/members[@name="notepad"]/ConvertBookToNotepad/*'/>
+        public static explicit operator Notepad(Book book)
+            => new Notepad
             {
-                Name = notepad.Name,
-                Price = notepad.Price,
-                Author = "n/a",
-                NumberOfPages = notepad.NumberOfPages,
+                Name = book.Name,
+                Price = book.Price,
+                NumberOfPages = book.NumberOfPages,
             };
 
-        /// <include file='docs.xml' path='docs/members[@name="notepad"]/ConvertNotepadToLaptop/*'/>
-        public static explicit operator Laptop(Notepad notepad)
-            => new Laptop
+        /// <include file='docs.xml' path='docs/members[@name="notepad"]/ConvertLaptopToNotepad/*'/>
+        public static explicit operator Notepad(Laptop laptop)
+            => new Notepad
             {
-                Name = notepad.Name,
-                Price = notepad.Price,
-                CPUFrequancy = 0,
+                Name = laptop.Name,
+                Price = laptop.Price,
+                NumberOfPages = 0,
             };
 
         /// <include file='docs.xml' path='docs/members[@name="notepad"]/ConvertNotepadToInt32/*'/>
@@ -50,15 +69,20 @@ namespace ProductClassLibrary
         public static explicit operator decimal(Notepad notepad)
             => notepad.Price;
 
+        /// <include file='docs.xml' path='docs/members[@name="notepad"]/Equals/*'/>
         public override bool Equals(object obj)
         {
-            throw new NotImplementedException();
+            if (ReferenceEquals(obj, this))
+                return true;
+
+            return obj is Notepad notepad &&
+                   notepad.Name == Name &&
+                   notepad.Price == Price &&
+                   notepad.NumberOfPages == NumberOfPages;
         }
 
+        /// <include file='docs.xml' path='docs/members[@name="notepad"]/GetHashCode/*'/>
         public override int GetHashCode()
-        {
-            throw new NotImplementedException();
-        }
-
+            => HashCode.Combine(Name, Price, NumberOfPages);
     }
 }

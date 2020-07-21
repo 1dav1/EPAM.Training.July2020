@@ -235,5 +235,23 @@
         The price of <paramref name="notepad"/> in BYN.
       </returns>
     </ConvertNotepadToDouble>
+    <Equals>
+      <summary>
+        Compares the current notepad to the specified object for equality.
+      </summary>
+      <param name="obj">The object to compare with the current notepad.</param>
+      <returns>
+        <c>true</c> if <paramref name="obj"/> and the current notepad refer to the same object or if <paramref name="obj"/> is a notepad and all the properties of the current notepad and <paramref name="obj"/> are equal; otherwise, <c>false</c>.
+      </returns>
+    </Equals>
+    <GetHashCode>
+      <summary>
+        Returns the hash code for the current notepad.
+      </summary>
+      <returns>
+        The hash code for the current instance.
+      </returns>
+    </GetHashCode>
+
   </members>
 </docs>
