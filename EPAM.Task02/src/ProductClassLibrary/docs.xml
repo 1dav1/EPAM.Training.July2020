@@ -1,6 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <docs>
-  <member name="book">
+  <members name="product">
+    <Product>
+    <summary>
+       The Product abstract class. Contains properties that present the main characteristics of a product.
+    </summary>
+    </Product>
+  </members>
+  <members name="book">
     <Book>
        <summary>
          The Book class. Contains the overloaded operators.
@@ -27,7 +34,6 @@
        <returns>
          The sum of <paramref name="book1"/> and <paramref name="book2"/>
      </returns>
-
     </AddBookBook>
-  </member>
+  </members>
 </docs>
