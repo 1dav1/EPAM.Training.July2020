@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace ProductClassLibrary
 {
@@ -23,15 +21,6 @@ namespace ProductClassLibrary
             };
         }
 
-        //public static implicit operator Book(Notepad notepad)
-        //    => new Book 
-        //    { 
-        //        Author = "n/a",
-        //        Name = notepad.Name,
-        //        Price = notepad.Price,
-        //        NumberOfPages = notepad.NumberOfPages,
-        //    };
-
         public static explicit operator Book(Notepad notepad)
             => new Book
             {
@@ -48,5 +37,11 @@ namespace ProductClassLibrary
                 Price = notepad.Price,
                 GPU = "n/a",
             };
+
+        public static explicit operator int(Notepad notepad)
+            => Convert.ToInt32(notepad.Price);
+
+        public static explicit operator double(Notepad notepad)
+            => notepad.Price;
     }
 }

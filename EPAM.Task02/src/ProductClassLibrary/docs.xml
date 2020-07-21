@@ -1,4 +1,33 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <docs>
-  
+  <member name="book">
+    <Book>
+       <summary>
+         The Book class. Contains the overloaded operators.
+      </summary>
+    </Book>
+    <Name>
+      <value>Gets or sets the name of the book.</value>
+    </Name>
+    <Price>
+      <value>Gets or sets the book's price.</value>
+    </Price>
+    <Author>
+      <value>Gets or sets the author of the book.</value>
+    </Author>
+    <NumberOfPages>
+      <value>Gets or sets the number of pages of the book.</value>
+    </NumberOfPages>
+    <AddBookBook>
+       <summary>
+         Adds the two specified books.
+      </summary>
+       <param name="book1">The first book to add.</param>
+       <param name="book2">The second book to add.</param>
+       <returns>
+         The sum of <paramref name="book1"/> and <paramref name="book2"/>
+     </returns>
+
+    </AddBookBook>
+  </member>
 </docs>

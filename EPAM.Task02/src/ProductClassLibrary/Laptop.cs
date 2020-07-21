@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace ProductClassLibrary
 {
@@ -40,5 +38,10 @@ namespace ProductClassLibrary
                 NumberOfPages = 0,
             };
 
+        public static explicit operator int(Laptop laptop)
+            => Convert.ToInt32(laptop.Price);
+
+        public static explicit operator double(Laptop laptop)
+            => laptop.Price;
     }
 }
