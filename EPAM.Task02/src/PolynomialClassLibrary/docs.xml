@@ -71,15 +71,35 @@
         The new polynomial as a result of multiplying <paramref name="polynomial1"/> and <paramref name="polynomial2"/>.
       </returns>
     </MultiplyPolynomialPolynomial>
-    <Equals>
-       <summary>
+    <EqualsOperator>
+      <summary>
+        Compares the two specified polynomials for equality.
+      </summary>
+      <param name="polynomial1">The first polynomial to compare.</param>
+      <param name="polynomial2">The second polynomial to compare.</param>
+      <returns>
+        <c>true</c> if the two specified polynomials are <c>null</c> references or the exponent of <paramref name="polynomial1"/> and of <paramref name="polynomial2"/> are equal and the coresponding constants of <paramref name="polynomial1"/> and of <paramref name="polynomial1"/> are equal; otherwise, <c>false</c>.
+      </returns>
+    </EqualsOperator>
+    <NotEqualsOperator>
+      <summary>
+        Compares the two specified polynomials for inequality.
+      </summary>
+      <param name="polynomial1">The first polynomial to compare.</param>
+      <param name="polynomial2">The second polynomial to compare.</param>
+      <returns>
+        <c>false</c> if the two specified polynomials are <c>null</c> references or the exponent of <paramref name="polynomial1"/> and of <paramref name="polynomial2"/> are equal and the coresponding constants of <paramref name="polynomial1"/> and of <paramref name="polynomial1"/> are equal; otherwise, <c>true</c>.
+      </returns>
+    </NotEqualsOperator>
+    <EqualsMethod>
+      <summary>
         Compares the current polynomial to the specified object for equality.
       </summary>
-       <param name="obj">The object to compare with the current vector.</param>
-       <returns>
+      <param name="obj">The object to compare with the current vector.</param>
+      <returns>
         <c>true</c> if <paramref name="obj"/> is a polynomial, the exponent of the current polynomial and of <paramref name="obj"/> are equal and the coresponding constants of the current polynomial and of <paramref name="obj"/> are equal; otherwise, <c>false</c>.
       </returns>
-    </Equals>
+    </EqualsMethod>
     <GetHashCode>
       <summary>
         Returns the hash code for the current polynomial.

@@ -26,8 +26,8 @@ namespace PolynomialClassLibrary
         /// <include file='docs.xml' path='docs/members[@name="polynomial"]/AddPolynomialPolynomial/*'/>
         public static Polynomial operator +(Polynomial polynomial1, Polynomial polynomial2)
         {
-            if (polynomial1 == null || polynomial2 == null)
-                throw new ArgumentNullException();
+            //if (polynomial1 == null || polynomial2 == null)
+            //    throw new ArgumentNullException();
 
             List<double> constants = new List<double>();
             int exponent;
@@ -66,9 +66,6 @@ namespace PolynomialClassLibrary
         /// <include file='docs.xml' path='docs/members[@name="polynomial"]/Negate/*'/>
         public static Polynomial operator -(Polynomial polynomial)
         {
-            if (polynomial == null)
-                throw new ArgumentNullException();
-
             List<double> constants = new List<double>();
 
             for (int i = 0; i <= polynomial.Exponent; i++)
@@ -86,9 +83,6 @@ namespace PolynomialClassLibrary
         /// <include file='docs.xml' path='docs/members[@name="polynomial"]/MultiplyDoublePolynomial/*'/>
         public static Polynomial operator *(double scalar, Polynomial polynomial)
         {
-            if (polynomial == null)
-                throw new ArgumentNullException();
-
             int exponent = polynomial.Exponent;
             List<double> constants = new List<double>();
 
@@ -107,9 +101,6 @@ namespace PolynomialClassLibrary
         /// <include file='docs.xml' path='docs/members[@name="polynomial"]/MultiplyPolynomialPolynomial/*'/>
         public static Polynomial operator *(Polynomial polynomial1, Polynomial polynomial2)
         {
-            if (polynomial1 == null || polynomial2 == null)
-                throw new ArgumentNullException();
-
             int exponent = polynomial1.Exponent + polynomial2.Exponent;
             List<double> constants = new List<double>(exponent + 1);
 
@@ -128,21 +119,34 @@ namespace PolynomialClassLibrary
             return new Polynomial(constants, exponent);
         }
 
-        /// <include file='docs.xml' path='docs/members[@name="polynomial"]/Equals/*'/>
+        /// <include file='docs.xml' path='docs/members[@name="polynomial"]/EqualsOperator/*'/>
+        public static bool operator ==(Polynomial polynomial1, Polynomial polynomial2)
+        {
+            if (polynomial1 is null)
+                return polynomial2 is null;
+
+            if (polynomial1.Exponent != polynomial2.Exponent)
+                return false;
+            for (int i = 0; i <= polynomial1.Exponent; i++)
+            {
+                if (polynomial1.Constants[i] != polynomial2.Constants[i])
+                    return false;
+            }
+
+            return true;
+        }
+
+        /// <include file='docs.xml' path='docs/members[@name="polynomial"]/NotEqualsOperator/*'/>
+        public static bool operator !=(Polynomial polynomial1, Polynomial polynomial2)
+            => !(polynomial1 == polynomial2);
+
+        /// <include file='docs.xml' path='docs/members[@name="polynomial"]/EqualsMethod/*'/>
         override public bool Equals(object obj)
         {
-            if (obj is Polynomial polynomial)
-            {
-                if (polynomial.Exponent != this.Exponent)
-                    return false;
-                for (int i = 0; i <= polynomial.Exponent; i++)
-                {
-                    if (polynomial.Constants[i] != this.Constants[i])
-                        return false;
-                }
+            if (ReferenceEquals(obj, this))
                 return true;
-            }
-            return false;
+
+            return obj is Polynomial && (Polynomial)obj == this;
         }
 
         /// <include file='docs.xml' path='docs/members[@name="polynomial"]/GetHashCode/*'/>
