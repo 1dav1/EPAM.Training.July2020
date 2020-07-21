@@ -77,6 +77,23 @@
         The price of <paramref name="book"/> in BYN.
       </returns>
     </ConvertBookToDecimal>
+    <Equals>
+      <summary>
+        Compares the current book to the specified object for equality.
+      </summary>
+      <param name="obj">The object to compare with the current vector.</param>
+      <returns>
+        <c>true</c> if <paramref name="obj"/> and the current book refer to the same object or if <paramref name="obj"/> is a book and all the properties of the current book and <paramref name="obj"/> are equal; otherwise, <c>false</c>.
+      </returns>
+    </Equals>
+    <GetHashCode>
+      <summary>
+        Returns the hash code for the current book.
+      </summary>
+      <returns>
+        The hash code for the current instance.
+      </returns>
+    </GetHashCode>
   </members>
   <members name="laptop">
     <Laptop>

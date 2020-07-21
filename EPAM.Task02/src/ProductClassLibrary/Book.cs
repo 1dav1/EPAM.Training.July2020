@@ -9,6 +9,7 @@ namespace ProductClassLibrary
         public override string Name { get; set; }
 
         private decimal _price;
+
         /// <include file='docs.xml' path='docs/members[@name="book"]/Price/*'/>
         public override decimal Price
         {
@@ -46,7 +47,6 @@ namespace ProductClassLibrary
                 NumberOfPages = book1.NumberOfPages + book2.NumberOfPages,
             };
 
-
         /// <include file='docs.xml' path='docs/members[@name="book"]/ConvertNotepadToBook/*'/>
         public static explicit operator Book(Notepad notepad)
             => new Book
@@ -75,6 +75,7 @@ namespace ProductClassLibrary
         public static explicit operator decimal(Book book)
             => book.Price;
 
+        /// <include file='docs.xml' path='docs/members[@name="book"]/Equals/*'/>
         public override bool Equals(object obj)
         {
             if (ReferenceEquals(obj, this))
@@ -87,6 +88,7 @@ namespace ProductClassLibrary
                    book.NumberOfPages == NumberOfPages;
         }
 
+        /// <include file='docs.xml' path='docs/members[@name="book"]/GetHashCode/*'/>
         public override int GetHashCode()
             => HashCode.Combine(Name, Price, Author, NumberOfPages);
     }
