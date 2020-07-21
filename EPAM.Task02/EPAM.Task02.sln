@@ -17,7 +17,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PolynomialClassLibrary.Test
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProductClassLibrary", "src\ProductClassLibrary\ProductClassLibrary.csproj", "{353991F0-3B8E-4605-A4CC-2D07B8C81510}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProductClassLibrary.Tests", "test\ProductClassLibrary.Tests\ProductClassLibrary.Tests.csproj", "{C0C48CF4-A225-41C0-ACF5-E11C3F1B69D8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProductClassLibrary.Tests", "test\ProductClassLibrary.Tests\ProductClassLibrary.Tests.csproj", "{C0C48CF4-A225-41C0-ACF5-E11C3F1B69D8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -59,7 +59,7 @@ Global
 		{CA78032F-8B48-46CE-8F9A-73E58DBEBEC0} = {08B571D3-3BE7-4D53-BF7F-1E0C9EE2A7E0}
 		{A426ACD0-C279-48B5-B88B-89162108099A} = {A25FE287-589D-46C9-B512-E470A72633E3}
 		{353991F0-3B8E-4605-A4CC-2D07B8C81510} = {08B571D3-3BE7-4D53-BF7F-1E0C9EE2A7E0}
-		{C0C48CF4-A225-41C0-ACF5-E11C3F1B69D8} = {08B571D3-3BE7-4D53-BF7F-1E0C9EE2A7E0}
+		{C0C48CF4-A225-41C0-ACF5-E11C3F1B69D8} = {A25FE287-589D-46C9-B512-E470A72633E3}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {5AFD052D-205B-4416-9FB7-9DAB0DD6F7EC}
