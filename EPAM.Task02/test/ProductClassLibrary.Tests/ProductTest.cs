@@ -6,16 +6,23 @@ namespace ProductClassLibrary.Tests
 {
     public class ProductTest
     {
+        readonly string author = "TestAuthor1";
+        readonly string name = "TestName1";
+        readonly decimal price = 10.5m;
+        readonly int numberOfPages = 1000;
+        readonly double cpuFrequancy = 1600;
+        const int KOPEK = 100; 
+
         [Fact]
         public void CreateBook_WhenValuesAreValid_ShouldNotThrowExceptions()
         {
             // Arrange - Act
             Action action = () => new Book
             {
-                Author = "Author",
-                Name = "Name",
-                Price = 1,
-                NumberOfPages = 20,
+                Author = author,
+                Name = name,
+                Price = price,
+                NumberOfPages = numberOfPages,
             };
 
             // Assert
@@ -28,10 +35,10 @@ namespace ProductClassLibrary.Tests
             // Arrange - Act
             Action action = () => new Book
             {
-                Author = "Author",
-                Name = "Name",
-                Price = -1,
-                NumberOfPages = 20,
+                Author = author,
+                Name = name,
+                Price = -price,
+                NumberOfPages = numberOfPages,
             };
 
             // Assert
@@ -44,10 +51,10 @@ namespace ProductClassLibrary.Tests
             // Arrange - Act
             Action action = () => new Book
             {
-                Author = "Author",
-                Name = "Name",
-                Price = 1,
-                NumberOfPages = -20,
+                Author = author,
+                Name = name,
+                Price = price,
+                NumberOfPages = -numberOfPages,
             };
 
             // Assert
@@ -59,7 +66,7 @@ namespace ProductClassLibrary.Tests
         [InlineData("", "TestName1", 15.3, 100, "TestAuthor2", "TestName2", 200.1, 1000)]
         [InlineData("TestAuthor1", "TestName1", 10.0, 1, "TestAuthor2", "", 200.1, 1000)]
         public void AddOperatorBook_WhenOperandsAreValid_ShouldReturnCorrectResult1(string author1, string name1, decimal price1, int page1,
-                                                                                string author2, string name2, decimal price2, int page2)
+                                                                                    string author2, string name2, decimal price2, int page2)
         {
             // Arrange - Act
             Book book1 = new Book
@@ -96,10 +103,10 @@ namespace ProductClassLibrary.Tests
             // Arrange
             Book book1 = new Book
             {
-                Author = "TestAuthor1",
-                Name = "TestName1",
-                Price = 10,
-                NumberOfPages = 100,
+                Author = author,
+                Name = name,
+                Price = price,
+                NumberOfPages = numberOfPages,
             };
 
             Book book2 = null;
@@ -117,9 +124,9 @@ namespace ProductClassLibrary.Tests
             // Arrange
             Laptop laptop = new Laptop
             {
-                Name = "TestName1",
-                Price = 2000,
-                CPUFrequancy = 1600,
+                Name = name,
+                Price = price,
+                CPUFrequancy = cpuFrequancy,
             };
             Book expected = new Book { Author = "n/a", Name = laptop.Name, Price = laptop.Price, NumberOfPages = 0, };
 
@@ -149,17 +156,17 @@ namespace ProductClassLibrary.Tests
             // Arrange
             Book book = new Book
             {
-                Author = "TestAuthor1",
-                Name = "TestName1",
-                Price = 10,
-                NumberOfPages = 100,
+                Author = author,
+                Name = name,
+                Price = price,
+                NumberOfPages = numberOfPages,
             };
 
             // Act
             int kopek = (int)book;
 
             // Assert
-            kopek.Should().Be(Convert.ToInt32(book.Price) * 100);
+            kopek.Should().Be(Convert.ToInt32(book.Price) * KOPEK);
         }
 
         [Fact]
@@ -178,7 +185,63 @@ namespace ProductClassLibrary.Tests
         [Fact]
         public void ConvertBookToDecimal_WhenOperandIsValid_ShouldReturnPrice()
         {
+            // Arrange - Act
+            Book book = new Book
+            {
+                Name = name,
+                Price = price,
+                Author = author,
+                NumberOfPages = numberOfPages,
+            };
 
+            // Assert
+            ((decimal)book).Should().Be(price);
+        }
+
+        [Fact]
+        public void ConvertBookToDecimal_WhenOperandIsNull_ShouldThrowNullReferenceException()
+        {
+            // Arrange
+            Book book = null;
+
+            // Act
+            Action action = () => { decimal result = (decimal)book; };
+
+            // Assert
+            action.Should().Throw<NullReferenceException>();
+        }
+
+        [Fact]
+        public void Equals_WhenArgumentIsValid_ShouldReturnCorrectResult()
+        {
+            // Arrange - Act
+            Book book1 = new Book
+            {
+                Name = name,
+                Price = price,
+                Author = author,
+                NumberOfPages = numberOfPages,
+            };
+            Book book2 = new Book
+            {
+                Name = name,
+                Price = price,
+                Author = author,
+                NumberOfPages = numberOfPages,
+            };
+            Book notEqualBook = new Book
+            {
+                Name = name,
+                Price = price * 2,
+                Author = author,
+                NumberOfPages = numberOfPages,
+            };
+            Book book3 = book1;
+
+            // Assert
+            book1.Equals(book2).Should().BeTrue();
+            book1.Equals(book3).Should().BeTrue();
+            book1.Equals(notEqualBook).Should().BeFalse();
         }
     }
 }
