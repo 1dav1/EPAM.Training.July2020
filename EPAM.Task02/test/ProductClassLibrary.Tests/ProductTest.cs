@@ -7,13 +7,178 @@ namespace ProductClassLibrary.Tests
     public class ProductTest
     {
         [Fact]
-        public void Test1()
+        public void CreateBook_WhenValuesAreValid_ShouldNotThrowExceptions()
         {
+            // Arrange - Act
+            Action action = () => new Book
+            {
+                Author = "Author",
+                Name = "Name",
+                Price = 1,
+                NumberOfPages = 20,
+            };
+
+            // Assert
+            action.Should().NotThrow();
+        }
+
+        [Fact]
+        public void CreateBook_WhenPriceIsNotValid_ShouldThrowArgumentOutOfRangeException()
+        {
+            // Arrange - Act
+            Action action = () => new Book
+            {
+                Author = "Author",
+                Name = "Name",
+                Price = -1,
+                NumberOfPages = 20,
+            };
+
+            // Assert
+            action.Should().Throw<ArgumentOutOfRangeException>().WithMessage("*price*");
+        }
+
+        [Fact]
+        public void CreateBook_WhenNumberOfPagesIsNotValid_ShouldThrowArgumentOutOfRangeException()
+        {
+            // Arrange - Act
+            Action action = () => new Book
+            {
+                Author = "Author",
+                Name = "Name",
+                Price = 1,
+                NumberOfPages = -20,
+            };
+
+            // Assert
+            action.Should().Throw<ArgumentOutOfRangeException>().WithMessage("*number*");
+        }
+
+        [Theory]
+        [InlineData("TestAuthor1", "TestName1", 10.0, 100, "TestAuthor2", "TestName2", 200.1, 1000)]
+        [InlineData("", "TestName1", 15.3, 100, "TestAuthor2", "TestName2", 200.1, 1000)]
+        [InlineData("TestAuthor1", "TestName1", 10.0, 1, "TestAuthor2", "", 200.1, 1000)]
+        public void AddOperatorBook_WhenOperandsAreValid_ShouldReturnCorrectResult1(string author1, string name1, decimal price1, int page1,
+                                                                                string author2, string name2, decimal price2, int page2)
+        {
+            // Arrange - Act
+            Book book1 = new Book
+            {
+                Author = author1,
+                Name = name1,
+                Price = price1,
+                NumberOfPages = page1,
+            };
+
+            Book book2 = new Book
+            {
+                Author = author2,
+                Name = name2,
+                Price = price2,
+                NumberOfPages = page2,
+            };
+
+            Book expected = new Book
+            {
+                Author = author1 + "-" + author2,
+                Name = name1 + "-" + name2,
+                Price = (price1 + price2) / 2,
+                NumberOfPages = page1 + page2,
+            };
+
+            // Assert
+            (book1 + book2).Should().Be(expected);
+        }
+
+        [Fact]
+        public void AddOperatorBook_WhenOperandIsNull_ShouldThrowNullReferenceException()
+        {
+            // Arrange
+            Book book1 = new Book
+            {
+                Author = "TestAuthor1",
+                Name = "TestName1",
+                Price = 10,
+                NumberOfPages = 100,
+            };
+
+            Book book2 = null;
+
+            // Act
+            Action action = () => { Book book = book1 + book2; };
+
+            // Assert
+            action.Should().Throw<NullReferenceException>();
+        }
+
+        [Fact]
+        public void ConvertLaptopToBook_WhenOperandIsValid_ShouldReturnNewBook()
+        {
+            // Arrange
+            Laptop laptop = new Laptop
+            {
+                Name = "TestName1",
+                Price = 2000,
+                CPUFrequancy = 1600,
+            };
+            Book expected = new Book { Author = "n/a", Name = laptop.Name, Price = laptop.Price, NumberOfPages = 0, };
+
+            // Act
+            Book book = (Book)laptop;
+
+            // Assert
+            book.Should().Be(expected);
+        }
+
+        [Fact]
+        public void ConvertLaptopToBook_WhenOperandIsNull_ShouldThrowNullReferenceException()
+        {
+            // Arrange
+            Laptop laptop = null;
+
+            // Act
+            Action action = () => { Book book = (Book)laptop; };
+
+            // Assert
+            action.Should().Throw<NullReferenceException>();
+        }
+
+        [Fact]
+        public void ConvertBookToInt_WhenOperandIsValid_ShouldReturnKopeks()
+        {
+            // Arrange
+            Book book = new Book
+            {
+                Author = "TestAuthor1",
+                Name = "TestName1",
+                Price = 10,
+                NumberOfPages = 100,
+            };
+
+            // Act
+            int kopek = (int)book;
+
+            // Assert
+            kopek.Should().Be(Convert.ToInt32(book.Price) * 100);
+        }
+
+        [Fact]
+        public void ConvertBookToInt_WhenOperandIsNull_ShouldThrowNullReferenceException()
+        {
+            // Arrange
             Book book = null;
 
-            Action action = () => { Laptop laptop = (Laptop)book; };
+            // Act
+            Action action = () => { int kopek = (int)book; };
 
-            //action.Should().Throw();
+            // Assert
+            action.Should().Throw<NullReferenceException>();
+        }
+
+        [Fact]
+        public void ConvertBookToDecimal_WhenOperandIsValid_ShouldReturnPrice()
+        {
+
         }
     }
 }
