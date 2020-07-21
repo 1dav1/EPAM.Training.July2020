@@ -95,7 +95,7 @@
       <summary>
         Compares the current polynomial to the specified object for equality.
       </summary>
-      <param name="obj">The object to compare with the current vector.</param>
+      <param name="obj">The object to compare with the current polynomial.</param>
       <returns>
         <c>true</c> if <paramref name="obj"/> is a polynomial, the exponent of the current polynomial and of <paramref name="obj"/> are equal and the coresponding constants of the current polynomial and of <paramref name="obj"/> are equal; otherwise, <c>false</c>.
       </returns>
