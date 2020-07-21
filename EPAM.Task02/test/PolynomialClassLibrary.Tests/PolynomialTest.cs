@@ -8,6 +8,26 @@ namespace PolynomialClassLibrary.Tests
     public class PolynomialTest
     {
         [Fact]
+        public void CreatePolynomial_WhenArgumentAreValid_ShouldNotThrowExceptions()
+        {
+            // Arrange - Act
+            Action action = () => { new Polynomial(new List<double> { 1, 2, 3, }, 2); };
+
+            // Assert
+            action.Should().NotThrow();
+        }
+
+        [Fact]
+        public void CreatePolynomial_WhenArgumentIsNull_ShouldThrowArgumentNullException()
+        {
+            // Arrange - Act
+            Action action = () => { new Polynomial(null, 2); };
+
+            // Assert
+            action.Should().Throw<ArgumentNullException>();
+        }
+
+        [Fact]
         public void Polynomial_WhenListIsValid_ShouldNotThrowArgumentNullException()
         {
             // Arrange
@@ -25,7 +45,9 @@ namespace PolynomialClassLibrary.Tests
         [InlineData(1, 2, 3, 0, 5, 2, 1)]
         [InlineData(0, 15, -4, 10, 5, 2, 1)]
         [InlineData(7, 3, 25, -8, 1, 2, 1)]
-        public void AddPolynomialPolynomial_WhenArgumentsAreValid_ShouldReturnCorrectResult(double a1, double a2, double a3, double b1, double b2, int expA, int expB)
+        public void AddPolynomialPolynomial_WhenArgumentsAreValid_ShouldReturnCorrectResult(double a1, double a2, double a3,
+                                                                                            double b1, double b2,
+                                                                                            int expA, int expB)
         {
             // Arrange - Act
             List<double> constantsA = new List<double> { a1, a2, a3, };
@@ -43,22 +65,18 @@ namespace PolynomialClassLibrary.Tests
             (polynomial1 + polynomial2).Should().Be(expected);
         }
 
-
         [Fact]
-        public void AddPolynomialPolynomial_WhenArgumentIsNull_ShouldThrowArgumentNullException()
+        public void AddPolynomialPolynomial_WhenVariableRefersToNull_ShouldThrowNullReferenceException()
         {
             // Arrange
             Polynomial polynomial = new Polynomial(new List<double> { 1, 2, 3, }, 2);
             Polynomial nullPolynomial = null;
 
             // Act
-            Action action = () =>
-            {
-                Polynomial polynomial1 = polynomial + nullPolynomial;
-            };
+            Action action = () => { Polynomial polynomial1 = polynomial + nullPolynomial; };
 
             // Assert
-            action.Should().Throw<ArgumentNullException>();
+            action.Should().Throw<NullReferenceException>();
         }
 
         [Theory]
@@ -73,23 +91,19 @@ namespace PolynomialClassLibrary.Tests
 
             // Assert
             (-polynomial).Should().Be(expected);
-
         }
 
         [Fact]
-        public void Negate_WhenArgumentIsNull_ShouldThrowArgumentNullException()
+        public void Negate_WhenVariableRefersToNull_ShouldThrowNullReferenceException()
         {
             // Arrange
             Polynomial polynomial = null;
 
             // Act
-            Action action = () =>
-            {
-                Polynomial polynomial1 = -polynomial;
-            };
+            Action action = () => { Polynomial polynomial1 = -polynomial; };
 
             // Assert
-            action.Should().Throw<ArgumentNullException>();
+            action.Should().Throw<NullReferenceException>();
         }
 
         [Theory]
@@ -117,20 +131,17 @@ namespace PolynomialClassLibrary.Tests
         }
 
         [Fact]
-        public void SubtractPolynomialPolynomial_WhenArgumentIsNull_ShouldThrowArgumentNullException()
+        public void SubtractPolynomialPolynomial_WhenVariableRefersToNull_ShouldThrowNullReferenceException()
         {
             // Arrange
             Polynomial polynomial = new Polynomial(new List<double> { 1, 2, 3, }, 2);
             Polynomial nullPolynomial = null;
 
             // Act
-            Action action = () =>
-            {
-                Polynomial polynomial1 = polynomial - nullPolynomial;
-            };
+            Action action = () => { Polynomial polynomial1 = polynomial - nullPolynomial; };
 
             // Assert
-            action.Should().Throw<ArgumentNullException>();
+            action.Should().Throw<NullReferenceException>();
         }
 
         [Theory]
@@ -158,28 +169,25 @@ namespace PolynomialClassLibrary.Tests
         }
 
         [Fact]
-        public void MultiplyPolynomialPolynomial_WhenArgumentIsNull_ShouldThrowArgumentNullException()
+        public void MultiplyPolynomialPolynomial_WhenVariableRefersToNull_ShouldThrowNullReferenceException()
         {
             // Arrange
             Polynomial polynomial = new Polynomial(new List<double> { 1, 2, 3, }, 2);
             Polynomial nullPolynomial = null;
 
             // Act
-            Action action = () =>
-            {
-                Polynomial polynomial1 = polynomial * nullPolynomial;
-            };
+            Action action = () => { Polynomial polynomial1 = polynomial * nullPolynomial; };
 
             // Assert
-            action.Should().Throw<ArgumentNullException>();
+            action.Should().Throw<NullReferenceException>();
         }
 
         [Theory]
         [InlineData(25, 2, 3, 0, 2)]
         [InlineData(100.15, 15, -4, 10, 2)]
         [InlineData(-7, 3, 25, -8, 2)]
-        public void MultiplyDoublePolynomial_WhenArgumentsAreValid_ShouldReturnCorrectResult(double scalar, double a1, double a2,
-                                                                                             double a3, int exponent)
+        public void MultiplyDoublePolynomial_WhenArgumentsAreValid_ShouldReturnCorrectResult(double scalar,
+                                                                                             double a1, double a2, double a3, int exponent)
         {
             // Arrange - Act
             List<double> constants = new List<double> { a1, a2, a3, };
@@ -194,20 +202,57 @@ namespace PolynomialClassLibrary.Tests
         }
 
         [Fact]
-        public void MultiplyScalarPolynomial_WhenArgumentIsNull_ShouldThrowArgumentNullException()
+        public void MultiplyScalarPolynomial_WhenVariableRefersToNull_ShouldThrowNullReferenceException()
         {
             // Arrange
             Polynomial nullPolynomial = null;
             double scalar = 1.2;
 
             // Act
-            Action action = () =>
-            {
-                Polynomial polynomial = scalar * nullPolynomial;
-            };
+            Action action = () => { Polynomial polynomial = scalar * nullPolynomial; };
 
             // Assert
-            action.Should().Throw<ArgumentNullException>();
+            action.Should().Throw<NullReferenceException>();
         }
+
+        [Theory]
+        [InlineData(1, 2, 3, 0, 5, 2, 1)]
+        [InlineData(0, 15, -4, 10, 5, 2, 1)]
+        [InlineData(7, 3, 25, -8, 1, 2, 1)]
+        public void EqualsOperator_WhenTwoInstancesAreValid_ShouldReturnCorrectResult(double a1, double a2, double a3,
+                                                                                      double b1, double b2,
+                                                                                      int expA, int expB)
+        {
+            // Arrange - Act
+            Polynomial polynomial1 = new Polynomial(new List<double> { a1, a2, a3, }, expA);
+            Polynomial polynomial2 = new Polynomial(new List<double> { a1, a2, a3, }, expA);
+            Polynomial polynomialNotEqual = new Polynomial(new List<double> { b1, b2, }, expB);
+            Polynomial polynomial3 = polynomial1;
+
+            // Assert
+            (polynomial1 == polynomial2).Should().BeTrue();
+            (polynomial1 == polynomial3).Should().BeTrue();
+            (polynomial1 == polynomialNotEqual).Should().BeFalse();
+        }
+
+        [Theory]
+        [InlineData(1, 2, 3, 0, 5, 2, 1)]
+        [InlineData(0, 15, -4, 10, 5, 2, 1)]
+        [InlineData(7, 3, 25, -8, 1, 2, 1)]
+        public void NotEqualsOperator_WhenTwoInstancesAreValid_ShouldReturnCorrectResult(double a1, double a2, double a3,
+                                                                                         double b1, double b2,
+                                                                                         int expA, int expB)
+        {
+            // Arrange - Act
+            Polynomial polynomial1 = new Polynomial(new List<double> { a1, a2, a3, }, expA);
+            Polynomial polynomial2 = polynomial1;
+            Polynomial polynomialNotEqual = new Polynomial(new List<double> { b1, b2, }, expB);
+
+            // Assert
+            (polynomial1 != polynomialNotEqual).Should().BeTrue();
+            (polynomial2 != polynomialNotEqual).Should().BeTrue();
+            (polynomial1 != polynomial2).Should().BeFalse();
+        }
+
     }
 }
