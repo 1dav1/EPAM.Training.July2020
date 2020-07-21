@@ -74,14 +74,17 @@ namespace ProductClassLibrary
         /// <include file='docs.xml' path='docs/members[@name="laptop"]/Equals/*'/>
         public override bool Equals(object obj)
         {
-            throw new NotImplementedException();
+            if (ReferenceEquals(obj, this))
+                return true;
+
+            return obj is Laptop laptop &&
+                laptop.Name == Name &&
+                laptop.Price == Price &&
+                laptop.CPUFrequancy == CPUFrequancy;
         }
 
         /// <include file='docs.xml' path='docs/members[@name="laptop"]/GetHashCode/*'/>
         public override int GetHashCode()
-        {
-            throw new NotImplementedException();
-        }
-
+            => HashCode.Combine(Name, Price, CPUFrequancy);
     }
 }
