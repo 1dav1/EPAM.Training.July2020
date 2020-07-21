@@ -2,15 +2,21 @@
 <docs>
   <members name="product">
     <Product>
-    <summary>
-       The Product abstract class. Contains properties that present the main characteristics of a product.
-    </summary>
+      <summary>
+        The Product abstract class. Contains properties that present the main characteristics of a product.
+      </summary>
     </Product>
+    <Name>
+      <value>Gets or sets the product's name.</value>
+    </Name>
+    <Price>
+      <value>Gets or sets the product's price.</value>
+    </Price>
   </members>
   <members name="book">
     <Book>
-       <summary>
-         The Book class. Contains the overloaded operators.
+      <summary>
+        The Book class. Contains the main overloaded operators.
       </summary>
     </Book>
     <Name>
@@ -25,15 +31,175 @@
     <NumberOfPages>
       <value>Gets or sets the number of pages of the book.</value>
     </NumberOfPages>
-    <AddBookBook>
-       <summary>
-         Adds the two specified books.
+    <AddOperator>
+      <summary>
+        Adds the two specified books.
       </summary>
-       <param name="book1">The first book to add.</param>
-       <param name="book2">The second book to add.</param>
-       <returns>
-         The sum of <paramref name="book1"/> and <paramref name="book2"/>
-     </returns>
-    </AddBookBook>
+      <param name="book1">The first book to add.</param>
+      <param name="book2">The second book to add.</param>
+      <returns>
+        The sum of <paramref name="book1"/> and <paramref name="book2"/>
+      </returns>
+    </AddOperator>
+    <ConvertNotepadToBook>
+      <summary>
+        Explicitly converts <paramref name="notepad"/> to a new <c>Book</c> instance.
+      </summary>
+      <param name="notepad">The notepad to convert.</param>
+      <returns>
+        A new <c>Book</c> instance, basing on the properties of <paramref name="notepad"/>.
+      </returns>
+    </ConvertNotepadToBook>
+    <ConvertLaptopToBook>
+      <summary>
+        Explicitly converts <paramref name="laptop"/> to a <c>Book</c> instance.
+      </summary>
+      <param name="laptop">The laptop to convert.</param>
+      <returns>
+        A new <c>Book</c> instance, basing on the properties of <paramref name="laptop"/>.
+      </returns>
+    </ConvertLaptopToBook>
+    <ConvertBookToInt32>
+      <summary>
+        Converts the price of <paramref name="book"/> expressed in BYN to the equivalent amount of kopeks.
+      </summary>
+      <param name="book">The book to convert price.</param>
+      <returns>
+        The amount of kopeks equivalent to the price of <paramref name="book"/>.
+      </returns>
+    </ConvertBookToInt32>
+    <ConvertBookToDecimal>
+      <summary>
+        Converts <paramref name="book"/> to its price in BYN.
+      </summary>
+      <param name="book">The book to convert.</param>
+      <returns>
+        The price of <paramref name="book"/> in BYN.
+      </returns>
+    </ConvertBookToDecimal>
+  </members>
+  <members name="laptop">
+    <Laptop>
+      <summary>
+        The Laptop class. Contains the main overloaded operators.
+      </summary>
+    </Laptop>
+    <Name>
+      <value>Gets or sets the name of the model of the laptop.</value>
+    </Name>
+    <Price>
+      <value>Gets or sets the price of the laptop.</value>
+    </Price>
+    <CPUFrequancy>
+      <value>Gets or sets the CPU frequency of the laptop.</value>
+    </CPUFrequancy>
+    <AddOperator>
+      <summary>
+        Adds the two specified laptops.
+      </summary>
+      <param name="laptop1">The first laptop to add.</param>
+      <param name="laptop2">The second laptop to add.</param>
+      <returns>
+        The sum of <paramref name="laptop1"/> and <paramref name="laptop2"/>
+      </returns>
+    </AddOperator>
+    <ConvertLaptopToBook>
+      <summary>
+        Explicitly converts <paramref name="laptop"/> to a <c>Book</c> instance.
+      </summary>
+      <param name="laptop">The laptop to convert.</param>
+      <returns>
+        A new <c>Book</c> instance, basing on the properties of <paramref name="laptop"/>.
+      </returns>
+    </ConvertLaptopToBook>
+    <ConvertLaptopToNotepad>
+      <summary>
+        Explicitly converts <paramref name="laptop"/> to a <c>Notepad</c> instance.
+      </summary>
+      <param name="laptop">The laptop to convert.</param>
+      <returns>
+        A new <c>Notepad</c> instance, basing on the properties of <paramref name="laptop"/>.
+      </returns>
+    </ConvertLaptopToNotepad>
+    <ConvertLaptopToInt32>
+      <summary>
+        Converts the price of <paramref name="laptop"/> expressed in BYN to the equivalent amount of kopeks.
+      </summary>
+      <param name="laptop">The laptop to convert price.</param>
+      <returns>
+        The amount of kopeks equivalent to the price of <paramref name="laptop"/>.
+      </returns>
+    </ConvertLaptopToInt32>
+    <ConvertLaptopToDouble>
+      <summary>
+        Converts <paramref name="laptop"/> to its price in BYN.
+      </summary>
+      <param name="laptop">The laptop to convert.</param>
+      <returns>
+        The price of <paramref name="laptop"/> in BYN.
+      </returns>
+    </ConvertLaptopToDouble>
+  </members>
+  <members name="notepad">
+    <Notepad>
+      <summary>
+        The Notepad class. Contains the main overloaded operators.
+      </summary>
+    </Notepad>
+    <Name>
+      <value>Gets or sets the brand name of the notepad.</value>
+    </Name>
+    <Price>
+      <value>Gets or sets the price of the notepad.</value>
+    </Price>
+    <NumberOfPages>
+      <value>Gets or seta the number of pages of the notepad.</value>
+    </NumberOfPages>
+    <AddOperator>
+      <summary>
+        Adds the two specified notepads.
+      </summary>
+      <param name="notepad1">The first notepad to add.</param>
+      <param name="notepad2">The second notepad to add.</param>
+      <returns>
+        The sum of <paramref name="notepad1"/> and <paramref name="notepad2"/>
+      </returns>
+    </AddOperator>
+    <ConvertNotepadToBook>
+      <summary>
+        Explicitly converts <paramref name="notepad"/> to a <c>Book</c> instance.
+      </summary>
+      <param name="notepad">The notepad to convert.</param>
+      <returns>
+        A new <c>Book</c> instance, basing on the properties of <paramref name="notepad"/>.
+      </returns>
+    </ConvertNotepadToBook>
+    <ConvertNotepadToLaptop>
+      <summary>
+        Explicitly converts <paramref name="notepad"/> to a <c>Laptop</c> instance.
+      </summary>
+      <param name="notepad">The book to convert.</param>
+      <returns>
+        A new <c>Laptop</c> instance, basing on the properties of <paramref name="notepad"/>.
+      </returns>
+    </ConvertNotepadToLaptop>
+    <ConvertNotepadToInt32>
+      <summary>
+        Converts the price of <paramref name="notepad"/> expressed in BYN to the equivalent amount of kopeks.
+      </summary>
+      <param name="notepad">The notepad to convert price.</param>
+      <returns>
+        The amount of kopeks equivalent to the price of <paramref name="notepad"/>.
+      </returns>
+    </ConvertNotepadToInt32>
+    <ConvertNotepadToDouble>
+      <summary>
+        Converts <paramref name="notepad"/> to its price in BYN.
+      </summary>
+      <param name="notepad">The notepad to convert.</param>
+      <returns>
+        The price of <paramref name="notepad"/> in BYN.
+      </returns>
+    </ConvertNotepadToDouble>
   </members>
 </docs>
