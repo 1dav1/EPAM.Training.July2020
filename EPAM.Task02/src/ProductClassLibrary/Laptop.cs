@@ -5,14 +5,36 @@ namespace ProductClassLibrary
     /// <include file='docs.xml' path='docs/members[@name="laptop"]/Laptop/*'/>
     public class Laptop : Product
     {
+        private const int KOPEK = 100;
+
         /// <include file='docs.xml' path='docs/members[@name="laptop"]/Name/*'/>
         public override string Name { get; set; }
 
+        private decimal _price;
         /// <include file='docs.xml' path='docs/members[@name="laptop"]/Price/*'/>
-        public override decimal Price { get; set; }
+        public override decimal Price 
+        { 
+            get => _price;
+            set 
+            { 
+                if (value < 0) 
+                    throw new ArgumentOutOfRangeException("Price should be positive.");
+                _price = value;
+            } 
+        }
 
+        double _cpuFrequancy;
         /// <include file='docs.xml' path='docs/members[@name="laptop"]/CPUFrequancy/*'/>
-        public double CPUFrequancy { get; set; }
+        public double CPUFrequancy 
+        { 
+            get => _cpuFrequancy; 
+            set
+            {
+                if (value < 0)
+                    throw new ArgumentOutOfRangeException("CPU frequancy should be positive.");
+                _cpuFrequancy = value;
+            }
+        }
 
         /// <include file='docs.xml' path='docs/members[@name="laptop"]/AddOperator/*'/>
         public static Laptop operator +(Laptop laptop1, Laptop laptop2)
@@ -23,38 +45,39 @@ namespace ProductClassLibrary
                 CPUFrequancy = (laptop1.CPUFrequancy + laptop2.CPUFrequancy) / 2,
             };
 
-        /// <include file='docs.xml' path='docs/members[@name="laptop"]/ConvertLaptopToBook/*'/>
-        //public static explicit operator Book(Laptop laptop)
-        //    => new Book
-        //    {
-        //        Name = laptop.Name,
-        //        Price = laptop.Price,
-        //        Author = "n/a",
-        //        NumberOfPages = 0,
-        //    };
-
-        /// <include file='docs.xml' path='docs/members[@name="laptop"]/ConvertLaptopToNotepad/*'/>
-        public static explicit operator Notepad(Laptop laptop)
-            => new Notepad
+        /// <include file='docs.xml' path='docs/members[@name="laptop"]/ConvertBookToLaptop/*'/>
+        public static explicit operator Laptop(Book book)
+            => new Laptop
             {
-                Name = laptop.Name,
-                Price = laptop.Price,
-                NumberOfPages = 0,
+                Name = book.Name,
+                Price = book.Price,
+                CPUFrequancy = 0,
+            };
+
+        /// <include file='docs.xml' path='docs/members[@name="laptop"]/ConvertNotepadToLaptop/*'/>
+        public static explicit operator Laptop(Notepad notepad)
+            => new Laptop
+            {
+                Name = notepad.Name,
+                Price = notepad.Price,
+                CPUFrequancy = 0,
             };
 
         /// <include file='docs.xml' path='docs/members[@name="laptop"]/ConvertLaptopToInt32/*'/>
         public static explicit operator int(Laptop laptop)
-            => Convert.ToInt32(laptop.Price) * 100;
+            => Convert.ToInt32(laptop.Price) * KOPEK;
 
         /// <include file='docs.xml' path='docs/members[@name="laptop"]/ConvertLaptopToDouble/*'/>
         public static explicit operator decimal(Laptop laptop)
             => laptop.Price;
 
+        /// <include file='docs.xml' path='docs/members[@name="laptop"]/Equals/*'/>
         public override bool Equals(object obj)
         {
             throw new NotImplementedException();
         }
 
+        /// <include file='docs.xml' path='docs/members[@name="laptop"]/GetHashCode/*'/>
         public override int GetHashCode()
         {
             throw new NotImplementedException();

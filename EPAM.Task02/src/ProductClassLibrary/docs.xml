@@ -81,7 +81,7 @@
       <summary>
         Compares the current book to the specified object for equality.
       </summary>
-      <param name="obj">The object to compare with the current vector.</param>
+      <param name="obj">The object to compare with the current book.</param>
       <returns>
         <c>true</c> if <paramref name="obj"/> and the current book refer to the same object or if <paramref name="obj"/> is a book and all the properties of the current book and <paramref name="obj"/> are equal; otherwise, <c>false</c>.
       </returns>
@@ -120,24 +120,24 @@
         The sum of <paramref name="laptop1"/> and <paramref name="laptop2"/>
       </returns>
     </AddOperator>
-    <ConvertLaptopToBook>
+    <ConvertBookToLaptop>
       <summary>
-        Explicitly converts <paramref name="laptop"/> to a <c>Book</c> instance.
+        Explicitly converts <paramref name="book"/> to a <c>Laptop</c> instance.
       </summary>
-      <param name="laptop">The laptop to convert.</param>
+      <param name="book">The book to convert.</param>
       <returns>
-        A new <c>Book</c> instance, basing on the properties of <paramref name="laptop"/>.
+        A new <c>Laptop</c> instance, basing on the properties of <paramref name="book"/>.
       </returns>
-    </ConvertLaptopToBook>
-    <ConvertLaptopToNotepad>
+    </ConvertBookToLaptop>
+    <ConvertNotepadToLaptop>
       <summary>
-        Explicitly converts <paramref name="laptop"/> to a <c>Notepad</c> instance.
+        Explicitly converts <paramref name="notepad"/> to a <c>Laptop</c> instance.
       </summary>
-      <param name="laptop">The laptop to convert.</param>
+      <param name="notepad">The notepad to convert.</param>
       <returns>
-        A new <c>Notepad</c> instance, basing on the properties of <paramref name="laptop"/>.
+        A new <c>Laptop</c> instance, basing on the properties of <paramref name="notepad"/>.
       </returns>
-    </ConvertLaptopToNotepad>
+    </ConvertNotepadToLaptop>
     <ConvertLaptopToInt32>
       <summary>
         Converts the price of <paramref name="laptop"/> expressed in BYN to the equivalent amount of kopeks.
@@ -156,6 +156,23 @@
         The price of <paramref name="laptop"/> in BYN.
       </returns>
     </ConvertLaptopToDouble>
+    <Equals>
+      <summary>
+        Compares the current laptop to the specified object for equality.
+      </summary>
+      <param name="obj">The object to compare with the current laptop.</param>
+      <returns>
+        <c>true</c> if <paramref name="obj"/> and the current laptop refer to the same object or if <paramref name="obj"/> is a laptop and all the properties of the current laptop and <paramref name="obj"/> are equal; otherwise, <c>false</c>.
+      </returns>
+    </Equals>
+    <GetHashCode>
+      <summary>
+        Returns the hash code for the current laptop.
+      </summary>
+      <returns>
+        The hash code for the current instance.
+      </returns>
+    </GetHashCode>
   </members>
   <members name="notepad">
     <Notepad>
