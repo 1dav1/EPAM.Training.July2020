@@ -4,6 +4,7 @@ namespace ShapeClassLibrary
 {
     public class FilmCircle : Shape, IFilm
     {
+        public override int Id { get; set; }
         public double Radius { get; set; }
 
         public FilmCircle() { }
@@ -23,7 +24,8 @@ namespace ShapeClassLibrary
             Radius = parameters[0];
         }
 
-        public double GetCircumference()
+        // circumference of the circle
+        public override double GetPerimeter()
             => 2 * Math.PI * Radius;
 
         public override double GetArea()
