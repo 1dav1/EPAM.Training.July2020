@@ -7,26 +7,53 @@ namespace PersonClassLibrary
 {
     public class Scissors
     {
+
+        public Shape Cut(IPaper paper, params double[] parameters)
+        {
+            switch(parameters.Length)
+            {
+                case 1: return new PaperCircle(parameters);
+                case 2: return new PaperRectangle(parameters);
+                case 3: return new PaperTriangle(parameters);
+                default: throw new ArgumentOutOfRangeException("Wrong number of parameters.");
+            }
+        }
+
+        public Shape Cut(IFilm paper, params double[] parameters)
+        {
+            switch (parameters.Length)
+            {
+                case 1: return new PaperCircle(parameters);
+                case 2: return new PaperRectangle(parameters);
+                case 3: return new PaperTriangle(parameters);
+                default: throw new ArgumentOutOfRangeException("Wrong number of parameters.");
+            }
+        }
+
+
         public Shape Cut(Shape shape, params double[] parameters)
         {
-            Shape shape1;
-            if (shape is IFilm)
-            { 
-                IFilm resultShape = new Shape();
-                shape1 = (Shape)resultShape;
+            if (shape is IPaper)
+            {
+                switch (parameters.Length)
+                {
+                    case 1: return new PaperCircle(parameters);
+                    case 2: return new PaperRectangle(parameters);
+                    case 3: return new PaperTriangle(parameters);
+                    default: throw new ArgumentOutOfRangeException("Wrong number of parameters.");
+                }
             }
+
             else
             {
-                IPaper resultShape = new Shape();
-                shape1 = (Shape)resultShape;
+                switch (parameters.Length)
+                {
+                    case 1: return new FilmCircle(parameters);
+                    case 2: return new FilmRectangle(parameters);
+                    case 3: return new FilmTriangle(parameters);
+                    default: throw new ArgumentOutOfRangeException("Wrong number of parameters.");
+                }
             }
-
-            if (shape.GetArea() < shape1.GetArea())
-            {
-                throw new Exception("Cutting a shape of a bigger area is not possible.");
-            }
-
-            return shape1;
         }
     }
 }

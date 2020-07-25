@@ -5,34 +5,46 @@ namespace PersonClassLibrary
 {
     public class Person
     {
-        public Scissors Scissors { get; set; }
+        private Scissors Scissors { get; set; }
 
-        public Brush Brush { get; private set; }
+        private Brush Brush { get; set; }
 
-        public IPaper Paper { get; set; }
-
-        public IFilm Film { get; set; }
-
+        private Box Box { get; set; }
 
         public Person()
         {
-            Paper = new Shape();
-            Film = new Shape();
+            Scissors = new Scissors();
+            Brush = new Brush();
+            Box = new Box();
         }
 
-        public void TakeBrush(Brush brush)
+        public void SetColor(Colors color)
         {
-            Brush = brush;
+            Brush.Color = color;
         }
 
-        public void TakeScissors(Scissors scissors)
-        {
-            Scissors = scissors;
-        }
-
-        public Shape GetShape(Shape shape, params double[] parameters)
+        public Shape ColorShape(Shape shape)
         {
 
+            if (shape is IPaper paper)
+            {
+                paper.Color = Brush.Color;
+                return shape;
+            }
+
+            throw new Exception("Film shapes cannot be colored.");
         }
+
+        public Shape CutShape(IPaper material, params double[] parameters)
+            => Scissors.Cut(material, parameters);
+
+        public Shape CutShape(IFilm material, params double[] parameters)
+            => Scissors.Cut(material, parameters);
+
+        public Shape CutShapeFromShape(Shape shape, params double[] parameters)
+            => Scissors.Cut(shape, parameters);
+
+
+        
     }
 }
