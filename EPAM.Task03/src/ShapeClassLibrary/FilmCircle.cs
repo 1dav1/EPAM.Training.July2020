@@ -1,7 +1,9 @@
 ﻿using System;
+using System.Runtime.Serialization;
 
 namespace ShapeClassLibrary
 {
+    [Serializable]
     public class FilmCircle : Shape, IFilm
     {
         public override int Id { get; set; }

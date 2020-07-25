@@ -1,7 +1,9 @@
 ﻿using System;
+using System.Runtime.Serialization;
 
 namespace ShapeClassLibrary
 {
+    [Serializable]
     public class PaperRectangle : Shape, IPaper
     {
         public override int Id { get; set; }
