@@ -30,7 +30,6 @@ namespace PersonClassLibrary
             }
         }
 
-
         public Shape Cut(Shape shape, params double[] parameters)
         {
             if (shape is IPaper)

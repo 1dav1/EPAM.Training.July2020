@@ -43,8 +43,5 @@ namespace PersonClassLibrary
 
         public Shape CutShapeFromShape(Shape shape, params double[] parameters)
             => Scissors.Cut(shape, parameters);
-
-
-        
     }
 }
