@@ -1,7 +1,11 @@
 ﻿using ShapeClassLibrary;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Text;
+using System.Xml;
+using System.Xml.Serialization;
 
 namespace PersonClassLibrary
 {
@@ -110,5 +114,20 @@ namespace PersonClassLibrary
             => from s in Shapes
                where s is IFilm
                select s;
+
+        public void SaveAllToXml(string file)
+        {
+            //XmlDocument xmlDocument = new XmlDocument();
+            //xmlDocument.
+            //using(StreamWriter streamWriter = new StreamWriter(path, false, Encoding.GetEncoding("iso-8859-7")))
+            //{
+
+            //}
+
+            XmlSerializer xmlSerializer = new XmlSerializer(typeof(IEnumerable<Shape>));
+
+            using TextWriter textWriter = new StreamWriter(file);
+            xmlSerializer.Serialize(textWriter, Shapes);
+        }
     }
 }
