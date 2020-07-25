@@ -115,19 +115,41 @@ namespace PersonClassLibrary
                where s is IFilm
                select s;
 
-        public void SaveAllToXml(string file)
+        public void WriteAllToXmlStreamWriter(string file)
         {
-            //XmlDocument xmlDocument = new XmlDocument();
-            //xmlDocument.
-            //using(StreamWriter streamWriter = new StreamWriter(path, false, Encoding.GetEncoding("iso-8859-7")))
-            //{
-
-            //}
-
             XmlSerializer xmlSerializer = new XmlSerializer(typeof(IEnumerable<Shape>));
 
             using TextWriter textWriter = new StreamWriter(file);
             xmlSerializer.Serialize(textWriter, Shapes);
+        }
+
+        public void WritePaperToXmlStreamWriter(string file)
+        {
+            var paperShapes = from s in Shapes
+                              where s is IPaper
+                              select s;
+
+            XmlSerializer xmlSerializer = new XmlSerializer(typeof(IEnumerable<Shape>));
+
+            using TextWriter textWriter = new StreamWriter(file);
+            xmlSerializer.Serialize(textWriter, paperShapes);
+        }
+
+        public void WriteFilmToXmlStreamWriter(string file)
+        {
+            var filmShapes = from s in Shapes
+                             where s is IFilm
+                             select s;
+
+            XmlSerializer xmlSerializer = new XmlSerializer(typeof(IEnumerable<Shape>));
+
+            using TextWriter textWriter = new StreamWriter(file);
+            xmlSerializer.Serialize(textWriter, filmShapes);
+        }
+
+        public void WriteAllToXmlXmlWriter(string file)
+        {
+            using XmlWriter xmlWriter = XmlWriter.Create(file);
         }
     }
 }
