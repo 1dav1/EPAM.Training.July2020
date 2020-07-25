@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Drawing;
-using System.Text;
-
-namespace ShapeClassLibrary
+﻿namespace ShapeClassLibrary
 {
     public enum Colors
     {
+        None,
         Red,
         Blue,
         Green,
