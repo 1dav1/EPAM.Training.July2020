@@ -4,6 +4,7 @@ namespace ShapeClassLibrary
 {
     public class FilmRectangle : Shape, IFilm
     {
+        public override int Id { get; set; }
         public double Height { get; set; }
 
         public double Width { get; set; }
@@ -27,7 +28,7 @@ namespace ShapeClassLibrary
             Width = paramaters[1];
         }
 
-        public double GetPerimeter()
+        public override double GetPerimeter()
            => (Height + Width) * 2;
 
         public override double GetArea()

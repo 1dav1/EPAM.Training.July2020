@@ -4,6 +4,7 @@ namespace ShapeClassLibrary
 {
     public class PaperTriangle : Shape, IPaper
     {
+        public override int Id { get; set; }
         public double Side1 { get; set; }
 
         public double Side2 { get; set; }
@@ -35,7 +36,7 @@ namespace ShapeClassLibrary
             Side3 = parameters[2];
         }
 
-        public double GetPerimeter()
+        public override double GetPerimeter()
             => Side1 + Side2 + Side3;
 
         public override double GetArea()

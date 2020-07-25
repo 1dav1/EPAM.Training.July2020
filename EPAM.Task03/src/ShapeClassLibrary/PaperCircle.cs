@@ -4,6 +4,7 @@ namespace ShapeClassLibrary
 {
     public class PaperCircle : Shape, IPaper
     {
+        public override int Id { get; set; }
         public double Radius { get; set; }
 
         public Colors Color { get; set; }
@@ -24,7 +25,7 @@ namespace ShapeClassLibrary
             Radius = parameters[0];
         }
 
-        public double GetCircumference()
+        public override double GetPerimeter()
             => 2 * Math.PI * Radius;
 
         public override double GetArea()
