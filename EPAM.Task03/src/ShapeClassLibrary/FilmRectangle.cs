@@ -27,7 +27,10 @@ namespace ShapeClassLibrary
             Width = paramaters[1];
         }
 
+        public double GetPerimeter()
+           => (Height + Width) * 2;
+
         public override double GetArea()
-        => Height * Width;
+           => Height * Width;
     }
 }

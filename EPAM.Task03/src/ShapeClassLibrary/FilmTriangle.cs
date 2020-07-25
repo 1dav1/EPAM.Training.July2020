@@ -33,6 +33,9 @@ namespace ShapeClassLibrary
             Side3 = parameters[2];
         }
 
+        public double GetPerimeter()
+            => Side1 + Side2 + Side3;
+
         public override double GetArea()
         {
             double p = (Side1 + Side2 + Side3) / 2;

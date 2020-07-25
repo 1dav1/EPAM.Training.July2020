@@ -24,6 +24,9 @@ namespace ShapeClassLibrary
             Radius = parameters[0];
         }
 
+        public double GetCircumference()
+            => 2 * Math.PI * Radius;
+
         public override double GetArea()
             => Math.PI * Math.Pow(Radius, 2);
     }

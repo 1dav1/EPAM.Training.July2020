@@ -6,6 +6,7 @@ namespace ShapeClassLibrary
     {
         //public abstract Shape() { }
         //public abstract Shape(Shape parentShape, params double[] parameters);
+
         public abstract double GetArea();
     }
 }
