@@ -2,13 +2,10 @@
 
 namespace ShapeClassLibrary
 {
-    public class Shape : IFilm, IPaper
+    public abstract class Shape
     {
-        public Colors Color { get; set; }
-
-        public double? GetArea()
-        {
-            return null;
-        }
+        //public abstract Shape() { }
+        //public abstract Shape(Shape parentShape, params double[] parameters);
+        public abstract double GetArea();
     }
 }

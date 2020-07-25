@@ -7,9 +7,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{9620607F-E6A
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{9D1850CD-3DC7-4764-860A-B33596A966BE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PersonClassLibrary", "src\PersonClassLibrary\PersonClassLibrary.csproj", "{3C591E51-3EB9-419B-9895-8DD0B7017DF2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PersonClassLibrary", "src\PersonClassLibrary\PersonClassLibrary.csproj", "{3C591E51-3EB9-419B-9895-8DD0B7017DF2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShapeClassLibrary", "src\ShapeClassLibrary\ShapeClassLibrary.csproj", "{297DED9F-20F2-4ADA-AACA-86B2A3C4BABF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ShapeClassLibrary", "src\ShapeClassLibrary\ShapeClassLibrary.csproj", "{297DED9F-20F2-4ADA-AACA-86B2A3C4BABF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
