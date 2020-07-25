@@ -35,10 +35,22 @@ namespace ShapeClassLibrary
             Side3 = parameters[2];
         }
 
+        public double GetPerimeter()
+            => Side1 + Side2 + Side3;
+
         public override double GetArea()
         {
             double p = (Side1 + Side2 + Side3) / 2;
             return Math.Sqrt(p * (p - Side1) * (p - Side2) * (p - Side3));
+        }
+
+        public override bool Equals(object obj)
+        {
+            return (obj is PaperTriangle paperTriangle && 
+                paperTriangle.Side1 == Side1 &&
+                paperTriangle.Side2 == Side2 &&
+                paperTriangle.Side3 == Side3 &&
+                paperTriangle.Color == Color);
         }
     }
 }
