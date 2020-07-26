@@ -22,10 +22,20 @@ namespace PersonClassLibrary
             if (shape is null)
                 throw new ArgumentNullException();
 
+            if (Shapes.Count() == 20)
+                throw new Exception("The box is full.");
+
             List<Shape> shapes = Shapes.ToList();
 
-            if (shapes.Count == 20)
-                throw new Exception("The box is full.");
+            // trying to find a shape with this ID in the box
+            var sameShape = (from s in Shapes
+                            where s.Id == shape.Id
+                            select s).ToList();
+            // if a shape with the same id is found, throw exception
+            if (sameShape.Count != 0)
+            {
+                throw new Exception("The ID of the shape to push is not unique.");
+            }
 
             shapes.Add(shape);
             Shapes = shapes;
@@ -37,15 +47,10 @@ namespace PersonClassLibrary
                         where s.Id == id
                         select s;
 
-            // if id is unique and only one shape is found
             if (shape.Count() == 1)
                 return shape.First();
 
-            if (shape.Count() == 0)
-                throw new Exception("The shape is not found.");
-
-            // otherwise throw exception
-            throw new Exception("The ID is not unique.");
+            throw new Exception("The shape is not found.");
         }
 
         public Shape PullShapeById(int id)
@@ -54,10 +59,9 @@ namespace PersonClassLibrary
                         where s.Id == id
                         select s;
 
-            // if ID is unique and only one shape is found
             if (shape.Count() == 1)
             {
-                // select all the shapes in the collection except the shape specified by id 
+                // pass to the collection of shapes the old collection except the shape specified by id 
                 Shapes = from s in Shapes
                          where s.Id != id
                          select s;
@@ -66,8 +70,7 @@ namespace PersonClassLibrary
                 return shape.First();
             }
 
-            // otherwise throw exception
-            throw new Exception("The ID is not unique.");
+            throw new Exception("The shape is not found.");
         }
 
         public void ReplaceById(Shape shape, int id)
@@ -83,7 +86,6 @@ namespace PersonClassLibrary
                          where s.Id == id
                          select s;
 
-            // if ID is unique and only one item is found
             if (shapes.Count() == 1)
             {
                 // get the Shape object
@@ -98,8 +100,7 @@ namespace PersonClassLibrary
                 Shapes = listOfShapes;
             }
             else
-                // otherwise throw exception
-                throw new Exception("The ID is not unique.");
+                throw new Exception("The shape is not found.");
         }
 
         public IEnumerable<Shape> FindByTemplate(Shape template)
