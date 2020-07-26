@@ -46,5 +46,16 @@ namespace ShapeClassLibrary
             double p = (Side1 + Side2 + Side3) / 2;
             return Math.Sqrt(p * (p - Side1) * (p - Side2) * (p - Side3));
         }
+
+        public override bool Equals(object obj)
+        {
+            if (ReferenceEquals(obj, this))
+                return true;
+
+            return obj is FilmTriangle filmTriangle &&
+                   filmTriangle.Side1 == Side1 &&
+                   filmTriangle.Side2 == Side2 &&
+                   filmTriangle.Side3 == Side3;
+        }
     }
 }

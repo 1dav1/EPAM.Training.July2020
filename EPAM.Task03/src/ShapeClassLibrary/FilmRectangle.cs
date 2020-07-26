@@ -37,5 +37,17 @@ namespace ShapeClassLibrary
 
         public override double GetArea()
            => Height * Width;
+
+        public override bool Equals(object obj)
+        {
+            if (ReferenceEquals(obj, this))
+                return true;
+
+            return obj is PaperRectangle paperRectangle &&
+                   paperRectangle.Id == Id &&
+                 ((paperRectangle.Height == Height && paperRectangle.Width == Width) ||           // if any pairs of equal sides
+                  (paperRectangle.Height == Width && paperRectangle.Width == Height));
+        }
+
     }
 }
