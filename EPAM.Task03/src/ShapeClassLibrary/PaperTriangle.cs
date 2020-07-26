@@ -51,11 +51,14 @@ namespace ShapeClassLibrary
 
         public override bool Equals(object obj)
         {
-            return (obj is PaperTriangle paperTriangle && 
-                paperTriangle.Side1 == Side1 &&
-                paperTriangle.Side2 == Side2 &&
-                paperTriangle.Side3 == Side3 &&
-                paperTriangle.Color == Color);
+            if (ReferenceEquals(obj, this))
+                return true;
+
+            return obj is PaperTriangle paperTriangle &&
+                   paperTriangle.Side1 == Side1 &&
+                   paperTriangle.Side2 == Side2 &&
+                   paperTriangle.Side3 == Side3 &&
+                   paperTriangle.Color == Color;
         }
     }
 }

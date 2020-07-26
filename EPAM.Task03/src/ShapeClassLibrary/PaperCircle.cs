@@ -34,5 +34,17 @@ namespace ShapeClassLibrary
 
         public override double GetArea()
             => Math.PI * Math.Pow(Radius, 2);
+
+        public override bool Equals(object obj)
+        {
+            if (ReferenceEquals(obj, this))
+                return true;
+
+            return obj is PaperCircle paperCircle &&
+                paperCircle.Id == Id &&
+                paperCircle.Radius == Radius &&
+                paperCircle.Color == Color;
+        }
+
     }
 }
