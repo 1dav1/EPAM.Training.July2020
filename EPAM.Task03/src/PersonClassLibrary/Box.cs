@@ -19,14 +19,16 @@ namespace PersonClassLibrary
 
         public void PushShape(Shape shape)
         {
-            List<Shape> shapes = Shapes.ToList();
-            if (shapes.Count < 20)
-            {
-                shapes.Add(shape);
-                Shapes = shapes;
-            }
+            if (shape is null)
+                throw new ArgumentNullException();
 
-            throw new Exception("The box is full.");
+            List<Shape> shapes = Shapes.ToList();
+
+            if (shapes.Count == 20)
+                throw new Exception("The box is full.");
+
+            shapes.Add(shape);
+            Shapes = shapes;
         }
 
         public Shape FindById(int id)
@@ -38,6 +40,9 @@ namespace PersonClassLibrary
             // if id is unique and only one shape is found
             if (shape.Count() == 1)
                 return shape.First();
+
+            if (shape.Count() == 0)
+                throw new Exception("The shape is not found.");
 
             // otherwise throw exception
             throw new Exception("The ID is not unique.");
@@ -67,6 +72,9 @@ namespace PersonClassLibrary
 
         public void ReplaceById(Shape shape, int id)
         {
+            if (shape is null)
+                throw new ArgumentNullException();
+
             // convert IEnumerable to List to be able to find an index of the item with the specified ID
             List<Shape> listOfShapes = Shapes.ToList();
 
@@ -96,6 +104,9 @@ namespace PersonClassLibrary
 
         public IEnumerable<Shape> FindByTemplate(Shape template)
         {
+            if (template is null)
+                throw new ArgumentNullException();
+
             // convert into List to be able to use FindAll() method
             List<Shape> listOfShapes = Shapes.ToList();
             return listOfShapes.FindAll(s => s.Equals(template));
@@ -124,6 +135,9 @@ namespace PersonClassLibrary
 
         public void WriteAllToXmlStreamWriter(string file)
         {
+            if (file is null)
+                throw new ArgumentNullException();
+
             XmlSerializer xmlSerializer = new XmlSerializer(typeof(List<Shape>));
 
             using TextWriter textWriter = new StreamWriter(file);
@@ -132,6 +146,9 @@ namespace PersonClassLibrary
 
         public void WritePaperToXmlStreamWriter(string file)
         {
+            if (file is null)
+                throw new ArgumentNullException();
+
             var paperShapes = (from s in Shapes
                                where s is IPaper
                                select s).ToList();
@@ -144,6 +161,9 @@ namespace PersonClassLibrary
 
         public void WriteFilmToXmlStreamWriter(string file)
         {
+            if (file is null)
+                throw new ArgumentNullException();
+
             var filmShapes = (from s in Shapes
                               where s is IFilm
                               select s).ToList();
@@ -156,6 +176,9 @@ namespace PersonClassLibrary
 
         public void WriteAllToXmlXmlWriter(string file)
         {
+            if (file is null)
+                throw new ArgumentNullException();
+
             XmlSerializer xmlSerializer = new XmlSerializer(typeof(List<Shape>));
             XmlWriterSettings settings = new XmlWriterSettings
             {
@@ -168,6 +191,9 @@ namespace PersonClassLibrary
 
         public void WritePaperToXmlXmlWriter(string file)
         {
+            if (file is null)
+                throw new ArgumentNullException();
+
             var paperShapes = (from s in Shapes
                                where s is IPaper
                                select s).ToList();
@@ -183,6 +209,9 @@ namespace PersonClassLibrary
 
         public void WriteFilmToXmlXmlWriter(string file)
         {
+            if (file is null)
+                throw new ArgumentNullException();
+
             var filmShapes = (from s in Shapes
                               where s is IFilm
                               select s).ToList();
@@ -198,6 +227,9 @@ namespace PersonClassLibrary
 
         public void ReadAllFromXmlStreamReader(string file)
         {
+            if (file is null)
+                throw new ArgumentNullException();
+
             XmlSerializer serializer = new XmlSerializer(typeof(List<Shape>));
             using StreamReader reader = new StreamReader(file);
             List<Shape> list = (List<Shape>)serializer.Deserialize(reader);
@@ -207,6 +239,9 @@ namespace PersonClassLibrary
 
         public void ReadAllFromXmlXmlReader(string file)
         {
+            if (file is null)
+                throw new ArgumentNullException();
+
             XmlSerializer xmlSerializer = new XmlSerializer(typeof(List<Shape>));
             using XmlReader xmlReader = XmlReader.Create(file);
             List<Shape> shapes = (List<Shape>)xmlSerializer.Deserialize(xmlReader);
