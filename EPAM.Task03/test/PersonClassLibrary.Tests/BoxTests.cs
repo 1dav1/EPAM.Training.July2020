@@ -10,6 +10,7 @@ namespace PersonClassLibrary.Tests
     public class BoxTests
     {
         const int MAX_CAPACITY = 20;
+        const string FILE = "test.xml";
 
         readonly Shape paperCircle = new PaperCircle { Id = 3, Radius = 12.1, Color = Colors.Grey, };
         readonly Shape paperTriangle = new PaperTriangle { Id = 31, Side1 = 10, Side2 = 10, Side3 = 10, Color = Colors.White };
@@ -199,6 +200,228 @@ namespace PersonClassLibrary.Tests
 
             // Assert
             action.Should().Throw<ArgumentNullException>();
+        }
+
+        [Fact]
+        public void FindByTemplate_IfCollectionContainsTargetShape_ShouldReturnShape()
+        {
+            // Arrange
+            Box box = new Box();
+            box.PushShape(paperTriangle);
+            box.PushShape(filmRectangle);
+            box.PushShape(paperCircle);
+
+            Shape template = paperTriangle;
+
+            // Act
+            List<Shape> shapes = (List<Shape>)box.FindByTemplate(template);
+
+            // Assert
+            shapes.Should().NotBeEmpty();
+            shapes[0].Should().Be(template);
+        }
+
+        [Fact]
+        public void FindByTemplate_IfCollectionDoesNotContainTargetShape_ResultShouldBeEmpty()
+        {
+            // Arrange
+            Box box = new Box();
+            box.PushShape(paperTriangle);
+            box.PushShape(filmRectangle);
+            box.PushShape(paperCircle);
+
+            Shape template = new FilmCircle { Id = 11, Radius = 1, };
+
+            // Act
+            List<Shape> shapes = (List<Shape>)box.FindByTemplate(template);
+
+            // Assert
+            shapes.Should().BeEmpty();
+        }
+
+        [Fact]
+        public void Count_ShouldReturnNumberOfShapesInBox()
+        {
+            // Arrange - Act
+            Box box = new Box();
+            box.PushShape(paperTriangle);
+            box.PushShape(filmRectangle);
+            box.PushShape(paperCircle);
+
+            Box zeroBox = new Box();
+
+            // Assert
+            box.Count().Should().Be(3);
+            zeroBox.Count().Should().Be(0);
+        }
+
+        [Fact]
+        public void GetTotalArea_ShouldReturnCorrectResult()
+        {
+            // Arrange - Act
+            Box box = new Box();
+            PaperTriangle triangle = (PaperTriangle)paperTriangle;
+            FilmRectangle rectangle = (FilmRectangle)filmRectangle;
+            PaperCircle circle = (PaperCircle)paperCircle;
+
+            box.PushShape(paperTriangle);
+            box.PushShape(filmRectangle);
+            box.PushShape(paperCircle);
+
+            double p = (triangle.Side1 + triangle.Side2 + triangle.Side3) / 2;
+            double triangleArea = Math.Sqrt(p * (p - triangle.Side1) * (p - triangle.Side2) * (p - triangle.Side3));
+            double rectangleArea = rectangle.Height * rectangle.Width;
+            double circleArea = Math.PI * Math.Pow(circle.Radius, 2);
+
+            Box zeroBox = new Box();
+
+            // Assert
+            box.GetTotalArea().Should().Be(triangleArea + rectangleArea + circleArea);
+            zeroBox.GetTotalArea().Should().Be(0);
+        }
+
+        [Fact]
+        public void GetTotalPerimeter_ShouldReturnCorrectResult()
+        {
+            // Arrange - Act
+            Box box = new Box();
+            PaperTriangle triangle = (PaperTriangle)paperTriangle;
+            FilmRectangle rectangle = (FilmRectangle)filmRectangle;
+            PaperCircle circle = (PaperCircle)paperCircle;
+
+            box.PushShape(paperTriangle);
+            box.PushShape(filmRectangle);
+            box.PushShape(paperCircle);
+
+            double trianglePerimeter = triangle.Side1 + triangle.Side2 + triangle.Side3;
+            double rectanglePerimeter = (rectangle.Height + rectangle.Width) * 2;
+            double circumference = 2 * Math.PI * circle.Radius;
+
+            Box zeroBox = new Box();
+
+            // Assert
+            box.GetTotalPerimeter().Should().Be(trianglePerimeter + rectanglePerimeter + circumference);
+            zeroBox.GetTotalPerimeter().Should().Be(0);
+        }
+
+        [Fact]
+        public void PullCircles_IfBoxContainsCircles_ShouldReturnCircles()
+        {
+            // Arrange
+            Box box = new Box();
+            box.PushShape(paperTriangle);
+            box.PushShape(filmCircle);
+            box.PushShape(paperRectangle);
+
+            // Act
+            List<Shape> shapes = (List<Shape>)box.PullCircles();
+            Shape circleInBox = box.Shapes.ToList().Find(c => c.Id == filmCircle.Id);
+
+            // Assert
+            shapes.Should().NotBeEmpty();
+            shapes[0].Should().Be(filmCircle);
+            circleInBox.Should().BeNull();
+        }
+
+        [Fact]
+        public void PullCircles_IfBoxDoesNotContainCircles_ShouldReturnEmptyResult()
+        {
+            // Arrange
+            Box box = new Box();
+            box.PushShape(paperTriangle);
+            box.PushShape(filmRectangle);
+            box.PushShape(paperRectangle);
+
+            // Act
+            List<Shape> shapes = (List<Shape>)box.PullCircles();
+
+            // Assert
+            shapes.Should().BeEmpty();
+        }
+
+        [Fact]
+        public void PullFilmShapes_IfBoxContainsShapesOfFilm_ShouldReturnShapesOfFilm()
+        {
+            // Arrange
+            Box box = new Box();
+            box.PushShape(paperTriangle);
+            box.PushShape(filmRectangle);
+            box.PushShape(paperRectangle);
+
+            // Act
+            List<Shape> shapes = (List<Shape>)box.PullFilmShapes();
+            Shape filmInBox = box.Shapes.ToList().Find(c => c.Id == filmRectangle.Id);
+
+            // Assert
+            shapes.Should().NotBeEmpty();
+            shapes[0].Should().Be(filmRectangle);
+            filmInBox.Should().BeNull();
+        }
+
+        [Fact]
+        public void PullFilmShapes_IfBoxDoesNotContainShapesOfFilm_ShouldReturnEmptyResult()
+        {
+            // Arrange
+            Box box = new Box();
+            box.PushShape(paperTriangle);
+            box.PushShape(paperCircle);
+            box.PushShape(paperRectangle);
+
+            // Act
+            List<Shape> shapes = (List<Shape>)box.PullFilmShapes();
+
+            // Assert
+            shapes.Should().BeEmpty();
+        }
+
+        [Fact]
+        public void WriteAllToXmlStreamWriter_IfFileNameIsNotNull_ShouldWriteToXml()
+        {
+            // Arrange
+            Box box = new Box();
+            box.PushShape(paperTriangle);
+            Box readBox = new Box();
+
+            // Act
+            box.WriteAllToXmlStreamWriter(FILE);
+            readBox.ReadAllFromXmlXmlReader(FILE);
+
+            // Assert
+            readBox.Shapes.ToList()[0].Should().Be(paperTriangle);
+        }
+
+        [Fact]
+        public void WritePaperToXmlStreamWriter_IfFileNameIsNotNull_ShouldWriteToXml()
+        {
+            // Arrange
+            Box box = new Box();
+            box.PushShape(paperTriangle);
+            box.PushShape(filmTriangle);
+            box.PushShape(paperCircle);
+            Box readBox = new Box();
+
+            // Act
+            box.WritePaperToXmlStreamWriter(FILE);
+            readBox.ReadAllFromXmlXmlReader(FILE);
+
+            // Assert
+            readBox.Shapes.ToList()[0].Should().Be(paperTriangle);
+        }
+
+        [Fact]
+        public void WriteAllToXmlXmlWriter_IfFileNameIsNotNull_ShouldWriteToXml()
+        {
+            // Arrange
+            Box box = new Box();
+            box.PushShape(paperTriangle);
+            Box readBox = new Box();
+
+            // Act
+            box.WriteAllToXmlXmlWriter(FILE);
+            readBox.ReadAllFromXmlStreamReader(FILE);
+
+            // Assert
+            readBox.Shapes.ToList()[0].Should().Be(paperTriangle);
         }
     }
 }
