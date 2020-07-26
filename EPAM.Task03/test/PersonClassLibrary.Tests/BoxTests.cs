@@ -19,7 +19,6 @@ namespace PersonClassLibrary.Tests
         readonly Shape filmRectangle = new FilmRectangle { Id = 12, Height = 300, Width = 700, };
         readonly Shape filmTriangle = new FilmTriangle { Id = 5, Side1 = 15, Side2 = 15, Side3 = 15, };
 
-
         [Fact]
         public void PushShape_IfShapeIsNotNull_ListOfShapesShouldNotBeEmpty()
         {
