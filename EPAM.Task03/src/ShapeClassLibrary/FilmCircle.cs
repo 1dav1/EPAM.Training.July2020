@@ -1,21 +1,43 @@
 ﻿using System;
-using System.Runtime.Serialization;
 using System.Xml.Serialization;
 
 namespace ShapeClassLibrary
 {
     [Serializable]
     [XmlType("FilmCircle")]
-
     public class FilmCircle : Shape, IFilm
     {
-        public override int Id { get; set; }
-        public double Radius { get; set; }
+        private int _id;
+        public override int Id
+        {
+            get => _id;
+            set
+            {
+                if (value <= 0)
+                    throw new ArgumentOutOfRangeException();
+                _id = value;
+            }
+        }
+
+        private double _radius;
+        public double Radius 
+        { 
+            get => _radius;
+            set
+            {
+                if (value <= 0)
+                    throw new ArgumentOutOfRangeException();
+                _radius = value;
+            }
+        }
 
         public FilmCircle() { }
 
         public FilmCircle(params double[] parameters)
         {
+            if (parameters.Length > 1)
+                throw new ArgumentException("Too many parameters.");
+
             Radius = parameters[0];
         }
 
@@ -41,9 +63,18 @@ namespace ShapeClassLibrary
             if (ReferenceEquals(obj, this))
                 return true;
 
-            return obj is PaperCircle paperCircle &&
-                paperCircle.Id == Id &&
-                paperCircle.Radius == Radius;
+            return obj is FilmCircle filmCircle &&
+                filmCircle.Radius == Radius;
+        }
+
+        public override int GetHashCode()
+        {
+            return HashCode.Combine(Id, Id, Radius);
+        }
+
+        public override string ToString()
+        {
+            return $"FilmCircle. Id: {Id}. Radius: {Radius}.";
         }
     }
 }

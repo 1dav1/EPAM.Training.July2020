@@ -60,5 +60,15 @@ namespace ShapeClassLibrary
                    paperTriangle.Side3 == Side3 &&
                    paperTriangle.Color == Color;
         }
+
+        public override int GetHashCode()
+        {
+            return HashCode.Combine(Id, Id, Side1, Side2, Side3, Color);
+        }
+
+        public override string ToString()
+        {
+            return $"PaperTriangle. Id: {Id}. Side1: {Side1}. Side2: {Side2}. Side3: {Side3}. Color: {Color}.";
+        }
     }
 }
