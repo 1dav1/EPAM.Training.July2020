@@ -19,9 +19,14 @@ namespace PersonClassLibrary
 
         public void PushShape(Shape shape)
         {
-            List<Shape> shapes = new List<Shape>();
-            shapes.Add(shape);
-            Shapes = shapes;
+            List<Shape> shapes = Shapes.ToList();
+            if (shapes.Count < 20)
+            {
+                shapes.Add(shape);
+                Shapes = shapes;
+            }
+
+            throw new Exception("The box is full.");
         }
 
         public Shape FindById(int id)
@@ -82,6 +87,7 @@ namespace PersonClassLibrary
                 // remove the target shape and insert the new spacified shape
                 listOfShapes.RemoveAt(index);
                 listOfShapes.Insert(index, shape);
+                Shapes = listOfShapes;
             }
             else
                 // otherwise throw exception
