@@ -1,7 +1,5 @@
 ﻿using ShapeClassLibrary;
 using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace PersonClassLibrary
 {
@@ -10,48 +8,48 @@ namespace PersonClassLibrary
 
         public Shape Cut(IPaper paper, params double[] parameters)
         {
-            switch(parameters.Length)
+            return parameters.Length switch
             {
-                case 1: return new PaperCircle(parameters);
-                case 2: return new PaperRectangle(parameters);
-                case 3: return new PaperTriangle(parameters);
-                default: throw new ArgumentOutOfRangeException("Wrong number of parameters.");
-            }
+                1 => new PaperCircle(parameters),
+                2 => new PaperRectangle(parameters),
+                3 => new PaperTriangle(parameters),
+                _ => throw new ArgumentOutOfRangeException("Wrong number of parameters."),
+            };
         }
 
-        public Shape Cut(IFilm paper, params double[] parameters)
+        public Shape Cut(IFilm film, params double[] parameters)
         {
-            switch (parameters.Length)
+            return parameters.Length switch
             {
-                case 1: return new PaperCircle(parameters);
-                case 2: return new PaperRectangle(parameters);
-                case 3: return new PaperTriangle(parameters);
-                default: throw new ArgumentOutOfRangeException("Wrong number of parameters.");
-            }
+                1 => new FilmCircle(parameters),
+                2 => new FilmRectangle(parameters),
+                3 => new FilmTriangle(parameters),
+                _ => throw new ArgumentOutOfRangeException("Wrong number of parameters."),
+            };
         }
 
         public Shape Cut(Shape shape, params double[] parameters)
         {
             if (shape is IPaper)
             {
-                switch (parameters.Length)
+                return parameters.Length switch
                 {
-                    case 1: return new PaperCircle(parameters);
-                    case 2: return new PaperRectangle(parameters);
-                    case 3: return new PaperTriangle(parameters);
-                    default: throw new ArgumentOutOfRangeException("Wrong number of parameters.");
-                }
+                    1 => new PaperCircle(parameters),
+                    2 => new PaperRectangle(parameters),
+                    3 => new PaperTriangle(parameters),
+                    _ => throw new ArgumentOutOfRangeException("Wrong number of parameters."),
+                };
             }
 
             else
             {
-                switch (parameters.Length)
+                return parameters.Length switch
                 {
-                    case 1: return new FilmCircle(parameters);
-                    case 2: return new FilmRectangle(parameters);
-                    case 3: return new FilmTriangle(parameters);
-                    default: throw new ArgumentOutOfRangeException("Wrong number of parameters.");
-                }
+                    1 => new FilmCircle(parameters),
+                    2 => new FilmRectangle(parameters),
+                    3 => new FilmTriangle(parameters),
+                    _ => throw new ArgumentOutOfRangeException("Wrong number of parameters."),
+                };
             }
         }
     }
