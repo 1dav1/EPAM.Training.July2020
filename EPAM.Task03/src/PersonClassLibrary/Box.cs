@@ -29,8 +29,8 @@ namespace PersonClassLibrary
 
             // trying to find a shape with this ID in the box
             var sameShape = (from s in Shapes
-                            where s.Id == shape.Id
-                            select s).ToList();
+                             where s.Id == shape.Id
+                             select s).ToList();
             // if a shape with the same id is found, throw exception
             if (sameShape.Count != 0)
             {
@@ -125,14 +125,40 @@ namespace PersonClassLibrary
                 select s.GetPerimeter()).Sum();
 
         public IEnumerable<Shape> PullCircles()
-            => from s in Shapes
-               where (s is PaperCircle) || (s is FilmCircle)
-               select s;
+        {
+            var shapes = (from s in Shapes
+                          where (s is PaperCircle) || (s is FilmCircle)
+                          select s).ToList();
+
+            if (shapes.Count() != 0)
+            {
+                // pass to the collection of shapes the old collection except the circles
+                Shapes = from s in Shapes
+                         where !(s is PaperCircle) && !(s is FilmCircle)
+                         select s;
+            }
+
+            // return the found circles
+            return shapes;
+        }
 
         public IEnumerable<Shape> PullFilmShapes()
-            => from s in Shapes
-               where s is IFilm
-               select s;
+        {
+            var shapes = (from s in Shapes
+                          where s is IFilm
+                          select s).ToList();
+
+            if (shapes.Count() != 0)
+            {
+                // pass to the collection of shapes the old collection except the shapes of film
+                Shapes = from s in Shapes
+                         where !(s is FilmCircle) && !(s is FilmRectangle) && !(s is FilmTriangle)
+                         select s;
+            }
+
+            // return the found shapes of film
+            return shapes;
+        }
 
         public void WriteAllToXmlStreamWriter(string file)
         {
