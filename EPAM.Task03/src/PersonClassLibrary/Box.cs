@@ -3,7 +3,6 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Text;
 using System.Xml;
 using System.Xml.Serialization;
 
@@ -20,7 +19,9 @@ namespace PersonClassLibrary
 
         public void PushShape(Shape shape)
         {
-            Shapes.Append(shape);
+            List<Shape> shapes = new List<Shape>();
+            shapes.Add(shape);
+            Shapes = shapes;
         }
 
         public Shape FindById(int id)
@@ -117,7 +118,7 @@ namespace PersonClassLibrary
 
         public void WriteAllToXmlStreamWriter(string file)
         {
-            XmlSerializer xmlSerializer = new XmlSerializer(typeof(IEnumerable<Shape>));
+            XmlSerializer xmlSerializer = new XmlSerializer(typeof(List<Shape>));
 
             using TextWriter textWriter = new StreamWriter(file);
             xmlSerializer.Serialize(textWriter, Shapes);
@@ -125,11 +126,11 @@ namespace PersonClassLibrary
 
         public void WritePaperToXmlStreamWriter(string file)
         {
-            var paperShapes = from s in Shapes
-                              where s is IPaper
-                              select s;
+            var paperShapes = (from s in Shapes
+                               where s is IPaper
+                               select s).ToList();
 
-            XmlSerializer xmlSerializer = new XmlSerializer(typeof(IEnumerable<Shape>));
+            XmlSerializer xmlSerializer = new XmlSerializer(typeof(List<Shape>));
 
             using TextWriter textWriter = new StreamWriter(file);
             xmlSerializer.Serialize(textWriter, paperShapes);
@@ -137,11 +138,11 @@ namespace PersonClassLibrary
 
         public void WriteFilmToXmlStreamWriter(string file)
         {
-            var filmShapes = from s in Shapes
-                             where s is IFilm
-                             select s;
+            var filmShapes = (from s in Shapes
+                              where s is IFilm
+                              select s).ToList();
 
-            XmlSerializer xmlSerializer = new XmlSerializer(typeof(IEnumerable<Shape>));
+            XmlSerializer xmlSerializer = new XmlSerializer(typeof(List<Shape>));
 
             using TextWriter textWriter = new StreamWriter(file);
             xmlSerializer.Serialize(textWriter, filmShapes);
@@ -149,7 +150,61 @@ namespace PersonClassLibrary
 
         public void WriteAllToXmlXmlWriter(string file)
         {
-            using XmlWriter xmlWriter = XmlWriter.Create(file);
+            XmlSerializer xmlSerializer = new XmlSerializer(typeof(List<Shape>));
+            XmlWriterSettings settings = new XmlWriterSettings
+            {
+                Indent = true
+            };
+
+            using XmlWriter xmlWriter = XmlWriter.Create(file, settings);
+            xmlSerializer.Serialize(xmlWriter, Shapes.ToList());
+        }
+
+        public void WritePaperToXmlXmlWriter(string file)
+        {
+            var paperShapes = (from s in Shapes
+                               where s is IPaper
+                               select s).ToList();
+            XmlSerializer xmlSerializer = new XmlSerializer(typeof(List<Shape>));
+            XmlWriterSettings settings = new XmlWriterSettings
+            {
+                Indent = true
+            };
+
+            using XmlWriter xmlWriter = XmlWriter.Create(file, settings);
+            xmlSerializer.Serialize(xmlWriter, paperShapes);
+        }
+
+        public void WriteFilmToXmlXmlWriter(string file)
+        {
+            var filmShapes = (from s in Shapes
+                              where s is IFilm
+                              select s).ToList();
+            XmlSerializer xmlSerializer = new XmlSerializer(typeof(List<Shape>));
+            XmlWriterSettings settings = new XmlWriterSettings
+            {
+                Indent = true
+            };
+
+            using XmlWriter xmlWriter = XmlWriter.Create(file, settings);
+            xmlSerializer.Serialize(xmlWriter, filmShapes);
+        }
+
+        public void ReadAllFromXmlStreamReader(string file)
+        {
+            XmlSerializer serializer = new XmlSerializer(typeof(List<Shape>));
+            using StreamReader reader = new StreamReader(file);
+            List<Shape> list = (List<Shape>)serializer.Deserialize(reader);
+
+            Shapes = list;
+        }
+
+        public void ReadAllFromXmlXmlReader(string file)
+        {
+            XmlSerializer xmlSerializer = new XmlSerializer(typeof(List<Shape>));
+            using XmlReader xmlReader = XmlReader.Create(file);
+            List<Shape> shapes = (List<Shape>)xmlSerializer.Deserialize(xmlReader);
+            Shapes = shapes;
         }
     }
 }
