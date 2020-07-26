@@ -44,7 +44,6 @@ namespace ShapeClassLibrary
                 return true;
 
             return obj is PaperRectangle paperRectangle &&
-                   paperRectangle.Id == Id &&
                  ((paperRectangle.Height == Height && paperRectangle.Width == Width) ||           // if any pairs of equal sides
                   (paperRectangle.Height == Width && paperRectangle.Width == Height));
         }

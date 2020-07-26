@@ -41,7 +41,6 @@ namespace ShapeClassLibrary
                 return true;
 
             return obj is PaperCircle paperCircle &&
-                paperCircle.Id == Id &&
                 paperCircle.Radius == Radius &&
                 paperCircle.Color == Color;
         }
