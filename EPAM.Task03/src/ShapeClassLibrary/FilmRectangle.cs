@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Runtime.Serialization;
+using System.Xml.Serialization;
 
 namespace ShapeClassLibrary
 {
     [Serializable]
+    [XmlType("FilmRectangle")]
     public class FilmRectangle : Shape, IFilm
     {
         public override int Id { get; set; }

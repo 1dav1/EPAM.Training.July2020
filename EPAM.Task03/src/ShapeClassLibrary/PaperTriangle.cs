@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Runtime.Serialization;
+using System.Xml.Serialization;
 
 namespace ShapeClassLibrary
 {
     [Serializable]
+    [XmlType("PaperTriangle")]
     public class PaperTriangle : Shape, IPaper
     {
         public override int Id { get; set; }

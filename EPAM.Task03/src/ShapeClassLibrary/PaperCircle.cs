@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Runtime.Serialization;
+using System.Xml.Serialization;
 
 namespace ShapeClassLibrary
 {
     [Serializable]
+    [XmlType("PaperCircle")]
     public class PaperCircle : Shape, IPaper
     {
         public override int Id { get; set; }

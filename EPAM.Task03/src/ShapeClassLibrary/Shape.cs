@@ -1,7 +1,15 @@
 ﻿using System;
+using System.Xml.Serialization;
 
 namespace ShapeClassLibrary
 {
+    [XmlRoot(ElementName = "shape")]
+    [XmlInclude(typeof(PaperCircle))]
+    [XmlInclude(typeof(PaperRectangle))]
+    [XmlInclude(typeof(PaperTriangle))]
+    [XmlInclude(typeof(FilmCircle))]
+    [XmlInclude(typeof(FilmRectangle))]
+    [XmlInclude(typeof(FilmTriangle))]
     public abstract class Shape
     {
         //public abstract Shape() { }
