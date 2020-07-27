@@ -8,8 +8,11 @@ using System.Xml.Serialization;
 
 namespace PersonClassLibrary
 {
+    /// <include file='docs.xml' path='docs/members[@name="box"]/Box/*'/>
     public class Box
     {
+        private const int MAX_CAPACITY = 20;
+
         public IEnumerable<Shape> Shapes { get; set; }
 
         public Box()
@@ -22,7 +25,7 @@ namespace PersonClassLibrary
             if (shape is null)
                 throw new ArgumentNullException();
 
-            if (Shapes.Count() == 20)
+            if (Shapes.Count() == MAX_CAPACITY)
                 throw new Exception("The box is full.");
 
             List<Shape> shapes = Shapes.ToList();
