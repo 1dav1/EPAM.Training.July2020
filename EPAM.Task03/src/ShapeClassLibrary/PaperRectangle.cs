@@ -4,11 +4,13 @@ using System.Xml.Serialization;
 
 namespace ShapeClassLibrary
 {
+    /// <include file='docs.xml' path='docs/members[@name="paperrectangle"]/PaperRectangle/*'/>
     [Serializable]
     [XmlType("PaperRectangle")]
     public class PaperRectangle : Shape, IPaper
     {
         private int _id;
+        /// <include file='docs.xml' path='docs/members[@name="paperrectangle"]/Id/*'/>
         public override int Id
         {
             get => _id;
@@ -21,6 +23,7 @@ namespace ShapeClassLibrary
         }
 
         private double _height;
+        /// <include file='docs.xml' path='docs/members[@name="paperrectangle"]/Height/*'/>
         public double Height
         {
             get => _height;
@@ -33,6 +36,7 @@ namespace ShapeClassLibrary
         }
 
         private double _width;
+        /// <include file='docs.xml' path='docs/members[@name="paperrectangle"]/Width/*'/>
         public double Width
         {
             get => _width;
@@ -44,19 +48,23 @@ namespace ShapeClassLibrary
             }
         }
 
+        /// <include file='docs.xml' path='docs/members[@name="paperrectangle"]/Color/*'/>
         public Colors Color { get; set; }
 
+        /// <include file='docs.xml' path='docs/members[@name="paperrectangle"]/Constructor1/*'/>
         public PaperRectangle() 
         {
             Color = Colors.None;
         }
 
+        /// <include file='docs.xml' path='docs/members[@name="paperrectangle"]/Constructor2/*'/>
         public PaperRectangle(double height, double width)
         {
             Height = height;
             Width = width;
         }
 
+        /// <include file='docs.xml' path='docs/members[@name="paperrectangle"]/Constructor3/*'/>
         public PaperRectangle(Shape parentShape, double height, double width)
         {
             if (parentShape is IFilm)
@@ -85,12 +93,15 @@ namespace ShapeClassLibrary
             Width = width;
         }
 
+        /// <include file='docs.xml' path='docs/members[@name="paperrectangle"]/GetPerimeter/*'/>
         public override double GetPerimeter()
             => (Height + Width) * 2;
 
+        /// <include file='docs.xml' path='docs/members[@name="paperrectangle"]/GetArea/*'/>
         public override double GetArea()
             => Height * Width;
 
+        /// <include file='docs.xml' path='docs/members[@name="paperrectangle"]/Equals/*'/>
         public override bool Equals(object obj)
         {
             if (ReferenceEquals(obj, this))
@@ -102,9 +113,16 @@ namespace ShapeClassLibrary
                    paperRectangle.Color == Color;
         }
 
+        /// <include file='docs.xml' path='docs/members[@name="paperrectangle"]/GetHashCode/*'/>
         public override int GetHashCode()
         {
             return HashCode.Combine(Id, Height, Width, Color);
+        }
+
+        /// <include file='docs.xml' path='docs/members[@name="paperrectangle"]/ToString/*'/>
+        public override string ToString()
+        {
+            return $"PaperRectangle. Id: {Id}. Height: {Height}. Width: {Width}. Color: {Color}.";
         }
     }
 }

@@ -3,6 +3,7 @@ using System.Xml.Serialization;
 
 namespace ShapeClassLibrary
 {
+    /// <include file='docs.xml' path='docs/members[@name="filmtriangle"]/FilmTriangle/*'/>
     [Serializable]
     [XmlType("FilmTriangle")]
     public class FilmTriangle : Shape, IFilm
@@ -20,6 +21,7 @@ namespace ShapeClassLibrary
         }
 
         private double _side1;
+        /// <include file='docs.xml' path='docs/members[@name="filmtriangle"]/Side1/*'/>
         public double Side1
         {
             get => _side1;
@@ -32,6 +34,7 @@ namespace ShapeClassLibrary
         }
 
         private double _side2;
+        /// <include file='docs.xml' path='docs/members[@name="filmtriangle"]/Side2/*'/>
         public double Side2
         {
             get => _side2;
@@ -44,6 +47,7 @@ namespace ShapeClassLibrary
         }
 
         private double _side3;
+        /// <include file='docs.xml' path='docs/members[@name="filmtriangle"]/Side3/*'/>
         public double Side3 
         {
             get => _side3;
@@ -55,8 +59,10 @@ namespace ShapeClassLibrary
             }
         }
 
+        /// <include file='docs.xml' path='docs/members[@name="filmtriangle"]/Constructor1/*'/>
         public FilmTriangle() { }
 
+        /// <include file='docs.xml' path='docs/members[@name="filmtriangle"]/Constructor2/*'/>
         public FilmTriangle(double side1, double side2, double side3)
         {
             Side1 = side1;
@@ -64,6 +70,7 @@ namespace ShapeClassLibrary
             Side3 = side3;
         }
 
+        /// <include file='docs.xml' path='docs/members[@name="filmtriangle"]/Constructor3/*'/>
         public FilmTriangle(Shape parentShape, double side1, double side2, double side3)
         {
             if (parentShape is IPaper)
@@ -81,15 +88,18 @@ namespace ShapeClassLibrary
             Side3 = side3;
         }
 
+        /// <include file='docs.xml' path='docs/members[@name="filmtriangle"]/GetPerimeter/*'/>
         public override double GetPerimeter()
             => Side1 + Side2 + Side3;
 
+        /// <include file='docs.xml' path='docs/members[@name="filmtriangle"]/GetArea/*'/>
         public override double GetArea()
         {
             double p = (Side1 + Side2 + Side3) / 2;
             return Math.Sqrt(p * (p - Side1) * (p - Side2) * (p - Side3));
         }
 
+        /// <include file='docs.xml' path='docs/members[@name="filmtriangle"]/Equals/*'/>
         public override bool Equals(object obj)
         {
             if (ReferenceEquals(obj, this))
@@ -101,11 +111,13 @@ namespace ShapeClassLibrary
                    filmTriangle.Side3 == Side3;
         }
 
+        /// <include file='docs.xml' path='docs/members[@name="filmtriangle"]/GetHashCode/*'/>
         public override int GetHashCode()
         {
             return HashCode.Combine(Id, Side1, Side2, Side3);
         }
 
+        /// <include file='docs.xml' path='docs/members[@name="filmtriangle"]/ToString/*'/>
         public override string ToString()
         {
             return $"FilmTriangle. ID: {Id}. Side1: {Side1}. Side2: {Side2}. Side3: {Side3}.";

@@ -1,0 +1,498 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<docs>
+  <members name="filmcircle">
+    <FilmCircle>
+      <summary>
+        The FilmCircle class. Represents a circle made of film.
+        Contains methods for calculating perimeter and area.
+      </summary>
+    </FilmCircle>
+    <Id>
+      <value>Gets or sets an ID of the current film circle.</value>
+      <exception cref="System.ArgumentOutOfRangeException">
+        Thrown when ID of the current circle is negative.
+      </exception>
+    </Id>
+    <Radius>
+      <value>Gets or sets a radius of the current film circle.</value>
+      <exception cref="System.ArgumentOutOfRangeException">
+        Thrown when radius of the current circle is not positive.
+      </exception>
+    </Radius>
+    <Constructor1>
+      <summary>
+        Initializes a new instance of the FilmCircle class with default properties.
+      </summary>
+    </Constructor1>
+    <Constructor2>
+      <summary>
+        Initializes a new instance of the FilmCircle class with the specified radius.
+      </summary>
+      <param name="radius">The radius of the current circle.</param>
+    </Constructor2>
+    <Constructor3>
+      <summary>
+        Initializes a new instance of the FilmCircle class cut from <paramref name="parentShape"/>.
+      </summary>
+      <param name="parentShape">The parent shape to cut a child shape.</param>
+      <param name="radius">The radius of the circle to be cut.</param>
+    </Constructor3>
+    <GetPerimeter>
+      <summary>
+        Returns the perimeter of the current circle.
+      </summary>
+      <returns>The perimeter of the current circle.</returns>
+    </GetPerimeter>
+    <GetArea>
+      <summary>
+        Returns the area of the current circle.
+      </summary>
+      <returns>The area of the current circle.</returns>
+    </GetArea>
+    <Equals>
+      <summary>
+        Determines whether two <c>FilmCircle</c> instances are equal. Overrides the base method.
+      </summary>
+      <param name="obj">The object to compare with the current circle.</param>
+      <returns>
+        <c>true</c> if the specified object is equal to the current circle; otherwise, <c>false</c>
+      </returns>
+    </Equals>
+    <GetHashCode>
+      <summary>
+        Serves as the default hash function. Overrides the base method.
+      </summary>
+      <returns>A hash code for the current circle.</returns>
+    </GetHashCode>
+    <ToString>
+      <summary>
+        Returns a string that represents the current circle.
+      </summary>
+      <returns>A string that represents the current circle.</returns>
+    </ToString>
+  </members>
+  <members name="filmrectangle">
+    <FilmRectangle>
+      <summary>
+        The FilmRectangle class. Represents a rectangle made of film.
+        Contains methods for calculating perimeter and area.
+      </summary>
+    </FilmRectangle>
+    <Id>
+      <value>Gets or sets an ID of the current film rectangle.</value>
+      <exception cref="System.ArgumentOutOfRangeException">
+        Thrown when ID of the current rectangle is negative.
+      </exception>
+    </Id>
+    <Height>
+      <value>Gets or sets a height of the current film rectangle.</value>
+      <exception cref="System.ArgumentOutOfRangeException">
+        Thrown when height of the current rectangle is not positive.
+      </exception>
+    </Height>
+    <Width>
+      <value>Gets or sets a width of the current film rectangle.</value>
+      <exception cref="System.ArgumentOutOfRangeException">
+        Thrown when width of the current rectangle is not positive.
+      </exception>
+    </Width>
+    <Constructor1>
+      <summary>
+        Initializes a new instance of the FilmRectangle class with default properties.
+      </summary>
+    </Constructor1>
+    <Constructor2>
+      <summary>
+        Initializes a new instance of the FilmRectangle class with the specified height and width.
+      </summary>
+      <param name="height">The height of the current rectangle.</param>
+      <param name="width">The width of the current rectangle.</param>
+    </Constructor2>
+    <Constructor3>
+      <summary>
+        Initializes a new instance of the FilmRectangle class cut from <paramref name="parentShape"/>.
+      </summary>
+      <param name="parentShape">The parent shape to cut a child shape.</param>
+      <param name="height">The height of the current rectangle to be cut.</param>
+      <param name="width">The width of the current rectangle to be cut.</param>
+    </Constructor3>
+    <GetPerimeter>
+      <summary>
+        Returns the perimeter of the current rectangle.
+      </summary>
+      <returns>The perimeter of the current rectangle.</returns>
+    </GetPerimeter>
+    <GetArea>
+      <summary>
+        Returns the area of the current rectangle.
+      </summary>
+      <returns>The area of the current rectangle.</returns>
+    </GetArea>
+    <Equals>
+      <summary>
+        Determines whether two <c>FilmRectangle</c> instances are equal. Overrides the base method.
+      </summary>
+      <param name="obj">The object to compare with the current rectangle.</param>
+      <returns>
+        <c>true</c> if the specified object is equal to the current rectangle; otherwise, <c>false</c>
+      </returns>
+    </Equals>
+    <GetHashCode>
+      <summary>
+        Serves as the default hash function. Overrides the base method.
+      </summary>
+      <returns>A hash code for the current rectangle.</returns>
+    </GetHashCode>
+    <ToString>
+      <summary>
+        Returns a string that represents the current rectangle.
+      </summary>
+      <returns>A string that represents the current rectangle.</returns>
+    </ToString>
+  </members>
+  <members name="filmtriangle">
+    <FilmTriangle>
+      <summary>
+        The FilmTriangle class. Represents a triangle made of film.
+        Contains methods for calculating perimeter and area.
+      </summary>
+    </FilmTriangle>
+    <Id>
+      <value>Gets or sets an ID of the current film triangle.</value>
+      <exception cref="System.ArgumentOutOfRangeException">
+        Thrown when ID of the current triangle is negative.
+      </exception>
+    </Id>
+    <Side1>
+      <value>Gets or sets a side of the current film triangle.</value>
+      <exception cref="System.ArgumentOutOfRangeException">
+        Thrown when side of the current triangle is not positive.
+      </exception>
+    </Side1>
+    <Side2>
+      <value>Gets or sets a side of the current film triangle.</value>
+      <exception cref="System.ArgumentOutOfRangeException">
+        Thrown when side of the current triangle is not positive.
+      </exception>
+    </Side2>
+    <Side3>
+      <value>Gets or sets a side of the current film triangle.</value>
+      <exception cref="System.ArgumentOutOfRangeException">
+        Thrown when side of the current triangle is not positive.
+      </exception>
+    </Side3>
+    <Constructor1>
+      <summary>
+        Initializes a new instance of the FilmTriangle class with default properties.
+      </summary>
+    </Constructor1>
+    <Constructor2>
+      <summary>
+        Initializes a new instance of the FilmTriangle class with the specified side length.
+      </summary>
+      <param name="side1">The length of the side of triangle.</param>
+      <param name="side2">The length of the side of triangle.</param>
+      <param name="side3">The length of the side of triangle.</param>
+    </Constructor2>
+    <Constructor3>
+      <summary>
+        Initializes a new instance of the FilmTriangle class cut from <paramref name="parentShape"/>.
+      </summary>
+      <param name="parentShape">The parent shape to cut a child shape.</param>
+      <param name="side1">The length of the side of triangle to be cut.</param>
+      <param name="side2">The length of the side of triangle to be cut.</param>
+      <param name="side3">The length of the side of triangle to be cut.</param>
+    </Constructor3>
+    <GetPerimeter>
+      <summary>
+        Returns the perimeter of the current triangle.
+      </summary>
+      <returns>The perimeter of the current triangle.</returns>
+    </GetPerimeter>
+    <GetArea>
+      <summary>
+        Returns the area of the current triangle.
+      </summary>
+      <returns>The area of the current triangle.</returns>
+    </GetArea>
+    <Equals>
+      <summary>
+        Determines whether two <c>FilmTriangle</c> instances are equal. Overrides the base method.
+      </summary>
+      <param name="obj">The object to compare with the current triangle.</param>
+      <returns>
+        <c>true</c> if the specified object is equal to the current triangle; otherwise, <c>false</c>
+      </returns>
+    </Equals>
+    <GetHashCode>
+      <summary>
+        Serves as the default hash function. Overrides the base method.
+      </summary>
+      <returns>A hash code for the current triangle.</returns>
+    </GetHashCode>
+    <ToString>
+      <summary>
+        Returns a string that represents the current triangle.
+      </summary>
+      <returns>A string that represents the current triangle.</returns>
+    </ToString>
+  </members>
+  <members name="papercircle">
+    <PaperCircle>
+      <summary>
+        The PaperCircle class. Represents a circle made of paper.
+        Contains methods for calculating perimeter and area.
+      </summary>
+    </PaperCircle>
+    <Id>
+      <value>Gets or sets an ID of the current paper circle.</value>
+      <exception cref="System.ArgumentOutOfRangeException">
+        Thrown when ID of the current circle is negative.
+      </exception>
+    </Id>
+    <Radius>
+      <value>Gets or sets a radius of the current paper circle.</value>
+      <exception cref="System.ArgumentOutOfRangeException">
+        Thrown when radius of the current circle is not positive.
+      </exception>
+    </Radius>
+    <Color>
+      <value>Gets or sets a color of the current paper circle.</value>
+    </Color>
+    <Constructor1>
+      <summary>
+        Initializes a new instance of the PaperCircle class with default properties.
+      </summary>
+    </Constructor1>
+    <Constructor2>
+      <summary>
+        Initializes a new instance of the PaperCircle class with the specified radius.
+      </summary>
+      <param name="radius">The radius of the current circle.</param>
+    </Constructor2>
+    <Constructor3>
+      <summary>
+        Initializes a new instance of the PaperCircle class cut from <paramref name="parentShape"/>.
+      </summary>
+      <param name="parentShape">The parent shape to cut a child shape.</param>
+      <param name="radius">The radius of the circle to be cut.</param>
+    </Constructor3>
+    <GetPerimeter>
+      <summary>
+        Returns the perimeter of the current circle.
+      </summary>
+      <returns>The perimeter of the current circle.</returns>
+    </GetPerimeter>
+    <GetArea>
+      <summary>
+        Returns the area of the current circle.
+      </summary>
+      <returns>The area of the current circle.</returns>
+    </GetArea>
+    <Equals>
+      <summary>
+        Determines whether two <c>PaperCircle</c> instances are equal. Overrides the base method.
+      </summary>
+      <param name="obj">The object to compare with the current circle.</param>
+      <returns>
+        <c>true</c> if the specified object is equal to the current circle; otherwise, <c>false</c>
+      </returns>
+    </Equals>
+    <GetHashCode>
+      <summary>
+        Serves as the default hash function. Overrides the base method.
+      </summary>
+      <returns>A hash code for the current circle.</returns>
+    </GetHashCode>
+    <ToString>
+      <summary>
+        Returns a string that represents the current circle.
+      </summary>
+      <returns>A string that represents the current circle.</returns>
+    </ToString>
+  </members>
+
+
+
+
+
+  <members name="paperrectangle">
+    <PaperRectangle>
+      <summary>
+        The PaperRectangle class. Represents a rectangle made of paper.
+        Contains methods for calculating perimeter and area.
+      </summary>
+    </PaperRectangle>
+    <Id>
+      <value>Gets or sets an ID of the current paper rectangle.</value>
+      <exception cref="System.ArgumentOutOfRangeException">
+        Thrown when ID of the current rectangle is negative.
+      </exception>
+    </Id>
+    <Height>
+      <value>Gets or sets a height of the current paper rectangle.</value>
+      <exception cref="System.ArgumentOutOfRangeException">
+        Thrown when height of the current rectangle is not positive.
+      </exception>
+    </Height>
+    <Width>
+      <value>Gets or sets a width of the current paper rectangle.</value>
+      <exception cref="System.ArgumentOutOfRangeException">
+        Thrown when width of the current rectangle is not positive.
+      </exception>
+    </Width>
+    <Color>
+      <value>Gets or sets a color of the current paper rectangle.</value>
+    </Color>
+    <Constructor1>
+      <summary>
+        Initializes a new instance of the PaperRectangle class with default properties.
+      </summary>
+    </Constructor1>
+    <Constructor2>
+      <summary>
+        Initializes a new instance of the PaperRectangle class with the specified height and width.
+      </summary>
+      <param name="height">The height of the current rectangle.</param>
+      <param name="width">The width of the current rectangle.</param>
+    </Constructor2>
+    <Constructor3>
+      <summary>
+        Initializes a new instance of the PaperRectangle class cut from <paramref name="parentShape"/>.
+      </summary>
+      <param name="parentShape">The parent shape to cut a child shape.</param>
+      <param name="height">The height of the current rectangle to be cut.</param>
+      <param name="width">The width of the current rectangle to be cut.</param>
+    </Constructor3>
+    <GetPerimeter>
+      <summary>
+        Returns the perimeter of the current rectangle.
+      </summary>
+      <returns>The perimeter of the current rectangle.</returns>
+    </GetPerimeter>
+    <GetArea>
+      <summary>
+        Returns the area of the current rectangle.
+      </summary>
+      <returns>The area of the current rectangle.</returns>
+    </GetArea>
+    <Equals>
+      <summary>
+        Determines whether two <c>PaperRectangle</c> instances are equal. Overrides the base method.
+      </summary>
+      <param name="obj">The object to compare with the current rectangle.</param>
+      <returns>
+        <c>true</c> if the specified object is equal to the current rectangle; otherwise, <c>false</c>
+      </returns>
+    </Equals>
+    <GetHashCode>
+      <summary>
+        Serves as the default hash function. Overrides the base method.
+      </summary>
+      <returns>A hash code for the current rectangle.</returns>
+    </GetHashCode>
+    <ToString>
+      <summary>
+        Returns a string that represents the current rectangle.
+      </summary>
+      <returns>A string that represents the current rectangle.</returns>
+    </ToString>
+  </members>
+
+
+
+
+  <members name="papertriangle">
+    <PaperTriangle>
+      <summary>
+        The PaperTriangle class. Represents a triangle made of paper.
+        Contains methods for calculating perimeter and area.
+      </summary>
+    </PaperTriangle>
+    <Id>
+      <value>Gets or sets an ID of the current paper triangle.</value>
+      <exception cref="System.ArgumentOutOfRangeException">
+        Thrown when ID of the current triangle is negative.
+      </exception>
+    </Id>
+    <Side1>
+      <value>Gets or sets a side of the current paper triangle.</value>
+      <exception cref="System.ArgumentOutOfRangeException">
+        Thrown when side of the current triangle is not positive.
+      </exception>
+    </Side1>
+    <Side2>
+      <value>Gets or sets a side of the current paper triangle.</value>
+      <exception cref="System.ArgumentOutOfRangeException">
+        Thrown when side of the current triangle is not positive.
+      </exception>
+    </Side2>
+    <Side3>
+      <value>Gets or sets a side of the current paper triangle.</value>
+      <exception cref="System.ArgumentOutOfRangeException">
+        Thrown when side of the current triangle is not positive.
+      </exception>
+    </Side3>
+    <Color>
+      <value>Gets or sets a color of the current paper triangle.</value>
+    </Color>
+    <Constructor1>
+      <summary>
+        Initializes a new instance of the PaperTriangle class with default properties.
+      </summary>
+    </Constructor1>
+    <Constructor2>
+      <summary>
+        Initializes a new instance of the PaperTriangle class with the specified side length.
+      </summary>
+      <param name="side1">The length of the side of triangle.</param>
+      <param name="side2">The length of the side of triangle.</param>
+      <param name="side3">The length of the side of triangle.</param>
+    </Constructor2>
+    <Constructor3>
+      <summary>
+        Initializes a new instance of the PaperTriangle class cut from <paramref name="parentShape"/>.
+      </summary>
+      <param name="parentShape">The parent shape to cut a child shape.</param>
+      <param name="side1">The length of the side of triangle to be cut.</param>
+      <param name="side2">The length of the side of triangle to be cut.</param>
+      <param name="side3">The length of the side of triangle to be cut.</param>
+    </Constructor3>
+    <GetPerimeter>
+      <summary>
+        Returns the perimeter of the current triangle.
+      </summary>
+      <returns>The perimeter of the current triangle.</returns>
+    </GetPerimeter>
+    <GetArea>
+      <summary>
+        Returns the area of the current triangle.
+      </summary>
+      <returns>The area of the current triangle.</returns>
+    </GetArea>
+    <Equals>
+      <summary>
+        Determines whether two <c>PaperTriangle</c> instances are equal. Overrides the base method.
+      </summary>
+      <param name="obj">The object to compare with the current triangle.</param>
+      <returns>
+        <c>true</c> if the specified object is equal to the current triangle; otherwise, <c>false</c>
+      </returns>
+    </Equals>
+    <GetHashCode>
+      <summary>
+        Serves as the default hash function. Overrides the base method.
+      </summary>
+      <returns>A hash code for the current triangle.</returns>
+    </GetHashCode>
+    <ToString>
+      <summary>
+        Returns a string that represents the current triangle.
+      </summary>
+      <returns>A string that represents the current triangle.</returns>
+    </ToString>
+  </members>
+
+
+
+</docs>

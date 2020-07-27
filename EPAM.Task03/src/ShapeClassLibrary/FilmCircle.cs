@@ -3,11 +3,13 @@ using System.Xml.Serialization;
 
 namespace ShapeClassLibrary
 {
+    /// <include file='docs.xml' path='docs/members[@name="filmcircle"]/FilmCircle/*'/>
     [Serializable]
     [XmlType("FilmCircle")]
     public class FilmCircle : Shape, IFilm
     {
         private int _id;
+        /// <include file='docs.xml' path='docs/members[@name="filmcircle"]/Id/*'/>
         public override int Id
         {
             get => _id;
@@ -20,6 +22,7 @@ namespace ShapeClassLibrary
         }
 
         private double _radius;
+        /// <include file='docs.xml' path='docs/members[@name="filmcircle"]/Radius/*'/>
         public double Radius 
         { 
             get => _radius;
@@ -31,13 +34,16 @@ namespace ShapeClassLibrary
             }
         }
 
+        /// <include file='docs.xml' path='docs/members[@name="filmcircle"]/Constructor1/*'/>
         public FilmCircle() { }
 
+        /// <include file='docs.xml' path='docs/members[@name="filmcircle"]/Constructor2/*'/>
         public FilmCircle(double radius)
         {
             Radius = radius;
         }
 
+        /// <include file='docs.xml' path='docs/members[@name="filmcircle"]/Constructor3/*'/>
         public FilmCircle(Shape parentShape, double radius)
         {
             if (parentShape is IPaper)
@@ -51,13 +57,16 @@ namespace ShapeClassLibrary
             Radius = radius;
         }
 
+        /// <include file='docs.xml' path='docs/members[@name="filmcircle"]/GetPerimeter/*'/>
         // circumference of the circle
         public override double GetPerimeter()
             => 2 * Math.PI * Radius;
 
+        /// <include file='docs.xml' path='docs/members[@name="filmcircle"]/GetArea/*'/>
         public override double GetArea()
             => Math.PI * Math.Pow(Radius, 2);
 
+        /// <include file='docs.xml' path='docs/members[@name="filmcircle"]/Equals/*'/>
         public override bool Equals(object obj)
         {
             if (ReferenceEquals(obj, this))
@@ -67,11 +76,13 @@ namespace ShapeClassLibrary
                 filmCircle.Radius == Radius;
         }
 
+        /// <include file='docs.xml' path='docs/members[@name="filmcircle"]/GetHashCode/*'/>
         public override int GetHashCode()
         {
             return HashCode.Combine(Id, Radius);
         }
 
+        /// <include file='docs.xml' path='docs/members[@name="filmcircle"]/ToString/*'/>
         public override string ToString()
         {
             return $"FilmCircle. Id: {Id}. Radius: {Radius}.";

@@ -3,11 +3,13 @@ using System.Xml.Serialization;
 
 namespace ShapeClassLibrary
 {
+    /// <include file='docs.xml' path='docs/members[@name="papertriangle"]/PaperTriangle/*'/>
     [Serializable]
     [XmlType("PaperTriangle")]
     public class PaperTriangle : Shape, IPaper
     {
         private int _id;
+        /// <include file='docs.xml' path='docs/members[@name="papertriangle"]/Id/*'/>
         public override int Id
         {
             get => _id;
@@ -20,6 +22,7 @@ namespace ShapeClassLibrary
         }
 
         private double _side1;
+        /// <include file='docs.xml' path='docs/members[@name="papertriangle"]/Side1/*'/>
         public double Side1
         {
             get => _side1;
@@ -32,6 +35,7 @@ namespace ShapeClassLibrary
         }
 
         private double _side2;
+        /// <include file='docs.xml' path='docs/members[@name="papertriangle"]/Side2/*'/>
         public double Side2
         {
             get => _side2;
@@ -44,6 +48,7 @@ namespace ShapeClassLibrary
         }
 
         private double _side3;
+        /// <include file='docs.xml' path='docs/members[@name="papertriangle"]/Side3/*'/>
         public double Side3
         {
             get => _side3;
@@ -55,13 +60,16 @@ namespace ShapeClassLibrary
             }
         }
 
+        /// <include file='docs.xml' path='docs/members[@name="papertriangle"]/Color/*'/>
         public Colors Color { get; set; }
 
+        /// <include file='docs.xml' path='docs/members[@name="papertriangle"]/Constructor1/*'/>
         public PaperTriangle() 
         {
             Color = Colors.None;
         }
 
+        /// <include file='docs.xml' path='docs/members[@name="papertriangle"]/Constructor2/*'/>
         public PaperTriangle(double side1, double side2, double side3)
         {
             Side1 = side1;
@@ -69,6 +77,7 @@ namespace ShapeClassLibrary
             Side3 = side3;
         }
 
+        /// <include file='docs.xml' path='docs/members[@name="papertriangle"]/Constructor3/*'/>
         public PaperTriangle(Shape parentShape, double side1, double side2, double side3)
         {
             if (parentShape is IFilm)
@@ -100,15 +109,18 @@ namespace ShapeClassLibrary
             Side3 = side3;
         }
 
+        /// <include file='docs.xml' path='docs/members[@name="papertriangle"]/GetPerimeter/*'/>
         public override double GetPerimeter()
             => Side1 + Side2 + Side3;
 
+        /// <include file='docs.xml' path='docs/members[@name="papertriangle"]/GetArea/*'/>
         public override double GetArea()
         {
             double p = (Side1 + Side2 + Side3) / 2;
             return Math.Sqrt(p * (p - Side1) * (p - Side2) * (p - Side3));
         }
 
+        /// <include file='docs.xml' path='docs/members[@name="papertriangle"]/Equals/*'/>
         public override bool Equals(object obj)
         {
             if (ReferenceEquals(obj, this))
@@ -121,11 +133,13 @@ namespace ShapeClassLibrary
                    paperTriangle.Color == Color;
         }
 
+        /// <include file='docs.xml' path='docs/members[@name="papertriangle"]/GetHashCode/*'/>
         public override int GetHashCode()
         {
             return HashCode.Combine(Id, Id, Side1, Side2, Side3, Color);
         }
 
+        /// <include file='docs.xml' path='docs/members[@name="papertriangle"]/ToString/*'/>
         public override string ToString()
         {
             return $"PaperTriangle. Id: {Id}. Side1: {Side1}. Side2: {Side2}. Side3: {Side3}. Color: {Color}.";
