@@ -2,10 +2,181 @@
 <docs>
   <members name="box">
     <Box>
-       <summary>
-         
+      <summary>
+        The Box class represents the container for shapes.
+        Contains methods for operating on contained shapes.
       </summary>
-
     </Box>
+    <Shapes>
+      <value>Gets or sets a collection of shapes in the box.</value>
+    </Shapes>
+    <Constructor>
+      <summary>
+        Initializes a new instance of the Box class with default properties.
+      </summary>
+    </Constructor>
+    <PushShape>
+      <summary>
+        Adds a shape to the box.
+      </summary>
+      <param name="shape">The shape to be added to the box.</param>
+      <exception cref="System.ArgumentNullException">
+        Thrown when the value of <paramref name="shape"/> is <c>null</c>.
+      </exception>
+      <exception cref="System.Exception">
+        Thrown when the box is full. The capacity of the box is 20 shapes.
+      </exception>
+      <exception cref="System.Exception">
+        Thrown when the ID of <paramref name="shape"/> is not unique.
+      </exception>
+    </PushShape>
+    <FindById>
+      <summary>
+        Searches for a shape that has the spacified ID.
+      </summary>
+      <param name="id">The ID of the shape to search for.</param>
+      <returns>The shape that has the specified ID.</returns>
+      <exception cref="System.Exception">
+        Thrown when a shape is not found.
+      </exception>
+    </FindById>
+    <PullShapeById>
+      <summary>
+        Pulls out of the box the shape with <paramref name="id"/>.
+      </summary>
+      <param name="id">The ID of the shape to pull out.</param>
+      <returns>The shape that has been pulled out of the box.</returns>
+      <exception cref="System.Exception">
+        Thrown when a shape is not found.
+      </exception>
+    </PullShapeById>
+    <ReplaceById>
+      <summary>
+        Replaces the shape with the specified <paramref name="id"/> with the <paramref name="shape"/> in the box.
+      </summary>
+      <param name="shape">The shape to replace the search shape.</param>
+      <param name="id">The ID of the shape to be replaced.</param>
+      <exception cref="System.Exception">
+        Thrown when a shape is not found.
+      </exception>
+    </ReplaceById>
+    <FindByTemplate>
+      <summary>
+        Searches for a shape the specified template.
+      </summary>
+      <param name="template">The template to search shapes in the box.</param>
+      <returns>The collection of the shapes found by the specified template. If no shapes are foound returns empty collection.</returns>
+      <exception cref="System.ArgumentNullException">
+        Thrown when the value of <paramref name="template"/> is <c>null</c>.
+      </exception>
+    </FindByTemplate>
+    <Count>
+      <summary>
+        Returns the number of shapes in the box.
+      </summary>
+      <returns>The number of shapes in the box.</returns>
+    </Count>
+    <GetTotalArea>
+      <summary>
+        Returns the total area of all the shapes in the box.
+      </summary>
+      <returns>The total area of all the shapes in the box.</returns>
+    </GetTotalArea>
+    <GetTotalPerimeter>
+      <summary>
+        Returns the total perimeter of all the shapes in the box.
+      </summary>
+      <returns>The total perimeter of all the shapes in the box.</returns>
+    </GetTotalPerimeter>
+    <PullCircles>
+      <summary>
+        Pulls all the circles out of the box.
+      </summary>
+      <returns>The collection of the circles pulled out of the box.</returns>
+    </PullCircles>
+    <PullFilmShapes>
+      <summary>
+        Pulls all the film shapes out of the box.
+      </summary>
+      <returns>The collection of the film shapes pulled out of the box.</returns>
+    </PullFilmShapes>
+    <AllStreamWriter>
+      <summary>
+        Writes all the shapes in the box to the specified XML file using StreamWriter.
+      </summary>
+      <param name="file">The name of the file to write the shapes.</param>
+      <exception cref="System.ArgumentNullException">
+        Thrown when the value of <paramref name="file"/> is <c>null</c>.
+      </exception>
+    </AllStreamWriter>
+    <PaperStreamWriter>
+      <summary>
+        Writes all the paper shapes in the box to the specified XML file using StreamWriter.
+      </summary>
+      <param name="file">The name of the file to write the paper shapes.</param>
+      <exception cref="System.ArgumentNullException">
+        Thrown when the value of <paramref name="file"/> is <c>null</c>.
+      </exception>
+    </PaperStreamWriter>
+    <FilmStreamWriter>
+      <summary>
+        Writes all the film shapes in the box to the specified XML file using StreamWriter.
+      </summary>
+      <param name="file">The name of the file to write the film shapes.</param>
+      <exception cref="System.ArgumentNullException">
+        Thrown when the value of <paramref name="file"/> is <c>null</c>.
+      </exception>
+    </FilmStreamWriter>
+    <AllXmlWriter>
+      <summary>
+        Writes all the shapes in the box to the specified XML file using XmlWriter.
+      </summary>
+      <param name="file">The name of the file to write the shapes.</param>
+      <exception cref="System.ArgumentNullException">
+        Thrown when the value of <paramref name="file"/> is <c>null</c>.
+      </exception>
+    </AllXmlWriter>
+    <PaperXmlWriter>
+      <summary>
+        Writes all the paper shapes in the box to the specified XML file using XmlWriter.
+      </summary>
+      <param name="file">The name of the file to write the paper shapes.</param>
+      <exception cref="System.ArgumentNullException">
+        Thrown when the value of <paramref name="file"/> is <c>null</c>.
+      </exception>
+    </PaperXmlWriter>
+    <FilmXmlWriter>
+      <summary>
+        Writes all the film shapes in the box to the specified XML file using XmlWriter.
+      </summary>
+      <param name="file">The name of the file to write the film shapes.</param>
+      <exception cref="System.ArgumentNullException">
+        Thrown when the value of <paramref name="file"/> is <c>null</c>.
+      </exception>
+    </FilmXmlWriter>
+    <AllStreamReader>
+      <summary>
+        Reads all the shapes from the specified XML file to the box using StreamReader.
+      </summary>
+      <param name="file">The file name to read the shapes.</param>
+      <exception cref="System.ArgumentNullException">
+        Thrown when the value of <paramref name="file"/> is <c>null</c>.
+      </exception>
+      <exception cref="System.IO.FileNotFoundException">
+        Thrown when <paramref name="file"/> not found.
+      </exception>
+    </AllStreamReader>
+    <AllXmlReader>
+      <summary>
+        Reads all the shapes from the specified XML file to the box using XmlReader.
+      </summary>
+      <param name="file">The file name to read the shapes.</param>
+      <exception cref="System.ArgumentNullException">
+        Thrown when the value of <paramref name="file"/> is <c>null</c>.
+      </exception>
+      <exception cref="System.IO.FileNotFoundException">
+        Thrown when <paramref name="file"/> not found.
+      </exception>
+    </AllXmlReader>
   </members>
 </docs>

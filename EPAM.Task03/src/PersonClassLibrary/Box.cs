@@ -3,6 +3,8 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Text;
+using System.Text.RegularExpressions;
 using System.Xml;
 using System.Xml.Serialization;
 
@@ -13,13 +15,16 @@ namespace PersonClassLibrary
     {
         private const int MAX_CAPACITY = 20;
 
+        /// <include file='docs.xml' path='docs/members[@name="box"]/Shapes/*'/>
         public IEnumerable<Shape> Shapes { get; set; }
 
+        /// <include file='docs.xml' path='docs/members[@name="box"]/Constructor/*'/>
         public Box()
         {
             Shapes = new List<Shape>();
         }
 
+        /// <include file='docs.xml' path='docs/members[@name="box"]/PushShape/*'/>
         public void PushShape(Shape shape)
         {
             if (shape is null)
@@ -44,6 +49,7 @@ namespace PersonClassLibrary
             Shapes = shapes;
         }
 
+        /// <include file='docs.xml' path='docs/members[@name="box"]/FindById/*'/>
         public Shape FindById(int id)
         {
             var shape = from s in Shapes
@@ -56,6 +62,7 @@ namespace PersonClassLibrary
             throw new Exception("The shape is not found.");
         }
 
+        /// <include file='docs.xml' path='docs/members[@name="box"]/PullShapeById/*'/>
         public Shape PullShapeById(int id)
         {
             var shape = from s in Shapes
@@ -76,6 +83,7 @@ namespace PersonClassLibrary
             throw new Exception("The shape is not found.");
         }
 
+        /// <include file='docs.xml' path='docs/members[@name="box"]/ReplaceById/*'/>
         public void ReplaceById(Shape shape, int id)
         {
             if (shape is null)
@@ -106,6 +114,7 @@ namespace PersonClassLibrary
                 throw new Exception("The shape is not found.");
         }
 
+        /// <include file='docs.xml' path='docs/members[@name="box"]/FindByTemplate/*'/>
         public IEnumerable<Shape> FindByTemplate(Shape template)
         {
             if (template is null)
@@ -116,17 +125,21 @@ namespace PersonClassLibrary
             return listOfShapes.FindAll(s => s.Equals(template));
         }
 
+        /// <include file='docs.xml' path='docs/members[@name="box"]/Count/*'/>
         public int Count()
             => Shapes.Count();
 
+        /// <include file='docs.xml' path='docs/members[@name="box"]/GetTotalArea/*'/>
         public double GetTotalArea()
             => (from s in Shapes
                 select s.GetArea()).Sum();
 
+        /// <include file='docs.xml' path='docs/members[@name="box"]/GetTotalPerimeter/*'/>
         public double GetTotalPerimeter()
             => (from s in Shapes
                 select s.GetPerimeter()).Sum();
 
+        /// <include file='docs.xml' path='docs/members[@name="box"]/PullCircles/*'/>
         public IEnumerable<Shape> PullCircles()
         {
             var shapes = (from s in Shapes
@@ -145,6 +158,7 @@ namespace PersonClassLibrary
             return shapes;
         }
 
+        /// <include file='docs.xml' path='docs/members[@name="box"]/PullFilmShapes/*'/>
         public IEnumerable<Shape> PullFilmShapes()
         {
             var shapes = (from s in Shapes
@@ -163,10 +177,21 @@ namespace PersonClassLibrary
             return shapes;
         }
 
+        /// <include file='docs.xml' path='docs/members[@name="box"]/AllStreamWriter/*'/>
         public void WriteAllToXmlStreamWriter(string file)
         {
             if (file is null)
                 throw new ArgumentNullException();
+
+            // check if file name matches pattern '.xml'
+            Regex pattern = new Regex(@"\.xml$");
+            Match match = pattern.Match(file);
+            if (!match.Success)
+            {
+                StringBuilder stringBuilder = new StringBuilder(file);
+                stringBuilder.Append(".xml");
+                file = stringBuilder.ToString();
+            }
 
             XmlSerializer xmlSerializer = new XmlSerializer(typeof(List<Shape>));
 
@@ -174,6 +199,7 @@ namespace PersonClassLibrary
             xmlSerializer.Serialize(textWriter, Shapes);
         }
 
+        /// <include file='docs.xml' path='docs/members[@name="box"]/PaperStreamWriter/*'/>
         public void WritePaperToXmlStreamWriter(string file)
         {
             if (file is null)
@@ -189,6 +215,7 @@ namespace PersonClassLibrary
             xmlSerializer.Serialize(textWriter, paperShapes);
         }
 
+        /// <include file='docs.xml' path='docs/members[@name="box"]/FilmStreamWriter/*'/>
         public void WriteFilmToXmlStreamWriter(string file)
         {
             if (file is null)
@@ -204,6 +231,7 @@ namespace PersonClassLibrary
             xmlSerializer.Serialize(textWriter, filmShapes);
         }
 
+        /// <include file='docs.xml' path='docs/members[@name="box"]/AllXmlWriter/*'/>
         public void WriteAllToXmlXmlWriter(string file)
         {
             if (file is null)
@@ -219,6 +247,7 @@ namespace PersonClassLibrary
             xmlSerializer.Serialize(xmlWriter, Shapes.ToList());
         }
 
+        /// <include file='docs.xml' path='docs/members[@name="box"]/PaperXmlWriter/*'/>
         public void WritePaperToXmlXmlWriter(string file)
         {
             if (file is null)
@@ -237,6 +266,7 @@ namespace PersonClassLibrary
             xmlSerializer.Serialize(xmlWriter, paperShapes);
         }
 
+        /// <include file='docs.xml' path='docs/members[@name="box"]/FilmXmlWriter/*'/>
         public void WriteFilmToXmlXmlWriter(string file)
         {
             if (file is null)
@@ -255,6 +285,7 @@ namespace PersonClassLibrary
             xmlSerializer.Serialize(xmlWriter, filmShapes);
         }
 
+        /// <include file='docs.xml' path='docs/members[@name="box"]/AllStreamReader/*'/>
         public void ReadAllFromXmlStreamReader(string file)
         {
             if (file is null)
@@ -267,6 +298,7 @@ namespace PersonClassLibrary
             Shapes = list;
         }
 
+        /// <include file='docs.xml' path='docs/members[@name="box"]/AllXmlReader/*'/>
         public void ReadAllFromXmlXmlReader(string file)
         {
             if (file is null)
