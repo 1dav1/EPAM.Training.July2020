@@ -247,11 +247,11 @@ namespace PersonClassLibrary.Tests
             box.PushShape(filmRectangle);
             box.PushShape(paperCircle);
 
-            Box zeroBox = new Box();
+            Box emptyBox = new Box();
 
             // Assert
             box.Count().Should().Be(3);
-            zeroBox.Count().Should().Be(0);
+            emptyBox.Count().Should().Be(0);
         }
 
         [Fact]
@@ -272,11 +272,11 @@ namespace PersonClassLibrary.Tests
             double rectangleArea = rectangle.Height * rectangle.Width;
             double circleArea = Math.PI * Math.Pow(circle.Radius, 2);
 
-            Box zeroBox = new Box();
+            Box emptyBox = new Box();
 
             // Assert
             box.GetTotalArea().Should().Be(triangleArea + rectangleArea + circleArea);
-            zeroBox.GetTotalArea().Should().Be(0);
+            emptyBox.GetTotalArea().Should().Be(0);
         }
 
         [Fact]
@@ -296,11 +296,11 @@ namespace PersonClassLibrary.Tests
             double rectanglePerimeter = (rectangle.Height + rectangle.Width) * 2;
             double circumference = 2 * Math.PI * circle.Radius;
 
-            Box zeroBox = new Box();
+            Box emptyBox = new Box();
 
             // Assert
             box.GetTotalPerimeter().Should().Be(trianglePerimeter + rectanglePerimeter + circumference);
-            zeroBox.GetTotalPerimeter().Should().Be(0);
+            emptyBox.GetTotalPerimeter().Should().Be(0);
         }
 
         [Fact]
