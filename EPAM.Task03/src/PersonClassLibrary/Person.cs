@@ -6,72 +6,62 @@ namespace PersonClassLibrary
 {
     public class Person
     {
-        private static Scissors Scissors { get; set; }
-
-        private static Brush Brush { get; set; }
+        public Colors Color { get; private set; }
 
         private static Box Box { get; set; }
 
-        public Person() { }
-
-        public Person(Scissors scissors, Brush brush, Box box)
+        public Person()
         {
-            Scissors = scissors;
-            Brush = brush;
+            Color = Colors.None;
+        }
+
+        public Person(Box box)
+        {
             Box = box;
         }
 
         public void SetColor(Colors color)
         {
-            if (Brush == null)
-                throw new Exception("The girl has no brush.");
-
-            Brush.Color = color;
+            Color = color;
         }
 
         public Shape ColorShape(Shape shape)
         {
-            if (Brush == null)
-                throw new Exception("The girl has no brush.");
+            if (shape is null)
+                throw new ArgumentNullException();
 
             // if color is not set, throw exception
-            if (Brush.Color == Colors.None)
+            if (Color == Colors.None)
                 throw new Exception("Choose a color.");
 
             // if the specified shape is of paper, it can be colored
             if (shape is IPaper paper)
             {
-                paper.Color = Brush.Color;
+                if (paper.Color != Colors.None)
+                    throw new Exception("The shape is already colored.");
+
+                paper.Color = Color;
                 return shape;
             }
 
             // otherwise throw exception
-            throw new Exception("Film shapes cannot be colored.");
+            throw new ArgumentException("Film shapes cannot be colored.");
         }
 
         // cut from paper
         public Shape CutShape(IPaper material, params double[] parameters)
         {
-            if (Scissors == null)
-                throw new Exception("The girl has no scissors.");
-
             return Scissors.Cut(material, parameters);
         }
 
         // cut from film
         public Shape CutShape(IFilm material, params double[] parameters)
         {
-            if (Scissors == null)
-                throw new Exception("The girl has no scissors.");
-
             return Scissors.Cut(material, parameters);
         }
 
         public Shape CutShapeFromShape(Shape shape, params double[] parameters)
         {
-            if (Scissors == null)
-                throw new Exception("The girl has no scissors.");
-
             return Scissors.Cut(shape, parameters);
         }
 
