@@ -4,27 +4,34 @@ using ShapeClassLibrary;
 
 namespace PersonClassLibrary
 {
+    /// <include file='docs.xml' path='docs/members[@name="person"]/Person/*'/>
     public class Person
     {
+        /// <include file='docs.xml' path='docs/members[@name="person"]/Color/*'/>
         public Colors Color { get; private set; }
 
         private static Box Box { get; set; }
 
+        /// <include file='docs.xml' path='docs/members[@name="person"]/Constructor1/*'/>
         public Person()
         {
             Color = Colors.None;
+            Box = new Box();
         }
 
+        /// <include file='docs.xml' path='docs/members[@name="person"]/Constructor2/*'/>
         public Person(Box box)
         {
             Box = box;
         }
 
+        /// <include file='docs.xml' path='docs/members[@name="person"]/SetColor/*'/>
         public void SetColor(Colors color)
         {
             Color = color;
         }
 
+        /// <include file='docs.xml' path='docs/members[@name="person"]/ColorShape/*'/>
         public Shape ColorShape(Shape shape)
         {
             if (shape is null)
@@ -49,22 +56,26 @@ namespace PersonClassLibrary
         }
 
         // cut from paper
+        /// <include file='docs.xml' path='docs/members[@name="person"]/CutShape/*'/>
         public Shape CutShape(IPaper material, params double[] parameters)
         {
             return Scissors.Cut(material, parameters);
         }
 
         // cut from film
+        /// <include file='docs.xml' path='docs/members[@name="person"]/CutShape/*'/>
         public Shape CutShape(IFilm material, params double[] parameters)
         {
             return Scissors.Cut(material, parameters);
         }
 
+        /// <include file='docs.xml' path='docs/members[@name="person"]/CutShapeFromShape/*'/>
         public Shape CutShapeFromShape(Shape shape, params double[] parameters)
         {
             return Scissors.Cut(shape, parameters);
         }
 
+        /// <include file='docs.xml' path='docs/members[@name="person"]/PutShapeToBox/*'/>
         public void PutShapeToBox(Shape shape)
         {
             if (Box == null)
@@ -73,6 +84,7 @@ namespace PersonClassLibrary
             Box.PushShape(shape);
         }
 
+        /// <include file='docs.xml' path='docs/members[@name="person"]/FindShapeById/*'/>
         public Shape FindShapeById(int id)
         {
             if (Box == null)
@@ -81,6 +93,7 @@ namespace PersonClassLibrary
             return Box.FindById(id);
         }
 
+        /// <include file='docs.xml' path='docs/members[@name="person"]/GetShapeById/*'/>
         public Shape GetShapeById(int id)
         {
             if (Box == null)
@@ -89,6 +102,7 @@ namespace PersonClassLibrary
             return Box.PullShapeById(id);
         }
 
+        /// <include file='docs.xml' path='docs/members[@name="box"]/ReplaceById/*'/>
         public void ReplaceShapeById(Shape shape, int id)
         {
             if (Box == null)
@@ -97,6 +111,7 @@ namespace PersonClassLibrary
             Box.ReplaceById(shape, id);
         }
 
+        /// <include file='docs.xml' path='docs/members[@name="box"]/FindByTemplate/*'/>
         public IEnumerable<Shape> FindShapeByTemplate(Shape template)
         {
             if (Box == null)
@@ -105,6 +120,7 @@ namespace PersonClassLibrary
             return Box.FindByTemplate(template);
         }
 
+        /// <include file='docs.xml' path='docs/members[@name="box"]/Count/*'/>
         public int CountShapes()
         {
             if (Box == null)
@@ -113,6 +129,7 @@ namespace PersonClassLibrary
             return Box.Count();
         }
 
+        /// <include file='docs.xml' path='docs/members[@name="box"]/GetTotalArea/*'/>
         public double GetTotalArea()
         {
             if (Box == null)
@@ -121,6 +138,7 @@ namespace PersonClassLibrary
             return Box.GetTotalArea();
         }
 
+        /// <include file='docs.xml' path='docs/members[@name="box"]/GetTotalPerimeter/*'/>
         public double GetTotalPerimeter()
         {
             if (Box == null)
@@ -129,6 +147,7 @@ namespace PersonClassLibrary
             return Box.GetTotalPerimeter();
         }
 
+        /// <include file='docs.xml' path='docs/members[@name="box"]/PullCircles/*'/>
         public IEnumerable<Shape> PullAllCircles()
         {
             if (Box == null)
@@ -137,6 +156,7 @@ namespace PersonClassLibrary
             return Box.PullCircles();
         }
 
+        /// <include file='docs.xml' path='docs/members[@name="box"]/PullFilmShapes/*'/>
         public IEnumerable<Shape> PullAllFilmShapes()
         {
             if (Box == null)
@@ -145,6 +165,7 @@ namespace PersonClassLibrary
             return Box.PullFilmShapes();
         }
 
+        /// <include file='docs.xml' path='docs/members[@name="box"]/AllStreamWriter/*'/>
         public void SaveAllToXmlViaStreamWriter(string file)
         {
             if (Box == null)
@@ -153,6 +174,7 @@ namespace PersonClassLibrary
             Box.WriteAllToXmlStreamWriter(file);
         }
 
+        /// <include file='docs.xml' path='docs/members[@name="box"]/PaperStreamWriter/*'/>
         public void SavePaperToXmlViaStreamWriter(string file)
         {
             if (Box == null)
@@ -161,6 +183,7 @@ namespace PersonClassLibrary
             Box.WritePaperToXmlStreamWriter(file);
         }
 
+        /// <include file='docs.xml' path='docs/members[@name="box"]/FilmStreamWriter/*'/>
         public void SaveFilmToXmlViaStreamWriter(string file)
         {
             if (Box == null)
@@ -169,6 +192,7 @@ namespace PersonClassLibrary
             Box.WriteFilmToXmlStreamWriter(file);
         }
 
+        /// <include file='docs.xml' path='docs/members[@name="box"]/AllXmlWriter/*'/>
         public void SaveAllToXmlViaXmlWriter(string file)
         {
             if (Box == null)
@@ -177,6 +201,7 @@ namespace PersonClassLibrary
             Box.WriteAllToXmlXmlWriter(file);
         }
 
+        /// <include file='docs.xml' path='docs/members[@name="box"]/PaperXmlWriter/*'/>
         public void SavePaperToXmlViaXmlWriter(string file)
         {
             if (Box == null)
@@ -185,6 +210,7 @@ namespace PersonClassLibrary
             Box.WritePaperToXmlXmlWriter(file);
         }
 
+        /// <include file='docs.xml' path='docs/members[@name="box"]/FilmXmlWriter/*'/>
         public void SaveFilmToXmlViaXmlWriter(string file)
         {
             if (Box == null)
@@ -193,6 +219,7 @@ namespace PersonClassLibrary
             Box.WriteFilmToXmlXmlWriter(file);
         }
 
+        /// <include file='docs.xml' path='docs/members[@name="box"]/AllStreamReader/*'/>
         public void LoadAllFromXmlViaStreamReader(string file)
         {
             if (Box == null)
@@ -201,6 +228,7 @@ namespace PersonClassLibrary
             Box.ReadAllFromXmlStreamReader(file);
         }
 
+        /// <include file='docs.xml' path='docs/members[@name="box"]/AllXmlReader/*'/>
         public void LoadAllFromXmlViaXmlReader(string file)
         {
             if (Box == null)

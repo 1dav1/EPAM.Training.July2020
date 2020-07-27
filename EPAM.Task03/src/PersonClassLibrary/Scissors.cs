@@ -3,8 +3,10 @@ using System;
 
 namespace PersonClassLibrary
 {
+    /// <include file='docs.xml' path='docs/members[@name="scissors"]/Scissors/*'/>
     public static class Scissors
     {
+        /// <include file='docs.xml' path='docs/members[@name="scissors"]/CutPaper/*'/>
         public static Shape Cut(IPaper paper, params double[] parameters)
         {
             if (paper is null)
@@ -19,6 +21,7 @@ namespace PersonClassLibrary
             };
         }
 
+        /// <include file='docs.xml' path='docs/members[@name="scissors"]/CutFilm/*'/>
         public static Shape Cut(IFilm film, params double[] parameters)
         {
             if (film is null)
@@ -33,6 +36,7 @@ namespace PersonClassLibrary
             };
         }
 
+        /// <include file='docs.xml' path='docs/members[@name="scissors"]/CutFromShape/*'/>
         public static Shape Cut(Shape shape, params double[] parameters)
         {
             if (shape is null)

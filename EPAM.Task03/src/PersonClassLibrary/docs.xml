@@ -52,7 +52,7 @@
     </PullShapeById>
     <ReplaceById>
       <summary>
-        Replaces the shape with the specified <paramref name="id"/> with the <paramref name="shape"/> in the box.
+        Replaces the shape with the specified <paramref name="id"/> in the box with <paramref name="shape"/>.
       </summary>
       <param name="shape">The shape to replace the search shape.</param>
       <param name="id">The ID of the shape to be replaced.</param>
@@ -65,7 +65,7 @@
         Searches for a shape the specified template.
       </summary>
       <param name="template">The template to search shapes in the box.</param>
-      <returns>The collection of the shapes found by the specified template. If no shapes are foound returns empty collection.</returns>
+      <returns>The collection of the shapes found by the specified template. If no shapes are found returns empty collection.</returns>
       <exception cref="System.ArgumentNullException">
         Thrown when the value of <paramref name="template"/> is <c>null</c>.
       </exception>
@@ -179,4 +179,142 @@
       </exception>
     </AllXmlReader>
   </members>
+  <members name="person">
+    <Person>
+      <summary>
+        The class Person represent a person to operate on shapes, scissors and box.
+      </summary>
+    </Person>
+    <Color>
+      <value>Gets the currently set color.</value>
+    </Color>
+    <Constructor1>
+      <summary>
+        Initializes a new instance of the Person class with default properties.
+      </summary>
+    </Constructor1>
+    <Constructor2>
+      <summary>
+        Initializes a new instance of the Person class with specified box.
+      </summary>
+      <param name="box">The box of the current person.</param>
+    </Constructor2>
+    <SetColor>
+      <summary>
+        Sets the specified color to color shapes.
+      </summary>
+      <param name="color">The color to color shapes.</param>
+
+    </SetColor>
+    <ColorShape>
+      <summary>
+        Colors the specified shape.
+      </summary>
+      <param name="shape">The shape to color.</param>
+      <returns>The colored shape.</returns>
+      <exception cref="System.ArgumentNullException">
+        Thrown when <paramref name="shape"/> is of film.
+      </exception>
+      <exception cref="System.Exception">
+        Thrown when a color is not set or when <paramref name="shape"/> has been already colored.
+      </exception>
+    </ColorShape>
+    <CutShape>
+      <summary>
+        Cuts a shape with the <paramref name="parameters"/> from the <paramref name="material"/>.
+      </summary>
+      <param name="material">The material to cut a shape.</param>
+      <param name="parameters">The set of parameters that a shape should have.</param>
+      <returns>The cut shape.</returns>
+    </CutShape>
+    <CutShapeFromShape>
+      <summary>
+        Cuts a shape with the <paramref name="parameters"/> from the <paramref name="shape"/>.
+      </summary>
+      <param name="shape">The parent shape to cut a child shape.</param>
+      <param name="parameters">The set of parameters that a shape should have.</param>
+      <returns>The cut shape.</returns>
+    </CutShapeFromShape>
+    <PutShapeToBox>
+      <summary>
+        Adds <paramref name="shape"/> to the box.
+      </summary>
+      <param name="shape">The shape to put to the box.</param>
+      <exception cref="System.Exception">
+        Thrown when the person has no box.
+      </exception>
+    </PutShapeToBox>
+    <FindShapeById>
+      <summary>
+        Searches for a shape that has the spacified ID.
+      </summary>
+      <param name="id">The ID of the shape to search for.</param>
+      <returns>The shape that has the specified ID.</returns>
+      <exception cref="System.Exception">
+        Thrown when the person has no box.
+      </exception>
+    </FindShapeById>
+    <GetShapeById>
+      <summary>
+        Pulls out of the box the shape with <paramref name="id"/>.
+      </summary>
+      <param name="id">The ID of the shape to pull out.</param>
+      <returns>The shape that has been pulled out of the box.</returns>
+      <exception cref="System.Exception">
+        Thrown when the person has no box.
+      </exception>
+    </GetShapeById>
+  </members>
+  <members name="scissors">
+    <Scissors>
+      <summary>
+        The Scissors class. Contains methods to cut shapes.
+      </summary>
+    </Scissors>
+    <CutPaper>
+      <summary>
+        Cuts a shape with <paramref name="parameters"/> from paper.
+      </summary>
+      <param name="paper">Paper to cut a shape.</param>
+      <param name="parameters">The set of parameters that a shape should have.</param>
+      <returns>The cut shape with the specified parameters.</returns>
+      <exception cref="System.ArgumentNullException">
+        Thrown when the value of <paramref name="paper"/> is <c>null</c>.
+      </exception>
+      <exception cref="System.ArgumentOutOfRangeException">
+        Thrown when the number of parameters is excess.
+      </exception>
+    </CutPaper>
+    <CutFilm>
+      <summary>
+        Cuts a shape with <paramref name="parameters"/> from film.
+      </summary>
+      <param name="film">Film to cut a shape.</param>
+      <param name="parameters">The set of parameters that a shape should have.</param>
+      <returns>The cut shape with the specified parameters.</returns>
+      <exception cref="System.ArgumentNullException">
+        Thrown when the value of <paramref name="film"/> is <c>null</c>.
+      </exception>
+      <exception cref="System.ArgumentOutOfRangeException">
+        Thrown when the number of parameters is excess.
+      </exception>
+    </CutFilm>
+    <CutFromShape>
+      <summary>
+        Cuts a shape with <paramref name="parameters"/> from <paramref name="shape"/>.
+      </summary>
+      <param name="shape">The parent shape to cut a child shape.</param>
+      <param name="parameters">The set of parameters that a shape should have.</param>
+      <returns>The cut shape with the specified parameters.</returns>
+      <exception cref="System.ArgumentNullException">
+        Thrown when the value of <paramref name="shape"/> is <c>null</c>.
+      </exception>
+      <exception cref="System.ArgumentOutOfRangeException">
+        Thrown when the number of parameters is excess.
+      </exception>
+    </CutFromShape>
+
+
+  </members>
+
 </docs>
