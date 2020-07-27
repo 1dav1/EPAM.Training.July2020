@@ -8,30 +8,81 @@ namespace ShapeClassLibrary
     [XmlType("PaperRectangle")]
     public class PaperRectangle : Shape, IPaper
     {
-        public override int Id { get; set; }
-        public double Height { get; set; }
+        private int _id;
+        public override int Id
+        {
+            get => _id;
+            set
+            {
+                if (value < 0)
+                    throw new ArgumentOutOfRangeException("ID should be non-negative.");
+                _id = value;
+            }
+        }
 
-        public double Width { get; set; }
+        private double _height;
+        public double Height
+        {
+            get => _height;
+            set
+            {
+                if (value <= 0)
+                    throw new ArgumentOutOfRangeException("Height should be positive.");
+                _height = value;
+            }
+        }
+
+        private double _width;
+        public double Width
+        {
+            get => _width;
+            set
+            {
+                if (value <= 0)
+                    throw new ArgumentOutOfRangeException("Width should be positive.");
+                _width = value;
+            }
+        }
 
         public Colors Color { get; set; }
 
-        public PaperRectangle() { }
-
-        public PaperRectangle(params double[] parameters)
+        public PaperRectangle() 
         {
-            Height = parameters[0];
-            Width = parameters[1];
+            Color = Colors.None;
         }
 
-        public PaperRectangle(Shape parentShape, params double[] paramaters)
+        public PaperRectangle(double height, double width)
         {
-            double area = paramaters[0] * paramaters[1];
+            Height = height;
+            Width = width;
+        }
 
+        public PaperRectangle(Shape parentShape, double height, double width)
+        {
+            if (parentShape is IFilm)
+                throw new ArgumentException("Parent shape is of wrong material.");
+
+            double area = height * width;
             if (parentShape.GetArea() < area)
                 throw new Exception("The area of the derived shape should be less than the area of the parent shape.");
 
-            Height = paramaters[0];
-            Width = paramaters[1];
+            // down-casting the parent shape to get property 'Color'
+            if (parentShape is PaperCircle paperCircle)
+            {
+                Color = paperCircle.Color;
+            }
+            else if (parentShape is PaperRectangle paperRectangle)
+            {
+                Color = paperRectangle.Color;
+            }
+            else
+            {
+                PaperTriangle paperTriangle = (PaperTriangle)parentShape;
+                Color = paperTriangle.Color;
+            }
+
+            Height = height;
+            Width = width;
         }
 
         public override double GetPerimeter()
@@ -49,6 +100,11 @@ namespace ShapeClassLibrary
                  ((paperRectangle.Height == Height && paperRectangle.Width == Width) ||           // if any pairs of equal sides
                   (paperRectangle.Height == Width && paperRectangle.Width == Height)) &&
                    paperRectangle.Color == Color;
+        }
+
+        public override int GetHashCode()
+        {
+            return HashCode.Combine(Id, Height, Width, Color);
         }
     }
 }

@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Runtime.Serialization;
 using System.Xml.Serialization;
 
 namespace ShapeClassLibrary
@@ -8,36 +7,97 @@ namespace ShapeClassLibrary
     [XmlType("PaperTriangle")]
     public class PaperTriangle : Shape, IPaper
     {
-        public override int Id { get; set; }
-        public double Side1 { get; set; }
+        private int _id;
+        public override int Id
+        {
+            get => _id;
+            set
+            {
+                if (value < 0)
+                    throw new ArgumentOutOfRangeException("ID should be non-negative.");
+                _id = value;
+            }
+        }
 
-        public double Side2 { get; set; }
+        private double _side1;
+        public double Side1
+        {
+            get => _side1;
+            set
+            {
+                if (value <= 0)
+                    throw new ArgumentOutOfRangeException("Side1 should be positive.");
+                _side1 = value;
+            }
+        }
 
-        public double Side3 { get; set; }
+        private double _side2;
+        public double Side2
+        {
+            get => _side2;
+            set
+            {
+                if (value <= 0)
+                    throw new ArgumentOutOfRangeException("Side2 should be positive.");
+                _side2 = value;
+            }
+        }
+
+        private double _side3;
+        public double Side3
+        {
+            get => _side3;
+            set
+            {
+                if (value <= 0)
+                    throw new ArgumentOutOfRangeException("Side3 should be positive.");
+                _side3 = value;
+            }
+        }
 
         public Colors Color { get; set; }
 
-        public PaperTriangle() { }
-
-        public PaperTriangle(params double[] parameters)
+        public PaperTriangle() 
         {
-            Side1 = parameters[0];
-            Side2 = parameters[1];
-            Side3 = parameters[2];
+            Color = Colors.None;
         }
 
-        public PaperTriangle(Shape parentShape, params double[] parameters)
+        public PaperTriangle(double side1, double side2, double side3)
         {
-            double p = (parameters[0] + parameters[1] + parameters[2]) / 2;
+            Side1 = side1;
+            Side2 = side2;
+            Side3 = side3;
+        }
 
-            double area = Math.Sqrt(p * (p - parameters[0]) * (p - parameters[1]) * (p - parameters[2]));
+        public PaperTriangle(Shape parentShape, double side1, double side2, double side3)
+        {
+            if (parentShape is IFilm)
+                throw new ArgumentException("Parent shape is of wrong material.");
+
+            double p = (side1 + side2 + side3) / 2;
+            double area = Math.Sqrt(p * (p - side1) * (p - side2) * (p - side3));
 
             if (parentShape.GetArea() < area)
                 throw new Exception("The area of the derived shape should be less than the area of the parent shape.");
 
-            Side1 = parameters[0];
-            Side2 = parameters[1];
-            Side3 = parameters[2];
+            // down-casting the parent shape to get property 'Color'
+            if (parentShape is PaperCircle paperCircle)
+            {
+                Color = paperCircle.Color;
+            }
+            else if (parentShape is PaperRectangle paperRectangle)
+            {
+                Color = paperRectangle.Color;
+            }
+            else
+            {
+                PaperTriangle paperTriangle = (PaperTriangle)parentShape;
+                Color = paperTriangle.Color;
+            }
+
+            Side1 = side1;
+            Side2 = side2;
+            Side3 = side3;
         }
 
         public override double GetPerimeter()

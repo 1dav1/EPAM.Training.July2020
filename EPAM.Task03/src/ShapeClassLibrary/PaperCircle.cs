@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Runtime.Serialization;
 using System.Xml.Serialization;
 
 namespace ShapeClassLibrary
@@ -8,25 +7,67 @@ namespace ShapeClassLibrary
     [XmlType("PaperCircle")]
     public class PaperCircle : Shape, IPaper
     {
-        public override int Id { get; set; }
-        public double Radius { get; set; }
+        private int _id;
+        public override int Id 
+        { 
+            get => _id;
+            set
+            {
+                if (value < 0)
+                    throw new ArgumentOutOfRangeException("ID should be non-negative.");
+            }
+        }
+
+        private double _radius;
+        public double Radius
+        {
+            get => _radius;
+            set
+            {
+                if (value <= 0)
+                    throw new ArgumentOutOfRangeException("Radius should be posisitve.");
+                _radius = value;
+            }
+        }
 
         public Colors Color { get; set; }
 
-        public PaperCircle() { }
-
-        public PaperCircle(params double[] parameters)
+        public PaperCircle() 
         {
-            Radius = parameters[0];
+            Color = Colors.None;
         }
 
-        public PaperCircle(Shape shape, params double[] parameters)
+        public PaperCircle(double radius)
         {
-            double area = Math.PI * Math.Pow(parameters[0], 2);
-            if (shape.GetArea() < area)
+            Radius = radius;
+            Color = Colors.None;
+        }
+
+        public PaperCircle(Shape parentShape, double radius)
+        {
+            if (parentShape is IFilm)
+                throw new ArgumentException("Parent shape is of wrong material.");
+
+            double area = Math.PI * Math.Pow(radius, 2);
+            if (parentShape.GetArea() < area)
                 throw new Exception("The area of the derived shape should be less than the area of the parent shape.");
 
-            Radius = parameters[0];
+            // down-casting the parent shape to get property 'Color'
+            if (parentShape is PaperCircle paperCircle)
+            {
+                Color = paperCircle.Color;
+            }
+            else if (parentShape is PaperRectangle paperRectangle)
+            {
+                Color = paperRectangle.Color;
+            }
+            else
+            {
+                PaperTriangle paperTriangle = (PaperTriangle)parentShape;
+                Color = paperTriangle.Color;
+            }
+
+            Radius = radius;
         }
 
         public override double GetPerimeter()
@@ -45,5 +86,14 @@ namespace ShapeClassLibrary
                 paperCircle.Color == Color;
         }
 
+        public override int GetHashCode()
+        {
+            return HashCode.Combine(Id, Radius, Color);
+        }
+
+        public override string ToString()
+        {
+            return $"PaperCircle. ID: {Id}. Radius: {Radius}. Color: {Color}.";
+        }
     }
 }

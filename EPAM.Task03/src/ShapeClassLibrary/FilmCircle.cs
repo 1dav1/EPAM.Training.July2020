@@ -13,8 +13,8 @@ namespace ShapeClassLibrary
             get => _id;
             set
             {
-                if (value <= 0)
-                    throw new ArgumentOutOfRangeException();
+                if (value < 0)
+                    throw new ArgumentOutOfRangeException("ID should be non-negative.");
                 _id = value;
             }
         }
@@ -26,29 +26,29 @@ namespace ShapeClassLibrary
             set
             {
                 if (value <= 0)
-                    throw new ArgumentOutOfRangeException();
+                    throw new ArgumentOutOfRangeException("Radius should be posisitve.");
                 _radius = value;
             }
         }
 
         public FilmCircle() { }
 
-        public FilmCircle(params double[] parameters)
+        public FilmCircle(double radius)
         {
-            if (parameters.Length > 1)
-                throw new ArgumentException("Too many parameters.");
-
-            Radius = parameters[0];
+            Radius = radius;
         }
 
-        public FilmCircle(Shape parentShape, params double[] parameters)
+        public FilmCircle(Shape parentShape, double radius)
         {
-            double area = Math.PI * Math.Pow(parameters[0], 2);
+            if (parentShape is IPaper)
+                throw new Exception("Parent shape is of wrong material.");
+
+            double area = Math.PI * Math.Pow(radius, 2);
 
             if (parentShape.GetArea() < area)
                 throw new Exception("The area of the derived shape should be less than the area of the parent shape.");
 
-            Radius = parameters[0];
+            Radius = radius;
         }
 
         // circumference of the circle
@@ -69,7 +69,7 @@ namespace ShapeClassLibrary
 
         public override int GetHashCode()
         {
-            return HashCode.Combine(Id, Id, Radius);
+            return HashCode.Combine(Id, Radius);
         }
 
         public override string ToString()
