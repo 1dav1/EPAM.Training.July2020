@@ -10,6 +10,9 @@ namespace ServerClassLibrary
     {
         public string PrepareMessage(EndPoint point, string message)
         {
+            if (point is null || message is null)
+                throw new ArgumentNullException();
+
             StringBuilder builder = new StringBuilder(IPAddress.Parse(((IPEndPoint)point).Address.ToString()).ToString());
             builder.Append(": " + message + Environment.NewLine);
 
@@ -17,6 +20,9 @@ namespace ServerClassLibrary
         }
         public void Handle(AsyncListener listener, string file)
         {
+            if (listener is null || file is null)
+                throw new ArgumentNullException();
+
             listener.MessageReceived += delegate (object sender, MessageReceivedEventArgs args)
             {
                 string str = PrepareMessage(args.EndPoint, args.Message);

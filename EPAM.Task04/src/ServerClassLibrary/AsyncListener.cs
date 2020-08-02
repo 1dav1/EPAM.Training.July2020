@@ -98,7 +98,6 @@ namespace ServerClassLibrary
                         // if not all data received
                         handler.BeginReceive(state.Buffer, 0, state.BufferSize, 0, new AsyncCallback(ReadCallback), state);
                     }
-
                 }
             }
             catch (Exception)

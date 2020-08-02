@@ -9,6 +9,9 @@ namespace ServerClassLibrary
     {
         public void Handle(AsyncListener listener, string file)
         {
+            if (listener is null || file is null)
+                throw new ArgumentNullException();
+
             listener.MessageReceived += delegate (object sender, MessageReceivedEventArgs args)
             {
                 XmlDocument document = new XmlDocument();
