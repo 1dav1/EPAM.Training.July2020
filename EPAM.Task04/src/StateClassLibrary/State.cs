@@ -3,6 +3,7 @@ using System.Text;
 
 namespace StateClassLibrary
 {
+    // state object for storing data and passing it to callback functions at asynchronous server and client
     public class State
     {
         public Socket Socket { get; set; }

@@ -10,63 +10,113 @@ namespace Client
     public class AsyncClient
     {
         private const int PORT = 8005;
-        private static ManualResetEvent Connected { get; set; }
-        private static ManualResetEvent Sent { get; set; }
-        private static ManualResetEvent Received { get; set; }
-        private static string response;
-        private static string Message { get; set; }
 
-        public delegate string MessageHandler(string message);
-        public static event MessageHandler Encode;
+        // response from the srver
+        private string Response { get; set; }
+
+        // message to be sent
+        private string Message { get; set; }
+
+        // manual events for thread synchronization
+        private ManualResetEvent Connected { get; set; }
+        private ManualResetEvent Sent { get; set; }
+        private ManualResetEvent Received { get; set; }
+
+        public event EventHandler<MessageReceivedEventArgs> MessageReceived;
 
         public AsyncClient(string message = "Test message.<EOF>")
         {
             Connected = new ManualResetEvent(false);
             Sent = new ManualResetEvent(false);
             Received = new ManualResetEvent(false);
-            response = string.Empty;
+            Response = string.Empty;
             Message = message;
         }
 
-        public static void StartClient()
-        {
-            IPHostEntry ipHostInfo = Dns.GetHostEntry("DESKTOP-09ADG3A");
-            IPAddress ipAddress = ipHostInfo.AddressList[0];
-            IPEndPoint remoteEP = new IPEndPoint(ipAddress, PORT);
-
-            using Socket socket = new Socket(ipAddress.AddressFamily, SocketType.Stream, ProtocolType.Tcp);
-
-            socket.BeginConnect(remoteEP, new AsyncCallback(ConnectCallback), socket);
-            Connected.WaitOne();
-
-            Send(socket, Message);
-            Sent.WaitOne();
-
-            Receive(socket);
-            Received.WaitOne();
-
-            Console.WriteLine("Received: {0}", response);
-
-            socket.Shutdown(SocketShutdown.Both);
-            socket.Close();
-        }
-
-        private static void ConnectCallback(IAsyncResult result)
-        {
-            using Socket socket = (Socket)result.AsyncState;
-            socket.EndConnect(result);
-            Connected.Set();
-        }
-
-        private static void Receive(Socket socket)
+        public void StartClient()
         {
             try
             {
+                // retreive information about the host by name
+                IPHostEntry ipHostInfo = Dns.GetHostEntry("DESKTOP-09ADG3A");
+
+                // get IP address
+                IPAddress ipAddress = ipHostInfo.AddressList[2];
+
+                // establish the remote endpoint
+                IPEndPoint remoteEP = new IPEndPoint(ipAddress, PORT);
+                Socket socket;
+
+                while (true)
+                {
+                    Connected.Reset();
+                    Received.Reset();
+                    Sent.Reset();
+
+                    //create new socket
+                    socket = new Socket(ipAddress.AddressFamily, SocketType.Stream, ProtocolType.Tcp);
+
+                    // attempt to connect to the remote endpoint
+                    socket.BeginConnect(remoteEP, new AsyncCallback(ConnectCallback), socket);
+                    Connected.WaitOne();
+
+                    Console.WriteLine("Enter a message:");
+                    StringBuilder builder = new StringBuilder(Console.ReadLine());
+                    if (builder.ToString().ToUpper() != "QUIT")
+                    {
+                        Message = builder.Append("<EOF>").ToString();
+
+                        // send the message
+                        Send(socket);
+                        Sent.WaitOne();
+
+                        // receive a response from server
+                        Receive(socket);
+                        Received.WaitOne();
+
+                        socket.Shutdown(SocketShutdown.Both);
+                        socket.Close();
+                    }
+                    else
+                    {
+                        Environment.Exit(0);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+        }
+
+        private void ConnectCallback(IAsyncResult result)
+        {
+            try
+            {
+                // get the socket from the state object
+                Socket socket = (Socket)result.AsyncState;
+
+                // complete the connection
+                socket.EndConnect(result);
+                Connected.Set();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+        }
+
+        private void Receive(Socket socket)
+        {
+            try
+            {
+                // create new state object for receiving a response and pass the socket to it
                 State state = new State
                 {
-                    Socket = socket
+                    Socket = socket,
                 };
 
+                // asynchronousely receive a response
                 socket.BeginReceive(state.Buffer, 0, state.BufferSize, 0, new AsyncCallback(ReceiveCallback), state);
             }
             catch (Exception ex)
@@ -75,30 +125,36 @@ namespace Client
             }
         }
 
-        private static void ReceiveCallback(IAsyncResult result)
+        private void ReceiveCallback(IAsyncResult result)
         {
             try
             {
+                // get the state object and the socket from the asynchronous result object
                 State state = (State)result.AsyncState;
                 Socket socket = state.Socket;
+
+                // get the number of the received bytes
                 int bytesRead = socket.EndReceive(result);
 
-                if (bytesRead > 0)
-                {
-                    state.StringBuilder.Append(Encoding.UTF8.GetString(state.Buffer, 0, bytesRead));
-                    socket.BeginReceive(state.Buffer, 0, state.BufferSize, 0, new AsyncCallback(ReceiveCallback), state);
-                }
-                else
-                {
-                    if (state.StringBuilder.Length > 1)
+                state.StringBuilder.Append(Encoding.UTF8.GetString(state.Buffer, 0, bytesRead));
 
-                        /*****************************************************/
-                        /*******************change here***********************/
-                        /*****************************************************/
-                        response = state.StringBuilder.ToString();
-                    response = Encode?.Invoke(response);
+                // if any response received
+                if (state.StringBuilder.Length > 1 && state.StringBuilder.ToString().IndexOf("<EOF>") > -1)
+                {
+                    // remove the <EOF> postfix
+                    Response = state.StringBuilder.Replace("<EOF>", string.Empty).ToString();
+
+                    // create EventArgs object to store information about the event
+                    MessageReceivedEventArgs args = new MessageReceivedEventArgs
+                    {
+                        Message = Response,
+                    };
+
+                    // call method to invoke the event
+                    OnMessageReceived(args);
                 }
                 Received.Set();
+
             }
             catch (Exception ex)
             {
@@ -106,18 +162,35 @@ namespace Client
             }
         }
 
-        private static void Send(Socket socket, string message)
+        private void Send(Socket socket)
         {
-            byte[] byteData = Encoding.UTF8.GetBytes(message);
+            byte[] byteData = Encoding.UTF8.GetBytes(Message);
+
+            // send message asynchronousely
             socket.BeginSend(byteData, 0, byteData.Length, 0, new AsyncCallback(SendCallback), socket);
         }
 
-        private static void SendCallback(IAsyncResult result)
+        private void SendCallback(IAsyncResult result)
         {
-            using Socket socket = (Socket)result.AsyncState;
+            try
+            {
+                // retreive socket from the state object
+                Socket socket = (Socket)result.AsyncState;
 
-            int bytesSent = socket.EndSend(result);
-            Sent.Set();
+                int bytesSent = socket.EndSend(result);
+                Sent.Set();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+        }
+
+        // raise the event when a message received
+        protected virtual void OnMessageReceived(MessageReceivedEventArgs e)
+        {
+            EventHandler<MessageReceivedEventArgs> handler = MessageReceived;
+            handler?.Invoke(this, e);
         }
     }
 }
