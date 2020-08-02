@@ -1,9 +1,10 @@
-﻿using StateClassLibrary;
+﻿using ClientClassLibrary;
+using StateClassLibrary;
 using System;
 
 namespace Client
 {
-    public class ConsoleWriter
+    public class ConsoleWriter : Writer
     {
         public void Handle(AsyncClient client)
         {
