@@ -1,14 +1,19 @@
 # EPAM.Training.July2020
 EPAM training tasks     
 
-## Task 3. Inheritance Interfaces Abstract Classes     
-### Project 'Person'     
-- PersonClassLibrary library     
-- PersonClassLibrary tests     
+## Task 4. Delegates, Events    
+### Project 'Server'     
+- ServerClassLibrary     
+- Server console application
+- Server tests     
 
-### Project 'Shapes'     
-- ShapesClassLibrary     
-- ShapesClassLibrary tests     
+### Project 'Client'     
+- ClientClassLibrary    
+- Client console application
+- Client tests    
+
+### Project 'State'     
+- StateClassLibrary     
 
 ##     
 XML documentation is added.
