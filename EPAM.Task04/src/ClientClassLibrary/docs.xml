@@ -1,0 +1,110 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<docs>
+  <members name="asyncclient">
+    <AsyncClient>
+      <summary>
+        The main AsyncClient class.
+        Contains methods for sending messages to server and receiving responses from server asynchronousely using TCP/IP stack.
+      </summary>
+    </AsyncClient>
+    <Constructor>
+      <summary>
+        Initializes a new instance of <c>AsyncClient</c> class with default properties.
+      </summary>
+      <param name="message">The message to send to server.</param>
+    </Constructor>
+    <StartClient>
+      <summary>
+        Starts the current asynchronous client object.
+      </summary>
+    </StartClient>
+    <OnMessageReceived>
+      <summary>
+        Invokes the MessageReceived event.
+      </summary>
+      <param name="e">Information about the invoked event.</param>
+    </OnMessageReceived>
+    <MessageReceived>
+      <summary>
+        Occurs when message from server received.
+      </summary>
+    </MessageReceived>
+  </members>
+  <members name="writer">
+    <Writer>
+      <summary>
+        The base Writer class for various types of writers.
+      </summary>
+    </Writer>
+  </members>
+  <members name="binwriter">
+    <BinWriter>
+      <summary>
+        The BinWriter class contains methods for converting incoming message and writing it to a binary file.
+      </summary>
+    </BinWriter>
+    <PrepareMessage>
+      <summary>
+        Converts <paramref name="message"/> using encoder.
+      </summary>
+      <param name="message">Message to convert.</param>
+      <returns>Converted message.</returns>
+      <exception cref="System.ArgumentNullException">
+        Thrown when the value of <paramref name="message"/> is <c>null</c>.
+      </exception>
+    </PrepareMessage>
+    <Handle>
+      <summary>
+        Converts a message received by <paramref name="client"/> and writes it to <paramref name="file"/>.
+      </summary>
+      <param name="client">Client that received message.</param>
+      <param name="file">Binary file to write the incoming message.</param>
+      <exception cref="System.ArgumentNullException">
+        Thrown when the value of <paramref name="client"/> or <paramref name="file"/> is <c>null</c>.
+      </exception>
+    </Handle>
+  </members>
+  <members name="consolewriter">
+    <ConsoleWriter>
+      <summary>
+        The ConsoleWriter class contains method for writing the incoming message to console.
+      </summary>
+    </ConsoleWriter>
+    <Handle>
+      <summary>
+        Converts a message received by <paramref name="client"/> and writes it to the console.
+      </summary>
+      <param name="client">Client that received message.</param>
+      <exception cref="System.ArgumentNullException">
+        Thrown when the value of <paramref name="client"/> is <c>null</c>.
+      </exception>
+    </Handle>
+  </members>
+  <members name="txtwriter">
+    <TxtWriter>
+      <summary>
+        The TxtWriter class contains methods for converting incoming message and writing it to a plane text file.
+      </summary>
+    </TxtWriter>
+    <PrepareMessage>
+      <summary>
+        Converts <paramref name="message"/> using encoder.
+      </summary>
+      <param name="message">The message to be converted.</param>
+      <returns>Converted message.</returns>
+      <exception cref="System.ArgumentNullException">
+        Thrown when the value of <paramref name="message"/> is <c>null</c>.
+      </exception>
+    </PrepareMessage>
+    <Handle>
+      <summary>
+        Sets the event handler MessageReceived event of <paramref name="client"/>. The handler writes the message to <paramref name="file"/>.
+      </summary>
+      <param name="client">Client that receives messages.</param>
+      <param name="file">Plane text file to write the incoming message.</param>
+      <exception cref="System.ArgumentNullException">
+        Thrown when the value of <paramref name="client"/> or <paramref name="file"/> is <c>null</c>.
+      </exception>
+    </Handle>
+  </members>
+</docs>

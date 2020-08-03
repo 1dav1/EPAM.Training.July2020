@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Text.RegularExpressions;
 
 namespace Client
@@ -31,7 +32,10 @@ namespace Client
 
         public static string Encode(string message)
         {
-            string encoded = message;
+            if (message is null)
+                throw new ArgumentNullException();
+
+            string encoded = string.Empty;
             Regex pattern;
 
             if (!Regex.IsMatch(encoded, @"\P{IsBasicLatin}"))
@@ -39,7 +43,7 @@ namespace Client
                 foreach (var pair in engRusDictionary)
                 {
                     pattern = new Regex(pair.Key);
-                    encoded = pattern.Replace(encoded, pair.Value);
+                    encoded = pattern.Replace(message, pair.Value);
                 }
             }
             else if (!Regex.IsMatch(encoded, @"\P{IsCyrillic}"))
@@ -47,9 +51,12 @@ namespace Client
                 foreach (var pair in rusEngDictionary)
                 {
                     pattern = new Regex(pair.Key);
-                    encoded = pattern.Replace(encoded, pair.Value);
+                    encoded = pattern.Replace(message, pair.Value);
                 }
             }
+            else
+                throw new ArgumentException("Unknown set of characters.");
+
             return encoded;
         }
     }

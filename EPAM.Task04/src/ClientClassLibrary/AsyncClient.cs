@@ -7,6 +7,7 @@ using System.Threading;
 
 namespace ClientClassLibrary
 {
+    /// <include file='docs.xml' path='docs/members[@name="asyncclient"]/AsyncClient/*'/>
     public class AsyncClient
     {
         private const int PORT = 8005;
@@ -22,8 +23,10 @@ namespace ClientClassLibrary
         private ManualResetEvent Sent { get; set; }
         private ManualResetEvent Received { get; set; }
 
+        /// <include file='docs.xml' path='docs/members[@name="asyncclient"]/MessageReceived/*'/>
         public event EventHandler<MessageReceivedEventArgs> MessageReceived;
 
+        /// <include file='docs.xml' path='docs/members[@name="asyncclient"]/Constructor/*'/>
         public AsyncClient(string message = "Test message.<EOF>")
         {
             Connected = new ManualResetEvent(false);
@@ -33,6 +36,7 @@ namespace ClientClassLibrary
             Message = message;
         }
 
+        /// <include file='docs.xml' path='docs/members[@name="asyncclient"]/StartClient/*'/>
         public void StartClient()
         {
             try
@@ -62,6 +66,8 @@ namespace ClientClassLibrary
 
                     Console.WriteLine("Enter a message:");
                     StringBuilder builder = new StringBuilder(Console.ReadLine());
+
+                    // write 'quit' to resume the session
                     if (builder.ToString().ToUpper() != "QUIT")
                     {
                         Message = builder.Append("<EOF>").ToString();
@@ -187,6 +193,7 @@ namespace ClientClassLibrary
         }
 
         // raise the event when a message received
+        /// <include file='docs.xml' path='docs/members[@name="asyncclient"]/OnMessageReceived/*'/>
         protected virtual void OnMessageReceived(MessageReceivedEventArgs e)
         {
             EventHandler<MessageReceivedEventArgs> handler = MessageReceived;
