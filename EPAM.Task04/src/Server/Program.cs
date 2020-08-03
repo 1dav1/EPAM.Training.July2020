@@ -3,7 +3,8 @@ using System;
 
 namespace Server
 {
-    class Program
+    /// <include file='docs.xml' path='docs/members[@name="program"]/Program/*'/>
+    public class Program
     {
         static void Main(string[] args)
         {
@@ -11,15 +12,15 @@ namespace Server
             Console.WriteLine("Server is up.");
 
             // set up the message handlers
-            XmlLister lister = new XmlLister();
+            XmlLister xmlLister = new XmlLister();
             TxtLister txtLister = new TxtLister();
-            BinLister lister1 = new BinLister();
+            BinLister binLister = new BinLister();
 
-            lister.Handle(listener, "test.xml");
+            xmlLister.Handle(listener, "test.xml");
             txtLister.Handle(listener, "testtxt.txt");
-            lister1.Handle(listener, "testbin.dat");
+            binLister.Handle(listener, "testbin.dat");
 
-            // start listening incoming requests
+            // start listening for incoming requests
             listener.StartListening();
         }
     }
