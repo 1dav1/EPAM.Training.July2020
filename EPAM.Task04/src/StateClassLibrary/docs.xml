@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<docs>
+  <members name="args">
+    <Args>
+      <summary>
+        The class that stores information about the MessageReceived event.
+      </summary>
+    </Args>
+    <EndPoint>
+      <value>Gets or sets the remote endpoint that stores IP of the connected client.</value>
+    </EndPoint>
+    <Message>
+      <value>Gets or sets the message received from the connected client.</value>
+    </Message>
+  </members>
+  <members name="state">
+    <State>
+      <summary>
+        The State class presents the state object that is used for thread synchronization.
+      </summary>
+    </State>
+    <Socket>
+      <value>Get or sets the socket that has accepted incoming connection.</value>
+    </Socket>
+    <BufferSize>
+      <value>Get or sets the size of the buffer for the incoming messages.</value>
+    </BufferSize>
+    <Buffer>
+      <value>
+        Get or sets the array of type <c>byte</c> to store the incoming messages.
+      </value>
+    </Buffer>
+    <StringBuilder>
+      <value>
+        Get or sets the String Builder to compose the incoming message.
+      </value>
+    </StringBuilder>
+    <Constructor>
+      <summary>
+        Initializes a new instance of the State class with the default parameters.
+      </summary>
+      <param name="bufferSize">The size of the buffer for the incoming messages.</param>
+    </Constructor>
+  </members>
+</docs>
