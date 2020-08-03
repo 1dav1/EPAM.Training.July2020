@@ -5,14 +5,16 @@ using System.Xml;
 
 namespace ServerClassLibrary
 {
+    /// <include file='docs.xml' path='docs/members[@name="xmllister"]/XmlLister/*'/>
     public class XmlLister
     {
+        /// <include file='docs.xml' path='docs/members[@name="xmllister"]/Handle/*'/>
         public void Handle(AsyncListener listener, string file)
         {
             if (listener is null || file is null)
                 throw new ArgumentNullException();
 
-            listener.MessageReceived += delegate (object sender, MessageReceivedEventArgs args)
+            listener.MessageReceived +=  (object sender, MessageReceivedEventArgs args) =>
             {
                 XmlDocument document = new XmlDocument();
                 string ip = IPAddress.Parse(((IPEndPoint)args.EndPoint).Address.ToString()).ToString();

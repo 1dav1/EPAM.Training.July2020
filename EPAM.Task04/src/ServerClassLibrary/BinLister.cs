@@ -6,8 +6,10 @@ using System.Text;
 
 namespace ServerClassLibrary
 {
+    /// <include file='docs.xml' path='docs/members[@name="binlister"]/BinLister/*'/>
     public class BinLister
     {
+        /// <include file='docs.xml' path='docs/members[@name="binlister"]/PrepareMessage/*'/>
         public string PrepareMessage(EndPoint point, string message)
         {
             if (point is null || message is null)
@@ -18,12 +20,14 @@ namespace ServerClassLibrary
 
             return builder.ToString();
         }
+
+        /// <include file='docs.xml' path='docs/members[@name="binlister"]/Handle/*'/>
         public void Handle(AsyncListener listener, string file)
         {
             if (listener is null || file is null)
                 throw new ArgumentNullException();
 
-            listener.MessageReceived += delegate (object sender, MessageReceivedEventArgs args)
+            listener.MessageReceived += (object sender, MessageReceivedEventArgs args) =>
             {
                 string str = PrepareMessage(args.EndPoint, args.Message);
                 using FileStream stream = new FileStream(file, FileMode.Append, FileAccess.Write, FileShare.None);

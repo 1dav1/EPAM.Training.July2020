@@ -7,18 +7,22 @@ using System.Threading;
 
 namespace ServerClassLibrary
 {
+    /// <include file='docs.xml' path='docs/members[@name="asynclistener"]/AsyncListener/*'/>
     public class AsyncListener
     {
-        public static ManualResetEvent Connected { get; set; }
+        private static ManualResetEvent Connected { get; set; }
 
+        /// <include file='docs.xml' path='docs/members[@name="asynclistener"]/MessageReceived/*'/>
         public event EventHandler<MessageReceivedEventArgs> MessageReceived;
 
+        /// <include file='docs.xml' path='docs/members[@name="asynclistener"]/Constructor/*'/>
         public AsyncListener()
         {
             Connected = new ManualResetEvent(false);
             ServicePointManager.DefaultConnectionLimit = 10;
         }
 
+        /// <include file='docs.xml' path='docs/members[@name="asynclistener"]/StartListening/*'/>
         public void StartListening()
         {
             IPHostEntry ipHostInfo = Dns.GetHostEntry(Dns.GetHostName());
@@ -53,7 +57,7 @@ namespace ServerClassLibrary
             }
         }
 
-        public void AcceptCallback(IAsyncResult asyncResult)
+        private void AcceptCallback(IAsyncResult asyncResult)
         {
             Connected.Set();
 
@@ -67,7 +71,7 @@ namespace ServerClassLibrary
             handler.BeginReceive(state.Buffer, 0, state.BufferSize, 0, new AsyncCallback(ReadCallback), state);
         }
 
-        public void ReadCallback(IAsyncResult asyncResult)
+        private void ReadCallback(IAsyncResult asyncResult)
         {
             string message = string.Empty;
 
@@ -128,10 +132,10 @@ namespace ServerClassLibrary
             catch (Exception) { }
         }
 
+        /// <include file='docs.xml' path='docs/members[@name="asynclistener"]/OnMessageReceived/*'/>
         public virtual void OnMessageReceived(MessageReceivedEventArgs args)
         {
             EventHandler<MessageReceivedEventArgs> handler = MessageReceived;
-
             handler?.Invoke(this, args);
         }
     }

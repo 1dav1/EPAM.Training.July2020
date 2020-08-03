@@ -1,0 +1,105 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<docs>
+  <members name="asynclistener">
+    <AsyncListener>
+      <summary>
+        The main AsyncListener class.
+        Contains methods for receiving incoming messages from clients and sending responses asynchronousely using TCP/IP stack.
+      </summary>
+    </AsyncListener>
+    <MessageReceived>
+      <summary>
+        Occurs when message from client received.
+      </summary>
+    </MessageReceived>
+    <Constructor>
+      <summary>
+        Initializes a new instance of <c>AsyncListener</c> class with default properties.
+      </summary>
+    </Constructor>
+    <StartListening>
+      <summary>
+        Starts the current asynchronous server object and sets it to listen to the incoming connection attempts.
+      </summary>
+    </StartListening>
+    <OnMessageReceived>
+      <summary>
+        Invokes the MessageReceived event.
+      </summary>
+      <param name="args">Information about the invoked event.</param>
+    </OnMessageReceived>
+  </members>
+  <members name="binlister">
+    <BinLister>
+      <summary>
+        The BinLister class contains methods for saving incoming messages to a binary file.
+      </summary>
+    </BinLister>
+    <PrepareMessage>
+      <summary>
+        Adds client's IP to the incoming message.
+      </summary>
+      <param name="point">The remote endpoint that contains IP address of the connected client.</param>
+      <param name="message">The incoming message to be prepared for appending to list.</param>
+      <returns>The modified message.</returns>
+      <exception cref="System.ArgumentNullException">
+        Thrown when the value of <paramref name="point"/> or <paramref name="message"/> is <c>null</c>.
+      </exception>
+    </PrepareMessage>
+    <Handle>
+      <summary>
+        Sets the event handler for MessageReceived event of <paramref name="listener"/>. The handler writes the message to <paramref name="file"/>.
+      </summary>
+      <param name="listener">The server that receives messages.</param>
+      <param name="file">The binary file to write the message.</param>
+      <exception cref="System.ArgumentNullException">
+        Thrown when the value of <paramref name="listener"/> or <paramref name="file"/> is <c>null</c>.
+      </exception>
+    </Handle>
+  </members>
+  <members name="txtlister">
+    <TxtLister>
+      <summary>
+        The TxtLister class contains methods for saving incoming messages to a plane text file.
+      </summary>
+    </TxtLister>
+    <PrepareMessage>
+      <summary>
+        Adds client's IP to the incoming message.
+      </summary>
+      <param name="point">The remote endpoint that contains IP address of the connected client.</param>
+      <param name="message">The incoming message to be prepared for appending to list.</param>
+      <returns>The modified message.</returns>
+      <exception cref="System.ArgumentNullException">
+        Thrown when the value of <paramref name="point"/> or <paramref name="message"/> is <c>null</c>.
+      </exception>
+    </PrepareMessage>
+    <Handle>
+      <summary>
+        Sets the event handler for MessageReceived event of <paramref name="listener"/>. The handler writes the message to <paramref name="file"/>.
+      </summary>
+      <param name="listener">The server that receives messages.</param>
+      <param name="file">The plane text file to write the message.</param>
+      <exception cref="System.ArgumentNullException">
+        Thrown when the value of <paramref name="listener"/> or <paramref name="file"/> is <c>null</c>.
+      </exception>
+    </Handle>
+  </members>
+  <members name="xmllister">
+    <XmlLister>
+      <summary>
+        The XmlLister class contains methods for saving incoming messages to an XML file.
+      </summary>
+    </XmlLister>
+    <Handle>
+      <summary>
+        Sets the event handler for MessageReceived event of <paramref name="listener"/>. The handler writes the message to <paramref name="file"/>.
+      </summary>
+      <param name="listener">The server that receives messages.</param>
+      <param name="file">The XML file to write the message.</param>
+      <exception cref="System.ArgumentNullException">
+        Thrown when the value of <paramref name="listener"/> or <paramref name="file"/> is <c>null</c>.
+      </exception>
+    </Handle>
+  </members>
+</docs>
