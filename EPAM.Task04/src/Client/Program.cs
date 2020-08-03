@@ -3,7 +3,8 @@ using System;
 
 namespace Client
 {
-    class Program
+    /// <include file='docs.xml' path='docs/members[@name="program"]/Program/*'/>
+    public class Program
     {
         static void Main(string[] args)
         {

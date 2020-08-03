@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<docs>
+  <members name="program">
+    <Program>
+      <summary>
+        Main class that presents console application. Creates and starts up client.
+      </summary>
+    </Program>
+  </members>
+</docs>
