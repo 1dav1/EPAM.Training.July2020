@@ -1,4 +1,4 @@
-﻿using ResultClassLibrary.interfaces;
+﻿using ResultClassLibrary.Interfaces;
 using System;
 
 namespace ResultClassLibrary
