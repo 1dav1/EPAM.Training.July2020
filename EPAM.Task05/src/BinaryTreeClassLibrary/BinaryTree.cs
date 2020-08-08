@@ -59,6 +59,104 @@ namespace BinaryTree
             return true;
         }
 
+        private Node Insert(Node current, Node node)
+        {
+            if (current == null)
+            {
+                current = node;
+                return current;
+            }
+            else if ((dynamic)node.Grades[0].Grade < current.Grades[0].Grade)
+            {
+                current.LeftNode = Insert(current.LeftNode, node);
+                current = Balance(current);
+            }
+            else if ((dynamic)node.Grades[0].Grade > current.Grades[0].Grade)
+            {
+                current.RightNode = Insert(current.RightNode, node);
+                current = Balance(current);
+            }
+            return current;
+        }
+
+        private Node Balance(Node node)
+        {
+            int balanceFactor = GetBalanceFactor(node);
+            if (balanceFactor > 1)
+            {
+                if (GetBalanceFactor(node.LeftNode) > 0)
+                {
+                    node = RotateLeftLeft(node);
+                }
+                else
+                {
+                    node = RotateLeftRight(node);
+                }
+            }
+            else if (balanceFactor < -1)
+            {
+                if (GetBalanceFactor(node.RightNode) > 0)
+                {
+                    node = RotateRightLeft(node);
+                }
+                else
+                {
+                    node = RotateRightRight(node);
+                }
+            }
+            return node;
+        }
+
+        private int GetBalanceFactor(Node node)
+        {
+            int leftHeight = GetHeight(node.LeftNode);
+            int rightHeight = GetHeight(node.RightNode);
+            return leftHeight - rightHeight;
+        }
+
+        private int GetHeight(Node node)
+        {
+            int height = 0;
+            if (node != null)
+            {
+                int leftHeight = GetHeight(node.LeftNode);
+                int rightHeight = GetHeight(node.RightNode);
+                int maxHeight = Math.Max(leftHeight, rightHeight);
+                height = maxHeight + 1;
+            }
+            return height;
+        }
+
+        private Node RotateLeftLeft(Node node)
+        {
+            Node pivot = node.LeftNode;
+            node.LeftNode = pivot.RightNode;
+            pivot.RightNode = node;
+            return pivot;
+        }
+
+        private Node RotateLeftRight(Node node)
+        {
+            Node pivot = node.LeftNode;
+            node.LeftNode = RotateRightRight(pivot);
+            return RotateLeftLeft(node);
+        }
+
+        /**********     implementation       ********/
+
+        private Node RotateRightRight(Node node)
+        {
+            throw new NotImplementedException();
+        }
+
+        /**********     implementation       ********/
+
+        private Node RotateRightLeft(Node node)
+        {
+            throw new NotImplementedException();
+        }
+
+
         private T Find(T grade, Node parent)
         {
             if (parent != null)
@@ -79,5 +177,6 @@ namespace BinaryTree
 
         public T Find(T grade)
             => Find(grade, Root);
+
     }
 }
