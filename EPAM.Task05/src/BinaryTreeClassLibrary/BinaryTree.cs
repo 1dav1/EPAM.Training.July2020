@@ -142,20 +142,20 @@ namespace BinaryTree
             return RotateLeftLeft(node);
         }
 
-        /**********     implementation       ********/
-
         private Node RotateRightRight(Node node)
         {
-            throw new NotImplementedException();
+            Node pivot = node.RightNode;
+            node.RightNode = pivot.LeftNode;
+            pivot.LeftNode = node;
+            return pivot;
         }
-
-        /**********     implementation       ********/
 
         private Node RotateRightLeft(Node node)
         {
-            throw new NotImplementedException();
+            Node pivot = node.RightNode;
+            node.RightNode = RotateLeftLeft(pivot);
+            return RotateRightRight(node);
         }
-
 
         private T Find(T grade, Node parent)
         {
