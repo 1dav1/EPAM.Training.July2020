@@ -64,11 +64,11 @@ namespace ResultClassLibrary
                 return true;
 
             if (obj is PercentageGrade percentageGrade)
-                return this.Grade == ((LetterGrade)percentageGrade).Grade;
+                return Grade == ((LetterGrade)percentageGrade).Grade;
             if (obj is PointGrade pointGrade)
-                return this.Grade == ((LetterGrade)pointGrade).Grade;
+                return Grade == ((LetterGrade)pointGrade).Grade;
 
-            return (obj is LetterGrade letterGrade) && (letterGrade.Grade == this.Grade);
+            return (obj is LetterGrade letterGrade) && (letterGrade.Grade == Grade);
         }
 
         public override int GetHashCode()
