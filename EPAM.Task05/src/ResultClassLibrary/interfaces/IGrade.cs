@@ -2,12 +2,12 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace ResultClassLibrary.interfaces
+namespace ResultClassLibrary.Interfaces
 {
-    public interface IGrade<C>
+    public interface IGrade<T>
     {
         public string Name { get; set; }
         public string Test { get; set; }
-        public C Grade { get; set; }
+        public T Grade { get; set; }
     }
 }
