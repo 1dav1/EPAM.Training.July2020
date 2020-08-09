@@ -3,6 +3,7 @@ using System;
 
 namespace ResultClassLibrary
 {
+    [Serializable]
     public class PercentageGrade : IGrade<int>
     {
         public string Name { get; set; }

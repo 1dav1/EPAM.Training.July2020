@@ -3,6 +3,7 @@ using System;
 
 namespace ResultClassLibrary
 {
+    [Serializable]
     public class LetterGrade : IGrade<char>
     {
         public string Name { get; set; }
