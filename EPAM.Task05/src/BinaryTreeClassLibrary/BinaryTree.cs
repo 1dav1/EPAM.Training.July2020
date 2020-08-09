@@ -22,6 +22,9 @@ namespace BinaryTreeClassLibrary
 
         public void Add(T grade)
         {
+            if (grade is null)
+                throw new ArgumentNullException();
+
             Node node = new Node();
             node.Grades.Add(grade);
             if (Root == null)
@@ -41,19 +44,41 @@ namespace BinaryTreeClassLibrary
                 current = node;
                 return current;
             }
-            else if ((dynamic)node.Grades[0].Grade < current.Grades[0].Grade)
+
+            if ((dynamic)node.Grades[0].Grade is char)
             {
-                current.LeftNode = Insert(current.LeftNode, node);
-                current = Balance(current);
+                if ((dynamic)node.Grades[0].Grade > current.Grades[0].Grade)
+                {
+                    current.LeftNode = Insert(current.LeftNode, node);
+                    current = Balance(current);
+                }
+                else if ((dynamic)node.Grades[0].Grade < current.Grades[0].Grade)
+                {
+                    current.RightNode = Insert(current.RightNode, node);
+                    current = Balance(current);
+                }
+                else if ((dynamic)node.Grades[0].Grade == current.Grades[0].Grade)
+                {
+                    current.Grades.Add(node.Grades[0]);
+                }
             }
-            else if ((dynamic)node.Grades[0].Grade > current.Grades[0].Grade)
+            else
             {
-                current.RightNode = Insert(current.RightNode, node);
-                current = Balance(current);
-            }
-            else if ((dynamic)node.Grades[0].Grade == current.Grades[0].Grade)
-            {
-                current.Grades.Add(node.Grades[0]);
+                if ((dynamic)node.Grades[0].Grade < current.Grades[0].Grade)
+                {
+                    current.LeftNode = Insert(current.LeftNode, node);
+                    current = Balance(current);
+                }
+                else if ((dynamic)node.Grades[0].Grade > current.Grades[0].Grade)
+                {
+                    current.RightNode = Insert(current.RightNode, node);
+                    current = Balance(current);
+                }
+                else if ((dynamic)node.Grades[0].Grade == current.Grades[0].Grade)
+                {
+                    current.Grades.Add(node.Grades[0]);
+                }
+
             }
             return current;
         }
