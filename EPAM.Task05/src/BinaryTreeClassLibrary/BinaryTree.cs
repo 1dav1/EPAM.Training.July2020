@@ -2,61 +2,36 @@
 using System;
 using System.Collections.Generic;
 
-namespace BinaryTree
+namespace BinaryTreeClassLibrary
 {
+    [Serializable]
     public class BinaryTree<T, U> where T : IGrade<U>
     {
-        private class Node
+        [Serializable]
+        public class Node
         {
             public Node LeftNode { get; set; }
             public Node RightNode { get; set; }
 
-            // each node stores information about students that have the same grade
+            // each node stores collection of grades of the same value
             public List<T> Grades { get; set; }
             public Node() { Grades = new List<T>(); }
         }
 
-        private Node Root { get; set; }
+        public Node Root { get; set; }
 
-        public bool Add(T grade)
+        public void Add(T grade)
         {
-            Node beforeNode = null;
-            Node afterNode = Root;
-            while (afterNode != null)
-            {
-                beforeNode = afterNode;
-
-                if ((dynamic)grade.Grade < afterNode.Grades[0].Grade)
-                {
-                    afterNode = afterNode.LeftNode;
-                }
-                else if ((dynamic)grade.Grade > afterNode.Grades[0].Grade)
-                {
-                    afterNode = afterNode.RightNode;
-                }
-                else if ((dynamic)grade.Grade == afterNode.Grades[0].Grade)
-                {
-                    afterNode.Grades.Add(grade);
-                }
-                else
-                {
-                    return false;
-                }
-            }
-
             Node node = new Node();
             node.Grades.Add(grade);
-
             if (Root == null)
+            {
                 Root = node;
+            }
             else
             {
-                if ((dynamic)grade.Grade < beforeNode.Grades[0].Grade)
-                    beforeNode.LeftNode = node;
-                else
-                    beforeNode.RightNode = node;
+                Root = Insert(Root, node);
             }
-            return true;
         }
 
         private Node Insert(Node current, Node node)
@@ -76,9 +51,14 @@ namespace BinaryTree
                 current.RightNode = Insert(current.RightNode, node);
                 current = Balance(current);
             }
+            else if ((dynamic)node.Grades[0].Grade == current.Grades[0].Grade)
+            {
+                current.Grades.Add(node.Grades[0]);
+            }
             return current;
         }
 
+        // balancing the tree
         private Node Balance(Node node)
         {
             int balanceFactor = GetBalanceFactor(node);
@@ -114,6 +94,7 @@ namespace BinaryTree
             return leftHeight - rightHeight;
         }
 
+        // getting the height of the node
         private int GetHeight(Node node)
         {
             int height = 0;
@@ -127,6 +108,7 @@ namespace BinaryTree
             return height;
         }
 
+        // rotating the tree relative the left node
         private Node RotateLeftLeft(Node node)
         {
             Node pivot = node.LeftNode;
@@ -135,6 +117,7 @@ namespace BinaryTree
             return pivot;
         }
 
+        // rotating the tree relative the left node and shifting to the right
         private Node RotateLeftRight(Node node)
         {
             Node pivot = node.LeftNode;
@@ -142,6 +125,7 @@ namespace BinaryTree
             return RotateLeftLeft(node);
         }
 
+        // rotating the tree relative the right node
         private Node RotateRightRight(Node node)
         {
             Node pivot = node.RightNode;
@@ -150,6 +134,7 @@ namespace BinaryTree
             return pivot;
         }
 
+        // rotating the tree relative to the right node and shifting to the left
         private Node RotateRightLeft(Node node)
         {
             Node pivot = node.RightNode;
@@ -163,8 +148,7 @@ namespace BinaryTree
             {
                 if ((dynamic)grade.Grade == parent.Grades[0].Grade)
                 {
-                    T searchGrade = parent.Grades.Find(g => g.Name == grade.Name);
-                    return searchGrade;
+                    return parent.Grades.Find(g => g.Name == grade.Name);
                 }
 
                 if ((dynamic)grade.Grade < parent.Grades[0].Grade)
@@ -175,8 +159,8 @@ namespace BinaryTree
             return default;
         }
 
+        // searching for the specified grade
         public T Find(T grade)
             => Find(grade, Root);
-
     }
 }
