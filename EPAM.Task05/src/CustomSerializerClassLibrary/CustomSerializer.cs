@@ -4,64 +4,64 @@ using System.Collections.Generic;
 
 namespace CustomSerializerClassLibrary
 {
-    public class CustomSerializer<T> where T : ISerialize
+    public static class CustomSerializer<T> where T : ISerialize
     {
-        public void BinSerialize(T item)
+        public static void BinSerialize(T item)
         {
 
         }
 
-        public void BinDeserialize(T item)
+        public static void BinDeserialize(T item)
         {
 
         }
 
-        public void JsonSerialize(T item)
+        public static void JsonSerialize(T item)
         {
 
         }
 
-        public void JsonDeserialize(T item)
+        public static void JsonDeserialize(T item)
         {
 
         }
 
-        public void XmlSerialize(T item)
+        public static void XmlSerialize(T item)
         {
 
         }
 
-        public void XmlDeserialize(T item)
+        public static void XmlDeserialize(T item)
         {
 
         }
 
-        public void BinSerialize(ICollection<T> collection)
+        public static void BinSerialize(ICollection<T> collection)
         {
 
         }
 
-        public void BinDeserialize(ICollection<T> collection)
+        public static void BinDeserialize(ICollection<T> collection)
         {
 
         }
 
-        public void JsonSerialize(ICollection<T> collection)
+        public static void JsonSerialize(ICollection<T> collection)
         {
 
         }
 
-        public void JsonDeserialize(ICollection<T> collection)
+        public static void JsonDeserialize(ICollection<T> collection)
         {
 
         }
 
-        public void XmlSerialize(ICollection<T> collection)
+        public static void XmlSerialize(ICollection<T> collection)
         {
 
         }
 
-        public void XmlDeserialize(ICollection<T> collection)
+        public static void XmlDeserialize(ICollection<T> collection)
         {
 
         }

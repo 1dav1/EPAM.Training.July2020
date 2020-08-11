@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Runtime.Serialization;
-using System.Text;
 
 namespace CustomSerializerClassLibrary
 {
@@ -21,9 +19,21 @@ namespace CustomSerializerClassLibrary
 
         public Circle() { }
 
+        protected Circle(SerializationInfo info, StreamingContext context)
+        {
+            if (info.MemberCount >= GetType().GetProperties().Length)
+            {
+                Radius = info.GetInt32("Radius");
+            }
+            else
+            {
+                throw new Exception("A property is missing.");
+            }
+        }
+
         public override void GetObjectData(SerializationInfo info, StreamingContext context)
         {
-            throw new NotImplementedException();
+            info.AddValue("Radius", Radius);
         }
     }
 }
