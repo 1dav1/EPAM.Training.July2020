@@ -1,0 +1,74 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<docs>
+  <members name="binarytree">
+    <BinaryTree>
+      <summary>
+        The BinaryTree class presents the generic Binary Search Tree that stores different types of grades.
+        Contains methods for inserting new node, displaying the nodes and serializing the tree.
+      </summary>
+      <typeparam name="T">The type of the grade.</typeparam>
+      <typeparam name="U">The type of the value of the grade.</typeparam>
+    </BinaryTree>
+    <Root>
+      <value>Gets or sets the root of the Binary Search Tree.</value>
+    </Root>
+    <Add>
+      <summary>
+        Adds <paramref name="grade"/> to the current tree.
+      </summary>
+      <param name="grade">The grade to be added.</param>
+    </Add>
+    <Find>
+      <summary>
+        Searches for the specified grade in the current tree.
+      </summary>
+      <param name="grade">The grade to be found.</param>
+      <returns>
+        The specified grade if the current tree contains it, otherwise, <c>null</c>.
+      </returns>
+    </Find>
+    <DisplayTree>
+      <summary>
+        Displays the current Binary Search Tree.
+      </summary>
+    </DisplayTree>
+    <Serialize>
+      <summary>
+        Serializes the current Binary Search Tree to the specified XML file.
+      </summary>
+      <param name="file">The file to write the current tree.</param>
+    </Serialize>
+    <Deserialize>
+      <summary>
+        Deserializes a Binary Search Tree object from the specified XML file.
+      </summary>
+      <param name="file">
+        The file that contains a <c>BinaryTree</c> object.
+      </param>
+      <returns>
+        A deserialized <c>BinaryTree</c> object.
+      </returns>
+    </Deserialize>
+  </members>
+  <members name="node">
+    <Node>
+      <summary>
+        The Node nested class presents a node of a Binary Search Tree.
+      </summary>
+    </Node>
+    <LeftNode>
+      <value>Gets or sets the left node of the current node.</value>
+    </LeftNode>
+    <RightNode>
+      <value>Gets or sets the right node of the current node.</value>
+    </RightNode>
+    <Grades>
+      <value>The collection of grades that have the same value.</value>
+    </Grades>
+    <Constructor>
+      <summary>
+        The default constructor.
+      </summary>
+    </Constructor>
+  </members>
+</docs>

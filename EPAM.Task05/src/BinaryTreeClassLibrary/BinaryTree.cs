@@ -1,25 +1,37 @@
 ﻿using ResultClassLibrary.Interfaces;
 using System;
 using System.Collections.Generic;
+using System.IO;
+using System.Xml.Serialization;
 
 namespace BinaryTreeClassLibrary
 {
+    /// <include file='docs.xml' path='docs/members[@name="binarytree"]/BinaryTree/*'/>
     [Serializable]
     public class BinaryTree<T, U> where T : IGrade<U>
     {
+        /// <include file='docs.xml' path='docs/members[@name="node"]/Node/*'/>
         [Serializable]
         public class Node
         {
+            /// <include file='docs.xml' path='docs/members[@name="node"]/LeftNode/*'/>
             public Node LeftNode { get; set; }
+
+            /// <include file='docs.xml' path='docs/members[@name="node"]/RightNode/*'/>
             public Node RightNode { get; set; }
 
             // each node stores collection of grades of the same value
+            /// <include file='docs.xml' path='docs/members[@name="node"]/Grades/*'/>
             public List<T> Grades { get; set; }
+
+            /// <include file='docs.xml' path='docs/members[@name="node"]/Constructor/*'/>
             public Node() { Grades = new List<T>(); }
         }
 
+        /// <include file='docs.xml' path='docs/members[@name="binarytree"]/Root/*'/>
         public Node Root { get; set; }
 
+        /// <include file='docs.xml' path='docs/members[@name="binarytree"]/Add/*'/>
         public void Add(T grade)
         {
             if (grade is null)
@@ -185,7 +197,52 @@ namespace BinaryTreeClassLibrary
         }
 
         // searching for the specified grade
+        /// <include file='docs.xml' path='docs/members[@name="binarytree"]/Find/*'/>
         public T Find(T grade)
             => Find(grade, Root);
+
+        /// <include file='docs.xml' path='docs/members[@name="binarytree"]/DisplayTree/*'/>
+        public void DisplayTree()
+        {
+            if (Root == null)
+            {
+                Console.WriteLine("Empty");
+                return;
+            }
+            InOrderDisplay(Root);
+            Console.WriteLine();
+        }
+
+        private void InOrderDisplay(Node node)
+        {
+            if (node != null)
+            {
+                InOrderDisplay(node.LeftNode);
+                Console.WriteLine("{0}:", node.Grades[0].Grade);
+                foreach (var grade in node.Grades)
+                {
+                    Console.Write("{0}, ", grade.Name);
+                }
+                Console.WriteLine();
+                InOrderDisplay(node.RightNode);
+            }
+        }
+
+        /// <include file='docs.xml' path='docs/members[@name="binarytree"]/Serialize/*'/>
+        public void Serialize(string file)
+        {
+            XmlSerializer serializer = new XmlSerializer(typeof(BinaryTree<T, U>));
+            using FileStream stream = File.Open(file, FileMode.OpenOrCreate, FileAccess.ReadWrite);
+            serializer.Serialize(stream, this);
+        }
+
+        /// <include file='docs.xml' path='docs/members[@name="binarytree"]/Deserialize/*'/>
+        public static BinaryTree<T, U> Deserialize(string file)
+        {
+            XmlSerializer serializer = new XmlSerializer(typeof(BinaryTree<T, U>));
+            using FileStream stream = File.OpenRead(file);
+            BinaryTree<T, U> tree = (BinaryTree<T, U>)serializer.Deserialize(stream);
+            return tree;
+        }
     }
 }
