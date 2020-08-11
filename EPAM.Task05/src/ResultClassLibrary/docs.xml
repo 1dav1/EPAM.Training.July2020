@@ -1,0 +1,132 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<docs>
+  <members name="lettergrade">
+    <LetterGrade>
+      <summary>
+        The class LetterGrade presents the grade of letter-based grading system.
+      </summary>
+    </LetterGrade>
+    <Name>
+      <value>Gets or sets the student's name.</value>
+    </Name>
+    <Subject>
+      <value>Gets or sets the name of the subject.</value>
+    </Subject>
+    <Date>
+      <value>Gets or sets the date of the test.</value>
+    </Date>
+    <Grade>
+      <value>Gets or sets the letter-based grade.</value>
+      <exception cref="System.ArgumentOutOfRangeException">
+        Thrown when the value of the current grade is not one of the set: A, B, C, D, F.
+      </exception>
+    </Grade>
+    <ConvertionPointToLetter>
+      <summary>
+        The overloaded explicit convertion operator. Converts point-based grade to letter-based grade.
+      </summary>
+      <param name="grade">The grade to be converted.</param>
+    </ConvertionPointToLetter>
+    <ConvertionPercentageToLetter>
+      <summary>
+        The overloaded explicit convertion operator. Converts percentage-based grade to letter-based grade.
+      </summary>
+      <param name="grade">The grade to be converted.</param>
+    </ConvertionPercentageToLetter>
+    <Equals>
+      <summary>
+        Determines whether two <c>LetterGrade</c> instances are equal. Overrides the base method.
+      </summary>
+      <param name="obj">The object to compare with the current grade.</param>
+      <returns>
+        <c>true</c> if the specified object is equal to the current grade; otherwise, <c>false</c>.
+      </returns>
+    </Equals>
+    <GetHashCode>
+      <summary>
+        Serves as the default hash function. Overrides the base method.
+      </summary>
+      <returns>A hash code for the current grade.</returns>
+    </GetHashCode>
+  </members>
+  <members name="percentagegrade">
+    <PercentageGrade>
+      <summary>
+        The class PercentageGrade presents the grade of percentage-based grading system.
+      </summary>
+    </PercentageGrade>
+    <Name>
+      <value>Gets or sets the student's name.</value>
+    </Name>
+    <Subject>
+      <value>Gets or sets the name of the subject.</value>
+    </Subject>
+    <Date>
+      <value>Gets or sets the date of the test.</value>
+    </Date>
+    <Grade>
+      <value>Gets or sets the value of the percentage-based grade.</value>
+      <exception cref="System.ArgumentOutOfRangeException">
+        Thrown when the value of the current grade is less then 0 or more than 100.
+      </exception>
+    </Grade>
+    <ConvertionPointToPercentage>
+      <summary>
+        The overloaded explicit convertion operator. Converts point-based grade to percentage-based grade.
+      </summary>
+      <param name="grade">The grade to be converted.</param>
+    </ConvertionPointToPercentage>
+    <ConvertionLetterToPercentage>
+      <summary>
+        The overloaded explicit convertion operator. Converts letter-based grade to percentage-based grade.
+      </summary>
+      <param name="grade">The grade to be converted.</param>
+    </ConvertionLetterToPercentage>
+    <Equals>
+      <summary>
+        Determines whether two <c>PercentageGrade</c> instances are equal. Overrides the base method.
+      </summary>
+      <param name="obj">The object to compare with the current grade.</param>
+      <returns>
+        <c>true</c> if the specified object is equal to the current grade; otherwise, <c>false</c>.
+      </returns>
+    </Equals>
+    <GetHashCode>
+      <summary>
+        Serves as the default hash function. Overrides the base method.
+      </summary>
+      <returns>A hash code for the current grade.</returns>
+    </GetHashCode>
+  </members>
+  <members name="pointgrade">
+    <PointGrade>
+      <summary>
+        The class PointGrade presents the grade of point-based grading system.
+      </summary>
+    </PointGrade>
+    <Name>
+      <value>Gets or sets the student's name.</value>
+    </Name>
+    <Subject>
+      <value>Gets or sets the name of the subject.</value>
+    </Subject>
+    <Date>
+      <value>Gets or sets the date of the test.</value>
+    </Date>
+    <Grade>
+      <value>Gets or sets the value of the point-based grade.</value>
+      <exception cref="System.ArgumentOutOfRangeException">
+        Thrown when the value of the current grade is less then 0 or more than 10.
+      </exception>
+    </Grade>
+    <ConvertionPercentageToPoints>
+      <summary>
+        The overloaded explicit convertion operator. Converts percentage-based grade to point-based grade.
+      </summary>
+      <param name="grade">The grade to be converted.</param>
+    </ConvertionPercentageToPoints>
+    <ConvertionLetterToPoints>
+      
+    </ConvertionLetterToPoints>
+  </members>
+</docs>

@@ -7,7 +7,7 @@ namespace ResultClassLibrary.Interfaces
     public interface IGrade<T>
     {
         public string Name { get; set; }
-        public string Test { get; set; }
+        public string Subject { get; set; }
         public T Grade { get; set; }
     }
 }

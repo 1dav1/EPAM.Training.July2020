@@ -3,14 +3,21 @@ using System;
 
 namespace ResultClassLibrary
 {
+    /// <include file='docs.xml' path='docs/members[@name="percentagegrade"]/PercentageGrade/*'/>
     [Serializable]
     public class PercentageGrade : IGrade<int>
     {
+        /// <include file='docs.xml' path='docs/members[@name="percentagegrade"]/Name/*'/>
         public string Name { get; set; }
-        public string Test { get; set; }
+
+        /// <include file='docs.xml' path='docs/members[@name="percentagegrade"]/Subject/*'/>
+        public string Subject { get; set; }
+
+        /// <include file='docs.xml' path='docs/members[@name="percentagegrade"]/Date/*'/>
         public DateTime Date { get; set; }
 
         private int _grade;
+        /// <include file='docs.xml' path='docs/members[@name="percentagegrade"]/Grade/*'/>
         public int Grade
         {
             get => _grade;
@@ -22,15 +29,18 @@ namespace ResultClassLibrary
             }
         }
 
+        // overloading of convertion operators to enable the convertion from one grading system to another
+        /// <include file='docs.xml' path='docs/members[@name="percentagegrade"]/ConvertionPointToPercentage/*'/>
         public static explicit operator PercentageGrade(PointGrade grade)
         => new PercentageGrade
         {
             Name = grade.Name,
-            Test = grade.Test,
+            Subject = grade.Subject,
             Date = grade.Date,
             Grade = grade.Grade * 10,
         };
 
+        /// <include file='docs.xml' path='docs/members[@name="percentagegrade"]/ConvertionLetterToPercentage/*'/>
         public static explicit operator PercentageGrade(LetterGrade grade)
         {
             int g = 0;
@@ -46,9 +56,10 @@ namespace ResultClassLibrary
             else if (grade.Grade == 'F')
                 g = 10;
 
-            return new PercentageGrade { Name = grade.Name, Test = grade.Test, Date = grade.Date, Grade = g, };
+            return new PercentageGrade { Name = grade.Name, Subject = grade.Subject, Date = grade.Date, Grade = g, };
         }
 
+        /// <include file='docs.xml' path='docs/members[@name="percentagegrade"]/Equals/*'/>
         public override bool Equals(object obj)
         {
             if (ReferenceEquals(obj, this))
@@ -62,9 +73,10 @@ namespace ResultClassLibrary
             return (obj is PercentageGrade percentageGrade) && (percentageGrade.Grade == Grade);
         }
 
+        /// <include file='docs.xml' path='docs/members[@name="percentagegrade"]/GetHashCode/*'/>
         public override int GetHashCode()
         {
-            return HashCode.Combine(Name, Test, Date, Grade);
+            return HashCode.Combine(Name, Subject, Date, Grade);
         }
     }
 }
