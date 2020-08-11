@@ -45,21 +45,21 @@ namespace BinaryTreeClassLibrary.Tests
                 Date = DateTime.Now, 
                 Grade = 'A', 
                 Name = "TestName1", 
-                Test = "Test1", 
+                Subject = "Test1", 
             };
             PercentageGrade percentage = new PercentageGrade
             {
                 Date = DateTime.Now,
                 Grade = 100,
                 Name = "TestName2",
-                Test = "Test2",
+                Subject = "Test2",
             };
             PointGrade point = new PointGrade
             {
                 Date = DateTime.Now,
                 Grade = 10,
                 Name = "TestName3",
-                Test = "Test3",
+                Subject = "Test3",
             };
             BinaryTree<LetterGrade, char> tree1 = new BinaryTree<LetterGrade, char>();
             BinaryTree<PercentageGrade, int> tree2 = new BinaryTree<PercentageGrade, int>();
@@ -85,21 +85,21 @@ namespace BinaryTreeClassLibrary.Tests
                 Date = DateTime.Now,
                 Grade = 'A',
                 Name = "TestName1",
-                Test = "Test1",
+                Subject = "Test1",
             };
             PercentageGrade percentage = new PercentageGrade
             {
                 Date = DateTime.Now,
                 Grade = 100,
                 Name = "TestName2",
-                Test = "Test2",
+                Subject = "Test2",
             };
             PointGrade point = new PointGrade
             {
                 Date = DateTime.Now,
                 Grade = 10,
                 Name = "TestName3",
-                Test = "Test3",
+                Subject = "Test3",
             };
             BinaryTree<LetterGrade, char> tree1 = new BinaryTree<LetterGrade, char>();
             BinaryTree<PercentageGrade, int> tree2 = new BinaryTree<PercentageGrade, int>();
@@ -126,14 +126,14 @@ namespace BinaryTreeClassLibrary.Tests
                 Date = DateTime.Now,
                 Grade = 'A',
                 Name = "TestName1",
-                Test = "Test1",
+                Subject = "Test1",
             };
             LetterGrade letter2 = new LetterGrade
             {
                 Date = DateTime.Now,
                 Grade = 'A',
                 Name = "TestName2",
-                Test = "Test1",
+                Subject = "Test1",
             };
 
             // Act
@@ -154,21 +154,21 @@ namespace BinaryTreeClassLibrary.Tests
                 Date = DateTime.Now,
                 Grade = 'B',
                 Name = "TestName1",
-                Test = "Test1",
+                Subject = "Test1",
             };
             LetterGrade letter2 = new LetterGrade
             {
                 Date = DateTime.Now,
                 Grade = 'A',
                 Name = "TestName2",
-                Test = "Test1",
+                Subject = "Test1",
             };
             LetterGrade letter3 = new LetterGrade
             {
                 Date = DateTime.Now,
                 Grade = 'C',
                 Name = "TestName2",
-                Test = "Test1",
+                Subject = "Test1",
             };
 
             // Act
@@ -192,21 +192,21 @@ namespace BinaryTreeClassLibrary.Tests
                 Date = DateTime.Now,
                 Grade = 80,
                 Name = "TestName1",
-                Test = "Test1",
+                Subject = "Test1",
             };
             PercentageGrade percentage2 = new PercentageGrade
             {
                 Date = DateTime.Now,
                 Grade = 100,
                 Name = "TestName2",
-                Test = "Test1",
+                Subject = "Test1",
             };
             PercentageGrade percentage3 = new PercentageGrade
             {
                 Date = DateTime.Now,
                 Grade = 70,
                 Name = "TestName2",
-                Test = "Test1",
+                Subject = "Test1",
             };
 
             // Act
@@ -230,21 +230,21 @@ namespace BinaryTreeClassLibrary.Tests
                 Date = DateTime.Now,
                 Grade = 8,
                 Name = "TestName1",
-                Test = "Test1",
+                Subject = "Test1",
             };
             PointGrade point2 = new PointGrade
             {
                 Date = DateTime.Now,
                 Grade = 10,
                 Name = "TestName2",
-                Test = "Test1",
+                Subject = "Test1",
             };
             PointGrade point3 = new PointGrade
             {
                 Date = DateTime.Now,
                 Grade = 7,
                 Name = "TestName2",
-                Test = "Test1",
+                Subject = "Test1",
             };
 
             // Act
@@ -294,21 +294,21 @@ namespace BinaryTreeClassLibrary.Tests
                 Date = DateTime.Now,
                 Grade = 'B',
                 Name = "TestName1",
-                Test = "Test1",
+                Subject = "Test1",
             };
             PercentageGrade percentage = new PercentageGrade
             {
                 Date = DateTime.Now,
                 Grade = 100,
                 Name = "TestName2",
-                Test = "Test2",
+                Subject = "Test2",
             };
             PointGrade point = new PointGrade
             {
                 Date = DateTime.Now,
                 Grade = 10,
                 Name = "TestName3",
-                Test = "Test3",
+                Subject = "Test3",
             };
             tree1.Add(letter);
             tree2.Add(percentage);
@@ -337,21 +337,21 @@ namespace BinaryTreeClassLibrary.Tests
                 Date = DateTime.Now,
                 Grade = 'B',
                 Name = "TestName1",
-                Test = "Test1",
+                Subject = "Test1",
             };
             PercentageGrade percentage = new PercentageGrade
             {
                 Date = DateTime.Now,
                 Grade = 100,
                 Name = "TestName2",
-                Test = "Test2",
+                Subject = "Test2",
             };
             PointGrade point = new PointGrade
             {
                 Date = DateTime.Now,
                 Grade = 10,
                 Name = "TestName3",
-                Test = "Test3",
+                Subject = "Test3",
             };
 
             // Act
