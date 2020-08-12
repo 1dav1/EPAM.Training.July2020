@@ -6,6 +6,7 @@ using System.Text;
 
 namespace CustomSerializerClassLibrary
 {
+    [Serializable]
     public enum Gender
     {
         Male,
@@ -13,6 +14,7 @@ namespace CustomSerializerClassLibrary
         None,
     }
 
+    [Serializable]
     public class Person : ISerialize
     {
         private string _firstName;

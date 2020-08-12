@@ -3,6 +3,7 @@ using System.Runtime.Serialization;
 
 namespace CustomSerializerClassLibrary
 {
+    [Serializable]
     public class Rectangle : Shape
     {
         private int _height;

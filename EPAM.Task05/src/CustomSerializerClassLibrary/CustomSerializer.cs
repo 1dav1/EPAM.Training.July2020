@@ -3,15 +3,19 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Runtime.Serialization;
+using System.Runtime.Serialization.Formatters.Binary;
 using System.Xml.Serialization;
 
 namespace CustomSerializerClassLibrary
 {
     public static class CustomSerializer<T> where T : ISerialize
     {
-        public static void BinSerialize(T item)
+        public static void BinSerialize(T item, string file)
         {
-
+            IFormatter formatter = new BinaryFormatter();
+            using Stream stream = new FileStream(file, FileMode.Create, FileAccess.Write);
+            formatter.Serialize(stream, item);
         }
 
         public static void BinDeserialize(T item)

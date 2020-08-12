@@ -3,6 +3,7 @@ using System.Runtime.Serialization;
 
 namespace CustomSerializerClassLibrary
 {
+    [Serializable]
     public class Circle : Shape
     {
         private int _radius;

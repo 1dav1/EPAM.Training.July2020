@@ -5,6 +5,7 @@ using System.Security.Permissions;
 
 namespace CustomSerializerClassLibrary
 {
+    [Serializable]
     public class Product : ISerialize
     {
         public string Name { get; set; }
