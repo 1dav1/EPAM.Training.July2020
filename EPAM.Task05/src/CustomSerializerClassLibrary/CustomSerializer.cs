@@ -36,7 +36,7 @@ namespace CustomSerializerClassLibrary
             }
             catch(Exception ex)
             {
-                Console.WriteLine(ex);
+                Console.WriteLine(ex.Message);
             }
         }
 
@@ -95,15 +95,23 @@ namespace CustomSerializerClassLibrary
                 }
                 catch(Exception ex)
                 {
-                    Console.WriteLine(ex);
+                    Console.WriteLine(ex.Message);
                 }
             }
         }
 
         public static ICollection<T> JsonDeserializeCollection(string file)
         {
-            string jsonString = File.ReadAllText(file);
-            List<T> collection = JsonSerializer.Deserialize<List<T>>(jsonString);
+            List<T> collection = default;
+            try
+            {
+                string jsonString = File.ReadAllText(file);
+                collection = JsonSerializer.Deserialize<List<T>>(jsonString);
+            }
+            catch(Exception ex)
+            { 
+                Console.WriteLine(ex.Message); 
+            }
             return collection;
         }
 
