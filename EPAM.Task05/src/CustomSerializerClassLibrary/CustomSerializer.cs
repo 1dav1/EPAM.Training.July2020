@@ -5,6 +5,7 @@ using System.IO;
 using System.Linq;
 using System.Runtime.Serialization;
 using System.Runtime.Serialization.Formatters.Binary;
+using System.Text.Json;
 using System.Xml.Serialization;
 
 namespace CustomSerializerClassLibrary
@@ -18,19 +19,32 @@ namespace CustomSerializerClassLibrary
             formatter.Serialize(stream, item);
         }
 
-        public static void BinDeserialize(T item)
+        public static T BinDeserializeObject(string file)
         {
-
+            IFormatter formatter = new BinaryFormatter();
+            using Stream stream = new FileStream(file, FileMode.Open, FileAccess.Read);
+            T obj = (T)formatter.Deserialize(stream);
+            return obj;
         }
 
-        public static void JsonSerialize(T item)
+        public static void JsonSerialize(T item, string file)
         {
-
+            string jsonString = JsonSerializer.Serialize(item);
+            try
+            {
+                File.WriteAllText(file, jsonString);
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine(ex);
+            }
         }
 
-        public static void JsonDeserialize(T item)
+        public static T JsonDeserializeObject(string file)
         {
-
+            string jsonString = File.ReadAllText(file);
+            T obj = JsonSerializer.Deserialize<T>(jsonString);
+            return obj;
         }
 
         public static void XmlSerialize(T item, string file)
@@ -48,24 +62,49 @@ namespace CustomSerializerClassLibrary
             return obj;
         }
 
-        public static void BinSerialize(ICollection<T> collection)
+        public static void BinSerialize(ICollection<T> collection, string file)
         {
-
+            Type type = collection.GetType();
+            bool implementsCollection = type.GetInterfaces().Any(x => x.IsGenericType && x.GetGenericTypeDefinition() == typeof(ICollection<>));
+            if (implementsCollection)
+            {
+                IFormatter formatter = new BinaryFormatter();
+                using Stream stream = new FileStream(file, FileMode.Create, FileAccess.Write);
+                formatter.Serialize(stream, collection);
+            }
         }
 
-        public static void BinDeserialize(ICollection<T> collection)
+        public static ICollection<T> BinDeserializeCollection(string file)
         {
-
+            IFormatter formatter = new BinaryFormatter();
+            using Stream stream = new FileStream(file, FileMode.Open, FileAccess.Read);
+            List<T> collection = (List<T>)formatter.Deserialize(stream);
+            return collection;
         }
 
-        public static void JsonSerialize(ICollection<T> collection)
+        public static void JsonSerialize(ICollection<T> collection, string file)
         {
-
+            Type type = collection.GetType();
+            bool implementsCollection = type.GetInterfaces().Any(x => x.IsGenericType && x.GetGenericTypeDefinition() == typeof(ICollection<>));
+            if (implementsCollection)
+            {
+                string jsonString = JsonSerializer.Serialize(collection);
+                try
+                {
+                    File.WriteAllText(file, jsonString);
+                }
+                catch(Exception ex)
+                {
+                    Console.WriteLine(ex);
+                }
+            }
         }
 
-        public static void JsonDeserialize(ICollection<T> collection)
+        public static ICollection<T> JsonDeserializeCollection(string file)
         {
-
+            string jsonString = File.ReadAllText(file);
+            List<T> collection = JsonSerializer.Deserialize<List<T>>(jsonString);
+            return collection;
         }
 
         public static void XmlSerialize(ICollection<T> collection, string file)
