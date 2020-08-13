@@ -1,5 +1,8 @@
 ﻿using System;
+using System.Reflection;
 using System.Runtime.Serialization;
+
+[assembly: AssemblyVersion("1.0.0")]
 
 namespace CustomSerializerClassLibrary
 {
@@ -22,6 +25,7 @@ namespace CustomSerializerClassLibrary
 
         protected Circle(SerializationInfo info, StreamingContext context)
         {
+            
             if (info.MemberCount >= GetType().GetProperties().Length)
             {
                 Radius = info.GetInt32("Radius");
