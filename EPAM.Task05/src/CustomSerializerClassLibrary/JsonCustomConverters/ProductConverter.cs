@@ -10,7 +10,7 @@ namespace CustomSerializerClassLibrary.JsonCustomConverters
     public class ProductConverter : JsonConverter
     {
         // custom deserialization
-        public override object ReadJson(JsonReader reader, Type objectType, object existingValue, Newtonsoft.Json.JsonSerializer serializer)
+        public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
         {
             JObject obj = JObject.Load(reader);
             Product product = new Product();
