@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Runtime.Serialization;
+using System.Security.Permissions;
 
 namespace CustomSerializerClassLibrary
 {
@@ -33,9 +34,26 @@ namespace CustomSerializerClassLibrary
             }
         }
 
+        [SecurityPermission(SecurityAction.Demand, SerializationFormatter = true)]
         public override void GetObjectData(SerializationInfo info, StreamingContext context)
         {
             info.AddValue("Radius", Radius);
+        }
+
+        public override bool Equals(object obj)
+        {
+            if (ReferenceEquals(obj, this))
+            {
+                return true;
+            }
+
+            return obj is Circle circle &&
+                   circle.Radius == Radius;
+        }
+
+        public override int GetHashCode()
+        {
+            return HashCode.Combine(Radius);
         }
     }
 }

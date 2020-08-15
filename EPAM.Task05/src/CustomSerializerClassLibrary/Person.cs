@@ -1,9 +1,12 @@
 ﻿using CustomSerializerClassLibrary.Interfaces;
+using CustomSerializerClassLibrary.JsonCustomConverters;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Runtime.Serialization;
+using System.Security.Permissions;
 using System.Xml;
 using System.Xml.Schema;
 
@@ -18,6 +21,7 @@ namespace CustomSerializerClassLibrary
     }
 
     [Serializable]
+    [JsonConverter(typeof(PersonConverter))]
     public class Person : ISerialize
     {
         private string _firstName;
@@ -77,6 +81,7 @@ namespace CustomSerializerClassLibrary
             }
         }
 
+        [SecurityPermission(SecurityAction.Demand, SerializationFormatter = true)]
         public void GetObjectData(SerializationInfo info, StreamingContext context)
         {
             info.AddValue("FirstName", FirstName);

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Runtime.Serialization;
+using System.Security.Permissions;
 
 namespace CustomSerializerClassLibrary
 {
@@ -46,10 +47,28 @@ namespace CustomSerializerClassLibrary
             }
         }
 
+        [SecurityPermission(SecurityAction.Demand, SerializationFormatter = true)]
         public override void GetObjectData(SerializationInfo info, StreamingContext context)
         {
             info.AddValue("Height", Height);
             info.AddValue("Width", Width);
+        }
+
+        public override bool Equals(object obj)
+        {
+            if (ReferenceEquals(obj, this))
+            {
+                return true;
+            }
+
+            return obj is Rectangle rectangle &&
+                   rectangle.Height == Height &&
+                   rectangle.Width == Width;
+        }
+
+        public override int GetHashCode()
+        {
+            return HashCode.Combine(Height, Width);
         }
     }
 }

@@ -1,4 +1,6 @@
 ﻿using CustomSerializerClassLibrary.Interfaces;
+using CustomSerializerClassLibrary.JsonCustomConverters;
+using Newtonsoft.Json;
 using System;
 using System.Runtime.Serialization;
 using System.Security.Permissions;
@@ -6,6 +8,7 @@ using System.Security.Permissions;
 namespace CustomSerializerClassLibrary
 {
     [Serializable]
+    [JsonConverter(typeof(ProductConverter))]
     public class Product : ISerialize
     {
         public string Name { get; set; }
@@ -31,6 +34,23 @@ namespace CustomSerializerClassLibrary
         {
             info.AddValue("Name", Name);
             info.AddValue("Price", Price);
+        }
+
+        public override bool Equals(object obj)
+        {
+            if (ReferenceEquals(obj, this))
+            {
+                return true;
+            }
+
+            return obj is Product product &&
+                   product.Name == Name &&
+                   product.Price == Price;
+        }
+
+        public override int GetHashCode()
+        {
+            return HashCode.Combine(Name, Price);
         }
     }
 }

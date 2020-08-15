@@ -67,5 +67,18 @@ namespace CustomSerializerClassLibrary
             info.AddValue("SideB", SideB);
             info.AddValue("SideC", SideC);
         }
+
+        public override bool Equals(object obj)
+        {
+            if (ReferenceEquals(obj, this))
+            {
+                return true;
+            }
+
+            return obj is Triangle triangle &&
+                   triangle.SideA == SideA &&
+                   triangle.SideB == SideB &&
+                   triangle.SideC == SideC;
+        }
     }
 }
