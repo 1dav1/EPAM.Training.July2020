@@ -4,10 +4,12 @@ using System.Security.Permissions;
 
 namespace CustomSerializerClassLibrary
 {
+    /// <include file='docs.xml' path='docs/members[@name="circle"]/Circle/*'/>
     [Serializable]
     public class Circle : Shape
     {
         private int _radius;
+        /// <include file='docs.xml' path='docs/members[@name="circle"]/Radius/*'/>
         public int Radius
         {
             get => _radius;

@@ -7,6 +7,9 @@ using System.Security.Permissions;
 
 namespace CustomSerializerClassLibrary
 {
+    /// <summary>
+    /// 
+    /// </summary>
     [Serializable]
     [JsonConverter(typeof(ProductConverter))]
     public class Product : ISerialize

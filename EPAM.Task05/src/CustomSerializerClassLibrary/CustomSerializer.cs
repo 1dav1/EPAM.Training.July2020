@@ -12,8 +12,10 @@ using JsonSerializer = System.Text.Json.JsonSerializer;
 
 namespace CustomSerializerClassLibrary
 {
+    /// <include file='docs.xml' path='docs/members[@name="serializer"]/CustomSerializer/*'/>
     public static class CustomSerializer<T> where T : ISerialize
     {
+        /// <include file='docs.xml' path='docs/members[@name="serializer"]/BinSerialize/*'/>
         public static void BinSerialize(T item, string file)
         {
             if (item is null || file is null)
@@ -26,6 +28,7 @@ namespace CustomSerializerClassLibrary
             formatter.Serialize(stream, item);
         }
 
+        /// <include file='docs.xml' path='docs/members[@name="serializer"]/BinDeserializeObject/*'/>
         public static T BinDeserializeObject(string file)
         {
             if (file is null)
@@ -39,6 +42,7 @@ namespace CustomSerializerClassLibrary
             return obj;
         }
 
+        /// <include file='docs.xml' path='docs/members[@name="serializer"]/JsonSerialize/*'/>
         public static void JsonSerialize(T item, string file)
         {
             if (item is null || file is null)
@@ -57,6 +61,7 @@ namespace CustomSerializerClassLibrary
             }
         }
 
+        /// <include file='docs.xml' path='docs/members[@name="serializer"]/JsonDeserializeObject/*'/>
         public static T JsonDeserializeObject(string file)
         {
             if (file is null)
@@ -85,6 +90,7 @@ namespace CustomSerializerClassLibrary
             return obj;
         }
 
+        /// <include file='docs.xml' path='docs/members[@name="serializer"]/XmlSerialize/*'/>
         public static void XmlSerialize(T item, string file)
         {
             if (item is null || file is null)
@@ -97,6 +103,7 @@ namespace CustomSerializerClassLibrary
             serializer.Serialize(writer, item);
         }
 
+        /// <include file='docs.xml' path='docs/members[@name="serializer"]/XmlDeserializeObject/*'/>
         public static T XmlDeserializeObject(string file)
         {
             if (file is null)
@@ -110,6 +117,7 @@ namespace CustomSerializerClassLibrary
             return obj;
         }
 
+        /// <include file='docs.xml' path='docs/members[@name="serializer"]/BinSerializeCollection/*'/>
         public static void BinSerialize(ICollection<T> collection, string file)
         {
             if (collection is null || file is null)
@@ -127,6 +135,7 @@ namespace CustomSerializerClassLibrary
             }
         }
 
+        /// <include file='docs.xml' path='docs/members[@name="serializer"]/BinDeserializeCollection/*'/>
         public static ICollection<T> BinDeserializeCollection(string file)
         {
             if (file is null)
@@ -140,6 +149,7 @@ namespace CustomSerializerClassLibrary
             return collection;
         }
 
+        /// <include file='docs.xml' path='docs/members[@name="serializer"]/JsonSerializeCollection/*'/>
         public static void JsonSerialize(ICollection<T> collection, string file)
         {
             if (collection is null || file is null)
@@ -163,6 +173,7 @@ namespace CustomSerializerClassLibrary
             }
         }
 
+        /// <include file='docs.xml' path='docs/members[@name="serializer"]/JsonDeserializeCollection/*'/>
         public static ICollection<T> JsonDeserializeCollection(string file)
         {
             if (file is null)
@@ -183,6 +194,7 @@ namespace CustomSerializerClassLibrary
             return collection;
         }
 
+        /// <include file='docs.xml' path='docs/members[@name="serializer"]/XmlSerializeCollection/*'/>
         public static void XmlSerialize(ICollection<T> collection, string file)
         {
             if (collection is null || file is null)
@@ -200,6 +212,7 @@ namespace CustomSerializerClassLibrary
             }
         }
 
+        /// <include file='docs.xml' path='docs/members[@name="serializer"]/XmlDeserializeCollection/*'/>
         public static ICollection<T> XmlDeserializeCollection(string file)
         {
             if (file is null)

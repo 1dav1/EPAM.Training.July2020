@@ -12,19 +12,25 @@ using System.Xml.Schema;
 
 namespace CustomSerializerClassLibrary
 {
+    /// <include file='docs.xml' path='docs/members[@name="person"]/Person/*'/>
     [Serializable]
     public enum Gender
     {
+        /// <include file='docs.xml' path='docs/members[@name="person"]/Male/*'/>
         Male,
+        /// <include file='docs.xml' path='docs/members[@name="person"]/Female/*'/>
         Female,
+        /// <include file='docs.xml' path='docs/members[@name="person"]/None/*'/>
         None,
     }
 
+    /// <include file='docs.xml' path='docs/members[@name="person"]/Person/*'/>
     [Serializable]
     [JsonConverter(typeof(PersonConverter))]
     public class Person : ISerialize
     {
         private string _firstName;
+        /// <include file='docs.xml' path='docs/members[@name="person"]/FirstName/*'/>
         public string FirstName
         {
             get => _firstName;
@@ -37,6 +43,7 @@ namespace CustomSerializerClassLibrary
         }
 
         private int _age;
+        /// <include file='docs.xml' path='docs/members[@name="person"]/Age/*'/>
         public int Age
         {
             get => _age;
@@ -48,10 +55,13 @@ namespace CustomSerializerClassLibrary
             }
         }
 
+        /// <include file='docs.xml' path='docs/members[@name="person"]/Gender/*'/>
         public Gender Gender { get; set; }
 
+        /// <include file='docs.xml' path='docs/members[@name="person"]/Constructor/*'/>
         public Person() { }
 
+        /// <include file='docs.xml' path='docs/members[@name="person"]/ParametrizedConstructor/*'/>
         protected Person(SerializationInfo info, StreamingContext context)
         {
             if (info.MemberCount >= GetType().GetProperties().Length)
@@ -81,6 +91,7 @@ namespace CustomSerializerClassLibrary
             }
         }
 
+        /// <include file='docs.xml' path='docs/members[@name="person"]/GetObjectData/*'/>
         [SecurityPermission(SecurityAction.Demand, SerializationFormatter = true)]
         public void GetObjectData(SerializationInfo info, StreamingContext context)
         {
@@ -89,6 +100,7 @@ namespace CustomSerializerClassLibrary
             info.AddValue("Gender", Gender);
         }
 
+        /// <include file='docs.xml' path='docs/members[@name="person"]/ReadXml/*'/>
         public void ReadXml(XmlReader reader)
         {
             reader.Read();
@@ -124,6 +136,7 @@ namespace CustomSerializerClassLibrary
             }
         }
 
+        /// <include file='docs.xml' path='docs/members[@name="person"]/WriteXml/*'/>
         public void WriteXml(XmlWriter writer)
         {
             Dictionary<string, PropertyInfo> propertyInfoDic = new Dictionary<string, PropertyInfo>();
@@ -143,11 +156,13 @@ namespace CustomSerializerClassLibrary
             }
         }
 
+        /// <include file='docs.xml' path='docs/members[@name="person"]/GetSchema/*'/>
         public XmlSchema GetSchema()
         {
             return null;
         }
 
+        /// <include file='docs.xml' path='docs/members[@name="person"]/Equals/*'/>
         public override bool Equals(object obj)
         {
             if (ReferenceEquals(obj, this))
@@ -158,14 +173,10 @@ namespace CustomSerializerClassLibrary
                    person.Gender == Gender;
         }
 
+        /// <include file='docs.xml' path='docs/members[@name="person"]/GetHashCode/*'/>
         public override int GetHashCode()
         {
             return HashCode.Combine(FirstName, Age, Gender);
-        }
-
-        public override string ToString()
-        {
-            return base.ToString();
         }
     }
 }
