@@ -40,6 +40,7 @@ namespace CustomSerializerClassLibrary
             {
                 if (value <= 0)
                     throw new ArgumentOutOfRangeException("The age should be positive.");
+                _age = value;
             }
         }
 
@@ -140,6 +141,26 @@ namespace CustomSerializerClassLibrary
         public XmlSchema GetSchema()
         {
             return null;
+        }
+
+        public override bool Equals(object obj)
+        {
+            if (ReferenceEquals(obj, this))
+                return true;
+            return obj is Person person &&
+                   person.FirstName == FirstName &&
+                   person.Age == Age &&
+                   person.Gender == Gender;
+        }
+
+        public override int GetHashCode()
+        {
+            return HashCode.Combine(FirstName, Age, Gender);
+        }
+
+        public override string ToString()
+        {
+            return base.ToString();
         }
     }
 }
