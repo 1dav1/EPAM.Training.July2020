@@ -17,7 +17,7 @@ namespace CustomSerializerClassLibrary.JsonCustomConverters
             if (obj.Properties().Count() >= product.GetType().GetProperties().Length)
             {
                 product.Name = obj.Property("Name").Value.ToString();
-                product.Price = decimal.Parse(obj.Property("Age").Value.ToString());
+                product.Price = decimal.Parse(obj.Property("Price").Value.ToString());
                 return product;
             }
             else
