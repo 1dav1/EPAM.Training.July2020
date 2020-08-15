@@ -126,7 +126,25 @@
       <param name="grade">The grade to be converted.</param>
     </ConvertionPercentageToPoints>
     <ConvertionLetterToPoints>
-      
+      <summary>
+        The overloaded explicit convertion operator. Converts letter-based grade to point-based grade.
+      </summary>
+      <param name="grade">The grade to be converted.</param>
     </ConvertionLetterToPoints>
+    <Equals>
+      <summary>
+        Determines whether two <c>PointGrade</c> instances are equal. Overrides the base method.
+      </summary>
+      <param name="obj">The object to compare with the current grade.</param>
+      <returns>
+        <c>true</c> if the specified object is equal to the current grade; otherwise, <c>false</c>.
+      </returns>
+    </Equals>
+    <GetHashCode>
+      <summary>
+        Serves as the default hash function. Overrides the base method.
+      </summary>
+      <returns>A hash code for the current grade.</returns>
+    </GetHashCode>
   </members>
 </docs>
