@@ -13,7 +13,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BinaryTreeClassLibrary", "s
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BinaryTreeClassLibrary.Tests", "test\BinaryTreeClassLibrary.Tests\BinaryTreeClassLibrary.Tests.csproj", "{991988E8-84B2-4F16-A6B0-E2DB12E1153D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CustomSerializerClassLibrary", "src\CustomSerializerClassLibrary\CustomSerializerClassLibrary.csproj", "{3D9E5AB2-FB01-41A0-97CA-7B5C0E868AD8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CustomSerializerClassLibrary", "src\CustomSerializerClassLibrary\CustomSerializerClassLibrary.csproj", "{3D9E5AB2-FB01-41A0-97CA-7B5C0E868AD8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CustomSerializerClassLibrary.Tests", "test\CustomSerializerClassLibrary.Tests\CustomSerializerClassLibrary.Tests.csproj", "{93FE16AB-5ED5-464B-9CE2-453F9434574C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -37,6 +39,10 @@ Global
 		{3D9E5AB2-FB01-41A0-97CA-7B5C0E868AD8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3D9E5AB2-FB01-41A0-97CA-7B5C0E868AD8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3D9E5AB2-FB01-41A0-97CA-7B5C0E868AD8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{93FE16AB-5ED5-464B-9CE2-453F9434574C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{93FE16AB-5ED5-464B-9CE2-453F9434574C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{93FE16AB-5ED5-464B-9CE2-453F9434574C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{93FE16AB-5ED5-464B-9CE2-453F9434574C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -46,6 +52,7 @@ Global
 		{1C7000E7-1009-40EF-B4CE-AA7C7745BEBA} = {1C1F38A0-B625-49A0-8326-F9730D43C45A}
 		{991988E8-84B2-4F16-A6B0-E2DB12E1153D} = {A5BDE61B-BD24-48C4-962C-6671D303870F}
 		{3D9E5AB2-FB01-41A0-97CA-7B5C0E868AD8} = {1C1F38A0-B625-49A0-8326-F9730D43C45A}
+		{93FE16AB-5ED5-464B-9CE2-453F9434574C} = {A5BDE61B-BD24-48C4-962C-6671D303870F}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {BEFCD69B-3AF5-48A9-88A4-65BFADC5D5A7}
