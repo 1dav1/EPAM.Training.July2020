@@ -12,12 +12,18 @@ using JsonSerializer = System.Text.Json.JsonSerializer;
 
 namespace CustomSerializerClassLibrary.Tests
 {
+    /* FakeCustomSerializer class has all the functionality of the original class
+     * designed for testing */
     public class FakeCustomSerializer<T> where T : ISerialize
     {
         public static byte[] BinSerialize(T item)
         {
-            IFormatter formatter = new BinaryFormatter();
+            if (item is null)
+            {
+                throw new ArgumentNullException();
+            }
 
+            IFormatter formatter = new BinaryFormatter();
             using MemoryStream memoryStream = new MemoryStream();
             formatter.Serialize(memoryStream, item);
             return memoryStream.ToArray();
@@ -25,33 +31,34 @@ namespace CustomSerializerClassLibrary.Tests
 
         public static T BinDeserializeObject(byte[] array)
         {
+            if (array is null)
+            {
+                throw new ArgumentNullException();
+            }
+
             IFormatter formatter = new BinaryFormatter();
             using MemoryStream memoryStream = new MemoryStream(array);
             T obj = (T)formatter.Deserialize(memoryStream);
             return obj;
         }
 
-        public static void JsonSerialize(T item, string file)
+        public static string JsonSerialize(T item)
         {
-            string jsonString = JsonSerializer.Serialize(item);
-            try
-            {
-                File.WriteAllText(file, jsonString);
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message);
-            }
+            return !(item is null) ? JsonSerializer.Serialize(item) : throw new ArgumentNullException();
         }
 
-        public static T JsonDeserializeObject(string file)
+        public static T JsonDeserializeObject(string jsonString)
         {
-            // using Newtonsoft.Json for custom deserialization of JSON
-            string jsonString = File.ReadAllText(file);
-            Type type = typeof(T);
-            T obj = default;
+            if (jsonString is null)
+            {
+                throw new ArgumentNullException();
+            }
 
-            // custom JSON converters
+            Type type = typeof(T);
+            T obj;
+
+            /* using Newtonsoft.Json for custom deserialization of JSON
+             * custom JSON converters */
             if (type == typeof(Person))
             {
                 obj = JsonConvert.DeserializeObject<T>(jsonString, new PersonConverter());
@@ -67,65 +74,92 @@ namespace CustomSerializerClassLibrary.Tests
             return obj;
         }
 
-        public static void XmlSerialize(T item, string file)
+        public static string XmlSerialize(T item)
         {
+            if (item is null)
+            {
+                throw new ArgumentNullException();
+            }
+
             XmlSerializer serializer = new XmlSerializer(typeof(T));
-            using TextWriter writer = new StreamWriter(file);
-            serializer.Serialize(writer, item);
+            using var stringWriter = new StringWriter();
+            serializer.Serialize(stringWriter, item);
+            return stringWriter.ToString();
         }
 
-        public static T XmlDeserializeObject(string file)
+        public static T XmlDeserializeObject(string xmlString)
         {
+            if (xmlString is null)
+            {
+                throw new ArgumentNullException();
+            }
+
             XmlSerializer serializer = new XmlSerializer(typeof(T));
-            using StreamReader reader = new StreamReader(file);
+            using StringReader reader = new StringReader(xmlString);
             T obj = (T)serializer.Deserialize(reader);
             return obj;
         }
 
-        public static void BinSerialize(ICollection<T> collection, string file)
+        public static byte[] BinSerialize(ICollection<T> collection)
         {
+            if (collection is null)
+            {
+                throw new ArgumentNullException();
+            }
+
             Type type = collection.GetType();
             bool implementsCollection = type.GetInterfaces().Any(x => x.IsGenericType && x.GetGenericTypeDefinition() == typeof(ICollection<>));
             if (implementsCollection)
             {
                 IFormatter formatter = new BinaryFormatter();
-                using Stream stream = new FileStream(file, FileMode.Create, FileAccess.Write);
-                formatter.Serialize(stream, collection);
+
+                using MemoryStream memoryStream = new MemoryStream();
+                formatter.Serialize(memoryStream, collection);
+                return memoryStream.ToArray();
             }
+            else
+                return null;
         }
 
-        public static ICollection<T> BinDeserializeCollection(string file)
+        public static ICollection<T> BinDeserializeCollection(byte[] array)
         {
+            if (array is null)
+            {
+                throw new ArgumentNullException();
+            }
+
             IFormatter formatter = new BinaryFormatter();
-            using Stream stream = new FileStream(file, FileMode.Open, FileAccess.Read);
-            List<T> collection = (List<T>)formatter.Deserialize(stream);
+            using MemoryStream memoryStream = new MemoryStream(array);
+            List<T> collection = (List<T>)formatter.Deserialize(memoryStream);
             return collection;
         }
 
-        public static void JsonSerialize(ICollection<T> collection, string file)
+        public static string JsonSerialize(ICollection<T> collection)
         {
+            if (collection is null)
+            {
+                throw new ArgumentNullException();
+            }
+
             Type type = collection.GetType();
             bool implementsCollection = type.GetInterfaces().Any(x => x.IsGenericType && x.GetGenericTypeDefinition() == typeof(ICollection<>));
             if (implementsCollection)
             {
-                string jsonString = System.Text.Json.JsonSerializer.Serialize(collection);
-                try
-                {
-                    File.WriteAllText(file, jsonString);
-                }
-                catch (Exception ex)
-                {
-                    Console.WriteLine(ex.Message);
-                }
+                return JsonSerializer.Serialize(collection);
             }
+            return null;
         }
 
-        public static ICollection<T> JsonDeserializeCollection(string file)
+        public static ICollection<T> JsonDeserializeCollection(string jsonString)
         {
+            if (jsonString is null)
+            {
+                throw new ArgumentNullException();
+            }
+
             List<T> collection = default;
             try
             {
-                string jsonString = File.ReadAllText(file);
                 collection = JsonConvert.DeserializeObject<List<T>>(jsonString);
             }
             catch (Exception ex)
@@ -135,25 +169,36 @@ namespace CustomSerializerClassLibrary.Tests
             return collection;
         }
 
-        public static void XmlSerialize(ICollection<T> collection, string file)
+        public static string XmlSerialize(ICollection<T> collection)
         {
+            if (collection is null)
+            {
+                throw new ArgumentNullException();
+            }
+
             Type type = collection.GetType();
             bool implementsCollection = type.GetInterfaces().Any(x => x.IsGenericType && x.GetGenericTypeDefinition() == typeof(ICollection<>));
             if (implementsCollection)
             {
                 XmlSerializer serializer = new XmlSerializer(type);
-                using TextWriter writer = new StreamWriter(file);
-                serializer.Serialize(writer, collection);
+                using var stringWriter = new StringWriter();
+                serializer.Serialize(stringWriter, collection);
+                return stringWriter.ToString();
             }
+            return null;
         }
 
-        public static ICollection<T> XmlDeserializeCollection(string file)
+        public static ICollection<T> XmlDeserializeCollection(string xmlString)
         {
+            if (xmlString is null)
+            {
+                throw new ArgumentNullException();
+            }
+
             XmlSerializer serializer = new XmlSerializer(typeof(List<T>));
-            using StreamReader reader = new StreamReader(file);
+            using StringReader reader = new StringReader(xmlString);
             List<T> collection = (List<T>)serializer.Deserialize(reader);
             return collection;
         }
-
     }
 }
