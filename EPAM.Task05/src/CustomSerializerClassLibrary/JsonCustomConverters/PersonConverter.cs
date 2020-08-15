@@ -7,9 +7,11 @@ namespace CustomSerializerClassLibrary.JsonCustomConverters
 {
     /* custom JSON converter for deserialization. 
      * checks if the version of the class in JSON file corresponds with the current version of the class. */
+    /// <include file='docs.xml' path='docs/members[@name="personconverter"]/PersonConverter/*'/>
     public class PersonConverter : JsonConverter
     {
         // custom deserialization
+        /// <include file='docs.xml' path='docs/members[@name="personconverter"]/ReadJson/*'/>
         public override object ReadJson(JsonReader reader, Type objectType, object existingValue, Newtonsoft.Json.JsonSerializer serializer)
         {
             JObject obj = JObject.Load(reader);
@@ -42,11 +44,13 @@ namespace CustomSerializerClassLibrary.JsonCustomConverters
         }
 
         // custom serialization is not used
+        /// <include file='docs.xml' path='docs/members[@name="personconverter"]/WriteJson/*'/>
         public override void WriteJson(JsonWriter writer, object value, Newtonsoft.Json.JsonSerializer serializer)
         {
             throw new NotImplementedException();
         }
 
+        /// <include file='docs.xml' path='docs/members[@name="personconverter"]/CanConvert/*'/>
         public override bool CanConvert(Type objectType)
         {
             throw new NotImplementedException();

@@ -5,8 +5,10 @@ using System.Linq;
 
 namespace CustomSerializerClassLibrary.JsonCustomConverters
 {
+    /// <include file='docs.xml' path='docs/members[@name="shapeconverter"]/ShapeConverter/*'/>
     public class ShapeConverter : JsonConverter
     {
+        /// <include file='docs.xml' path='docs/members[@name="shapeconverter"]/ReadJsonShape/*'/>
         public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
         {
             JObject obj = JObject.Load(reader);
@@ -54,11 +56,13 @@ namespace CustomSerializerClassLibrary.JsonCustomConverters
             }
         }
 
+        /// <include file='docs.xml' path='docs/members[@name="shapeconverter"]/WriteJsonShape/*'/>
         public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
         {
             throw new NotImplementedException();
         }
 
+        /// <include file='docs.xml' path='docs/members[@name="shapeconverter"]/CanConvertShape/*'/>
         public override bool CanConvert(Type objectType)
         {
             throw new NotImplementedException();
