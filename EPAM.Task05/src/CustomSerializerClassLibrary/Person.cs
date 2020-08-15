@@ -1,8 +1,11 @@
 ﻿using CustomSerializerClassLibrary.Interfaces;
 using System;
+using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Runtime.Serialization;
-using System.Text;
+using System.Xml;
+using System.Xml.Schema;
 
 namespace CustomSerializerClassLibrary
 {
@@ -58,9 +61,9 @@ namespace CustomSerializerClassLibrary
                 {
                     /* if the deserializable property Gender is string and it has one the possible values
                      * pass this value to the property Gender of the created object */
-                    if (info.GetString("Gender").ToUpper() == "MALE" ||
-                        info.GetString("Gender").ToUpper() == "FEMALE" ||
-                        info.GetString("Gender").ToUpper() == "NONE")
+                    if (info.GetString("Gender").ToUpper() == "male" ||
+                        info.GetString("Gender").ToUpper() == "female" ||
+                        info.GetString("Gender").ToUpper() == "none")
                     {
                         string gender = info.GetString("Gender").First().ToString().ToUpper() + info.GetString("Gender").Substring(1);
                         Gender = (Gender)Enum.Parse(typeof(Gender), gender);
@@ -78,6 +81,65 @@ namespace CustomSerializerClassLibrary
             info.AddValue("FirstName", FirstName);
             info.AddValue("Age", Age);
             info.AddValue("Gender", Gender);
+        }
+
+        public void ReadXml(XmlReader reader)
+        {
+            reader.Read();
+            int count = 0;
+            using var inner = reader.ReadSubtree();
+            while (inner.Read())
+                count++;
+
+            // check if the number of nodes in the XML file equals number of properties of the current class
+            if (count >= GetType().GetMembers().Length)
+            {
+                XmlTextReader textReader = (XmlTextReader)reader;
+                while (textReader.Read())
+                {
+                    switch (textReader.Name)
+                    {
+                        case "FirstName":
+                            FirstName = textReader.ReadString();
+                            break;
+                        case "Age":
+                            Age = int.Parse(textReader.ReadString());
+                            break;
+                        case "Gender":
+                            Gender = (Gender)Enum.Parse(typeof(Gender), textReader.ReadString());
+                            break;
+                        default: break;
+                    }
+                }
+            }
+            else
+            {
+                throw new Exception("A property is missing.");
+            }
+        }
+
+        public void WriteXml(XmlWriter writer)
+        {
+            Dictionary<string, PropertyInfo> propertyInfoDic = new Dictionary<string, PropertyInfo>();
+            PropertyInfo[] properties = GetType().GetProperties();
+
+            foreach (var property in properties)
+            {
+                propertyInfoDic.Add(property.Name, property);
+            }
+
+            foreach (string key in propertyInfoDic.Keys.ToList())
+            {
+                object valueObject = propertyInfoDic[key].GetValue(this);
+                writer.WriteStartElement(key);
+                writer.WriteString(valueObject.ToString());
+                writer.WriteEndElement();
+            }
+        }
+
+        public XmlSchema GetSchema()
+        {
+            return null;
         }
     }
 }

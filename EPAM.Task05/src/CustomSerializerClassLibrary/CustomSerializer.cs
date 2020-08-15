@@ -1,12 +1,14 @@
 ﻿using CustomSerializerClassLibrary.Interfaces;
+using CustomSerializerClassLibrary.JsonCustomConverters;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.Serialization;
 using System.Runtime.Serialization.Formatters.Binary;
-using System.Text.Json;
 using System.Xml.Serialization;
+using JsonSerializer = System.Text.Json.JsonSerializer;
 
 namespace CustomSerializerClassLibrary
 {
@@ -42,8 +44,11 @@ namespace CustomSerializerClassLibrary
 
         public static T JsonDeserializeObject(string file)
         {
+            // using Newtonsoft.Json for custom deserialization of JSON
             string jsonString = File.ReadAllText(file);
-            T obj = JsonSerializer.Deserialize<T>(jsonString);
+
+            // PersonConverter - custom JSON converter
+            T obj = JsonConvert.DeserializeObject<T>(jsonString, new PersonConverter());
             return obj;
         }
 
@@ -106,7 +111,7 @@ namespace CustomSerializerClassLibrary
             try
             {
                 string jsonString = File.ReadAllText(file);
-                collection = JsonSerializer.Deserialize<List<T>>(jsonString);
+                collection = JsonConvert.DeserializeObject<List<T>>(jsonString);
             }
             catch(Exception ex)
             { 
