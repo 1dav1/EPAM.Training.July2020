@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Reflection;
 using System.Runtime.Serialization;
-
-[assembly: AssemblyVersion("1.0.0")]
 
 namespace CustomSerializerClassLibrary
 {

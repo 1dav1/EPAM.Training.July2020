@@ -47,14 +47,20 @@ namespace CustomSerializerClassLibrary
             // using Newtonsoft.Json for custom deserialization of JSON
             string jsonString = File.ReadAllText(file);
             Type type = typeof(T);
-            // PersonConverter - custom JSON converter
+            T obj = default;
+
+            // custom JSON converters
             if (type == typeof(Person))
             {
-                T obj = JsonConvert.DeserializeObject<T>(jsonString, new PersonConverter());
+                obj = JsonConvert.DeserializeObject<T>(jsonString, new PersonConverter());
             }
             else if (type == typeof(Product))
             {
-                T obj = JsonConvert.DeserializeObject<T>(jsonString, new ProductConverter());
+                obj = JsonConvert.DeserializeObject<T>(jsonString, new ProductConverter());
+            }
+            else
+            {
+                obj = JsonConvert.DeserializeObject<T>(jsonString, new ShapeConverter());
             }
             return obj;
         }
