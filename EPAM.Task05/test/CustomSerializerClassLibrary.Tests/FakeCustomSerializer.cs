@@ -12,8 +12,8 @@ using JsonSerializer = System.Text.Json.JsonSerializer;
 
 namespace CustomSerializerClassLibrary.Tests
 {
-    /* FakeCustomSerializer class has all the functionality of the original class
-     * designed for testing */
+    /* FakeCustomSerializer class has the functionality of the original class.
+     * designed for testing. */
     public class FakeCustomSerializer<T> where T : ISerialize
     {
         public static byte[] BinSerialize(T item)
