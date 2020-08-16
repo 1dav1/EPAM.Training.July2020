@@ -343,6 +343,20 @@
       <returns>A hash code for the current object.</returns>
     </GetHashCode>
   </members>
+  <members name="shape">
+    <Shape>
+      <summary>
+        The Shape abstract class presents a geometrical shape.
+      </summary>
+    </Shape>
+    <GetObjectData>
+      <summary>
+        Populates a SerializationInfo with the data needed to serialize the target object.
+      </summary>
+      <param name="info">The SerializationInfo to populate with data.</param>
+      <param name="context">The destination for this serialization.</param>
+    </GetObjectData>
+  </members>
   <members name="circle">
     <Circle>
       <summary>
@@ -420,6 +434,111 @@
     <ParametrizedConstructor>
       <summary>
         Initializes a new instance of <c>Product</c> class with a given serialization info and streaming context.
+        Checks the version of the object to be deserialized.
+      </summary>
+      <param name="info">Stores all the data needed to deserialize an object.</param>
+      <param name="context">Describes the source and destination of a given serialized stream, and provides an additional caller-defined context.</param>
+      <exception cref="System.Exception">
+        Thrown when a property is not found in the deserializing file.
+      </exception>
+    </ParametrizedConstructor>
+    <GetObjectData>
+      <summary>
+        Populates a SerializationInfo with the data needed to serialize the target object.
+      </summary>
+      <param name="info">The SerializationInfo to populate with data.</param>
+      <param name="context">The destination for this serialization.</param>
+    </GetObjectData>
+    <Equals>
+      <summary>
+        Determines whether two object instances are equal.
+      </summary>
+      <param name="obj">The object to compare with the current object.</param>
+      <returns>
+        <c>true</c> if the specified object is equal to the current object; otherwise, <c>false</c>.
+      </returns>
+    </Equals>
+    <GetHashCode>
+      <summary>
+        Serves as the default hash function.
+      </summary>
+      <returns>A hash code for the current object.</returns>
+    </GetHashCode>
+  </members>
+  <members name="rectangle">
+    <Rectangle>
+       <summary>
+         The Rectangle class presents a rectangle with the specified height and width.
+       </summary>
+    </Rectangle>
+    <Height>
+       <value>Gets or sets the height of the rectangle.</value>
+    </Height>
+    <Width>
+      <value>Gets or sets the width of the rectangle.</value>
+    </Width>
+    <Constructor>
+      <summary>
+        Initializes a new instance of <c>Rectangle</c> class with default values.
+      </summary>
+    </Constructor>
+    <ParametrizedConstructor>
+      <summary>
+        Initializes a new instance of <c>Rectangle</c> class with a given serialization info and streaming context.
+        Checks the version of the object to be deserialized.
+      </summary>
+      <param name="info">Stores all the data needed to deserialize an object.</param>
+      <param name="context">Describes the source and destination of a given serialized stream, and provides an additional caller-defined context.</param>
+      <exception cref="System.Exception">
+        Thrown when a property is not found in the deserializing file.
+      </exception>
+    </ParametrizedConstructor>
+    <GetObjectData>
+      <summary>
+        Populates a SerializationInfo with the data needed to serialize the target object.
+      </summary>
+      <param name="info">The SerializationInfo to populate with data.</param>
+      <param name="context">The destination for this serialization.</param>
+    </GetObjectData>
+    <Equals>
+      <summary>
+        Determines whether two object instances are equal.
+      </summary>
+      <param name="obj">The object to compare with the current object.</param>
+      <returns>
+        <c>true</c> if the specified object is equal to the current object; otherwise, <c>false</c>.
+      </returns>
+    </Equals>
+    <GetHashCode>
+      <summary>
+        Serves as the default hash function.
+      </summary>
+      <returns>A hash code for the current object.</returns>
+    </GetHashCode>
+  </members>
+  <members name="triangle">
+    <Triangle>
+       <summary>
+         The Triangle class presents a triangle with the specified side lengths.
+       </summary>
+    </Triangle>
+    <SideA>
+      <value>Gets or sets the side length of the triangle.</value>
+    </SideA>
+    <SideB>
+      <value>Gets or sets the side length of the triangle.</value>
+    </SideB>
+    <SideC>
+      <value>Gets or sets the side length of the triangle.</value>
+    </SideC>
+    <Constructor>
+      <summary>
+        Initializes a new instance of <c>Triangle</c> class with default values.
+      </summary>
+    </Constructor>
+    <ParametrizedConstructor>
+      <summary>
+        Initializes a new instance of <c>Triangle</c> class with a given serialization info and streaming context.
         Checks the version of the object to be deserialized.
       </summary>
       <param name="info">Stores all the data needed to deserialize an object.</param>

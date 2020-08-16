@@ -4,10 +4,12 @@ using System.Security.Permissions;
 
 namespace CustomSerializerClassLibrary
 {
+    /// <include file='docs.xml' path='docs/members[@name="triangle"]/Triangle/*'/>
     [Serializable]
     public class Triangle : Shape
     {
         private int _sidea;
+        /// <include file='docs.xml' path='docs/members[@name="triangle"]/SideA/*'/>
         public int SideA
         {
             get => _sidea;
@@ -20,6 +22,7 @@ namespace CustomSerializerClassLibrary
         }
 
         private int _sideb;
+        /// <include file='docs.xml' path='docs/members[@name="triangle"]/SideB/*'/>
         public int SideB 
         {
             get => _sideb;
@@ -32,6 +35,7 @@ namespace CustomSerializerClassLibrary
         }
 
         private int _sidec;
+        /// <include file='docs.xml' path='docs/members[@name="triangle"]/SideC/*'/>
         public int SideC 
         {
             get => _sidec;
@@ -43,8 +47,10 @@ namespace CustomSerializerClassLibrary
             }
         }
 
+        /// <include file='docs.xml' path='docs/members[@name="triangle"]/Constructor/*'/>
         public Triangle() { }
 
+        /// <include file='docs.xml' path='docs/members[@name="triangle"]/ParametrizedConstructor/*'/>
         protected Triangle(SerializationInfo info, StreamingContext context)
         {
             // check if the deserialized object has the same version
@@ -60,6 +66,7 @@ namespace CustomSerializerClassLibrary
             }
         }
 
+        /// <include file='docs.xml' path='docs/members[@name="triangle"]/GetObjectData/*'/>
         [SecurityPermission(SecurityAction.Demand, SerializationFormatter = true)]
         public override void GetObjectData(SerializationInfo info, StreamingContext context)
         {
@@ -68,6 +75,7 @@ namespace CustomSerializerClassLibrary
             info.AddValue("SideC", SideC);
         }
 
+        /// <include file='docs.xml' path='docs/members[@name="triangle"]/Equals/*'/>
         public override bool Equals(object obj)
         {
             if (ReferenceEquals(obj, this))
@@ -79,6 +87,12 @@ namespace CustomSerializerClassLibrary
                    triangle.SideA == SideA &&
                    triangle.SideB == SideB &&
                    triangle.SideC == SideC;
+        }
+
+        /// <include file='docs.xml' path='docs/members[@name="triangle"]/GetHashCode/*'/>
+        public override int GetHashCode()
+        {
+            return HashCode.Combine(SideA, SideB, SideC);
         }
     }
 }
