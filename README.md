@@ -21,4 +21,8 @@ EPAM training tasks
 - ISerialize interface-marker     
 - Custom JSON converters     
 
-## XML documentation is added.
+## XML documentation is added.     
+
+### Used     
+- Newtonsoft.Json     
+- xunit, Fluent Assertions     
