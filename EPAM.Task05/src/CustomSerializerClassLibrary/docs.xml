@@ -289,13 +289,13 @@
     </Gender>
     <Constructor>
       <summary>
-        Default constructor.
+        Initializes a new instance of <c>Person</c> class with default values.
       </summary>
     </Constructor>
     <ParametrizedConstructor>
       <summary>
-        Initializes <c>Person</c> instances on binary deserialization.
-        Checks the vertion of the object to be deserialized.
+        Initializes a new instance of <c>Person</c> class with a given serialization info and streaming context.
+        Checks the version of the object to be deserialized.
       </summary>
       <param name="info">Stores all the data needed to deserialize an object.</param>
       <param name="context">Describes the source and destination of a given serialized stream, and provides an additional caller-defined context.</param>
@@ -337,23 +337,118 @@
       </returns>
     </Equals>
     <GetHashCode>
-       <summary>
-         Serves as the default hash function.
-       </summary>
-       <returns>A hash code for the current object.</returns>
+      <summary>
+        Serves as the default hash function.
+      </summary>
+      <returns>A hash code for the current object.</returns>
     </GetHashCode>
+  </members>
+  <members name="circle">
     <Circle>
-       <summary>
-         The Circle class presents a circle with the specified radius.
+      <summary>
+        The Circle class presents a circle with the specified radius.
       </summary>
     </Circle>
     <Radius>
-       <value>
-         Gets or sets the radius of the circle.
+      <value>
+        Gets or sets the radius of the circle.
       </value>
       <exception cref="System.ArgumentOutOfRangeException">
         Thrown when the radius is not positive.
       </exception>
     </Radius>
+    <Constructor>
+      <summary>
+        Initializes a new instance of <c>Circle</c> class with default values.
+      </summary>
+    </Constructor>
+    <ParametrizedConstructor>
+      <summary>
+        Initializes a new instance of <c>Circle</c> class with a given serialization info and streaming context.
+        Checks the version of the object to be deserialized.
+      </summary>
+      <param name="info">Stores all the data needed to deserialize an object.</param>
+      <param name="context">Describes the source and destination of a given serialized stream, and provides an additional caller-defined context.</param>
+      <exception cref="System.Exception">
+        Thrown when a property is not found in the deserializing file.
+      </exception>
+    </ParametrizedConstructor>
+    <GetObjectData>
+      <summary>
+        Populates a SerializationInfo with the data needed to serialize the target object.
+      </summary>
+      <param name="info">The SerializationInfo to populate with data.</param>
+      <param name="context">The destination for this serialization.</param>
+    </GetObjectData>
+    <Equals>
+      <summary>
+        Determines whether two object instances are equal.
+      </summary>
+      <param name="obj">The object to compare with the current object.</param>
+      <returns>
+        <c>true</c> if the specified object is equal to the current object; otherwise, <c>false</c>.
+      </returns>
+    </Equals>
+    <GetHashCode>
+      <summary>
+        Serves as the default hash function.
+      </summary>
+      <returns>A hash code for the current object.</returns>
+    </GetHashCode>
+  </members>
+  <members name="product">
+    <Product>
+      <summary>
+        The Product class presents a product with the specified characteristics.
+      </summary>
+    </Product>
+    <Name>
+      <value>
+        Gets or sets the name of the product.
+      </value>
+    </Name>
+    <Price>
+      <value>
+        Gets or sets the price of the product.
+      </value>
+    </Price>
+    <Constructor>
+      <summary>
+        Initializes a new instance of <c>Product</c> class with default values.
+      </summary>
+    </Constructor>
+    <ParametrizedConstructor>
+      <summary>
+        Initializes a new instance of <c>Product</c> class with a given serialization info and streaming context.
+        Checks the version of the object to be deserialized.
+      </summary>
+      <param name="info">Stores all the data needed to deserialize an object.</param>
+      <param name="context">Describes the source and destination of a given serialized stream, and provides an additional caller-defined context.</param>
+      <exception cref="System.Exception">
+        Thrown when a property is not found in the deserializing file.
+      </exception>
+    </ParametrizedConstructor>
+    <GetObjectData>
+      <summary>
+        Populates a SerializationInfo with the data needed to serialize the target object.
+      </summary>
+      <param name="info">The SerializationInfo to populate with data.</param>
+      <param name="context">The destination for this serialization.</param>
+    </GetObjectData>
+    <Equals>
+      <summary>
+        Determines whether two object instances are equal.
+      </summary>
+      <param name="obj">The object to compare with the current object.</param>
+      <returns>
+        <c>true</c> if the specified object is equal to the current object; otherwise, <c>false</c>.
+      </returns>
+    </Equals>
+    <GetHashCode>
+      <summary>
+        Serves as the default hash function.
+      </summary>
+      <returns>A hash code for the current object.</returns>
+    </GetHashCode>
   </members>
 </docs>

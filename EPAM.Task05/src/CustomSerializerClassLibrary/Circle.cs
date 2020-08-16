@@ -21,8 +21,10 @@ namespace CustomSerializerClassLibrary
             }
         }
 
+        /// <include file='docs.xml' path='docs/members[@name="circle"]/Constructor/*'/>
         public Circle() { }
 
+        /// <include file='docs.xml' path='docs/members[@name="circle"]/ParametrizedConstructor/*'/>
         protected Circle(SerializationInfo info, StreamingContext context)
         {
             
@@ -36,12 +38,14 @@ namespace CustomSerializerClassLibrary
             }
         }
 
+        /// <include file='docs.xml' path='docs/members[@name="circle"]/GetObjectData/*'/>
         [SecurityPermission(SecurityAction.Demand, SerializationFormatter = true)]
         public override void GetObjectData(SerializationInfo info, StreamingContext context)
         {
             info.AddValue("Radius", Radius);
         }
 
+        /// <include file='docs.xml' path='docs/members[@name="circle"]/Equals/*'/>
         public override bool Equals(object obj)
         {
             if (ReferenceEquals(obj, this))
@@ -53,6 +57,7 @@ namespace CustomSerializerClassLibrary
                    circle.Radius == Radius;
         }
 
+        /// <include file='docs.xml' path='docs/members[@name="circle"]/GetHashCode/*'/>
         public override int GetHashCode()
         {
             return HashCode.Combine(Radius);
