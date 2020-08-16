@@ -5,18 +5,20 @@ EPAM training tasks
 ### Project 'BinaryTreeClassLibrary'     
 - BinaryTree class    
 - ResultClassLibrary  
--- LetterGrade class (presents a letter-based grade)     
--- PercentageGrade class (presents a percentage-based grade)    
--- PointGrade class (presents a 10 point-based grade)     
+ LetterGrade class (presents a letter-based grade)     
+ PercentageGrade class (presents a percentage-based grade)    
+ PointGrade class (presents a 10 point-based grade)     
 - BinaryTree tests     
 
-### Project 'Client'     
-- ClientClassLibrary    
-- Client console application
-- Client tests    
+### Project 'CustomSerializerClassLibrary'     
+- CustonSerializer class    
+- Person class     
+- Product class     
+- Shape abstract class     
+- Circle derived class     
+- Rectangle derived class     
+- Triangle derived class     
+- ISerialize interface-marker     
+- Custom JSON converters     
 
-### Project 'State'     
-- StateClassLibrary     
-
-##     
-XML documentation is added.
+## XML documentation is added.
