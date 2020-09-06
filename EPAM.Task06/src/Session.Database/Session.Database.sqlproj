@@ -57,6 +57,7 @@
   <ItemGroup>
     <Folder Include="Properties" />
     <Folder Include="Tables" />
+    <Folder Include="ForeignKeys" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="Tables\Student.sql" />
@@ -64,5 +65,10 @@
     <Build Include="Tables\Subject.sql" />
     <Build Include="Tables\Grade.sql" />
     <Build Include="Tables\Assessment.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ForeignKeys\ForeignKey_Student_Group.sql" />
+    <None Include="ForeignKeys\ForeignKey_Grade_Assessment.sql" />
+    <None Include="ForeignKeys\ForeignKey_Grade_Student.sql" />
   </ItemGroup>
 </Project>
