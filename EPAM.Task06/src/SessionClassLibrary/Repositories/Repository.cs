@@ -10,7 +10,7 @@ namespace SessionClassLibrary.Repositories
 {
     public class Repository<T> where T : class, new()
     {
-        private readonly string _connectionString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=Session;Integrated Security=True";
+        private readonly string _connectionString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=Session.Database;Integrated Security=True";
         private readonly string _tableName;
         private readonly IEnumerable<string> _fields;
 
