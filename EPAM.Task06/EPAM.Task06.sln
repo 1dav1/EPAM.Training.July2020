@@ -7,6 +7,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SessionClassLibrary", "src\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExcelWriterClassLibrary", "src\ExcelWriterClassLibrary\ExcelWriterClassLibrary.csproj", "{6B46B2EF-4E93-411B-A185-0D18B3D623D5}"
 EndProject
+Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "Session.Database", "src\Session.Database\Session.Database.sqlproj", "{A47D454E-6679-44B2-9C51-E064DF53BDEA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,12 @@ Global
 		{6B46B2EF-4E93-411B-A185-0D18B3D623D5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6B46B2EF-4E93-411B-A185-0D18B3D623D5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6B46B2EF-4E93-411B-A185-0D18B3D623D5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A47D454E-6679-44B2-9C51-E064DF53BDEA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A47D454E-6679-44B2-9C51-E064DF53BDEA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A47D454E-6679-44B2-9C51-E064DF53BDEA}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{A47D454E-6679-44B2-9C51-E064DF53BDEA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A47D454E-6679-44B2-9C51-E064DF53BDEA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A47D454E-6679-44B2-9C51-E064DF53BDEA}.Release|Any CPU.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

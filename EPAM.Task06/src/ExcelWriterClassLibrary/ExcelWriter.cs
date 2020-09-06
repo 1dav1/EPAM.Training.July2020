@@ -198,10 +198,10 @@ namespace ExcelWriterClassLibrary
             CellRange sourceRange = sourceSheet.Range["A1:D" + row];
 
             // creating cache of pivot table
-            Spire.Xls.PivotCache cache = workbook.PivotCaches.Add(sourceRange);
+            PivotCache cache = workbook.PivotCaches.Add(sourceRange);
 
             // creating pivot table
-            Spire.Xls.PivotTable table = pivotSheet.PivotTables.Add("Pivot Table", sourceSheet.Range["A1"], cache);
+            PivotTable table = pivotSheet.PivotTables.Add("Pivot Table", sourceSheet.Range["A1"], cache);
 
             // creating field of the pivot table
             var groupField = table.PivotFields["Group"];
