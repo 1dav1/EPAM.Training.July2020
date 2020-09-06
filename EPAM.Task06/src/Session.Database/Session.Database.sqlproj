@@ -70,5 +70,6 @@
     <None Include="ForeignKeys\ForeignKey_Student_Group.sql" />
     <None Include="ForeignKeys\ForeignKey_Grade_Assessment.sql" />
     <None Include="ForeignKeys\ForeignKey_Grade_Student.sql" />
+    <None Include="ForeignKeys\ForeignKey_Assessment_Subject.sql" />
   </ItemGroup>
 </Project>
