@@ -5,9 +5,13 @@ VisualStudioVersion = 16.0.30413.136
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SessionClassLibrary", "src\SessionClassLibrary\SessionClassLibrary.csproj", "{A549C857-DBEA-4467-89D7-6A25A27E38A7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExcelWriterClassLibrary", "src\ExcelWriterClassLibrary\ExcelWriterClassLibrary.csproj", "{6B46B2EF-4E93-411B-A185-0D18B3D623D5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ExcelWriterClassLibrary", "src\ExcelWriterClassLibrary\ExcelWriterClassLibrary.csproj", "{6B46B2EF-4E93-411B-A185-0D18B3D623D5}"
 EndProject
 Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "Session.Database", "src\Session.Database\Session.Database.sqlproj", "{A47D454E-6679-44B2-9C51-E064DF53BDEA}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{4D01A625-0E7B-4221-B6B1-626A9BDB8917}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SessionClassLibrary.Tests", "test\SessionClassLibrary.Tests\SessionClassLibrary.Tests.csproj", "{ED037CCC-9258-4CD3-95A7-3A353AE38A57}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -29,9 +33,16 @@ Global
 		{A47D454E-6679-44B2-9C51-E064DF53BDEA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A47D454E-6679-44B2-9C51-E064DF53BDEA}.Release|Any CPU.Build.0 = Release|Any CPU
 		{A47D454E-6679-44B2-9C51-E064DF53BDEA}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{ED037CCC-9258-4CD3-95A7-3A353AE38A57}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ED037CCC-9258-4CD3-95A7-3A353AE38A57}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ED037CCC-9258-4CD3-95A7-3A353AE38A57}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ED037CCC-9258-4CD3-95A7-3A353AE38A57}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{ED037CCC-9258-4CD3-95A7-3A353AE38A57} = {4D01A625-0E7B-4221-B6B1-626A9BDB8917}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {FE55B62B-B871-498E-92F1-AAADD32AE143}
