@@ -18,8 +18,7 @@ EPAM training tasks
 
 ### Project 'Session.Database'
 contains SQL scripts for deploying database and populating it with the data     
-###### Connection string:     
-@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=SessionDB;Integrated Security=True"
+**Connection string**: @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=SessionDB;Integrated Security=True"     
 
 ## XML documentation is added.     
 
