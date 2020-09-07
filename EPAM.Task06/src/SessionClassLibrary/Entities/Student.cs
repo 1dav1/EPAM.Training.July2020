@@ -2,9 +2,11 @@
 
 namespace SessionClassLibrary
 {
+    /// <include file='docs.xml' path='docs/members[@name="student"]/Student/*'/>
     public class Student
     {
         private int _id;
+        /// <include file='docs.xml' path='docs/members[@name="student"]/Id/*'/>
         public int Id
         {
             get => _id;
@@ -17,6 +19,7 @@ namespace SessionClassLibrary
         }
 
         private string _name;
+        /// <include file='docs.xml' path='docs/members[@name="student"]/Name/*'/>
         public string Name
         {
             get => _name;
@@ -29,6 +32,7 @@ namespace SessionClassLibrary
         }
 
         private string _gender;
+        /// <include file='docs.xml' path='docs/members[@name="student"]/Gender/*'/>
         public string Gender
         {
             get => _gender;
@@ -40,9 +44,11 @@ namespace SessionClassLibrary
             }
         }
 
+        /// <include file='docs.xml' path='docs/members[@name="student"]/BirthDate/*'/>
         public DateTime BirthDate { get; set; }
 
         private int _groupId;
+        /// <include file='docs.xml' path='docs/members[@name="student"]/GroupId/*'/>
         public int GroupId
         {
             get => _groupId;
@@ -54,6 +60,7 @@ namespace SessionClassLibrary
             }
         }
 
+        /// <include file='docs.xml' path='docs/members[@name="student"]/Equals/*'/>
         public override bool Equals(object obj)
         {
             if (ReferenceEquals(obj, this))
@@ -69,6 +76,7 @@ namespace SessionClassLibrary
                    student.GroupId == GroupId;
         }
 
+        /// <include file='docs.xml' path='docs/members[@name="student"]/GetHashCode/*'/>
         public override int GetHashCode()
         {
             return HashCode.Combine(Id, Name, Gender, BirthDate, GroupId);

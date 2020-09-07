@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<docs>
+  <members name="student">
+    <Student>
+      <summary>
+        Student class contains characteristics of a student.
+      </summary>
+    </Student>
+    <Id>
+      <value>Gets or sets student's identifier.</value>
+      <exception cref="System.ArgumentOutOfRangeException">
+        Thrown when the ID is not positive.
+      </exception>
+    </Id>
+    <Name>
+      <value>Gets or sets student's name.</value>
+      <exception cref="System.ArgumentOutOfRangeException">
+        Thrown when the name of the student is empty or <c>null</c>.
+      </exception>
+    </Name>
+    <Gender>
+      <value>Gets or sets student's gender.</value>
+      <exception cref="System.ArgumentOutOfRangeException">
+        Thrown when the student's gender is not 'Male' or 'Female'.
+      </exception>
+    </Gender>
+    <BirthDate>
+      <value>Gets or sets student's date of birth.</value>
+    </BirthDate>
+    <GroupId>
+      <value>Gets or sets the identifier of the student's group.</value>
+      <exception cref="System.ArgumentOutOfRangeException">
+        Thrown when the group ID is not positive.
+      </exception>
+    </GroupId>
+    <Equals>
+      <summary>
+        Determines whether two <c>Student</c> instances are equal. Overrides the base method.
+      </summary>
+      <param name="obj">The object to compare with the current student.</param>
+      <returns>
+        <c>true</c> if the specified object is equal to the current student; otherwise, <c>false</c>.
+      </returns>
+    </Equals>
+    <GetHashCode>
+      <summary>
+        Serves as the default hash function. Overrides the base method.
+      </summary>
+      <returns>A hash code for the current student.</returns>
+    </GetHashCode>
+  </members>
+</docs>
