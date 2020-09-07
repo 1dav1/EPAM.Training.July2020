@@ -1,4 +1,5 @@
-﻿ALTER TABLE [dbo].[Grade]
+﻿USE [SessionDB]
+ALTER TABLE [dbo].[Grade]
 	ADD CONSTRAINT  [ForeignKey_Grade_Student] 
 	FOREIGN KEY ([StudentId]) 
 	REFERENCES [dbo].[Student] ([Id])
