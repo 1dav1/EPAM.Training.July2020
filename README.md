@@ -1,28 +1,27 @@
 # EPAM.Training.July2020     
 EPAM training tasks     
 
-## Task 6. Data structures, Generics    
-### Project 'BinaryTreeClassLibrary'     
-- BinaryTree class    
-- ResultClassLibrary  
- LetterGrade class (presents a letter-based grade)     
- PercentageGrade class (presents a percentage-based grade)    
- PointGrade class (presents a 10 point-based grade)     
-- BinaryTree tests     
+## Task 6. Database development     
 
-### Project 'CustomSerializerClassLibrary'     
-- CustonSerializer class    
-- Person class     
-- Product class     
-- Shape abstract class     
-- Circle derived class     
-- Rectangle derived class     
-- Triangle derived class     
-- ISerialize interface-marker     
-- Custom JSON converters     
+### Project 'SessionClassLibrary'   
+- Student class     
+- StudentGroup class     
+- Subject class     
+- Assessment classes (presents various types of assesments)    
+- Grade classes (presents various types of grades)       
+- MapperHelper class     
+- QueryHelper class     
+- Repository class     
+
+### Project 'ExcelWriterClassLibrary'     
+- ExcelWriter class    
+
+### Project 'Session.Database'
+contains SQL scripts for deploying database and populating it with the data
 
 ## XML documentation is added.     
 
 ### Used     
-- Newtonsoft.Json     
+- Spire.Xls     
+- Moq     
 - xunit, Fluent Assertions     
