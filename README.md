@@ -17,7 +17,9 @@ EPAM training tasks
 - ExcelWriter class    
 
 ### Project 'Session.Database'
-contains SQL scripts for deploying database and populating it with the data
+contains SQL scripts for deploying database and populating it with the data     
+###### Connection string:     
+@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=SessionDB;Integrated Security=True"
 
 ## XML documentation is added.     
 
