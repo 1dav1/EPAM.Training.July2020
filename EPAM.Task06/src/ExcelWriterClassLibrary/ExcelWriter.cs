@@ -2,8 +2,6 @@
 using SessionClassLibrary.Entities.Assessment;
 using SessionClassLibrary.Entities.Grade;
 using SessionClassLibrary.Repositories;
-using SessionClassLibrary.Entities;
-using System;
 using System.Collections.Generic;
 using System.IO;
 using Excel = Microsoft.Office.Interop.Excel;
