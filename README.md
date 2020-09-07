@@ -1,7 +1,7 @@
 # EPAM.Training.July2020     
 EPAM training tasks     
 
-## Task 5. Data structures, Generics    
+## Task 6. Data structures, Generics    
 ### Project 'BinaryTreeClassLibrary'     
 - BinaryTree class    
 - ResultClassLibrary  
