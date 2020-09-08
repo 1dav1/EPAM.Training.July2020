@@ -2,9 +2,11 @@
 
 namespace SessionClassLibrary
 {
+    /// <include file='docs.xml' path='docs/members[@name="studentgroup"]/StudentGroup/*'/>
     public class StudentGroup
     {
-        private int _id; 
+        private int _id;
+        /// <include file='docs.xml' path='docs/members[@name="studentgroup"]/Id/*'/>
         public int Id { get => _id;
             set
             {
@@ -15,6 +17,7 @@ namespace SessionClassLibrary
         }
 
         private string _number;
+        /// <include file='docs.xml' path='docs/members[@name="studentgroup"]/Number/*'/>
         public string Number 
         { 
             get => _number; 
@@ -26,6 +29,7 @@ namespace SessionClassLibrary
             }
         }
 
+        /// <include file='docs.xml' path='docs/members[@name="studentgroup"]/Equals/*'/>
         public override bool Equals(object obj)
         {
             if (ReferenceEquals(obj, this))
@@ -38,6 +42,7 @@ namespace SessionClassLibrary
                    group.Number == Number;
         }
 
+        /// <include file='docs.xml' path='docs/members[@name="studentgroup"]/GetHashCode/*'/>
         public override int GetHashCode()
         {
             return HashCode.Combine(Id, Number);
