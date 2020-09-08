@@ -8,12 +8,14 @@ using System.Linq;
 
 namespace SessionClassLibrary.Repositories
 {
+    /// <include file='docs.xml' path='docs/members[@name="repository"]/Repository/*'/>
     public class Repository<T> where T : class, new()
     {
         private readonly string _connectionString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=SessionDB;Integrated Security=True";
         private readonly string _tableName;
         private readonly IEnumerable<string> _fields;
 
+        /// <include file='docs.xml' path='docs/members[@name="repository"]/Constructor/*'/>
         public Repository()
         {
             if (typeof(T).Name.Contains("Grade"))
@@ -43,6 +45,7 @@ namespace SessionClassLibrary.Repositories
             }
         }
 
+        /// <include file='docs.xml' path='docs/members[@name="repository"]/Insert/*'/>
         public void Insert(T item)
         {
             var query = $"INSERT INTO [dbo].[{_tableName}] VALUES({_fields.GetParameters()})";
@@ -99,6 +102,7 @@ namespace SessionClassLibrary.Repositories
             }
         }
 
+        /// <include file='docs.xml' path='docs/members[@name="repository"]/Update/*'/>
         public void Update(T item)
         {
             var query = $"UPDATE [dbo].[{_tableName}] " +
@@ -150,6 +154,7 @@ namespace SessionClassLibrary.Repositories
             }
         }
 
+        /// <include file='docs.xml' path='docs/members[@name="repository"]/Delete/*'/>
         public void Delete(T item)
         {
             var query = $"DELETE FROM [dbo].[{_tableName}] " +
@@ -171,6 +176,7 @@ namespace SessionClassLibrary.Repositories
             }
         }
 
+        /// <include file='docs.xml' path='docs/members[@name="repository"]/GetAll/*'/>
         public IEnumerable<T> GetAll()
         {
             var query = $"SELECT {_fields.GetFields()} FROM [dbo].[{_tableName}]";
@@ -193,6 +199,7 @@ namespace SessionClassLibrary.Repositories
             return entities;
         }
 
+        /// <include file='docs.xml' path='docs/members[@name="repository"]/GetAllGrades/*'/>
         public IEnumerable<Grade> GetAllGrades()
         {
             var query = $"SELECT {_fields.GetFields()} FROM [dbo].[{_tableName}]";
@@ -214,6 +221,7 @@ namespace SessionClassLibrary.Repositories
             return grades;
         }
 
+        /// <include file='docs.xml' path='docs/members[@name="repository"]/GetAllAssessments/*'/>
         public IEnumerable<Assessment> GetAllAssessments()
         {
             var query = $"SELECT {_fields.GetFields()} FROM [dbo].[{_tableName}]";
@@ -235,6 +243,7 @@ namespace SessionClassLibrary.Repositories
             return assessments;
         }
 
+        /// <include file='docs.xml' path='docs/members[@name="repository"]/GetById/*'/>
         public T GetById(int id)
         {
             var query = $"SELECT {_fields.GetFields()} FROM [dbo].[{_tableName}] WHERE [Id]=@Id";
@@ -257,6 +266,7 @@ namespace SessionClassLibrary.Repositories
             return entity;
         }
 
+        /// <include file='docs.xml' path='docs/members[@name="repository"]/GetGradeById/*'/>
         public Grade GetGradeById(int id)
         {
             var query = $"SELECT {_fields.GetFields()} FROM [dbo].[{_tableName}] WHERE [Id]=@Id";
@@ -279,6 +289,7 @@ namespace SessionClassLibrary.Repositories
             return grade;
         }
 
+        /// <include file='docs.xml' path='docs/members[@name="repository"]/GetAssessmentById/*'/>
         public Assessment GetAssessmentById(int id)
         {
             var query = $"SELECT {_fields.GetFields()} FROM [dbo].[{_tableName}] WHERE [Id]=@Id";
