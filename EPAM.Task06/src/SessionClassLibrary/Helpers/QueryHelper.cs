@@ -4,8 +4,10 @@ using System.Text;
 
 namespace SessionClassLibrary.Helpers
 {
+    /// <include file='docs.xml' path='docs/members[@name="queryhelper"]/QueryHelper/*'/>
     public static class QueryHelper
     {
+        /// <include file='docs.xml' path='docs/members[@name="queryhelper"]/GetParameters/*'/>
         public static string GetParameters(this IEnumerable<string> fields)
         {
             var notIdFields = (from f in fields
@@ -22,6 +24,7 @@ namespace SessionClassLibrary.Helpers
             return paramsBuilder.ToString();
         }
 
+        /// <include file='docs.xml' path='docs/members[@name="queryhelper"]/ValuesToParams/*'/>
         public static string ValuesToParams(this IEnumerable<string> fields)
         {
             var notIdFields = (from f in fields
@@ -37,6 +40,7 @@ namespace SessionClassLibrary.Helpers
             return builder.ToString();
         }
 
+        /// <include file='docs.xml' path='docs/members[@name="queryhelper"]/GetFields/*'/>
         public static string GetFields(this IEnumerable<string> fields)
         {
             StringBuilder builder = new StringBuilder($"[{fields.ToArray().First()}]");

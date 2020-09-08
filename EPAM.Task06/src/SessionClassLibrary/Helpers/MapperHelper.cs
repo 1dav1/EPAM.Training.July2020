@@ -5,8 +5,10 @@ using System.Data.SqlClient;
 
 namespace SessionClassLibrary.Helpers
 {
+    /// <include file='docs.xml' path='docs/members[@name="mapperhelper"]/MapperHelper/*'/>
     public static class MapperHelper
     {
+        /// <include file='docs.xml' path='docs/members[@name="mapperhelper"]/RecordToModel/*'/>
         public static T RecordToModel<T>(this SqlDataReader record) where T : class, new()
         {
             var entity = new T();
@@ -25,31 +27,42 @@ namespace SessionClassLibrary.Helpers
             return entity;
         }
 
+        /* specific method for 'Grade' entities. used in case of retreiving a list of grades.
+           if a generic list of base class 'Grade' is used to store the entities, 
+           the generic method cannot be used */
+        /// <include file='docs.xml' path='docs/members[@name="mapperhelper"]/RecordToGrade/*'/>
         public static Grade RecordToGrade(this SqlDataReader record)
         {
             if (record["GradeType"].ToString() == "PassFail")
             {
-                var entity = new PassFailGrade();
-                entity.Id = (int)record["Id"];
-                entity.StudentId = (int)record["StudentId"];
-                entity.AssessmentId = (int)record["AssessmentId"];
-                entity.Value = record["Value"].ToString();
+                var entity = new PassFailGrade
+                {
+                    Id = (int)record["Id"],
+                    StudentId = (int)record["StudentId"],
+                    AssessmentId = (int)record["AssessmentId"],
+                    Value = record["Value"].ToString()
+                };
                 return entity;
             }
             else
             {
-                var entity = new PointGrade();
-                entity.Id = (int)record["Id"];
-                entity.StudentId = (int)record["StudentId"];
-                entity.AssessmentId = (int)record["AssessmentId"];
-                entity.Value = int.Parse(record["Value"].ToString());
+                var entity = new PointGrade
+                {
+                    Id = (int)record["Id"],
+                    StudentId = (int)record["StudentId"],
+                    AssessmentId = (int)record["AssessmentId"],
+                    Value = int.Parse(record["Value"].ToString())
+                };
                 return entity;
             }
         }
 
+        /* specific method for 'Grade' entities. used in case of retreiving a list of assessments.
+           if a generic list of base class 'Assessment' is used to store the entities, 
+           the generic method cannot be used */
+        /// <include file='docs.xml' path='docs/members[@name="mapperhelper"]/RecordToAssessment/*'/>
         public static Assessment RecordToAssessment(this SqlDataReader record)
         {
-            int i = 0;
             if (record["AssessmentType"].ToString() == "Exam")
             {
                 var entity = new ExamAssessment

@@ -3,7 +3,7 @@
   <members name="student">
     <Student>
       <summary>
-        Student class contains characteristics of a student.
+        The <c>Student</c> class contains characteristics of a student.
       </summary>
     </Student>
     <Id>
@@ -48,5 +48,362 @@
       </summary>
       <returns>A hash code for the current student.</returns>
     </GetHashCode>
+  </members>
+  <members name="studentgroup">
+    <StudentGroup>
+      <summary>
+        The <c>StudentGroup</c> class contains characteristics of a student group.
+      </summary>
+    </StudentGroup>
+    <Id>
+      <value>Gets or sets the identifier of the student group.</value>
+      <exception cref="System.ArgumentOutOfRangeException">
+        Thrown when the ID is not positive.
+      </exception>
+    </Id>
+    <Number>
+      <value>Gets or sets the number of the student group.</value>
+      <exception cref="System.ArgumentOutOfRangeException">
+        Thrown when the number of the group is empty or <c>null</c>.
+      </exception>
+    </Number>
+    <Equals>
+      <summary>
+        Determines whether two <c>StudentGroup</c> instances are equal. Overrides the base method.
+      </summary>
+      <param name="obj">The object to compare with the current student group.</param>
+      <returns>
+        <c>true</c> if the specified object is equal to the current student group; otherwise, <c>false</c>.
+      </returns>
+    </Equals>
+    <GetHashCode>
+      <summary>
+        Serves as the default hash function. Overrides the base method.
+      </summary>
+      <returns>A hash code for the current student group.</returns>
+    </GetHashCode>
+  </members>
+  <members name="subject">
+    <Subject>
+      <summary>
+        The <c>Subject</c> class contains the characteristics of a subject.
+      </summary>
+    </Subject>
+    <Id>
+      <value>Gets or sets the identifier of the subject.</value>
+      <exception cref="System.ArgumentOutOfRangeException">
+        Thrown when the ID is not positive.
+      </exception>
+    </Id>
+    <Name>
+      <value>Gets or sets name of the subject.</value>
+      <exception cref="System.ArgumentOutOfRangeException">
+        Thrown when the name of the subject is empty or <c>null</c>.
+      </exception>
+    </Name>
+    <Equals>
+      <summary>
+        Determines whether two <c>Subject</c> instances are equal. Overrides the base method.
+      </summary>
+      <param name="obj">The object to compare with the current subject.</param>
+      <returns>
+        <c>true</c> if the specified object is equal to the current subject; otherwise, <c>false</c>.
+      </returns>
+    </Equals>
+    <GetHashCode>
+      <summary>
+        Serves as the default hash function. Overrides the base method.
+      </summary>
+      <returns>A hash code for the current subject.</returns>
+    </GetHashCode>
+  </members>
+  <members name="assessment">
+    <Assessment>
+      <summary>
+        The abstract <c>Assessment</c> class contains the base characteristics of an assessment.
+      </summary>
+    </Assessment>
+    <Id>
+      <value>Gets or sets the identifier of the assessment.</value>
+    </Id>
+    <Date>
+      <value>Gets or sets the date when the assessment is held.</value>
+    </Date>
+    <SubjectId>
+      <value>Gets or sets the identifier of the subject of the assessment.</value>
+    </SubjectId>
+    <GroupId>
+      <value>Gets or sets the identifier of the student group that is assessed.</value>
+    </GroupId>
+    <NumberOfSession>
+      <value>Gets or sets the number of the session in which the assessment is held.</value>
+    </NumberOfSession>
+  </members>
+  <members name="examassessment">
+    <ExamAssessment>
+      <summary>
+        The derived <c>ExamAssessment</c> class contains the characteristics of an exam.
+      </summary>
+    </ExamAssessment>
+    <Id>
+      <value>Gets or sets the identifier of the exam.</value>
+      <exception cref="System.ArgumentOutOfRangeException">
+        Thrown when the ID is not positive.
+      </exception>
+    </Id>
+    <Date>
+      <value>Gets or sets the date of the exam.</value>
+    </Date>
+    <NumberOfSession>
+      <value>Gets or sets the number of the session.</value>
+      <exception cref="System.ArgumentOutOfRangeException">
+        Thrown when the number is not positive.
+      </exception>
+    </NumberOfSession>
+    <SubjectId>
+      <value>Gets or sets the identifier of the subject.</value>
+      <exception cref="System.ArgumentOutOfRangeException">
+        Thrown when the ID is not positive.
+      </exception>
+    </SubjectId>
+    <GroupId>
+      <value>Gets or sets the identifier of the student group.</value>
+      <exception cref="System.ArgumentOutOfRangeException">
+        Thrown when the ID is not positive.
+      </exception>
+    </GroupId>
+    <Equals>
+      <summary>
+        Determines whether two <c>ExamAssessment</c> instances are equal. Overrides the base method.
+      </summary>
+      <param name="obj">The object to compare with the current exam.</param>
+      <returns>
+        <c>true</c> if the specified object is equal to the current exam; otherwise, <c>false</c>.
+      </returns>
+    </Equals>
+    <GetHashCode>
+      <summary>
+        Serves as the default hash function. Overrides the base method.
+      </summary>
+      <returns>A hash code for the current exam.</returns>
+    </GetHashCode>
+  </members>
+  <members name="testassessment">
+    <TestAssessment>
+      <summary>
+        The derived <c>TestAssessment</c> class contains the characteristics of a test.
+      </summary>
+    </TestAssessment>
+    <Id>
+      <value>Gets or sets the identifier of the test.</value>
+      <exception cref="System.ArgumentOutOfRangeException">
+        Thrown when the ID is not positive.
+      </exception>
+    </Id>
+    <Date>
+      <value>Gets or sets the date of the test.</value>
+    </Date>
+    <NumberOfSession>
+      <value>Gets or sets the number of the session.</value>
+      <exception cref="System.ArgumentOutOfRangeException">
+        Thrown when the number is not positive.
+      </exception>
+    </NumberOfSession>
+    <SubjectId>
+      <value>Gets or sets the identifier of the subject.</value>
+      <exception cref="System.ArgumentOutOfRangeException">
+        Thrown when the ID is not positive.
+      </exception>
+    </SubjectId>
+    <GroupId>
+      <value>Gets or sets the identifier of the student group.</value>
+      <exception cref="System.ArgumentOutOfRangeException">
+        Thrown when the ID is not positive.
+      </exception>
+    </GroupId>
+    <Equals>
+      <summary>
+        Determines whether two <c>TestAssessment</c> instances are equal. Overrides the base method.
+      </summary>
+      <param name="obj">The object to compare with the current test.</param>
+      <returns>
+        <c>true</c> if the specified object is equal to the current test; otherwise, <c>false</c>.
+      </returns>
+    </Equals>
+    <GetHashCode>
+      <summary>
+        Serves as the default hash function. Overrides the base method.
+      </summary>
+      <returns>A hash code for the current test.</returns>
+    </GetHashCode>
+  </members>
+  <members name="grade">
+    <Grade>
+      <summary>
+        The abstract <c>Grade</c> class contains the base characteristics of a grade.
+      </summary>
+    </Grade>
+    <Id>
+      <value>Gets or sets the identifier of the grade.</value>
+    </Id>
+    <AssessmentId>
+      <value>Gets or sets the identifier of the assessment.</value>
+    </AssessmentId>
+    <StudentId>
+      <value>Gets or sets the identifier of the student.</value>
+    </StudentId>
+  </members>
+  <members name="passfailgrade">
+    <PassFailGrade>
+      <summary>
+        The derived <c>PassFailGrade</c> class contains the characteristics of a grade.
+      </summary>
+    </PassFailGrade>
+    <Id>
+      <value>Gets or sets the identifier of the grade.</value>
+      <exception cref="System.ArgumentOutOfRangeException">
+        Thrown when the ID is not positive.
+      </exception>
+    </Id>
+    <AssessmentId>
+      <value>Gets or sets the identifier of the assessment.</value>
+      <exception cref="System.ArgumentOutOfRangeException">
+        Thrown when the ID is not positive.
+      </exception>
+    </AssessmentId>
+    <StudentId>
+      <value>Gets or sets the identifier of the student.</value>
+      <exception cref="System.ArgumentOutOfRangeException">
+        Thrown when the ID is not positive.
+      </exception>
+    </StudentId>
+    <Value>
+      <value>Gets or sets the value of the grade.</value>
+      <exception cref="System.ArgumentOutOfRangeException">
+        Thrown when the value is not set to one of two possible values: 'Pass' or 'Fail'.
+      </exception>
+    </Value>
+    <Equals>
+      <summary>
+        Determines whether two <c>PassFailGrade</c> instances are equal. Overrides the base method.
+      </summary>
+      <param name="obj">The object to compare with the current grade.</param>
+      <returns>
+        <c>true</c> if the specified object is equal to the current grade; otherwise, <c>false</c>.
+      </returns>
+    </Equals>
+    <GetHashCode>
+      <summary>
+        Serves as the default hash function. Overrides the base method.
+      </summary>
+      <returns>A hash code for the current grade.</returns>
+    </GetHashCode>
+  </members>
+  <members name="pointgrade">
+    <PointGrade>
+      <summary>
+        <summary>
+          The derived <c>PointGrade</c> class contains the characteristics of a grade.
+        </summary>
+      </summary>
+    </PointGrade>
+    <Id>
+      <value>Gets or sets the identifier of the grade.</value>
+      <exception cref="System.ArgumentOutOfRangeException">
+        Thrown when the ID is not positive.
+      </exception>
+    </Id>
+    <AssessmentId>
+      <value>Gets or sets the identifier of the assessment.</value>
+      <exception cref="System.ArgumentOutOfRangeException">
+        Thrown when the ID is not positive.
+      </exception>
+    </AssessmentId>
+    <StudentId>
+      <value>Gets or sets the identifier of the student.</value>
+      <exception cref="System.ArgumentOutOfRangeException">
+        Thrown when the ID is not positive.
+      </exception>
+    </StudentId>
+    <Value>
+      <value>Gets or sets the value of the grade.</value>
+      <exception cref="System.ArgumentOutOfRangeException">
+        Thrown when the value is less than 0 points or more than 10 points.
+      </exception>
+    </Value>
+    <Equals>
+      <summary>
+        Determines whether two <c>PointGrade</c> instances are equal. Overrides the base method.
+      </summary>
+      <param name="obj">The object to compare with the current grade.</param>
+      <returns>
+        <c>true</c> if the specified object is equal to the current grade; otherwise, <c>false</c>.
+      </returns>
+    </Equals>
+    <GetHashCode>
+      <summary>
+        Serves as the default hash function. Overrides the base method.
+      </summary>
+      <returns>A hash code for the current grade.</returns>
+    </GetHashCode>
+  </members>
+  <members name="mapperhelper">
+    <MapperHelper>
+      <summary>
+        The <c>MapperHelper</c> class contains extension methods for mapping a database record to an object model.
+      </summary>
+    </MapperHelper>
+    <RecordToModel>
+      <summary>
+        Creates an entity from the specified database record.
+      </summary>
+      <typeparam name="T">The type of the entity.</typeparam>
+      <param name="record">The record to create an entity.</param>
+      <returns>The entity created basing on the received database record.</returns>
+    </RecordToModel>
+    <RecordToGrade>
+      <summary>
+        Creates an entity of one of two derived <c>Grade</c> types: pass-fail grade or point grade, from the specified database record.
+      </summary>
+      <param name="record">The record to create an entity.</param>
+      <returns>The pass-fail grade or the point grade created basing on the received database record.</returns>
+    </RecordToGrade>
+    <RecordToAssessment>
+      <summary>
+        Creates an entity of one of two derived <c>Assessment</c> types: exam or test, from the specified database record.
+      </summary>
+      <param name="record">The record to create an assessment entity.</param>
+      <returns>The exam or the test created basing on the received database record.</returns>
+    </RecordToAssessment>
+  </members>
+  <members name="queryhelper">
+    <QueryHelper>
+      <summary>
+        <summary>
+          The <c>QueryHelper</c> class contains extension methods for creating an SQL query.
+        </summary>
+      </summary>
+    </QueryHelper>
+    <GetParameters>
+      <summary>
+        Gets a list of parameters for SQL query from the specified list of fields of the class.
+      </summary>
+      <param name="fields">The list of fields of the class.</param>
+      <returns>The string that contains the parameters for an SQL query.</returns>
+    </GetParameters>
+    <ValuesToParams>
+      <summary>
+        Forms a string containing parameter-value pairs that is used in SQL query.
+      </summary>
+      <param name="fields">The list of fields of the class.</param>
+      <returns>The string that contains the parameter-value pairs for an SQL query.</returns>
+    </ValuesToParams>
+    <GetFields>
+      <summary>
+        Gets the string that consists of the names of fields of a class.
+      </summary>
+      <param name="fields">The list of a class fields.</param>
+      <returns>The string that consists of the names of fields.</returns>
+    </GetFields>
   </members>
 </docs>
