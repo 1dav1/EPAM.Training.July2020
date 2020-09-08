@@ -2,9 +2,11 @@
 
 namespace SessionClassLibrary.Entities.Assessment
 {
+    /// <include file='docs.xml' path='docs/members[@name="testassessment"]/TestAssessment/*'/>
     public class TestAssessment : Assessment
     {
         private int _id;
+        /// <include file='docs.xml' path='docs/members[@name="testassessment"]/Id/*'/>
         public override int Id
         {
             get => _id;
@@ -16,9 +18,11 @@ namespace SessionClassLibrary.Entities.Assessment
             }
         }
 
+        /// <include file='docs.xml' path='docs/members[@name="testassessment"]/Date/*'/>
         public override DateTime Date { get; set; }
 
         private int _numberOfSession;
+        /// <include file='docs.xml' path='docs/members[@name="testassessment"]/NumberOfSession/*'/>
         public override int NumberOfSession
         {
             get => _numberOfSession;
@@ -31,6 +35,7 @@ namespace SessionClassLibrary.Entities.Assessment
         }
 
         private int _subjectId;
+        /// <include file='docs.xml' path='docs/members[@name="testassessment"]/SubjectId/*'/>
         public override int SubjectId
         {
             get => _subjectId;
@@ -43,6 +48,7 @@ namespace SessionClassLibrary.Entities.Assessment
         }
 
         private int _groupId;
+        /// <include file='docs.xml' path='docs/members[@name="testassessment"]/GroupId/*'/>
         public override int GroupId
         {
             get => _groupId;
@@ -54,6 +60,7 @@ namespace SessionClassLibrary.Entities.Assessment
             }
         }
 
+        /// <include file='docs.xml' path='docs/members[@name="testassessment"]/Equals/*'/>
         public override bool Equals(object obj)
         {
             if (ReferenceEquals(obj, this))
@@ -69,6 +76,7 @@ namespace SessionClassLibrary.Entities.Assessment
                    test.NumberOfSession == NumberOfSession;
         }
 
+        /// <include file='docs.xml' path='docs/members[@name="testassessment"]/GetHashCode/*'/>
         public override int GetHashCode()
         {
             return HashCode.Combine(Id, Date, NumberOfSession, SubjectId, GroupId);

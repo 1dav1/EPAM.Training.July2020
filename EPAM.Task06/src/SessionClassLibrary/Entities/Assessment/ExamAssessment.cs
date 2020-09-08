@@ -1,12 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace SessionClassLibrary.Entities.Assessment
 {
+    // the derived class that presents the exam
+    /// <include file='docs.xml' path='docs/members[@name="examassessment"]/ExamAssessment/*'/>
     public class ExamAssessment : Assessment
     {
         private int _id;
+        /// <include file='docs.xml' path='docs/members[@name="examassessment"]/Id/*'/>
         public override int Id 
         { 
             get => _id;
@@ -18,9 +19,11 @@ namespace SessionClassLibrary.Entities.Assessment
             }
         }
 
+        /// <include file='docs.xml' path='docs/members[@name="examassessment"]/Date/*'/>
         public override DateTime Date { get; set; }
 
         private int _numberOfSession;
+        /// <include file='docs.xml' path='docs/members[@name="examassessment"]/NumberOfSession/*'/>
         public override int NumberOfSession 
         { 
             get => _numberOfSession;
@@ -33,6 +36,7 @@ namespace SessionClassLibrary.Entities.Assessment
         }
 
         private int _subjectId;
+        /// <include file='docs.xml' path='docs/members[@name="examassessment"]/SubjectId/*'/>
         public override int SubjectId 
         { 
             get => _subjectId;
@@ -45,6 +49,7 @@ namespace SessionClassLibrary.Entities.Assessment
         }
 
         private int _groupId;
+        /// <include file='docs.xml' path='docs/members[@name="examassessment"]/GroupId/*'/>
         public override int GroupId 
         { 
             get => _groupId; 
@@ -56,6 +61,7 @@ namespace SessionClassLibrary.Entities.Assessment
             } 
         }
 
+        /// <include file='docs.xml' path='docs/members[@name="examassessment"]/Equals/*'/>
         public override bool Equals(object obj)
         {
             if (ReferenceEquals(obj, this))
@@ -71,6 +77,7 @@ namespace SessionClassLibrary.Entities.Assessment
                    exam.NumberOfSession == NumberOfSession;
         }
 
+        /// <include file='docs.xml' path='docs/members[@name="examassessment"]/GetHashCode/*'/>
         public override int GetHashCode()
         {
             return HashCode.Combine(Id, Date, NumberOfSession, SubjectId, GroupId);
