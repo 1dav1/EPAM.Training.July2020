@@ -2,9 +2,12 @@
 
 namespace SessionClassLibrary.Entities.Grade
 {
+    // the derived class that presents the pass-fail grade
+    /// <include file='docs.xml' path='docs/members[@name="passfailgrade"]/PassFailGrade/*'/>
     public class PassFailGrade : Grade
     {
         private int _id;
+        /// <include file='docs.xml' path='docs/members[@name="passfailgrade"]/Id/*'/>
         public override int Id
         {
             get => _id;
@@ -17,6 +20,7 @@ namespace SessionClassLibrary.Entities.Grade
         }
 
         private int _assessmentId;
+        /// <include file='docs.xml' path='docs/members[@name="passfailgrade"]/AssessmentId/*'/>
         public override int AssessmentId 
         {
             get => _assessmentId;
@@ -28,6 +32,7 @@ namespace SessionClassLibrary.Entities.Grade
         }
 
         private int _studentId;
+        /// <include file='docs.xml' path='docs/members[@name="passfailgrade"]/StudentId/*'/>
         public override int StudentId 
         { 
             get => _studentId;
@@ -40,6 +45,7 @@ namespace SessionClassLibrary.Entities.Grade
         }
 
         private string _value;
+        /// <include file='docs.xml' path='docs/members[@name="passfailgrade"]/Value/*'/>
         public string Value
         {
             get => _value;
@@ -51,6 +57,7 @@ namespace SessionClassLibrary.Entities.Grade
             }
         }
 
+        /// <include file='docs.xml' path='docs/members[@name="passfailgrade"]/Equals/*'/>
         public override bool Equals(object obj)
         {
             if (ReferenceEquals(obj, this))
@@ -65,6 +72,7 @@ namespace SessionClassLibrary.Entities.Grade
                    grade.Value == Value;
         }
 
+        /// <include file='docs.xml' path='docs/members[@name="passfailgrade"]/GetHashCode/*'/>
         public override int GetHashCode()
         {
             return HashCode.Combine(Id, AssessmentId, StudentId, Value);

@@ -1,12 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace SessionClassLibrary.Entities.Grade
 {
+    // the derived class that presents the 10-points grade
+    /// <include file='docs.xml' path='docs/members[@name="pointgrade"]/PointGrade/*'/>
     public class PointGrade : Grade
     {
         private int _id;
+        /// <include file='docs.xml' path='docs/members[@name="pointgrade"]/Id/*'/>
         public override int Id
         {
             get => _id;
@@ -19,6 +20,7 @@ namespace SessionClassLibrary.Entities.Grade
         }
 
         private int _assessmentId;
+        /// <include file='docs.xml' path='docs/members[@name="pointgrade"]/AssessmentId/*'/>
         public override int AssessmentId
         {
             get => _assessmentId;
@@ -30,6 +32,7 @@ namespace SessionClassLibrary.Entities.Grade
         }
 
         private int _studentId;
+        /// <include file='docs.xml' path='docs/members[@name="pointgrade"]/StudentId/*'/>
         public override int StudentId
         {
             get => _studentId;
@@ -42,6 +45,7 @@ namespace SessionClassLibrary.Entities.Grade
         }
 
         private int _value;
+        /// <include file='docs.xml' path='docs/members[@name="pointgrade"]/Value/*'/>
         public int Value 
         { 
             get => _value; 
@@ -53,6 +57,7 @@ namespace SessionClassLibrary.Entities.Grade
             } 
         }
 
+        /// <include file='docs.xml' path='docs/members[@name="pointgrade"]/Equals/*'/>
         public override bool Equals(object obj)
         {
             if (ReferenceEquals(obj, this))
@@ -67,6 +72,7 @@ namespace SessionClassLibrary.Entities.Grade
                    grade.Value == Value;
         }
 
+        /// <include file='docs.xml' path='docs/members[@name="pointgrade"]/GetHashCode/*'/>
         public override int GetHashCode()
         {
             return HashCode.Combine(Id, AssessmentId, StudentId, Value);
