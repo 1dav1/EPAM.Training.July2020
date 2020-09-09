@@ -31,6 +31,6 @@ Click [here][link1] to view the example of the report on the results of the sess
 Click [here][link2] to view the example of pivot table with average/min/max grade.     
 Click [here][link3] to view the example of expulsion list.    
 
-[link1]:</docs/G1.xlsx>
-[link2]:<>
-[link3]:<>
+[link1]:</EPAM/Task06/docs/G1.xlsx>
+[link2]:</EPAM/Task06/docs/pivot.xlsx>
+[link3]:</EPAM/Task06/docs/expulsionlist.xlsx>
