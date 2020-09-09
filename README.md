@@ -25,4 +25,12 @@ contains SQL scripts for deploying database and populating it with the data
 ### Used     
 - Spire.Xls     
 - Moq     
-- xunit, Fluent Assertions     
+- xunit, Fluent Assertions   
+
+Click [here][link1] to view the example of the report on the results of the session.     
+Click [here][link2] to view the example of pivot table with average/min/max grade.     
+Click [here][link3] to view the example of expulsion list.    
+
+[link1]:</docs/G1.xlsx>
+[link2]:<>
+[link3]:<>
