@@ -27,6 +27,7 @@ contains SQL scripts for deploying database and populating it with the data
 - Moq     
 - xunit, Fluent Assertions   
 
+### Example files       
 Click [here][link1] to view the example of the report on the results of the session.     
 Click [here][link2] to view the example of pivot table with average/min/max grade.     
 Click [here][link3] to view the example of expulsion list.    
